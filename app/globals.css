@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
+/*
+ * Smart Finds design tokens (SRS §21/§22).
+ *
+ * Tailwind v4 reads custom properties declared inside `@theme` and generates
+ * matching utilities from them (e.g. --color-brand-600 -> bg-brand-600,
+ * text-brand-600, border-brand-600, ring-brand-600...). Base surface tokens
+ * (background/foreground/surface/border) are declared on :root instead, then
+ * re-exposed as theme colors below with `@theme inline`, so the dark-mode
+ * override further down keeps working without duplicating the theme block.
+ */
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --foreground: #17181c;
+  --surface: #ffffff;
+  --surface-muted: #f7f8fa;
+  --border: #e5e7eb;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a0a0c;
+    --foreground: #f4f4f5;
+    --surface: #131316;
+    --surface-muted: #101012;
+    --border: #27272a;
   }
 }
 
+@theme inline {
+  /* Type family: a single Geist family covers both display and body copy
+     (see app/layout.tsx) so no second web font has to be downloaded. */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Base surfaces, re-exposed as bg-background / text-foreground / etc. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+
+  /* Brand accent — used sparingly for primary CTAs, links, and active states. */
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dbe7fe;
+  --color-brand-200: #bfd6fe;
+  --color-brand-300: #93bbfd;
+  --color-brand-400: #609afa;
+  --color-brand-500: #3b78f6;
+  --color-brand-600: #2457eb;
+  --color-brand-700: #1c44d6;
+  --color-brand-800: #1d3aad;
+  --color-brand-900: #1e3489;
+  --color-brand-950: #172554;
+
+  /* Semantic colors, for future form/status states. */
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+
+  /*
+   * Recommendation-label colors (SRS §1.2 / §21). "Personally Tried" is the
+   * only label allowed to imply firsthand use, so it gets a visually
+   * distinct gold treatment. Every research-based label (Chosen for the
+   * Look, Popular Pick, Highly Rated, Community Requested, Great Price,
+   * Trending Find) shares one neutral/brand treatment instead, so the two
+   * trust tiers read as different at a glance, not just by label text.
+   */
+  --color-label-tried-bg: #fef3c7;
+  --color-label-tried-fg: #92400e;
+  --color-label-tried-ring: #f59e0b;
+  --color-label-research-bg: var(--color-brand-50);
+  --color-label-research-fg: var(--color-brand-700);
+  --color-label-research-ring: var(--color-brand-200);
+
+  /* Editorial type scale — supplements Tailwind's default text-xs..text-9xl
+     with named sizes for hero/section headings. */
+  --text-display: 3rem;
+  --text-display--line-height: 1.1;
+  --text-h1: 2.25rem;
+  --text-h1--line-height: 1.15;
+  --text-h2: 1.75rem;
+  --text-h2--line-height: 1.2;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.35;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1rem;
+
+  /* Elevation — one consistent card shadow, reused everywhere a surface floats. */
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.16);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
 }
