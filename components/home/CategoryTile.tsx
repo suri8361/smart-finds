@@ -6,9 +6,9 @@ export function CategoryTile({ category }: { category: Category }) {
   return (
     <Link
       href={`/category/${category.slug}`}
-      className="group flex flex-col items-start gap-3 rounded-2xl border border-border bg-surface p-5 shadow-card transition-colors hover:border-brand-300 hover:bg-brand-50"
+      className="group flex flex-col items-start gap-3 rounded-2xl border border-border bg-surface p-5 shadow-card transition-colors hover:border-brand-300 hover:bg-taupe-200"
     >
-      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600 group-hover:bg-white">
+      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-taupe-200 text-brand-600 group-hover:bg-white">
         <Icon className="h-5 w-5" aria-hidden="true" />
       </span>
       <span>

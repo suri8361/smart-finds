@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ProductCard } from "@/components/product/ProductCard";
+import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { products } from "@/lib/data/products";
 
 /** "Today's Top Picks" placeholder product grid (build item #6 — placeholder product cards). */
@@ -14,11 +14,7 @@ export function TopPicks() {
           description="A mix of styles, price points, and reasons — each one labeled with exactly why it's here."
           action={{ label: "See all picks", href: "/search" }}
         />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
-          ))}
-        </div>
+        <ProductGrid products={products} />
       </Container>
     </section>
   );

@@ -9,31 +9,40 @@
  * (background/foreground/surface/border) are declared on :root instead, then
  * re-exposed as theme colors below with `@theme inline`, so the dark-mode
  * override further down keeps working without duplicating the theme block.
+ *
+ * Palette direction: warm ivory/espresso neutrals + a terracotta accent,
+ * aimed at a curated-boutique/editorial feel rather than a cool-blue SaaS
+ * one. Because components consume these as tokens rather than hardcoded
+ * colors, this file is the only place that had to change to re-theme the
+ * whole site (see components/home/Hero.tsx for the one place that also
+ * needed structural/layout changes).
  */
 
 :root {
-  --background: #ffffff;
-  --foreground: #17181c;
+  --background: #fbf7f2;
+  --foreground: #2a2118;
   --surface: #ffffff;
-  --surface-muted: #f7f8fa;
-  --border: #e5e7eb;
+  --surface-muted: #f3ece3;
+  --border: #e8ddd0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0c;
-    --foreground: #f4f4f5;
-    --surface: #131316;
-    --surface-muted: #101012;
-    --border: #27272a;
+    --background: #1c1712;
+    --foreground: #f3ece3;
+    --surface: #241d16;
+    --surface-muted: #2c2319;
+    --border: #3a2f24;
   }
 }
 
 @theme inline {
-  /* Type family: a single Geist family covers both display and body copy
-     (see app/layout.tsx) so no second web font has to be downloaded. */
+  /* Body/UI copy stays in Geist Sans for legibility at small sizes; Fraunces
+     (a warm, soft-grade serif) is reserved for headlines/wordmarks via
+     `font-display` — see app/layout.tsx for the font loading. */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
 
   /* Base surfaces, re-exposed as bg-background / text-foreground / etc. */
   --color-background: var(--background);
@@ -42,18 +51,43 @@
   --color-surface-muted: var(--surface-muted);
   --color-border: var(--border);
 
-  /* Brand accent — used sparingly for primary CTAs, links, and active states. */
-  --color-brand-50: #eef4ff;
-  --color-brand-100: #dbe7fe;
-  --color-brand-200: #bfd6fe;
-  --color-brand-300: #93bbfd;
-  --color-brand-400: #609afa;
-  --color-brand-500: #3b78f6;
-  --color-brand-600: #2457eb;
-  --color-brand-700: #1c44d6;
-  --color-brand-800: #1d3aad;
-  --color-brand-900: #1e3489;
-  --color-brand-950: #172554;
+  /* Brand accent — a warm terracotta/rust, reserved strictly for restrained
+     accent use: primary CTAs, the logo dot, small icons, links, focus rings,
+     occasional text emphasis. Never used as a large surface fill — that's
+     what the `taupe` scale below is for. (An earlier pass tried keeping
+     terracotta as the surface-fill color too, just desaturated — but any
+     tint of an orange/terracotta hue still reads "warm boutique" at large
+     scale, no matter how pale. The fix is a different hue family entirely,
+     not just a lighter one.) */
+  --color-brand-50: #f5efe6;
+  --color-brand-100: #ead9c3;
+  --color-brand-200: #d9bd97;
+  --color-brand-300: #e9a17e;
+  --color-brand-400: #dc7b52;
+  --color-brand-500: #c8602f;
+  --color-brand-600: #a84b22;
+  --color-brand-700: #863a1a;
+  --color-brand-800: #672d16;
+  --color-brand-900: #4d2312;
+  --color-brand-950: #2e140a;
+
+  /* Neutral "taupe" scale — genuinely low-saturation warm stone, a distinct
+     hue family from `brand`, not just a paler version of it. This is what
+     large surfaces (product image placeholders, category icon chips, badge
+     fills, the hero's main collage card) use instead of tinted terracotta,
+     so those surfaces read as neutral stone rather than warm/boutique.
+     Named `taupe` rather than `stone` to avoid shadowing Tailwind's own
+     built-in `stone` palette. */
+  --color-taupe-200: #e2d6c4;
+  --color-taupe-300: #cdbba0;
+
+  /* Secondary accent — muted sage, used sparingly for variety (hero visual,
+     collection covers) alongside the terracotta primary. */
+  --color-sage-50: #f5f7f1;
+  --color-sage-100: #e7ebdd;
+  --color-sage-200: #cbd6b9;
+  --color-sage-600: #708059;
+  --color-sage-700: #57633f;
 
   /* Semantic colors, for future form/status states. */
   --color-success: #16a34a;
@@ -71,7 +105,7 @@
   --color-label-tried-bg: #fef3c7;
   --color-label-tried-fg: #92400e;
   --color-label-tried-ring: #f59e0b;
-  --color-label-research-bg: var(--color-brand-50);
+  --color-label-research-bg: var(--color-taupe-200);
   --color-label-research-fg: var(--color-brand-700);
   --color-label-research-ring: var(--color-brand-200);
 
@@ -88,8 +122,9 @@
   --text-eyebrow: 0.75rem;
   --text-eyebrow--line-height: 1rem;
 
-  /* Elevation — one consistent card shadow, reused everywhere a surface floats. */
-  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.16);
+  /* Elevation — a soft, warm-tinted shadow (not cool slate) reused everywhere
+     a surface floats, so cards read as soft/premium rather than "UI panel." */
+  --shadow-card: 0 1px 2px rgba(74, 44, 26, 0.05), 0 14px 32px -16px rgba(74, 44, 26, 0.24);
 }
 
 body {

@@ -9,7 +9,6 @@ import { SearchBar } from "@/components/layout/SearchBar";
 
 const supportLinks = [
   { href: "/collections", label: "Collections" },
-  { href: "/retailers", label: "Retailers" },
   { href: "/about", label: "About Smart Finds" },
   { href: "/favorites", label: "Favorites" },
 ];

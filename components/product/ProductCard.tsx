@@ -3,23 +3,14 @@ import { Star } from "lucide-react";
 import type { Product } from "@/types/catalog";
 import { categories } from "@/lib/data/categories";
 import { RecommendationBadge } from "@/components/product/RecommendationBadge";
-
-function formatPriceBand(low: number, high: number, currency: string, lastCheckedAt: string) {
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-    maximumFractionDigits: 0,
-  });
-  const asOf = new Date(lastCheckedAt).toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  return `${formatter.format(low)}–${formatter.format(high)} · as of ${asOf}`;
-}
+import { formatPriceBand } from "@/lib/utils/formatPrice";
 
 /**
  * Placeholder product card (SRS §6, scaled down for a grid context). The
- * whole card links to the future `/products/[slug]` detail page rather than
- * an affiliate redirect — outbound `/go/[linkId]` links carry real safety
- * requirements (SRS §16.4) that are out of scope for this visual-foundation
- * milestone, so the card doesn't imply that flow works yet.
+ * whole card links to the `/products/[slug]` detail page rather than an
+ * affiliate redirect — outbound `/go/[linkId]` links carry real safety
+ * requirements (SRS §16.4) that are still out of scope, so the card doesn't
+ * imply that flow works yet even though the detail page itself now does.
  */
 export function ProductCard({ product }: { product: Product }) {
   const category = categories.find((c) => c.slug === product.categorySlug);
@@ -33,7 +24,7 @@ export function ProductCard({ product }: { product: Product }) {
       href={`/products/${product.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-shadow hover:shadow-lg"
     >
-      <div className="flex h-40 items-center justify-center bg-brand-50">
+      <div className="flex h-40 items-center justify-center bg-taupe-200">
         {CategoryIcon ? <CategoryIcon className="h-10 w-10 text-brand-300" aria-hidden="true" /> : null}
       </div>
 

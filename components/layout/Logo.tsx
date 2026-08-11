@@ -7,7 +7,7 @@ import Link from "next/link";
  */
 export function Logo() {
   return (
-    <Link href="/" className="inline-flex items-center gap-1.5 text-lg font-semibold tracking-tight text-foreground">
+    <Link href="/" className="inline-flex items-center gap-2 font-display text-xl font-semibold text-foreground">
       <span className="inline-block h-2.5 w-2.5 rounded-full bg-brand-600" aria-hidden="true" />
       Smart Finds
     </Link>

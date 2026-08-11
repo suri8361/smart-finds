@@ -23,7 +23,7 @@ export function Footer() {
     <footer className="border-t border-border bg-surface-muted">
       <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-5">
         <div className="sm:col-span-2 lg:col-span-2">
-          <Link href="/" className="text-lg font-semibold text-foreground">
+          <Link href="/" className="font-display text-xl font-semibold text-foreground">
             Smart Finds
           </Link>
           <p className="mt-3 max-w-sm text-sm text-foreground/70">

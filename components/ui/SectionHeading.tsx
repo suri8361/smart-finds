@@ -16,7 +16,7 @@ export function SectionHeading({ eyebrow, title, description, action }: SectionH
         {eyebrow ? (
           <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-600">{eyebrow}</p>
         ) : null}
-        <h2 className="mt-1 text-h2 font-semibold text-foreground">{title}</h2>
+        <h2 className="mt-1 font-display text-h2 font-semibold text-foreground">{title}</h2>
         {description ? <p className="mt-2 text-sm text-foreground/70">{description}</p> : null}
       </div>
       {action ? (

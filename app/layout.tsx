@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileTabBar } from "@/components/layout/MobileTabBar";
@@ -15,18 +15,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Warm serif reserved for headlines/wordmarks only (`font-display` utility,
+// wired up in globals.css) — body and UI copy stay in Geist Sans.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   title: {
     default: "Smart Finds — Curated Picks You Can Trust",
     template: "%s | Smart Finds",
   },
   description:
-    "Smart Finds is an independently curated shopping guide spanning SHEIN, AliExpress, Temu, and eBay — every pick labeled with why it's here.",
+    "Smart Finds is an independently curated shopping guide to great finds from across the web — every pick labeled with why it's here.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <Header />
         <main className="flex-1 pb-16 lg:pb-0">{children}</main>

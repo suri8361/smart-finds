@@ -68,6 +68,8 @@ export interface Collection {
   title: string;
   description: string;
   accent: "brand" | "amber" | "emerald" | "rose";
+  /** Ordered product slugs (SRS §11.1 `CollectionItem.sort_order`, simplified to an array for placeholder data). */
+  productSlugs: string[];
 }
 
 export interface Product {
@@ -78,5 +80,12 @@ export interface Product {
   categorySlug: string;
   selectionReasons: ProductSelectionReason[];
   retailerLinks: ProductRetailerLink[];
+  /**
+   * Drawn strictly from each product's existing summary/evidence text — never
+   * new claims. For non-"personally_tried" products these must read as
+   * research/retailer-sourced, not firsthand (SRS §1.2 rule 2).
+   */
+  pros: string[];
+  cons: string[];
   lastVerifiedAt: string;
 }

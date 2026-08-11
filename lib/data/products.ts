@@ -35,6 +35,11 @@ export const products: Product[] = [
       { retailer: retailerBySlug.ebay, priceLow: 22, priceHigh: 26, currency: "USD", lastCheckedAt: "2026-08-01" },
       { retailer: retailerBySlug.temu, priceLow: 19, priceHigh: 23, currency: "USD", lastCheckedAt: "2026-07-29" },
     ],
+    pros: [
+      "Reviewers consistently praise the even extraction.",
+      "Priced below most comparable ceramic pour-over drippers (~20% under category median).",
+    ],
+    cons: ["Based on retailer ratings and research, not an in-house Smart Finds test."],
     lastVerifiedAt: "2026-08-01",
   },
   {
@@ -54,6 +59,11 @@ export const products: Product[] = [
     retailerLinks: [
       { retailer: retailerBySlug.aliexpress, priceLow: 34, priceHigh: 40, currency: "USD", lastCheckedAt: "2026-07-30" },
     ],
+    pros: [
+      "Nested down small for packing on a 3-night backcountry trip.",
+      "Boiled water quickly and held up over direct campfire flame without warping.",
+    ],
+    cons: ["Only tested over one multi-day trip so far — longer-term durability beyond that is unconfirmed."],
     lastVerifiedAt: "2026-07-30",
   },
   {
@@ -81,6 +91,11 @@ export const products: Product[] = [
     retailerLinks: [
       { retailer: retailerBySlug.shein, priceLow: 19, priceHigh: 25, currency: "USD", lastCheckedAt: "2026-07-25" },
     ],
+    pros: [
+      "Relaxed, oversized drape with a wide-leg, high-rise silhouette.",
+      "Matches the wide-leg trouser trend showing up across summer 2026 style roundups.",
+    ],
+    cons: ["Chosen for style, not tested fit or fabric durability — sizing and comfort are unconfirmed."],
     lastVerifiedAt: "2026-07-25",
   },
   {
@@ -101,6 +116,8 @@ export const products: Product[] = [
     retailerLinks: [
       { retailer: retailerBySlug.aliexpress, priceLow: 12, priceHigh: 18, currency: "USD", lastCheckedAt: "2026-07-27" },
     ],
+    pros: ["Consistently ranked as a bestseller for smartwatch bands on AliExpress."],
+    cons: ["Wear-and-tear and long-term durability haven't been tested by Smart Finds."],
     lastVerifiedAt: "2026-07-27",
   },
   {
@@ -128,6 +145,8 @@ export const products: Product[] = [
       { retailer: retailerBySlug.temu, priceLow: 8, priceHigh: 12, currency: "USD", lastCheckedAt: "2026-07-20" },
       { retailer: retailerBySlug.ebay, priceLow: 9, priceHigh: 13, currency: "USD", lastCheckedAt: "2026-07-18" },
     ],
+    pros: ["Requested by multiple members via the contact form.", "4.5 average across 900+ ratings on eBay."],
+    cons: ["Based on member requests and retailer ratings, not an in-house Smart Finds test."],
     lastVerifiedAt: "2026-07-20",
   },
   {
@@ -155,6 +174,11 @@ export const products: Product[] = [
       { retailer: retailerBySlug.ebay, priceLow: 26, priceHigh: 32, currency: "USD", lastCheckedAt: "2026-07-31" },
       { retailer: retailerBySlug.aliexpress, priceLow: 28, priceHigh: 33, currency: "USD", lastCheckedAt: "2026-07-29" },
     ],
+    pros: [
+      "Priced about 15% under comparable aluminum laptop stands.",
+      "Ranked in the top 20 best-selling laptop stands on eBay.",
+    ],
+    cons: ["Based on pricing and sales data, not an in-house Smart Finds test."],
     lastVerifiedAt: "2026-07-31",
   },
   {
@@ -179,6 +203,11 @@ export const products: Product[] = [
     retailerLinks: [
       { retailer: retailerBySlug.temu, priceLow: 15, priceHigh: 19, currency: "USD", lastCheckedAt: "2026-08-02" },
     ],
+    pros: [
+      "Kept coffee hot for 4+ hours on a cold-morning trip, in use since spring 2026.",
+      "Priced about 25% under comparable 20oz insulated steel mugs.",
+    ],
+    cons: ["In regular use since spring 2026 — that's the extent of the testing window so far."],
     lastVerifiedAt: "2026-08-02",
   },
   {
@@ -206,6 +235,28 @@ export const products: Product[] = [
       { retailer: retailerBySlug.ebay, priceLow: 17, priceHigh: 22, currency: "USD", lastCheckedAt: "2026-08-02" },
       { retailer: retailerBySlug.aliexpress, priceLow: 19, priceHigh: 24, currency: "USD", lastCheckedAt: "2026-08-01" },
     ],
+    pros: ["4.6 average across 1,500+ ratings on eBay.", "A recurring feature in desk-setup roundups through 2026."],
+    cons: ["Based on trend coverage and retailer ratings, not an in-house Smart Finds test."],
     lastVerifiedAt: "2026-08-02",
   },
 ];
+
+export function getProductsByCategory(categorySlug: string): Product[] {
+  return products.filter((product) => product.categorySlug === categorySlug);
+}
+
+export function getProductBySlug(slug: string): Product | undefined {
+  return products.find((product) => product.slug === slug);
+}
+
+/** Other products in the same category, excluding the product itself — powers "Related Products" on the product detail page. */
+export function getRelatedProducts(product: Product, limit = 4): Product[] {
+  return products.filter((p) => p.slug !== product.slug && p.categorySlug === product.categorySlug).slice(0, limit);
+}
+
+/** Resolves an ordered list of product slugs (e.g. `Collection.productSlugs`) to their products, dropping any that don't resolve. */
+export function getProductsBySlugs(slugs: string[]): Product[] {
+  return slugs
+    .map((slug) => products.find((product) => product.slug === slug))
+    .filter((product): product is Product => Boolean(product));
+}

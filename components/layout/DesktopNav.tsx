@@ -15,7 +15,7 @@ export function DesktopNav() {
   return (
     <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
       <details className="group relative">
-        <summary className="flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
+        <summary className="flex cursor-pointer list-none items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
           Categories
           <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" aria-hidden="true" />
         </summary>
@@ -42,15 +42,12 @@ export function DesktopNav() {
         </div>
       </details>
 
-      <Link href="/collections" className="rounded-full px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+      <Link href="/collections" className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
         Collections
-      </Link>
-      <Link href="/retailers" className="rounded-full px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
-        Retailers
       </Link>
       <Link
         href="/about"
-        className="rounded-full px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted"
+        className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted"
       >
         About Smart Finds
       </Link>
