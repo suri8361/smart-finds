@@ -1,60 +1,80 @@
 "use client";
 
 import { useState } from "react";
-import type { Product } from "@/types/catalog";
-import { getCategoryBySlug } from "@/lib/data/categories";
+import { cn } from "@/lib/utils/cn";
+import { ImageLightbox } from "@/components/product/ImageLightbox";
 
-// Same warm-neutral palette used for collection covers (lib/utils/collectionAccent.ts),
-// duplicated locally rather than imported — this is a product-gallery concern,
-// not a collection one, and the values are small enough that sharing a name
-// across two unrelated domains would cost more clarity than it'd save.
-const galleryTints = [
-  "from-taupe-300 to-taupe-200",
-  "from-[#cbd6b9] to-[#e7ebdd]",
-  "from-[#f0dfb4] to-[#fbf3de]",
-  "from-[#c7bbae] to-[#e5dcd0]",
-];
+export interface ProductGalleryProps {
+  images: string[];
+  alt: string;
+  /** Sizing/shape classes for the main image box, e.g. "h-72 w-full sm:h-96" — matches the size the old single-image ProductImage used on this page. */
+  className?: string;
+}
 
 /**
- * Placeholder image gallery. There's no real product photography yet, so
- * this renders the same icon-on-gradient placeholder language already used
- * by ProductCard/CollectionCard/the hero collage — honest about being a
- * placeholder (screen readers are told explicitly) rather than pretending to
- * be a photo. The only genuinely interactive piece on the product page, so
- * it's the one client component here.
+ * Product detail page's main photo + thumbnail row. Renders nothing when
+ * there are no real photos — the page falls back to `ProductImage`'s
+ * neutral placeholder in that case (see app/products/[slug]/page.tsx),
+ * keeping that existing no-photo behavior untouched.
+ *
+ * The main image uses `object-contain` on a neutral filled background
+ * rather than `object-cover`, so the whole item is always visible instead
+ * of being cropped to fill the box — the point of this component. Clicking
+ * it opens `ImageLightbox` for a larger view.
  */
-export function ProductGallery({ product }: { product: Product }) {
-  const [active, setActive] = useState(0);
-  const category = getCategoryBySlug(product.categorySlug);
-  const Icon = category?.icon;
+export function ProductGallery({ images, alt, className }: ProductGalleryProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  if (images.length === 0) return null;
+
+  const activeSrc = images[Math.min(activeIndex, images.length - 1)];
 
   return (
     <div className="flex flex-col gap-3">
-      <div
-        role="img"
-        aria-label={`Placeholder image for ${product.title}`}
-        className={`flex h-72 items-center justify-center rounded-3xl bg-linear-to-br shadow-card sm:h-96 ${galleryTints[active]}`}
+      <button
+        type="button"
+        onClick={() => setLightboxOpen(true)}
+        aria-label="View full-size image"
+        className={cn(
+          "flex items-center justify-center overflow-hidden rounded-3xl border border-border bg-taupe-200 shadow-card",
+          className
+        )}
       >
-        {Icon ? <Icon className="h-20 w-20 text-foreground/30" aria-hidden="true" /> : null}
-      </div>
-      <div className="flex gap-3">
-        {galleryTints.map((tint, index) => (
-          <button
-            key={tint}
-            type="button"
-            onClick={() => setActive(index)}
-            aria-label={`Show placeholder image ${index + 1} of ${galleryTints.length}`}
-            aria-pressed={active === index}
-            className={`flex h-16 w-16 flex-1 items-center justify-center rounded-xl bg-linear-to-br transition-opacity sm:h-20 sm:w-20 sm:flex-none ${tint} ${
-              active === index
-                ? "opacity-100 ring-2 ring-brand-500 ring-offset-2 ring-offset-background"
-                : "opacity-60 hover:opacity-90"
-            }`}
-          >
-            {Icon ? <Icon className="h-6 w-6 text-foreground/30" aria-hidden="true" /> : null}
-          </button>
-        ))}
-      </div>
+        {/* eslint-disable-next-line @next/next/no-img-element -- product photos can come from any store's arbitrary domain */}
+        <img src={activeSrc} alt={alt} className="h-full w-full object-contain" />
+      </button>
+
+      {images.length > 1 ? (
+        <div className="flex gap-2 overflow-x-auto pb-1">
+          {images.map((src, imageIndex) => (
+            <button
+              key={`${src}-${imageIndex}`}
+              type="button"
+              onClick={() => setActiveIndex(imageIndex)}
+              aria-pressed={imageIndex === activeIndex}
+              aria-label={`Show image ${imageIndex + 1} of ${images.length}`}
+              className={cn(
+                "h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg border-2 bg-taupe-200 transition-colors",
+                imageIndex === activeIndex ? "border-brand-600 ring-2 ring-brand-500/40" : "border-border hover:border-brand-300"
+              )}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- product photos can come from any store's arbitrary domain */}
+              <img src={src} alt="" className="h-full w-full object-contain" />
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      {lightboxOpen ? (
+        <ImageLightbox
+          images={images}
+          index={activeIndex}
+          alt={alt}
+          onClose={() => setLightboxOpen(false)}
+          onNavigate={setActiveIndex}
+        />
+      ) : null}
     </div>
   );
 }

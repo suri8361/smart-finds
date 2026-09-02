@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { collections, getCollectionBySlug } from "@/lib/data/collections";
-import { getProductsBySlugs } from "@/lib/data/products";
+import { getProductsByCollection } from "@/lib/data/products";
 import { collectionAccentClasses } from "@/lib/utils/collectionAccent";
 
 export function generateStaticParams() {
@@ -26,7 +26,7 @@ export default async function CollectionPage({ params }: PageProps<"/collections
     notFound();
   }
 
-  const collectionProducts = getProductsBySlugs(collection.productSlugs);
+  const collectionProducts = getProductsByCollection(collection.slug);
 
   return (
     <Container className="flex flex-col gap-10 py-10 sm:py-14">

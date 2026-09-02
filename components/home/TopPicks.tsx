@@ -1,20 +1,26 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
-import { products } from "@/lib/data/products";
+import { getFeaturedProducts } from "@/lib/data/products";
 
-/** "Today's Top Picks" placeholder product grid (build item #6 — placeholder product cards). */
+/** "Today's Top Picks" — shows products with `featured: true` (lib/data/products.ts). */
 export function TopPicks() {
+  const featuredProducts = getFeaturedProducts();
+
   return (
     <section className="py-16 sm:py-20">
       <Container className="flex flex-col gap-8">
         <SectionHeading
           eyebrow="Fresh This Week"
           title="Today's Top Picks"
-          description="A mix of styles, price points, and reasons — each one labeled with exactly why it's here."
+          description="Worth checking out this week."
           action={{ label: "See all picks", href: "/search" }}
         />
-        <ProductGrid products={products} />
+        <ProductGrid
+          products={featuredProducts}
+          emptyTitle="No top picks yet"
+          emptyDescription="Mark a product featured: true in lib/data/products.ts to feature it here."
+        />
       </Container>
     </section>
   );

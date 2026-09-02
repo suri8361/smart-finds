@@ -1,10 +1,11 @@
-/** Formats a price as a band with a "last checked" date, never a live/exact price (SRS §6). Shared by ProductCard and the product detail page. */
-export function formatPriceBand(low: number, high: number, currency: string, lastCheckedAt: string): string {
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-    maximumFractionDigits: 0,
-  });
-  const asOf = new Date(lastCheckedAt).toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  return `${formatter.format(low)}–${formatter.format(high)} · as of ${asOf}`;
+const currencyFormatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+/** Formats a plain number as USD, e.g. 19.99 -> "$19.99". Shared by ProductCard and the product detail page. */
+export function formatPrice(amount: number): string {
+  return currencyFormatter.format(amount);
 }

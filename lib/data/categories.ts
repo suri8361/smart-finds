@@ -4,8 +4,16 @@ import type { Category } from "@/types/catalog";
 /**
  * Placeholder category list. In a later milestone this is replaced by the
  * `Category` table (SRS §11.1/§11.2), including its self-referencing
- * subcategory tree — this file only models the top level used by the
- * homepage nav and "Shop by Category" section.
+ * subcategory tree — this file only models the broad top-level groups used
+ * for site navigation (nav menu, footer, "Shop by Category", /categories,
+ * and /category/[slug]).
+ *
+ * `Product.category` itself does NOT use these slugs directly — it holds a
+ * specific item-type value from lib/data/productCategories.ts (e.g.
+ * "dresses", "tops"), which optionally rolls up into one of the broad groups
+ * below via that file's `group` field. Who a clothing item is for is a
+ * separate field, `Product.audience` (lib/data/audiences.ts) — never encode
+ * age/gender into a category slug.
  */
 export const categories: Category[] = [
   {

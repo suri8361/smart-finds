@@ -3,16 +3,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { Button } from "@/components/ui/Button";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { CollectionCard } from "@/components/home/CollectionCard";
+import { ProductImage } from "@/components/product/ProductImage";
 import { ProductGallery } from "@/components/product/ProductGallery";
-import { ProductBuyBox } from "@/components/product/ProductBuyBox";
+import { SizeMeasurementsTable } from "@/components/product/SizeMeasurementsTable";
 import { RecommendationBadge } from "@/components/product/RecommendationBadge";
-import { SelectionReasonEvidence } from "@/components/product/SelectionReasonEvidence";
-import { ProsConsList } from "@/components/product/ProsConsList";
 import { products, getProductBySlug, getRelatedProducts } from "@/lib/data/products";
 import { getCategoryBySlug } from "@/lib/data/categories";
+import { getProductCategoryLabel, getProductCategoryGroup } from "@/lib/data/productCategories";
 import { getCollectionsContainingProduct } from "@/lib/data/collections";
+import { getAudienceLabel } from "@/lib/data/audiences";
+import { getOccasionLabel } from "@/lib/data/occasions";
+import { formatPrice } from "@/lib/utils/formatPrice";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -22,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/products/[slug]">
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) return {};
-  return { title: product.title, description: product.summary };
+  return { title: product.name, description: product.description };
 }
 
 export default async function ProductPage({ params }: PageProps<"/products/[slug]">) {
@@ -33,23 +37,12 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
     notFound();
   }
 
-  const category = getCategoryBySlug(product.categorySlug);
+  const categoryLabel = getProductCategoryLabel(product.category) ?? product.category;
+  const categoryGroupSlug = getProductCategoryGroup(product.category);
+  const categoryGroup = categoryGroupSlug ? getCategoryBySlug(categoryGroupSlug) : undefined;
   const relatedProducts = getRelatedProducts(product);
   const relatedCollections = getCollectionsContainingProduct(product.slug);
-
-  const lastVerifiedFormatted = new Date(product.lastVerifiedAt).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-
-  const priceRangeLow = Math.min(...product.retailerLinks.map((link) => link.priceLow));
-  const priceRangeHigh = Math.max(...product.retailerLinks.map((link) => link.priceHigh));
-  const priceFormatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: product.retailerLinks[0].currency,
-    maximumFractionDigits: 0,
-  });
+  const galleryImages = product.images && product.images.length > 0 ? product.images : product.image ? [product.image] : [];
 
   return (
     <Container className="flex flex-col gap-12 py-10 sm:py-14">
@@ -57,44 +50,56 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         items={[
           { label: "Home", href: "/" },
           { label: "Categories", href: "/categories" },
-          ...(category ? [{ label: category.name, href: `/category/${category.slug}` }] : []),
-          { label: product.title },
+          ...(categoryGroup ? [{ label: categoryGroup.name, href: `/category/${categoryGroup.slug}` }] : []),
+          { label: product.name },
         ]}
       />
 
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-        <ProductGallery product={product} />
+        {galleryImages.length > 0 ? (
+          <ProductGallery images={galleryImages} alt={product.name} className="h-72 w-full sm:h-96" />
+        ) : (
+          <ProductImage product={product} className="h-72 w-full rounded-3xl shadow-card sm:h-96" iconClassName="h-20 w-20 text-brand-300" />
+        )}
 
         <div className="flex flex-col gap-6">
-          <div className="flex flex-wrap gap-1.5">
-            {product.selectionReasons.map((reason) => (
-              <RecommendationBadge key={reason.type} type={reason.type} />
-            ))}
+          <div>
+            <RecommendationBadge type={product.recommendationLabel} />
           </div>
 
           <div>
-            <h1 className="font-display text-h1 font-semibold tracking-tight text-foreground">{product.title}</h1>
-            <p className="mt-3 text-base text-foreground/70">{product.summary}</p>
+            <h1 className="font-display text-h1 font-semibold tracking-tight text-foreground">{product.name}</h1>
+            <p className="mt-3 text-base text-foreground/70">{product.description}</p>
           </div>
 
-          <ProductBuyBox product={product} />
+          <div className="flex flex-col gap-4 rounded-2xl border border-border bg-surface-muted p-5">
+            <div>
+              <div className="flex items-baseline gap-3">
+                <span className="text-2xl font-semibold text-foreground">{formatPrice(product.currentPrice)}</span>
+                {product.originalPrice ? (
+                  <span className="text-sm text-foreground/40 line-through">{formatPrice(product.originalPrice)}</span>
+                ) : null}
+              </div>
+              <p className="mt-1 text-sm text-foreground/60">{product.store}</p>
+            </div>
 
-          <p className="text-xs text-foreground/50">Last verified {lastVerifiedFormatted}</p>
+            <Button href={product.affiliateUrl} target="_blank" rel="noopener noreferrer" size="lg">
+              View Find
+            </Button>
+
+            <p className="text-xs leading-relaxed text-foreground/50">
+              Some links on Smart Finds are{" "}
+              <Link
+                href="/legal/affiliate-disclosure"
+                className="underline decoration-foreground/30 underline-offset-2 transition-colors hover:text-foreground/75"
+              >
+                affiliate links
+              </Link>
+              . If you purchase through them, we may earn a commission at no extra cost to you.
+            </p>
+          </div>
         </div>
       </div>
-
-      <section className="flex flex-col gap-6 border-t border-border pt-10">
-        <h2 className="font-display text-h2 font-semibold text-foreground">Why This Made Smart Finds</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {product.selectionReasons.map((reason) => (
-            <SelectionReasonEvidence key={reason.type} reason={reason} />
-          ))}
-        </div>
-      </section>
-
-      <section className="border-t border-border pt-10">
-        <ProsConsList pros={product.pros} cons={product.cons} />
-      </section>
 
       <section className="border-t border-border pt-10">
         <h2 className="font-display text-h2 font-semibold text-foreground">Product Details</h2>
@@ -102,33 +107,49 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
           <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
             <dt className="text-foreground/60">Category</dt>
             <dd className="font-medium text-foreground">
-              {category ? (
-                <Link href={`/category/${category.slug}`} className="hover:text-brand-600">
-                  {category.name}
+              {categoryGroup ? (
+                <Link href={`/category/${categoryGroup.slug}`} className="hover:text-brand-600">
+                  {categoryLabel}
                 </Link>
               ) : (
-                "—"
+                categoryLabel
               )}
             </dd>
           </div>
           <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
-            <dt className="text-foreground/60">Available at</dt>
-            <dd className="font-medium text-foreground">
-              {product.retailerLinks.map((link) => link.retailer.name).join(", ")}
-            </dd>
+            <dt className="text-foreground/60">Store</dt>
+            <dd className="font-medium text-foreground">{product.store}</dd>
           </div>
-          <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
-            <dt className="text-foreground/60">Price range</dt>
-            <dd className="font-medium text-foreground">
-              {priceFormatter.format(priceRangeLow)}–{priceFormatter.format(priceRangeHigh)}
-            </dd>
-          </div>
-          <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
-            <dt className="text-foreground/60">Last verified</dt>
-            <dd className="font-medium text-foreground">{lastVerifiedFormatted}</dd>
-          </div>
+          {product.audience ? (
+            <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
+              <dt className="text-foreground/60">Audience</dt>
+              <dd className="font-medium text-foreground">{getAudienceLabel(product.audience)}</dd>
+            </div>
+          ) : null}
+          {product.occasion ? (
+            <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
+              <dt className="text-foreground/60">Occasion</dt>
+              <dd className="font-medium text-foreground">{getOccasionLabel(product.occasion)}</dd>
+            </div>
+          ) : null}
+          {product.sizes && product.sizes.length > 0 ? (
+            <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
+              <dt className="text-foreground/60">Sizes</dt>
+              <dd className="font-medium text-foreground">{product.sizes.join(", ")}</dd>
+            </div>
+          ) : null}
+          {product.colors && product.colors.length > 0 ? (
+            <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
+              <dt className="text-foreground/60">Colors</dt>
+              <dd className="font-medium text-foreground">{product.colors.join(", ")}</dd>
+            </div>
+          ) : null}
         </dl>
       </section>
+
+      {product.sizeMeasurements && product.sizeMeasurements.length > 0 ? (
+        <SizeMeasurementsTable sizeMeasurements={product.sizeMeasurements} sizeNote={product.sizeNote} />
+      ) : null}
 
       <section className="flex flex-col gap-6 border-t border-border pt-10">
         <h2 className="font-display text-h2 font-semibold text-foreground">Related Products</h2>

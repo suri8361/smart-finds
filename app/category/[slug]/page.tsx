@@ -7,7 +7,7 @@ import { SortDropdown } from "@/components/catalog/SortDropdown";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { CollectionCard } from "@/components/home/CollectionCard";
 import { categories, getCategoryBySlug } from "@/lib/data/categories";
-import { getProductsByCategory } from "@/lib/data/products";
+import { getProductsByCategoryGroup } from "@/lib/data/products";
 import { getCollectionsRelatedToCategory } from "@/lib/data/collections";
 
 export function generateStaticParams() {
@@ -29,7 +29,7 @@ export default async function CategoryPage({ params }: PageProps<"/category/[slu
     notFound();
   }
 
-  const categoryProducts = getProductsByCategory(category.slug);
+  const categoryProducts = getProductsByCategoryGroup(category.slug);
   const relatedCollections = getCollectionsRelatedToCategory(category.slug);
   const Icon = category.icon;
 
