@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "import:links": "node scripts/import/import-chat-links.mjs",
+    "import:generate": "node scripts/import/generate-products.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
