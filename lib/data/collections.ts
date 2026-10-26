@@ -1,5 +1,5 @@
 import type { Collection } from "@/types/catalog";
-import { products } from "@/lib/data/products";
+import { publicProducts as products } from "@/lib/data/products";
 import { getProductCategoriesInGroup } from "@/lib/data/productCategories";
 
 /**

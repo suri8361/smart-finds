@@ -3,7 +3,9 @@ import type { Product } from "@/types/catalog";
 import { RecommendationBadge } from "@/components/product/RecommendationBadge";
 import { ProductImage } from "@/components/product/ProductImage";
 import { Button } from "@/components/ui/Button";
-import { formatPrice } from "@/lib/utils/formatPrice";
+import { ProductPrice } from "@/components/product/ProductPrice";
+import { FavoriteButton } from "@/components/product/FavoriteButton";
+import { getOutboundUrl } from "@/lib/affiliate";
 
 /**
  * Reusable product card. The image and title link to the internal
@@ -15,9 +17,12 @@ import { formatPrice } from "@/lib/utils/formatPrice";
 export function ProductCard({ product }: { product: Product }) {
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-shadow hover:shadow-lg">
-      <Link href={`/products/${product.slug}`} className="block">
-        <ProductImage product={product} className="h-56 w-full" iconClassName="h-14 w-14 text-brand-300" />
-      </Link>
+      <div className="relative">
+        <Link href={`/products/${product.slug}`} className="block">
+          <ProductImage product={product} className="h-56 w-full" iconClassName="h-14 w-14 text-brand-300" />
+        </Link>
+        <FavoriteButton slug={product.slug} name={product.name} className="absolute right-3 top-3" />
+      </div>
 
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div>
@@ -32,15 +37,10 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
 
         <div className="mt-auto flex flex-col gap-3 pt-2">
-          <div className="flex items-baseline gap-2">
-            <span className="text-sm font-semibold text-foreground">{formatPrice(product.currentPrice)}</span>
-            {product.originalPrice ? (
-              <span className="text-xs text-foreground/40 line-through">{formatPrice(product.originalPrice)}</span>
-            ) : null}
-          </div>
+          <ProductPrice product={product} />
           <p className="text-xs text-foreground/50">{product.store}</p>
 
-          <Button href={product.affiliateUrl} target="_blank" rel="noopener noreferrer" size="sm">
+          <Button href={getOutboundUrl(product)} target="_blank" rel="noopener noreferrer" size="sm">
             View Find
           </Button>
         </div>

@@ -1,5 +1,6 @@
 import type { AudienceType, OccasionType, Product, ProductCategoryType } from "@/types/catalog";
 import { getProductCategoriesInGroup } from "@/lib/data/productCategories";
+import { isProductPublic } from "@/lib/affiliate";
 
 /**
  * ============================================================================
@@ -140,48 +141,68 @@ export const products: Product[] = [
   },
 ];
 
+/**
+ * Products that may appear on public pages. Products from a store that's
+ * switched off in lib/config/affiliate.ts (Amazon, for now) are left out.
+ * Every public lookup below reads this list; the local admin tool still sees
+ * the full `products` list.
+ */
+export const publicProducts: Product[] = products.filter(isProductPublic);
+
+/** Any product by slug, including ones from a switched-off store — admin use. */
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
 
+/** A product by slug, only if it may appear on public pages. */
+export function getPublicProductBySlug(slug: string): Product | undefined {
+  return publicProducts.find((product) => product.slug === slug);
+}
+
 /** Products with this exact specific category (e.g. "dresses"). */
 export function getProductsByCategory(category: ProductCategoryType): Product[] {
-  return products.filter((product) => product.category === category);
+  return publicProducts.filter((product) => product.category === category);
 }
 
 /** Products whose specific category rolls up into a given broad nav group (lib/data/categories.ts slug) — powers /category/[slug]. */
 export function getProductsByCategoryGroup(categoryGroupSlug: string): Product[] {
   const categoriesInGroup = new Set(getProductCategoriesInGroup(categoryGroupSlug));
-  return products.filter((product) => categoriesInGroup.has(product.category));
+  return publicProducts.filter((product) => categoriesInGroup.has(product.category));
+}
+
+/** Products from one store, matched case-insensitively on the `store` text — powers /retailers/[slug]. */
+export function getProductsByStore(storeName: string): Product[] {
+  const wanted = storeName.trim().toLowerCase();
+  return publicProducts.filter((product) => product.store.trim().toLowerCase() === wanted);
 }
 
 export function getProductsByCollection(collectionSlug: string): Product[] {
-  return products.filter((product) => product.collection === collectionSlug);
+  return publicProducts.filter((product) => product.collection === collectionSlug);
 }
 
 /** Products for a given audience (clothing/fashion items only carry this field). */
 export function getProductsByAudience(audience: AudienceType): Product[] {
-  return products.filter((product) => product.audience === audience);
+  return publicProducts.filter((product) => product.audience === audience);
 }
 
 /** Products matching both category (WHAT) and audience (WHO) — e.g. "dresses" for "women". */
 export function getProductsByCategoryAndAudience(category: ProductCategoryType, audience: AudienceType): Product[] {
-  return products.filter((product) => product.category === category && product.audience === audience);
+  return publicProducts.filter((product) => product.category === category && product.audience === audience);
 }
 
 /** Products for a given occasion (clothing/fashion items only carry this field) — e.g. "shabbos". */
 export function getProductsByOccasion(occasion: OccasionType): Product[] {
-  return products.filter((product) => product.occasion === occasion);
+  return publicProducts.filter((product) => product.occasion === occasion);
 }
 
 /** Products matching both audience (WHO) and occasion (WHEN) — e.g. "women" for "shabbos". */
 export function getProductsByAudienceAndOccasion(audience: AudienceType, occasion: OccasionType): Product[] {
-  return products.filter((product) => product.audience === audience && product.occasion === occasion);
+  return publicProducts.filter((product) => product.audience === audience && product.occasion === occasion);
 }
 
 /** Products matching both category (WHAT) and occasion (WHEN) — e.g. "skirts" for "shabbos". */
 export function getProductsByCategoryAndOccasion(category: ProductCategoryType, occasion: OccasionType): Product[] {
-  return products.filter((product) => product.category === category && product.occasion === occasion);
+  return publicProducts.filter((product) => product.category === category && product.occasion === occasion);
 }
 
 /** Products matching category (WHAT), audience (WHO), and occasion (WHEN) together — e.g. "skirts" for "women" for "shabbos". */
@@ -190,17 +211,17 @@ export function getProductsByCategoryAudienceAndOccasion(
   audience: AudienceType,
   occasion: OccasionType
 ): Product[] {
-  return products.filter(
+  return publicProducts.filter(
     (product) => product.category === category && product.audience === audience && product.occasion === occasion
   );
 }
 
 /** Products with `featured: true` — powers the homepage "Top Picks" section. */
 export function getFeaturedProducts(): Product[] {
-  return products.filter((product) => product.featured);
+  return publicProducts.filter((product) => product.featured);
 }
 
 /** Other products in the same category, excluding the product itself — powers "Related Products" on the product detail page. */
 export function getRelatedProducts(product: Product, limit = 4): Product[] {
-  return products.filter((p) => p.slug !== product.slug && p.category === product.category).slice(0, limit);
+  return publicProducts.filter((p) => p.slug !== product.slug && p.category === product.category).slice(0, limit);
 }
