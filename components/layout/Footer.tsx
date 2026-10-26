@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { categories } from "@/lib/data/categories";
 import { retailers } from "@/lib/data/retailers";
+import { AMAZON_ENABLED } from "@/lib/config/affiliate";
 
 const trustLinks = [
   { href: "/about", label: "About Smart Finds" },
@@ -94,9 +95,9 @@ export function Footer() {
         <Container className="flex flex-col gap-4 py-6 text-xs text-foreground/60 sm:flex-row sm:items-start sm:justify-between">
           <p className="max-w-3xl">
             <strong className="font-semibold text-foreground/80">Affiliate Disclosure:</strong> Smart Finds
-            participates in affiliate programs with SHEIN, AliExpress, Temu, eBay, and other
+            participates in affiliate programs with {AMAZON_ENABLED ? "Amazon, " : ""}SHEIN, AliExpress, Temu, eBay, and other
             retailers. If you buy something through a link on this site, we may earn a commission — at no
-            additional cost to you. Affiliate relationships never influence which products we choose to feature.
+            additional cost to you.{AMAZON_ENABLED ? " As an Amazon Associate I earn from qualifying purchases." : ""} Affiliate relationships never influence which products we choose to feature.
             Read more on our{" "}
             <Link href="/how-we-make-money" className="underline hover:text-foreground">
               How We Make Money
