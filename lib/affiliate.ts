@@ -51,13 +51,14 @@ export function getOutboundUrl(product: Pick<Product, "affiliateUrl">): string {
   return withAffiliateTag(product.affiliateUrl);
 }
 
-/** False for Amazon products (show "Check price on Amazon" instead of a stored price). */
-export function showsStoredPrice(product: Pick<Product, "store" | "affiliateUrl">): boolean {
-  return !isAmazonProduct(product);
+/** False for Amazon products and for products with no stored price (they show "Check price on <store>" instead). */
+export function showsStoredPrice(product: Pick<Product, "store" | "affiliateUrl" | "currentPrice">): boolean {
+  return !isAmazonProduct(product) && typeof product.currentPrice === "number" && product.currentPrice > 0;
 }
 
-/** Whether a product may appear on public pages, given the store switches in lib/config/affiliate.ts. */
-export function isProductPublic(product: Pick<Product, "store" | "affiliateUrl">): boolean {
+/** Whether a product may appear on public pages: not marked `hidden`, and its store isn't switched off in lib/config/affiliate.ts. */
+export function isProductPublic(product: Pick<Product, "store" | "affiliateUrl" | "hidden">): boolean {
+  if (product.hidden) return false;
   if (isAmazonProduct(product)) return AMAZON_ENABLED;
   return true;
 }

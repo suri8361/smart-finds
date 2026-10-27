@@ -123,7 +123,7 @@ export function formStateFromProduct(product: Product): ProductFormState {
     slug: product.slug,
     name: product.name,
     image: product.image ?? "",
-    currentPrice: String(product.currentPrice),
+    currentPrice: product.currentPrice !== undefined ? String(product.currentPrice) : "",
     originalPrice: product.originalPrice !== undefined ? String(product.originalPrice) : "",
     affiliateUrl: product.affiliateUrl,
     sourceUrl: product.sourceUrl ?? "",

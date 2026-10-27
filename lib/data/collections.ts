@@ -36,6 +36,12 @@ export const collections: Collection[] = [
   },
 ];
 
+/** Collections that currently have at least one public product — the homepage only shows these. */
+export function getCollectionsWithProducts(): Collection[] {
+  const used = new Set(products.map((product) => product.collection).filter(Boolean));
+  return collections.filter((collection) => used.has(collection.slug));
+}
+
 export function getCollectionBySlug(slug: string): Collection | undefined {
   return collections.find((collection) => collection.slug === slug);
 }

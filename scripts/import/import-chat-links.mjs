@@ -168,7 +168,9 @@ function cleanUrl(raw) {
   const closes = (url.match(/\)/g) || []).length;
   if (raw.length > url.length && raw[url.length] === ")" && opens > closes) url += ")";
   if (!/^https?:\/\//i.test(url)) url = "https://" + url;
-  return url;
+  // A stray "-" typed right after a short link ("https://amzn.to/4xeSu7a-") breaks it.
+  if (/^https?:\/\/(amzn\.to|a\.co|temu\.to|ali\.ski|spl\.it)\//i.test(url)) url = url.replace(/[-`]+$/, "");
+  return url.replace(/`+$/, "");
 }
 
 /** Pulls every string value out of a link-preview object that looks like a URL. */
@@ -181,9 +183,21 @@ function urlsInObject(obj, out = []) {
   return out;
 }
 
+/** Her own words around the link (the message text without URLs), used to seed the description. */
+function captionFor(text) {
+  return String(text || "")
+    .replace(URL_RE, " ")
+    .replace(/👉\s*(item link\s*:?)?/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/^[-:–|,\s]+|[-:–|,\s]+$/g, "")
+    .slice(0, 300);
+}
+
 /** [{ url, postedAt, preview: {title,image}|null, source }] in posting order */
-export function extractLinks(sources) {
+export function extractLinks(sources, { author = "" } = {}) {
   const found = [];
+  const wantAuthor = String(author || "").trim().toLowerCase();
   for (const src of sources) {
     if (src.kind === "text") {
       for (const m of src.content.matchAll(URL_RE)) {
@@ -201,6 +215,9 @@ export function extractLinks(sources) {
     }
     const messages = Array.isArray(data) ? data : data.messages || [];
     for (const msg of messages) {
+      // --author: only messages posted by this person (other members' posts are skipped).
+      if (wantAuthor && String(msg.creator?.email || "").toLowerCase() !== wantAuthor) continue;
+      if (msg.deleted_date || msg.message_state === "DELETED") continue;
       const text = msg.text || "";
       const postedAt = msg.created_date || msg.updated_date || "";
       // Link previews Google Chat saved with the message.
@@ -220,6 +237,7 @@ export function extractLinks(sources) {
         });
       }
       const urlsInText = [...text.matchAll(URL_RE)].map((m) => cleanUrl(m[0]));
+      const caption = captionFor(text);
       const previewUrls = previews.flatMap((p) => p.urls);
       for (const url of [...new Set([...urlsInText, ...previewUrls])]) {
         if (!storeFromUrl(url)) continue;
@@ -228,6 +246,7 @@ export function extractLinks(sources) {
           url,
           postedAt,
           preview: preview && (preview.title || preview.image) ? { title: preview.title, image: preview.image } : null,
+          caption,
           source: src.source,
         });
       }
@@ -346,6 +365,7 @@ export async function buildRows(found, { fetchNetwork = true, fetchPages = true,
     if (hit) {
       hit.count++;
       if (!hit.preview && f.preview) hit.preview = f.preview;
+      if (!hit.caption && f.caption) hit.caption = f.caption;
     } else byUrl.set(f.url, { ...f, count: 1 });
   }
   const unique = [...byUrl.values()];
@@ -431,7 +451,7 @@ export async function buildRows(found, { fetchNetwork = true, fetchPages = true,
       occasion: "",
       featured: "",
       label: "",
-      description: "",
+      description: item.caption || "",
       notes: notes.join("; "),
     };
   });
@@ -439,11 +459,13 @@ export async function buildRows(found, { fetchNetwork = true, fetchPages = true,
 
 async function main() {
   const args = process.argv.slice(2);
-  const input = args.find((a) => !a.startsWith("--") && args[args.indexOf(a) - 1] !== "--out");
+  const input = args.find((a) => !a.startsWith("--") && !["--out", "--author"].includes(args[args.indexOf(a) - 1]));
   const outIdx = args.indexOf("--out");
+  const authorIdx = args.indexOf("--author");
+  const author = authorIdx >= 0 ? args[authorIdx + 1] : "";
   const out = outIdx >= 0 ? args[outIdx + 1] : "smartfinds-import-review.csv";
   if (!input || args.includes("--help")) {
-    console.log("Usage: node scripts/import/import-chat-links.mjs <takeout.zip | folder | messages.json | messages.txt> [--out file.csv] [--no-fetch] [--no-pages]");
+    console.log("Usage: node scripts/import/import-chat-links.mjs <takeout.zip | folder | messages.json | messages.txt> [--out file.csv] [--author you@gmail.com] [--no-fetch] [--no-pages]");
     process.exit(input ? 0 : 1);
   }
   const sources = loadSources(input);
@@ -452,7 +474,8 @@ async function main() {
     process.exit(1);
   }
   console.log(`Reading ${sources.length} chat file(s).`);
-  const found = extractLinks(sources);
+  const found = extractLinks(sources, { author });
+  if (author) console.log(`Only messages posted by ${author}.`);
   const rows = await buildRows(found, { fetchNetwork: !args.includes("--no-fetch"), fetchPages: !args.includes("--no-pages") });
   fs.writeFileSync(out, "\uFEFF" + toCsv(rows, COLUMNS));
   const byStore = rows.reduce((acc, r) => ((acc[r.store] = (acc[r.store] || 0) + 1), acc), {});

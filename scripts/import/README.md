@@ -26,7 +26,7 @@ to the real product page, fills in the title and photo from Google Chat's link
 preview (or the product page, when the store allows it), guesses a category,
 and writes `smartfinds-import-review.csv`.
 
-Options: `--out other-name.csv`, `--no-fetch` (don't contact any website),
+Options: `--author you@gmail.com` (only your own posts, skips other members of the chat), `--out other-name.csv`, `--no-fetch` (don't contact any website),
 `--no-pages` (follow short links but don't read product pages).
 
 ## 3. Review it
@@ -37,14 +37,15 @@ Open the CSV in Excel or Google Sheets. For each product you want on the site:
 | --- | --- |
 | approve | `yes` |
 | title | fix it if it's wrong or empty |
-| category | one of the 26: dresses, skirts, tops, sweaters, cardigans, sets, jumpsuits, pajamas, coats-jackets, shoes, boots, sandals, sneakers, bags, accessories, beauty, home, kitchen, organization, toys, baby-gear, school, electronics, outdoor, camping, other |
-| price | required, except Amazon (the site shows "Check price on Amazon") |
+| category | one of the 27: dresses, skirts, tops, sweaters, cardigans, sets, jumpsuits, pajamas, coats-jackets, shoes, boots, sandals, sneakers, bags, accessories, shabbos-elegant, beauty, home, kitchen, organization, toys, baby-gear, school, electronics, outdoor, camping, other |
+| price | optional; empty = the site shows "Check price on <store>". Amazon never shows a price ("Check price on Amazon") |
 | original_price | optional, only for a real discount |
 | image | photo link; empty = neutral placeholder |
 | audience / occasion | optional, clothing only (e.g. `women` + `shabbos`) |
 | featured | `yes` to show it in Top Picks |
+| hidden | `yes` to keep it in the data but off the site. Temu rows with no photo are hidden automatically |
 | label | optional, default `chosen_for_look` |
-| description | optional one-liner, default "Found on <store>." |
+| description | starts as your caption from the chat; edit or clear it (empty = "Found on <store>.") |
 
 The `notes` column says what's missing. `affiliate_url` is exactly the link you
 posted and is used as is.

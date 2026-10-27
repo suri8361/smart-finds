@@ -3,9 +3,11 @@
  * Smart Finds — turn an approved review CSV into products.ts entries.
  *
  * Only rows with "yes" (or y / x / 1 / true) in the approve column are used.
- * Each row needs: title, affiliate_url, a valid category, and a price (except
- * Amazon rows — the site shows "Check price on Amazon" for those). Rows that
- * are missing something are listed and skipped, never guessed.
+ * Each row needs: title, affiliate_url and a valid category. Price is
+ * optional: without one the site shows "Check price on <store>" (Amazon never
+ * shows a price). Rows that are missing something are listed and skipped,
+ * never guessed. Temu rows without a photo (and rows with "yes" in a hidden
+ * column) are added with `hidden: true`: kept in the data, off the site.
  *
  * The affiliate link is copied exactly as it is in the sheet. The Amazon tag
  * is added on the site when the link is shown (lib/affiliate.ts), not here.
@@ -47,7 +49,7 @@ const q = (s) => JSON.stringify(s);
 function toLiteral(p) {
   const lines = [`  {`, `    slug: ${q(p.slug)},`, `    name: ${q(p.name)},`];
   if (p.image) lines.push(`    image: ${q(p.image)},`);
-  lines.push(`    currentPrice: ${p.currentPrice},${p.priceComment ? " // " + p.priceComment : ""}`);
+  if (p.currentPrice !== undefined) lines.push(`    currentPrice: ${p.currentPrice},`);
   if (p.originalPrice) lines.push(`    originalPrice: ${p.originalPrice},`);
   lines.push(`    affiliateUrl: ${q(p.affiliateUrl)},`);
   lines.push(`    store: ${q(p.store)},`);
@@ -57,6 +59,7 @@ function toLiteral(p) {
   lines.push(`    recommendationLabel: ${q(p.recommendationLabel)},`);
   lines.push(`    description: ${q(p.description)},`);
   if (p.featured) lines.push(`    featured: true,`);
+  if (p.hidden) lines.push(`    hidden: true,${p.hiddenWhy ? " // " + p.hiddenWhy : ""}`);
   lines.push(`  },`);
   return lines.join("\n");
 }
@@ -84,8 +87,7 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
     if (!name) reasons.push("no title");
     if (!/^https?:\/\//i.test(affiliateUrl)) reasons.push("no affiliate_url");
     if (!store) reasons.push("no store");
-    if (!CATEGORIES.includes(category)) reasons.push(`category "${row.category}" isn't one of the 26`);
-    if (!isAmazon && price === undefined) reasons.push("no price");
+    if (!CATEGORIES.includes(category)) reasons.push(`category "${row.category}" isn't one of the ${CATEGORIES.length}`);
     if (audience && !AUDIENCES.includes(audience)) reasons.push(`audience "${row.audience}" not recognised`);
     if (occasion && !OCCASIONS.includes(occasion)) reasons.push(`occasion "${row.occasion}" not recognised`);
     if (!LABELS.includes(label)) reasons.push(`label "${row.label}" not recognised`);
@@ -94,6 +96,13 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
       skipped.push({ row: rowNo, title: name || affiliateUrl, reasons });
       return;
     }
+
+    const image = (row.image || "").trim();
+    const hideReason = YES.has(String(row.hidden || "").trim().toLowerCase())
+      ? "hidden in the sheet"
+      : store.toLowerCase() === "temu" && !image
+        ? "Temu, no photo yet: delete this line to show it"
+        : "";
 
     let base = slugify(name) || slugify(store + " find");
     let slug = base;
@@ -104,10 +113,10 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
     products.push({
       slug,
       name,
-      image: (row.image || "").trim() || undefined,
-      currentPrice: isAmazon ? price ?? 0 : price,
-      priceComment: isAmazon ? "Amazon: not shown on the site (\"Check price on Amazon\")" : "",
-      originalPrice: originalPrice && price && originalPrice > price ? originalPrice : undefined,
+      image: image || undefined,
+      // Amazon never shows a stored price (Associates rules), so none is written.
+      currentPrice: isAmazon ? undefined : price,
+      originalPrice: !isAmazon && originalPrice && price && originalPrice > price ? originalPrice : undefined,
       affiliateUrl,
       store,
       category,
@@ -116,6 +125,8 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
       recommendationLabel: label,
       description: (row.description || "").trim() || `Found on ${store}.`,
       featured: YES.has(String(row.featured || "").trim().toLowerCase()),
+      hidden: hideReason !== "",
+      hiddenWhy: hideReason,
     });
   });
   return { products, skipped };
@@ -128,14 +139,21 @@ function main() {
     console.log("Usage: node scripts/import/generate-products.mjs <approved.csv> [--write] [--out file]");
     process.exit(1);
   }
-  const rows = parseCsv(fs.readFileSync(input, "utf8"));
+  // The review sheet Tab hands over uses friendlier headers; map them to the importer's names.
+  const ALIASES = { include: "approve", "image url": "image", "affiliate link": "affiliate_url", "her caption": "description", "product page": "resolved_url" };
+  const rows = parseCsv(fs.readFileSync(input, "utf8")).map((r) => {
+    const out = { ...r };
+    for (const [from, to] of Object.entries(ALIASES)) if (from in r && !(to in r)) out[to] = r[from];
+    return out;
+  });
   const source = fs.existsSync(PRODUCTS_FILE) ? fs.readFileSync(PRODUCTS_FILE, "utf8") : "";
   const existingSlugs = new Set([...source.matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]));
   const existingUrls = new Set([...source.matchAll(/affiliateUrl:\s*"([^"]+)"/g)].map((m) => m[1]));
   const { products, skipped } = rowsToProducts(rows, existingSlugs, existingUrls);
   const approvedCount = rows.filter((r) => YES.has(String(r.approve || "").trim().toLowerCase())).length;
 
-  console.log(`${rows.length} rows, ${approvedCount} approved, ${products.length} ready, ${skipped.length} skipped.`);
+  const hiddenCount = products.filter((p) => p.hidden).length;
+  console.log(`${rows.length} rows, ${approvedCount} approved, ${products.length} ready (${hiddenCount} hidden), ${skipped.length} skipped.`);
   for (const s of skipped) console.log(`  - row ${s.row} (${s.title.slice(0, 60)}): ${s.reasons.join(", ")}`);
   if (products.length === 0) return;
 

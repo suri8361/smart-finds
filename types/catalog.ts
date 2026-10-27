@@ -59,6 +59,7 @@ export type ProductCategoryType =
   | "sneakers"
   | "bags"
   | "accessories"
+  | "shabbos-elegant"
   | "beauty"
   | "home"
   | "kitchen"
@@ -126,8 +127,8 @@ export interface Product {
   image?: string;
   /** Additional gallery photos, in display order — powers the thumbnail row and lightbox on the product detail page. `image` above is typically also the first entry here; omit entirely for a single-photo product. */
   images?: string[];
-  /** Current price as a plain number, e.g. 19.99. Always required, always in USD. */
-  currentPrice: number;
+  /** Current price as a plain number in USD, e.g. 19.99. Optional: when there is none (and always for Amazon), the site shows "Check price on <store>" instead. */
+  currentPrice?: number;
   /** The pre-discount price, if this is a deal — shown struck through next to currentPrice. Omit if there's no discount. */
   originalPrice?: number;
   /** The real outbound affiliate/product URL. Opens in a new tab from the "View Find" button. Never shown or derived from `sourceUrl` — the two are edited independently in the admin importer. */
@@ -156,4 +157,6 @@ export interface Product {
   sizeNote?: string;
   /** Set true to feature this product in the homepage "Top Picks" section. */
   featured?: boolean;
+  /** Set true to keep a product in the data but off every public page (e.g. a Temu find with no photo yet). Delete the line to show it. */
+  hidden?: boolean;
 }

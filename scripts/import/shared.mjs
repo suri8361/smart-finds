@@ -1,9 +1,9 @@
 // Shared helpers for the Smart Finds link importer (no dependencies — plain Node 18+).
 
-/** The 26 product categories (keep in sync with ProductCategoryType in types/catalog.ts). */
+/** The 27 product categories (keep in sync with ProductCategoryType in types/catalog.ts). */
 export const CATEGORIES = [
   "dresses", "skirts", "tops", "sweaters", "cardigans", "sets", "jumpsuits", "pajamas", "coats-jackets",
-  "shoes", "boots", "sandals", "sneakers", "bags", "accessories", "beauty", "home", "kitchen",
+  "shoes", "boots", "sandals", "sneakers", "bags", "accessories", "shabbos-elegant", "beauty", "home", "kitchen",
   "organization", "toys", "baby-gear", "school", "electronics", "outdoor", "camping", "other",
 ];
 
@@ -97,7 +97,7 @@ export function storeFromUrl(url) {
   } catch {
     return "";
   }
-  if (/(^|\.)amazon\.[a-z.]+$/.test(host) || /(^|\.)(amzn\.to|amzn\.com|amzn\.eu|a\.co)$/.test(host)) return "Amazon";
+  if (/(^|\.)amazon\.[a-z.]+$/.test(host) || /(^|\.)(amzn\.to|amzn\.com|amzn\.eu|a\.co|link\.amazon)$/.test(host)) return "Amazon";
   if (/(^|\.)temu\.(com|to)$/.test(host) || /(^|\.)temu\.[a-z.]+$/.test(host)) return "Temu";
   if (/(^|\.)shein\.[a-z.]+$/.test(host) || /(^|\.)sheinlink\.com$/.test(host)) return "SHEIN";
   if (/(^|\.)aliexpress\.[a-z.]+$/.test(host) || /(^|\.)ali\.ski$/.test(host)) return "AliExpress";
@@ -113,7 +113,7 @@ export function isShortLink(url) {
     return false;
   }
   const host = u.hostname.toLowerCase();
-  if (/(^|\.)(amzn\.to|amzn\.eu|a\.co|temu\.to|ali\.ski|sheinlink\.com)$/.test(host)) return true;
+  if (/(^|\.)(amzn\.to|amzn\.eu|a\.co|link\.amazon|temu\.to|ali\.ski|sheinlink\.com)$/.test(host)) return true;
   if (/^(s\.click|a|star)\.aliexpress\.[a-z.]+$/.test(host)) return true;
   if (/^(onelink|api-shein|shein\.top)\b/.test(host) || /(^|\.)onelink\.shein\.com$/.test(host)) return true;
   if (/(^|\.)temu\.com$/.test(host) && /^\/(k|s)\//.test(u.pathname)) return true; // temu.com/k/xxxx share links

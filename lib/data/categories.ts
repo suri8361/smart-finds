@@ -1,4 +1,4 @@
-import { ChefHat, Cpu, Monitor, Shirt, Sparkles, Tent } from "lucide-react";
+import { ChefHat, Cpu, Gem, Monitor, Shirt, Sparkles, Tent } from "lucide-react";
 import type { Category } from "@/types/catalog";
 
 /**
@@ -33,6 +33,12 @@ export const categories: Category[] = [
     name: "Fashion & Style",
     description: "Apparel, shoes & accessories worth a look",
     icon: Shirt,
+  },
+  {
+    slug: "shabbos-elegant",
+    name: "Shabbos & Elegant",
+    description: "Elegant, modest picks for Shabbos, Yom Tov and simchas",
+    icon: Gem,
   },
   {
     slug: "beauty-personal-care",

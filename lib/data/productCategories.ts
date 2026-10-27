@@ -38,6 +38,8 @@ export const productCategories: ProductCategoryOption[] = [
   { value: "sneakers", label: "Sneakers", group: "fashion-style" },
   { value: "bags", label: "Bags", group: "fashion-style" },
   { value: "accessories", label: "Accessories", group: "fashion-style" },
+  // Its own nav group: elegant, modest picks (clothing, shoes, bags)
+  { value: "shabbos-elegant", label: "Shabbos & Elegant", group: "shabbos-elegant" },
   // Everything else
   { value: "beauty", label: "Beauty", group: "beauty-personal-care" },
   { value: "home", label: "Home", group: "home-kitchen" },
