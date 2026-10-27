@@ -8,6 +8,7 @@ import { FilterBar } from "@/components/catalog/FilterBar";
 import { SortDropdown } from "@/components/catalog/SortDropdown";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { CollectionCard } from "@/components/home/CollectionCard";
+import { MessageUsCallout } from "@/components/contact/MessageUs";
 import { categories, getCategoryBySlug } from "@/lib/data/categories";
 import { getProductsByCategoryGroup } from "@/lib/data/products";
 import { getCollectionsRelatedToCategory } from "@/lib/data/collections";
@@ -207,6 +208,8 @@ export default async function CategoryPage({ params, searchParams }: PageProps<"
           <p className="text-sm text-foreground/50">No related collections yet — check back soon.</p>
         )}
       </div>
+
+      <MessageUsCallout />
     </Container>
   );
 }

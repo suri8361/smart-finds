@@ -6,6 +6,7 @@ import { Search, X } from "lucide-react";
 import type { Product } from "@/types/catalog";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { searchProducts } from "@/lib/search";
+import { MessageUsCallout } from "@/components/contact/MessageUs";
 
 const SUGGESTIONS = ["Skirts", "Dresses", "Shoes", "Kitchen", "SHEIN", "Temu"];
 
@@ -31,6 +32,8 @@ export function SearchResults({ products }: { products: Product[] }) {
 
   const results = useMemo(() => searchProducts(products, query), [products, query]);
   const hasQuery = query.trim().length > 0;
+  // No or few matches: put the "Looking for something specific?" card right under the count.
+  const fewResults = hasQuery && results.length < 4;
 
   return (
     <div className="flex flex-col gap-8">
@@ -85,11 +88,15 @@ export function SearchResults({ products }: { products: Product[] }) {
           : `All ${results.length} finds`}
       </p>
 
+      {fewResults ? <MessageUsCallout compact /> : null}
+
       <ProductGrid
         products={results}
         emptyTitle="No finds match that yet"
         emptyDescription="Try a shorter word, a store name like SHEIN, or a category like skirts."
       />
+
+      {fewResults ? null : <MessageUsCallout className="mt-4" />}
     </div>
   );
 }

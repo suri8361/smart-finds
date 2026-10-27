@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { categories } from "@/lib/data/categories";
 import { retailers } from "@/lib/data/retailers";
 import { AMAZON_ENABLED } from "@/lib/config/affiliate";
+import { MessageUsLink } from "@/components/contact/MessageUs";
 
 const trustLinks = [
   { href: "/about", label: "About Smart Finds" },
@@ -86,6 +87,11 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <MessageUsLink className="text-sm text-foreground/70 hover:text-foreground">
+                Looking for something? Message us
+              </MessageUsLink>
+            </li>
           </ul>
         </div>
       </Container>
