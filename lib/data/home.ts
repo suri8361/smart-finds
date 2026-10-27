@@ -84,6 +84,5 @@ export function getHomeStats() {
   return {
     finds: publicProducts.length,
     triedAndTrue: getProductsByCategoryGroup("tried-true").length,
-    stores: new Set(publicProducts.map((p) => p.store.trim().toLowerCase())).size,
   };
 }

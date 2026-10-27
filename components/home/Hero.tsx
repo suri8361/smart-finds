@@ -69,13 +69,9 @@ export function Hero() {
               <dt className="text-xs uppercase tracking-wide text-foreground/50">Finds</dt>
               <dd className="font-display text-2xl font-semibold text-foreground">{stats.finds.toLocaleString("en-US")}</dd>
             </div>
-            <div className="px-6">
+            <div className="pl-6">
               <dt className="text-xs uppercase tracking-wide text-foreground/50">Tried &amp; True</dt>
               <dd className="font-display text-2xl font-semibold text-foreground">{stats.triedAndTrue}</dd>
-            </div>
-            <div className="pl-6">
-              <dt className="text-xs uppercase tracking-wide text-foreground/50">Stores</dt>
-              <dd className="font-display text-2xl font-semibold text-foreground">{stats.stores}</dd>
             </div>
           </dl>
 
