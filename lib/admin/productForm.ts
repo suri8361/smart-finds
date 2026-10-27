@@ -132,7 +132,7 @@ export function formStateFromProduct(product: Product): ProductFormState {
     collection: product.collection ?? "",
     audience: product.audience ?? "",
     occasion: product.occasion ?? "",
-    recommendationLabel: product.recommendationLabel,
+    recommendationLabel: product.recommendationLabel ?? "",
     description: product.description,
     sizes: product.sizes?.join(", ") ?? "",
     colors: product.colors?.join(", ") ?? "",
@@ -160,7 +160,6 @@ export function getMissingRequiredFields(form: ProductFormState): string[] {
     !form.affiliateUrl && "affiliate URL",
     !form.store && "store",
     !form.category && "category",
-    !form.recommendationLabel && "recommendation label",
     !form.description && "description",
   ].filter((value): value is string => Boolean(value));
 }
@@ -203,7 +202,7 @@ export function buildProductCodeInput(
     collection: form.collection || undefined,
     audience: form.audience || undefined,
     occasion: form.occasion || undefined,
-    recommendationLabel: form.recommendationLabel,
+    recommendationLabel: form.recommendationLabel || undefined,
     description: form.description,
     sizes: form.sizes,
     colors: form.colors,

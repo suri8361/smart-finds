@@ -19,7 +19,21 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { AUDIENCES, CATEGORIES, LABELS, OCCASIONS, parseCsv, storeFromUrl, stripPrices } from "./shared.mjs";
+import {
+  APPAREL_CATEGORIES,
+  AUDIENCES,
+  CATEGORIES,
+  LABELS,
+  OCCASIONS,
+  TRIED_TRUE,
+  holidaysFor,
+  isMaternity,
+  looksLikeApparel,
+  parseCsv,
+  storeFromUrl,
+  stripPrices,
+  stripTriedTrue,
+} from "./shared.mjs";
 
 const PRODUCTS_FILE = path.join(process.cwd(), "lib", "data", "products.ts");
 const ARRAY_START = "export const products: Product[] = [";
@@ -56,7 +70,10 @@ function toLiteral(p) {
   lines.push(`    category: ${q(p.category)},`);
   if (p.audience) lines.push(`    audience: ${q(p.audience)},`);
   if (p.occasion) lines.push(`    occasion: ${q(p.occasion)},`);
-  lines.push(`    recommendationLabel: ${q(p.recommendationLabel)},`);
+  if (p.holidays?.length) lines.push(`    holidays: ${q(p.holidays)},`);
+  if (p.maternity) lines.push(`    maternity: true,`);
+  // No default badge: only a real label (e.g. Tried & True from her caption) is written.
+  if (p.recommendationLabel) lines.push(`    recommendationLabel: ${q(p.recommendationLabel)},`);
   lines.push(`    description: ${q(p.description)},`);
   if (p.featured) lines.push(`    featured: true,`);
   if (p.hidden) lines.push(`    hidden: true,${p.hiddenWhy ? " // " + p.hiddenWhy : ""}`);
@@ -68,6 +85,7 @@ function toLiteral(p) {
 export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = new Set()) {
   const products = [];
   const skipped = [];
+  const checks = [];
   const used = new Set(existingSlugs);
   rows.forEach((row, i) => {
     const rowNo = i + 2; // header is row 1 in the spreadsheet
@@ -80,9 +98,12 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
     const isAmazon = store.toLowerCase().startsWith("amazon");
     const price = parsePrice(row.price);
     const originalPrice = parsePrice(row.original_price);
-    const audience = (row.audience || "").trim().toLowerCase();
+    const audience = (row.audience || "").trim().toLowerCase().replace(/\s*\(default\)$/, "");
     const occasion = (row.occasion || "").trim().toLowerCase();
-    const label = (row.label || "").trim().toLowerCase() || "chosen_for_look";
+    const caption = (row.description || "").trim();
+    const triedTrue = TRIED_TRUE.test(caption);
+    // No default label any more (every product used to get "chosen_for_look"). Her "Tried and True" becomes the Tried & True badge.
+    const label = (row.label || "").trim().toLowerCase() || (triedTrue ? "personally_tried" : "");
 
     if (!name) reasons.push("no title");
     if (!/^https?:\/\//i.test(affiliateUrl)) reasons.push("no affiliate_url");
@@ -90,11 +111,16 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
     if (!CATEGORIES.includes(category)) reasons.push(`category "${row.category}" isn't one of the ${CATEGORIES.length}`);
     if (audience && !AUDIENCES.includes(audience)) reasons.push(`audience "${row.audience}" not recognised`);
     if (occasion && !OCCASIONS.includes(occasion)) reasons.push(`occasion "${row.occasion}" not recognised`);
-    if (!LABELS.includes(label)) reasons.push(`label "${row.label}" not recognised`);
+    if (label && !LABELS.includes(label)) reasons.push(`label "${row.label}" not recognised`);
     if (existingUrls.has(affiliateUrl)) reasons.push("already on the site");
     if (reasons.length) {
       skipped.push({ row: rowNo, title: name || affiliateUrl, reasons });
       return;
+    }
+
+    // Catch the old misfiling: clothing filed under Home/School/Outdoor/etc. because the title said "vacation home" or "back to school".
+    if (!APPAREL_CATEGORIES.has(category) && looksLikeApparel(name, caption) && !looksLikeApparel(category)) {
+      checks.push({ row: rowNo, title: name, note: `category "${category}" but the title/caption reads like clothing — please check` });
     }
 
     const image = (row.image || "").trim();
@@ -122,15 +148,25 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
       category,
       audience: audience || undefined,
       occasion: occasion || undefined,
-      recommendationLabel: label,
-      // Amazon captions lose any price mention too (Associates rules: no stored prices).
-      description: (isAmazon ? stripPrices((row.description || "").trim()) : (row.description || "").trim()) || `Found on ${store}.`,
+      recommendationLabel: label || undefined,
+      holidays: row.holidays !== undefined && String(row.holidays).trim() !== ""
+        ? String(row.holidays).split(/[,;]\s*/).map((h) => h.trim().toLowerCase()).filter(Boolean)
+        : holidaysFor(caption, name),
+      maternity: row.maternity !== undefined && String(row.maternity).trim() !== ""
+        ? YES.has(String(row.maternity).trim().toLowerCase())
+        : isMaternity(caption, name),
+      // Amazon captions lose any price mention too (Associates rules: no stored prices); "Tried and True" moves to the badge.
+      description: (() => {
+        let text = triedTrue ? stripTriedTrue(caption) : caption;
+        if (isAmazon) text = stripPrices(text);
+        return text || `Found on ${store}.`;
+      })(),
       featured: YES.has(String(row.featured || "").trim().toLowerCase()),
       hidden: hideReason !== "",
       hiddenWhy: hideReason,
     });
   });
-  return { products, skipped };
+  return { products, skipped, checks };
 }
 
 function main() {
@@ -150,12 +186,14 @@ function main() {
   const source = fs.existsSync(PRODUCTS_FILE) ? fs.readFileSync(PRODUCTS_FILE, "utf8") : "";
   const existingSlugs = new Set([...source.matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]));
   const existingUrls = new Set([...source.matchAll(/affiliateUrl:\s*"([^"]+)"/g)].map((m) => m[1]));
-  const { products, skipped } = rowsToProducts(rows, existingSlugs, existingUrls);
+  const { products, skipped, checks } = rowsToProducts(rows, existingSlugs, existingUrls);
   const approvedCount = rows.filter((r) => YES.has(String(r.approve || "").trim().toLowerCase())).length;
 
   const hiddenCount = products.filter((p) => p.hidden).length;
   console.log(`${rows.length} rows, ${approvedCount} approved, ${products.length} ready (${hiddenCount} hidden), ${skipped.length} skipped.`);
   for (const s of skipped) console.log(`  - row ${s.row} (${s.title.slice(0, 60)}): ${s.reasons.join(", ")}`);
+  if (checks.length) console.log(`${checks.length} to double-check:`);
+  for (const c of checks) console.log(`  - row ${c.row} (${c.title.slice(0, 60)}): ${c.note}`);
   if (products.length === 0) return;
 
   const block = products.map(toLiteral).join("\n");

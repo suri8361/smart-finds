@@ -77,7 +77,7 @@ export function Hero() {
 
           <div className="absolute right-0 top-0 z-10 flex items-center gap-1.5 rounded-full bg-label-tried-bg px-3 py-1.5 text-xs font-semibold text-label-tried-fg shadow-lg">
             <BadgeCheck className="h-3.5 w-3.5" />
-            Personally Tried
+            Tried &amp; True
           </div>
         </div>
       </Container>

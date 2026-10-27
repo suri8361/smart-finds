@@ -29,7 +29,7 @@ export interface ProductCodeInput {
   collection?: string;
   audience?: string;
   occasion?: string;
-  recommendationLabel: string;
+  recommendationLabel?: string;
   description: string;
   /** Comma-separated */
   sizes?: string;
@@ -103,10 +103,8 @@ export function generateProductObjectLiteral(input: ProductCodeInput): string {
 
   if (input.occasion) push("occasion", JSON.stringify(input.occasion));
 
-  push(
-    "recommendationLabel",
-    input.recommendationLabel ? JSON.stringify(input.recommendationLabel) : `"" /* TODO: choose a label */`
-  );
+  // Optional: no label = no badge on the card.
+  if (input.recommendationLabel) push("recommendationLabel", JSON.stringify(input.recommendationLabel));
   push("description", JSON.stringify(input.description));
 
   const sizes = toStringArray(input.sizes);

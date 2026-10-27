@@ -1,4 +1,4 @@
-import { Baby, ChefHat, Cpu, Gem, Monitor, PackageOpen, Shirt, Sparkles, Tent, ToyBrick } from "lucide-react";
+import { Baby, BadgeCheck, CalendarHeart, ChefHat, Cpu, Gem, Monitor, PackageOpen, Shirt, Sparkles, Tent, ToyBrick } from "lucide-react";
 import type { Category } from "@/types/catalog";
 
 /**
@@ -39,6 +39,20 @@ export const categories: Category[] = [
     name: "Shabbos & Elegant",
     description: "Elegant, modest picks for Shabbos, Yom Tov and simchas",
     icon: Gem,
+  },
+  {
+    // Built from Product.holidays (not Product.category) — see getProductsByCategoryGroup.
+    slug: "yom-tov-holidays",
+    name: "Yom Tov & Holidays",
+    description: "Finds for Rosh Hashanah, Sukkos, Chanukah, Purim and every Yom Tov",
+    icon: CalendarHeart,
+  },
+  {
+    // Built from recommendationLabel "personally_tried" — finds Sara has tried herself.
+    slug: "tried-true",
+    name: "Tried & True",
+    description: "Finds Sara has bought and used herself",
+    icon: BadgeCheck,
   },
   {
     slug: "beauty-personal-care",

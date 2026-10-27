@@ -25,9 +25,11 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <div>
-          <RecommendationBadge type={product.recommendationLabel} size="sm" />
-        </div>
+        {product.recommendationLabel ? (
+          <div>
+            <RecommendationBadge type={product.recommendationLabel} size="sm" />
+          </div>
+        ) : null}
 
         <div>
           <Link href={`/products/${product.slug}`}>

@@ -37,9 +37,12 @@ import { isProductPublic } from "@/lib/affiliate";
  *                      lib/data/occasions.ts (OccasionType in
  *                      types/catalog.ts). Omit for anything that isn't
  *                      clothing/fashion.
- *   recommendationLabel  exactly one of the 7 values in types/catalog.ts
- *                      (SelectionReasonType) — do not use "personally_tried"
- *                      unless someone on the team genuinely used the product
+ *   recommendationLabel  optional — one of the 7 values in types/catalog.ts
+ *                      (SelectionReasonType). Leave it out for no badge.
+ *                      "personally_tried" shows as "Tried & True": only for
+ *                      things Sara (or the team) genuinely used
+ *   holidays          optional, e.g. ["sukkos"] — puts it in Yom Tov & Holidays
+ *   maternity         optional, true for maternity clothing
  *   description       one or two honest sentences
  *   sizes / colors    optional string arrays
  *   featured          set true to show it in the homepage "Top Picks" section
@@ -57,17 +60,16 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B04qtk0I5",
     store: "Amazon",
     category: "organization",
-    recommendationLabel: "chosen_for_look",
     description: "Great gift for those who tend to lose their car keys!",
   },
   {
     slug: "upgraded-37-keys-kids-piano-keyboard-with-mic",
     name: "Upgraded 37 Keys Kids Piano Keyboard with Mic Music Stand for 3-6 - Black",
-    image: "https://m.media-amazon.com/images/I/31jT3B4dCVL.jpg",
+    image: "https://m.media-amazon.com/images/I/71WYO-44wIL._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B0fiOuPXA",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
+    holidays: ["chanukah"],
     description: "Great Chanuka gift",
   },
   {
@@ -76,8 +78,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/51EgWSQExRL._AC_UY1000_.jpg",
     affiliateUrl: "https://link.amazon/B0hpZj6uG",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
+    holidays: ["purim"],
     description: "Want to be ahead of the game? Think Purim! banana costume Size 6T and 10T",
   },
   {
@@ -87,7 +89,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B04A47rGS",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Amazon Haul 2 pair gloves",
   },
   {
@@ -97,7 +99,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B02RiM6it",
     store: "Amazon",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Amazon Haul 2 pack Cotton PJs Size 12M-14/16",
   },
   {
@@ -106,8 +108,7 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/61qfLyTBbNL._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B0gfpaE3d",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "home",
     description: "Amazon Haul 4 pack toothpaste squeezer",
   },
   {
@@ -117,7 +118,6 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B04dArea5",
     store: "Amazon",
     category: "outdoor",
-    recommendationLabel: "chosen_for_look",
     description: "Amazon Haul Silicone shoe covers Great for rain and snow",
   },
   {
@@ -127,7 +127,6 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0e8mMbML",
     store: "Amazon",
     category: "organization",
-    recommendationLabel: "chosen_for_look",
     description: "Amazon Haul Great accessory hanger",
   },
   {
@@ -136,9 +135,10 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/51cleNS7a7L._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B09VtofdM",
     store: "Amazon",
-    category: "outdoor",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Rain boots",
+    category: "boots",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Rain boots",
   },
   {
     slug: "fashion-short-rain-boots-for-women-waterproof-chelsea",
@@ -147,7 +147,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0h3Oofn2",
     store: "Amazon",
     category: "boots",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "LIMITED TIME DEAL Short rain boots",
   },
   {
@@ -156,8 +156,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/91KoDPO57YL._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B0cIsLwJi",
     store: "Amazon",
-    category: "sandals",
-    recommendationLabel: "chosen_for_look",
+    category: "boots",
+    audience: "women",
     description: "LIMITED TIME DEAL Genuine leather",
   },
   {
@@ -167,7 +167,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B07vYHE9r",
     store: "Amazon",
     category: "boots",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Knee high boots",
   },
   {
@@ -176,7 +176,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pol5hnnhc2q",
     store: "Temu",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Kids' Magnetic Building Blocks: 3-Year-Olds And Up STEM Educational Toy 36 Pieces for $9.05",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -186,7 +185,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p5601qwaqks",
     store: "Temu",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "12-Color Glitter Marker Set price $3.60",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -196,7 +194,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pu2z1t4tk1z",
     store: "Temu",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Dotting Pen Toy price $5.21",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -206,7 +203,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pcaoajs35qc",
     store: "Temu",
     category: "school",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["chanukah"],
     description: "Great for Chanukah or any Sunday 6-Color 3D Popcorn Effect Art Pens with Heat-Activated Tip price $6.15",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -216,7 +213,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pwnfrcjlpcg",
     store: "Temu",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Women'S Detachable Sleeve Hooded Puffer Jacket, 2-In-1 Convertible Short Padded Coat And Sleeveless Vest, price $42.71 Size S-L",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -227,7 +224,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wy391p5vn71",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Gorgeous shabbos jacket/coat size 4-7 $14.19",
   },
   {
@@ -237,7 +234,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wy3yv0pxhln",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Baby version $12.69",
   },
   {
@@ -247,7 +244,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/58/664h7kmqs66r?ismg_ol=5TPkJmxaxLF_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Fur lined coat size 13-16 different options in link",
   },
   {
@@ -257,7 +254,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/58/664h1pifqav4?ismg_ol=0I210oOOTLa_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Teens coat size 13-16 $31.69",
   },
   {
@@ -267,7 +264,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/58/664guoyhddtu?ismg_ol=5SUOy3IKtF9_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Teen coat size 13-16 $28.51",
   },
   {
@@ -277,7 +274,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B07b3xtJe",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Young teen fleece lined coat Size 7-14",
   },
   {
@@ -287,7 +284,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B05jTX21E",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Amazon Essentials Warm coat Great reviews!",
   },
   {
@@ -297,7 +294,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0bsvjFTI",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cropped down coat Great Reviews More colors.",
   },
   {
@@ -307,7 +304,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0h1rrZfW",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "coat Great Reviews!",
   },
   {
@@ -316,8 +313,9 @@ export const products: Product[] = [
     affiliateUrl: "https://spl.it/XlTOXc",
     store: "Nordstrom Rack",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Nordstrom Rack warm coat only $39.97 was $110",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Nordstrom Rack warm coat only $39.97 was $110",
   },
   {
     slug: "hunter-unisex-adult-play-essential-cuff-beanie-hat",
@@ -326,7 +324,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B05xTkkIt",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-adult",
     description: "Hunter Beanie hat",
   },
   {
@@ -336,7 +334,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0e1OlPmp",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-adult",
     description: "Satin lined",
   },
   {
@@ -346,7 +344,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0ewWVEsc",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-adult",
     description: "Found on Amazon.",
   },
   {
@@ -356,7 +354,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0doDBvsj",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-adult",
     description: "Found on Amazon.",
   },
   {
@@ -366,7 +364,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/58/65vv1gy3ev7i?ismg_ol=IwF5XRyFkCM_01_KOC-C",
     store: "SHEIN",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Found on SHEIN.",
   },
   {
@@ -376,7 +374,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/58/65vuv42ici2p?ismg_ol=GF7vQU8ILPD_01_KOC-C",
     store: "SHEIN",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Found on SHEIN.",
   },
   {
@@ -385,8 +383,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2022/08/29/1661754597b5e3d73fe9b8dd4dc0dc2397dadc7d5f_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/58/65vuhaupyobf?ismg_ol=JNxZolvz4jo_01_KOC-C",
     store: "SHEIN",
-    category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "men",
     description: "Found on SHEIN.",
   },
   {
@@ -395,8 +393,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/916TM0z8kfL._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B0fuZF4tL",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "Size 3/4-7/8",
   },
   {
@@ -405,8 +403,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/71x3SvR6a9L._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B03a0Alfk",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "toddler-girl",
     description: "2 piece corduroy kids Size 2/3-5/6",
   },
   {
@@ -416,7 +414,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B03Hm5PgP",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "corduroy dress- Great reviews! more colors",
   },
   {
@@ -425,9 +423,10 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/05/26/2b/177976319606338768400efb933755de57b3a3f3db_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/57/65tfhytxqebm?ismg_ol=A1YwnH3RUDh_01_KOC-C",
     store: "SHEIN",
-    category: "home",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True $9.59 Size 4-7",
+    category: "dresses",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "$9.59 Size 4-7",
   },
   {
     slug: "shein-1pc-young-girl-cute-retro-casual-plaid",
@@ -435,9 +434,10 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2024/09/10/95/172597779535db42c82937cd6b4bd054ca1072b450_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/57/65tf9iz6g22i?ismg_ol=50wiEUFCOx1_01_KOC-C",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true - comes with the green sweater but I match it to a black turtleneck $11.33 Size 4-7",
+    category: "sets",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Comes with the green sweater but I match it to a black turtleneck $11.33 Size 4-7",
   },
   {
     slug: "girls-long-sleeve-ribbed-turtleneck-shirts",
@@ -446,7 +446,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0hL6wvlk",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Pair with this turtleneck- more colors",
   },
   {
@@ -455,8 +455,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/71aI2qUgXTL._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B0b3KvzVP",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "toddler-girl",
     description: "Same thing in corduroy",
   },
   {
@@ -466,8 +466,9 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B07ERH7OZ",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True ( I have the black one) Size 4T- 11/12",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "(I have the black one) Size 4T- 11/12",
   },
   {
     slug: "floerns-women-s-elegant-puff-long-sleeve-collared",
@@ -476,7 +477,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B095VLR3R",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Size XS-XXL",
   },
   {
@@ -485,7 +486,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/phnwdoos1w2",
     store: "Temu",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant white shirt to pair with these! $11.56 Size S-XXL",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -495,7 +496,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/peqwkmklw25",
     store: "Temu",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Found on Temu.",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -506,7 +507,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/57/65tb4vzcx548?ismg_ol=0Tg7Y71vr7L_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Found on SHEIN.",
   },
   {
@@ -516,7 +517,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/57/65tay98mai33?ismg_ol=ADZTkWenOiu_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "From $19.79",
   },
   {
@@ -526,7 +527,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B03DThLyF",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "size S-XXL",
   },
   {
@@ -535,8 +536,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/51TkpohizZL._AC_SL1424_.jpg",
     affiliateUrl: "https://link.amazon/B05H1JP1w",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "women",
     description: "Size S-XL",
   },
   {
@@ -546,7 +547,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0jfjcobe",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Found on Amazon.",
   },
   {
@@ -556,7 +557,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0aDrYvx0",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Found on Amazon.",
   },
   {
@@ -567,7 +568,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3CmMW9L",
     store: "AliExpress",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "80% duck down coat $55.15 More colors. Free returns within 15 days",
   },
   {
@@ -578,7 +579,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4EcWBlB",
     store: "AliExpress",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens/Teens coat - great reviews $62.89 Free returns within 15 days",
   },
   {
@@ -589,7 +590,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4pfOhxx",
     store: "AliExpress",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "It's down filled - It should be very warm. It has great reviews",
   },
   {
@@ -599,18 +600,18 @@ export const products: Product[] = [
     affiliateUrl: "https://www.amazon.com/dp/B0B28G5Y4R?lv=shuf&linkCode=sl2&linkId=6773cb0dd0f463db8ea8ce08f11e1c2e&th=1&gaOptInStatus=true&language=en_US&tag=smartfind0a21-20&channelId=500&ref_=as_li_ss_tl&plpRedirect=mhFallback",
     store: "Amazon",
     category: "electronics",
-    recommendationLabel: "chosen_for_look",
     description: "I got the standard one",
   },
   {
     slug: "official-licensed-google-tv-happrun-native-1080p-bluetooth",
     name: "Official Licensed Google TV - HAPPRUN Native 1080P Bluetooth Projector",
-    image: "https://m.media-amazon.com/images/I/21fTQ9Wg5pL.jpg",
+    image: "https://m.media-amazon.com/images/I/71Nb0U2NE0L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4iuMOl6",
     store: "Amazon",
     category: "electronics",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Great projector! can use with just a usb - Great for Chanukah parties.",
+    holidays: ["chanukah"],
+    recommendationLabel: "personally_tried",
+    description: "Great projector! can use with just a usb - Great for Chanukah parties.",
   },
   {
     slug: "the-children-s-place-girls-lightweight-layering-jacket",
@@ -619,7 +620,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4zITvG9",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "The Children's Place Girls Jacket LIMITED TIME DEAL",
   },
   {
@@ -628,9 +629,9 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/61L+f7jvShL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4zEDUY1",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Tineco Floor ONE i5 Stretch Wet Dry Vacuum and mop.",
+    category: "home",
+    recommendationLabel: "personally_tried",
+    description: "Tineco Floor ONE i5 Stretch Wet Dry Vacuum and mop.",
   },
   {
     slug: "aelfric-eden-leopard-print-cardigan-sweaters-for-women",
@@ -639,7 +640,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4Bcbbvr",
     store: "Amazon",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Aelfric Eden Leopard Print Cardigan Sweaters Limited time deal! Size XS-XL",
   },
   {
@@ -649,7 +650,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/57/657ds14v5g5z?ismg_ol=FQoPqFjsZfP_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Black gown $25.27 Size P-XL",
   },
   {
@@ -659,7 +660,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/57/657dg113hfkt?ismg_ol=0Bua7bjHlBU_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant Maxi dress",
   },
   {
@@ -669,7 +670,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/57/657d3v08h92v?ismg_ol=E6qrM85NVIZ_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Gown/maxi dress $35.78",
   },
   {
@@ -679,7 +680,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/57/657cx0ddee8k?ismg_ol=3dZiNnbw09r_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant dress @20.49",
   },
   {
@@ -689,27 +690,26 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/57/657cj94j9dnz?ismg_ol=IoqhEx7RNPS_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant dress $44.62",
   },
   {
     slug: "dylanto-kids-camera-instant-print-1080p-kids-instant",
     name: "Dylanto Kids Camera Instant Print,1080P Kids Instant Cameras that Print Photos,Christmas Birthday Gifts for",
-    image: "https://m.media-amazon.com/images/I/31GGBPNDB5L.jpg",
+    image: "https://m.media-amazon.com/images/I/61ol+gwG2SL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3VMBOXG",
     store: "Amazon",
     category: "electronics",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["chanukah"],
     description: "Great Chanukah gift! Limited time deal",
   },
   {
     slug: "bluerise-55-indoor-and-outdoor-toddler-trampoline-for",
     name: "BLUERISE 55'' Indoor&Outdoor Toddler Trampoline for Kids Gifts Pink/Blue",
-    image: "https://m.media-amazon.com/images/I/21buCVfy6AL.jpg",
+    image: "https://m.media-amazon.com/images/I/81Kyj9pgU9L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4zaQzSZ",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "Indoor & Outdoor Trampoline Limited time deal",
   },
   {
@@ -719,17 +719,17 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3VO5B26",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Limited time deal wool coat xs-xxl",
   },
   {
     slug: "wuridiwa-180-party-favors-for-kids-fidget-toys",
     name: "Wuridiwa 180 Party Favors for Kids, Fidget Toys Bulk, Treasure Box Toys for Classroom Prizes, Goodie Bag",
-    image: "https://m.media-amazon.com/images/I/21jmIy-A5CL.jpg",
+    image: "https://m.media-amazon.com/images/I/81r1QXwtWEL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4ii0VKx",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["chanukah"],
     description: "Amazon Haul 180 Party Favors prizes for Kids (great for Chanukah)",
   },
   {
@@ -739,7 +739,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3W6J4gY",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Amazon Haul 15 pack kitchen sponges",
   },
   {
@@ -748,8 +747,7 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/61LG6hbiiOL._AC_SL1000_.jpg",
     affiliateUrl: "https://amzn.to/4sbLCXm",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "kitchen",
     description: "2 in 1 Oil Sprayer. Amazon Haul",
   },
   {
@@ -759,17 +757,16 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4imGEn2",
     store: "Amazon",
     category: "other",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["chanukah"],
     description: "Think Chanukah Vacation! Box of 50 Magical Scratch-Off Amazon Haul",
   },
   {
     slug: "kodak-pixpro-fz45-16mp-compact-digital-camera-4x",
     name: "KODAK PIXPRO FZ45 16MP Compact Digital Camera, 4X Optical Zoom, AA, Black",
-    image: "https://m.media-amazon.com/images/I/31GGBPNDB5L.jpg",
+    image: "https://m.media-amazon.com/images/I/818GKPv0fvL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4impI00",
     store: "Amazon",
     category: "electronics",
-    recommendationLabel: "chosen_for_look",
     description: "LIMITED TIME DEAL Kodak camera",
   },
   {
@@ -779,7 +776,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/6527uera49oy?ismg_ol=0w5PpgBUlw3_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls Puffer vest Size 8- 12 From $12.07",
   },
   {
@@ -789,7 +786,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/6527ioio0j29?ismg_ol=FFjpYczzukv_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Teen Girls corduroy coat - More styles in this link Size 13-16",
   },
   {
@@ -799,7 +796,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/652760qg4m2e?ismg_ol=3WuYX0W9qAX_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls Sweater Size 8-13 $15.29",
   },
   {
@@ -809,7 +806,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/6526wra83c97?ismg_ol=GEeyTjZBfLH_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Little girls hooded sweatshirt only $2.99. Size 3/4-13/14",
   },
   {
@@ -819,7 +816,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/6526rjucw0wz?ismg_ol=Lgkkmj37GJt_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Teen coat Size 13-16 $25.89",
   },
   {
@@ -829,7 +826,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yjotmW",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Down Jacket Size S-XXL More colors, Clip coupon",
   },
   {
@@ -839,7 +836,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3U2wWNt",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Karl Lagerfeld puffer jacket Size XS-XL",
   },
   {
@@ -849,7 +846,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3UqklDR",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Karl Lagerfeld Size XS-XL - More colors and styles Features: filler 50% down, 5o% feathers, removable hood, adjustable hem cord, snaps at cuffs",
   },
   {
@@ -859,7 +856,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4hV3d0V",
     store: "Amazon",
     category: "boots",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Lace up boots More colors in link",
   },
   {
@@ -869,17 +866,16 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/47RuQmM",
     store: "Amazon",
     category: "boots",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "DKNY Boots",
   },
   {
     slug: "hp-14-everyday-laptop-honey-lavender-4gb-ram",
     name: "HP 14\" Everyday Laptop (Honey Lavender, 4GB RAM)",
-    image: "https://m.media-amazon.com/images/I/41Y8ucVNVhL.jpg",
+    image: "https://m.media-amazon.com/images/I/61XKJ8gbigL._AC_SL1368_.jpg",
     affiliateUrl: "https://amzn.to/4B7NN2c",
     store: "Amazon",
     category: "electronics",
-    recommendationLabel: "chosen_for_look",
     description: "HP Laptop",
   },
   {
@@ -889,7 +885,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3WnO5Sk",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Black Jacket Size SMALL ONLY OTHER SIZES AND COLORS",
   },
   {
@@ -900,7 +896,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3JYuAlT",
     store: "AliExpress",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens/Teens down jacket- real mink fur $127.80",
   },
   {
@@ -911,7 +907,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4K6aMw5",
     store: "AliExpress",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Kids 80% Down filled coat $33",
   },
   {
@@ -920,7 +916,7 @@ export const products: Product[] = [
     affiliateUrl: "https://spl.it/U97akQ",
     store: "Karl Lagerfeld",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Women/Teen Karl Lagerfeld CROPPED BOMBER PUFFER $270.00 (10% off) 40% Off with code: FRIEND40 - Comes out to $162",
   },
   {
@@ -929,7 +925,7 @@ export const products: Product[] = [
     affiliateUrl: "https://spl.it/dZefkR",
     store: "Karl Lagerfeld",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Karl Lagerfeld Top- $80.10 40% Off with code: FRIEND40",
   },
   {
@@ -939,17 +935,16 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4rWkTh2",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Lacoste Watch",
   },
   {
     slug: "bedsure-fluffy-bubble-faux-fur-throw-blanket-50",
     name: "Bedsure Fluffy Bubble Faux Fur Throw Blanket, 50\"x60\", Cream",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/81jFEQAPBYL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4hHnnww",
     store: "Amazon",
     category: "home",
-    recommendationLabel: "chosen_for_look",
     description: "Faux fur throw blanket Limited time deal Lots of colors! Great Gift",
   },
   {
@@ -959,7 +954,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/47KgLHM",
     store: "Amazon",
     category: "organization",
-    recommendationLabel: "chosen_for_look",
     description: "Digital calendar- makes a great gift Limited tie deal",
   },
   {
@@ -968,8 +962,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/61Y4gbOVlzL._AC_SL1001_.jpg",
     affiliateUrl: "https://amzn.to/4s08BEA",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "coats-jackets",
+    audience: "toddler-boy",
     description: "Boys down alternative coat",
   },
   {
@@ -979,7 +973,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yjvLHs",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Kids Down alternative coat Size 1-7T Size",
   },
   {
@@ -989,8 +983,9 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yMKxro",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
-    description: "TRIED & TRUE Adorable girls suspender skirt more colors",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Adorable girls suspender skirt more colors",
   },
   {
     slug: "boys-lined-crew-neck-sweatshirt-with-cute-cartoon",
@@ -998,8 +993,9 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/puxw4s1gqae",
     store: "Temu",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
-    description: "TRIED & TRUE Boys' Sweatshirt $10.14",
+    audience: "boys",
+    recommendationLabel: "personally_tried",
+    description: "Boys' Sweatshirt $10.14",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
@@ -1008,8 +1004,8 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pz9zjt6b38o",
     store: "Temu",
     category: "electronics",
-    recommendationLabel: "chosen_for_look",
-    description: "TRIED & TRUE Projection Alarm Clock $6.63 + $2.99 shipping local delivery (2 days)",
+    recommendationLabel: "personally_tried",
+    description: "Projection Alarm Clock $6.63 + $2.99 shipping local delivery (2 days)",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
@@ -1019,7 +1015,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64rq24mwfhv9?ismg_ol=IrninbyJzxD_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "The perfect \"Little black dress\" $30",
   },
   {
@@ -1029,7 +1025,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64rprdwudfzw?ismg_ol=K3TJZ0CQd6C_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens simple gown $25.49",
   },
   {
@@ -1039,7 +1035,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64rpderykn5p?ismg_ol=3N9dbW9bNqU_01_KOC-C",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Corduroy skirt Size XS- 3X",
   },
   {
@@ -1049,7 +1045,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64rlh9lxkcca?ismg_ol=KFmdlPgJ8M2_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Also available in reg sizes $19.59",
   },
   {
@@ -1059,7 +1055,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64rl690pzf7e?ismg_ol=414UN5e9HKZ_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity sweater $23.32",
   },
   {
@@ -1069,7 +1066,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64rkw4005z2c?ismg_ol=6RaaM0ifnLY_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant sweater $36.99",
   },
   {
@@ -1079,7 +1076,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64rkqwk2dy6c?ismg_ol=0U0Sgek6l5t_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity Sweater Size S-XXL $36.99",
   },
   {
@@ -1089,7 +1087,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yav7w1",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls reversible DKNY coat",
   },
   {
@@ -1099,7 +1097,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4B0r87Q",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls coat DKNY Size 4-16 More colors",
   },
   {
@@ -1108,8 +1106,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/09/18/67/17581723540cb40129279c03aa458905f64c5151ac_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/56/64p9bnmifb6d?ismg_ol=BUawvZbuFtz_01_KOC-C",
     store: "SHEIN",
-    category: "toys",
-    recommendationLabel: "chosen_for_look",
+    category: "coats-jackets",
+    audience: "girls",
     description: "Girls coat size 4-7 $21.39",
   },
   {
@@ -1119,7 +1117,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64p93th3e9s6?ismg_ol=9DyNh8r8LuY_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls coat Size 12-16 $24.99",
   },
   {
@@ -1128,9 +1126,10 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/91K7-CPjpUL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/47Fuboq",
     store: "Amazon",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True mens cotton socks. No pilling, No tearing - it really lasts. 12 Pairs, 6 pairs more colors",
+    category: "accessories",
+    audience: "men",
+    recommendationLabel: "personally_tried",
+    description: "Mens cotton socks. No pilling, No tearing - it really lasts. 12 Pairs, 6 pairs more colors",
   },
   {
     slug: "zeagoo-womens-bomber-jacket-short-fall-jackets-casual",
@@ -1139,7 +1138,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4hUFNc5",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Bomber jacket more colors/pattern",
   },
   {
@@ -1148,7 +1147,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pszicdye9cd",
     store: "Temu",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Shabbos sweater $13.78",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -1158,8 +1157,9 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/dps/PS2026090110589/b6e01afddf8320683583e294d1091562fddea53c99d3e2d18cad613b935ec8f8_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/56/64hbqp705jwz?ismg_ol=LsAmrb0iHpI_01_KOC-C",
     store: "SHEIN",
-    category: "home",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "women",
+    maternity: true,
     description: "Maternity sweater From $26.69",
   },
   {
@@ -1169,7 +1169,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yHn2Qz",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens/teens Shabbos coat Size XS-XL More color options",
   },
   {
@@ -1179,7 +1179,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64giuc6c1wt6?ismg_ol=GZmVCIVQF6k_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cable knit turtleneck $28.99",
   },
   {
@@ -1189,7 +1189,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64giaa10vxo4?ismg_ol=FANKj0PZX2G_01_KOC-C",
     store: "SHEIN",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Knit Cardigan $22.69",
   },
   {
@@ -1199,7 +1199,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/56/64ghvt4v3cg9?ismg_ol=Fs18EEnsO3C_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Shein pearl sweater",
   },
   {
@@ -1208,18 +1208,16 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/71tRYHfio9L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4hMj2H7",
     store: "Amazon",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "PRIME DEAL. Melissa & Doug Fire Chief Role Play Costume",
   },
   {
     slug: "best-choice-products-kids-wooden-cottage-play-kitchen",
     name: "Best Choice Products Kids Wooden Cottage Play Kitchen for Toddlers, Cream",
-    image: "https://m.media-amazon.com/images/I/21sDgE0HuML.jpg",
+    image: "https://m.media-amazon.com/images/I/71kqMLaPCoL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4zknEv6",
     store: "Amazon",
-    category: "kitchen",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "PRIME DEAL. Adorable kids wood play kitchen",
   },
   {
@@ -1229,7 +1227,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3VxWkew",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL. Swarovski Teddy bracelet",
   },
   {
@@ -1239,7 +1237,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yd0V3k",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL. Pendant necklace",
   },
   {
@@ -1249,7 +1247,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/47MRkoR",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL Simple sweater Lots of colors Size XXS-3X",
   },
   {
@@ -1257,9 +1255,10 @@ export const products: Product[] = [
     name: "Tried and True Alo Hair ties",
     affiliateUrl: "https://ebay.us/KdvPoY",
     store: "eBay",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True Alo Hair ties $13.99",
+    category: "accessories",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Alo Hair ties $13.99",
   },
   {
     slug: "delsey-paris-chatelet-air-2-0-hardside-luggage",
@@ -1267,8 +1266,7 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/81QJOelwYnL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4ybKc0f",
     store: "Amazon",
-    category: "sets",
-    recommendationLabel: "chosen_for_look",
+    category: "other",
     description: "PRIME DEAL Delsey Paris 2 piece luggage set",
   },
   {
@@ -1277,8 +1275,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/81k9ktNNgcL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4yMAJ0r",
     store: "Amazon",
-    category: "sandals",
-    recommendationLabel: "chosen_for_look",
+    category: "shoes",
+    audience: "women",
     description: "Prime deal Fuzzy Slippers more colors",
   },
   {
@@ -1288,7 +1286,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4hNUzRC",
     store: "Amazon",
     category: "boots",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL Hunter Short Rain boots (this color only)",
   },
   {
@@ -1297,8 +1295,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/81-2XRVFrtL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3VmSk0l",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "jumpsuits",
+    audience: "unisex-kids",
     description: "PRIME DEAL. Gerber baby 5 pack onesie",
   },
   {
@@ -1308,7 +1306,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yHrz5w",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL Levi's Women/Teen Bomber jacket Size XS-4X More colors",
   },
   {
@@ -1318,7 +1316,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4i5ULgq",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL Women/Teen winter cropped coat with detachable fur Size XS-XL",
   },
   {
@@ -1328,7 +1326,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3UhNZet",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL Women/Teen winter cropped coat More colors",
   },
   {
@@ -1338,7 +1336,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4rOmLs9",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL Womens/Teens cropped winter coat Size S-XL",
   },
   {
@@ -1348,7 +1346,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4hLfAwp",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "New on Amazon Hunter girls sherpa lined jacket Size 2T-12",
   },
   {
@@ -1358,7 +1356,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ds0Zok",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL Levi's women/teen jacket Size XS-XL More colors but only these 4 are Prime day deals",
   },
   {
@@ -1368,27 +1366,26 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/47FfZf7",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL Tons of colors",
   },
   {
     slug: "yll-karaoke-machine-for-kids-birthday-gifts-for",
     name: "YLL Karaoke Machine for Kids, Birthday Gifts for Girls 3 4 5 6 7+Years Old",
-    image: "https://m.media-amazon.com/images/I/31jT3B4dCVL.jpg",
+    image: "https://m.media-amazon.com/images/I/915QiaccDGL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4ARNbNX",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "PRIME DEAL. Kids love singing? This is the perfect gift! Karaoke Machine - more colors",
   },
   {
     slug: "picassotiles-100-piece-magnetic-tiles-race-track-toy",
     name: "PicassoTiles 100 Piece Magnetic Tiles Race Track Toy Creative Building Set",
-    image: "https://m.media-amazon.com/images/I/11GEbQB50VL.jpg",
+    image: "https://m.media-amazon.com/images/I/81qgX0-tS4L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4zn3r8c",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["chanukah"],
     description: "PRIME DEAL. Buy your Chanukah gifts- 100 Piece Magnetic Tiles Race Track",
   },
   {
@@ -1398,17 +1395,15 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/47DCp0a",
     store: "Amazon",
     category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
     description: "PRIME DEAL Stokke YOYO3 Travel Stroller",
   },
   {
     slug: "hasbro-gaming-connect-4-strategy-board-game-for",
     name: "Hasbro Gaming Connect 4 Strategy Board Game for Ages 6 and Up (Amazon Exclusive)",
-    image: "https://m.media-amazon.com/images/I/21mk+Cl5D8L.jpg",
+    image: "https://m.media-amazon.com/images/I/81Cx0btUF4L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4i2Uo6l",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "PRIME DEAL Connect 4 game",
   },
   {
@@ -1418,17 +1413,15 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4jFTSML",
     store: "Amazon",
     category: "electronics",
-    recommendationLabel: "chosen_for_look",
     description: "PRIME DEAL. HP 14 inch Laptop",
   },
   {
     slug: "farberware-forged-induction-ceramic-nonstick-cookware-set-12",
     name: "Farberware Forged Induction Ceramic Nonstick Cookware Set, 12 Piece, Black",
-    image: "https://m.media-amazon.com/images/I/41KTWeX4d9L.jpg",
+    image: "https://m.media-amazon.com/images/I/71S0RKMJKnL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4dpsOO0",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "PRIME DEAL. Farberware 12 pc set",
   },
   {
@@ -1438,17 +1431,16 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4htcNZS",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "men",
     description: "PRIME DEAL. POLO RALPH LAUREN Men's Athletic Performance Cotton Crew Socks More colors",
   },
   {
     slug: "heilaiyi-wall-mounted-clothes-hanger-clothes-drying-rack",
     name: "HEILAIYI Wall Mounted Clothes Hanger,Clothes Drying Rack,Laundry Drying Rack,Clothes Rack Wall Mount,Drying",
-    image: "https://m.media-amazon.com/images/I/11xgA4xqZjL.jpg",
+    image: "https://m.media-amazon.com/images/I/61AKfV+DAqL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4yBz3a8",
     store: "Amazon",
     category: "organization",
-    recommendationLabel: "chosen_for_look",
     description: "PRIME DEAL Wall mounted dryer rack",
   },
   {
@@ -1457,8 +1449,7 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/71RqdVcRgDL._UF500,500_QL50_.jpg",
     affiliateUrl: "https://amzn.to/4hyoj6d",
     store: "Amazon",
-    category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    category: "electronics",
     description: "PRIME DEAL Ring battery doorbell",
   },
   {
@@ -1468,47 +1459,44 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4AZvU5B",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "PRIME DEAL. Steve Madden Cropped Puffer Jacket Size XS-3X",
   },
   {
     slug: "keurig-k-supreme-gen-2-hot-and-iced",
     name: "Keurig K-Supreme Gen 2, Hot and Iced Single Serve Coffee Maker, Warm Stone",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/71YKuMCZJ7L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/474ve14",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Keurig K supreme Hot & Iced Single Serve K-Cup Pod Coffee Maker",
   },
   {
     slug: "amazon-com-roborock-2026-new-qrevo-s-pro",
     name: "Amazon.com - roborock 2026 New Qrevo S Pro Robot Vacuum and Mop, 18,500Pa Suction",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/615KW-IyiHL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3VlA1IV",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "home",
     description: "PRIME DEAL. Roborock robot mop",
   },
   {
     slug: "tineco-floor-one-s7-stretch-ultra-cordless-wet",
     name: "Tineco Floor ONE S7 Stretch Ultra Cordless Wet Dry Vacuum Cleaner, 180°Lay-Flat Anti-Tangle Design, 50",
-    image: "https://m.media-amazon.com/images/I/21mfYj1UciL.jpg",
+    image: "https://m.media-amazon.com/images/I/61zNj-9L5UL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4yCkm6H",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Tried and True! Tineco mop",
+    category: "home",
+    recommendationLabel: "personally_tried",
+    description: "PRIME DEAL. Tineco mop",
   },
   {
     slug: "caraway-16-piece-deluxe-non-stick-ceramic-cookware",
     name: "Caraway 16-Piece Deluxe Non-Stick Ceramic Cookware Set",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/71IWfwz0G5L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4i7zm6s",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Prime deal - Caraway 16 pc pot set",
   },
   {
@@ -1519,7 +1507,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c35dnOFx",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant 2 Piece Gown Free returns $58.51",
   },
   {
@@ -1530,7 +1518,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3e0Lqfj",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Alo sweatshirt $35 Size S-XXL use code USHS04 for $4 off",
   },
   {
@@ -1541,7 +1529,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2yhfgqZ",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Alo half zip sweater $33.52 use code USHS04 for $4 off FREE RETURNS",
   },
   {
@@ -1551,7 +1539,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ASNtUD",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty knit sweater Size S-L clip the coupon",
   },
   {
@@ -1561,7 +1549,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3VzS8e3",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Collared sweater Size S-XXL",
   },
   {
@@ -1571,7 +1559,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4hPH8AV",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Vest Turtleneck Size S-L More colors/prints",
   },
   {
@@ -1580,18 +1568,17 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/81YHLDLhXDL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4zjibop",
     store: "Amazon",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "women",
     description: "Prime deal Crewneck cropped sweater More colors",
   },
   {
     slug: "ninja-slushi-professional-drink-maker-fs301",
     name: "Ninja® SLUSHi® Professional Drink Maker, FS301",
-    image: "https://m.media-amazon.com/images/I/214GR+nS07L.jpg",
+    image: "https://m.media-amazon.com/images/I/81NIIxjjEeL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3TnBiP1",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "kitchen",
     description: "Prime deal Ninja Pro Slush machine",
   },
   {
@@ -1601,7 +1588,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/46ZYjuu",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Wrap sweater more colors Size S-XXL",
   },
   {
@@ -1610,8 +1597,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/81AYLwlRgEL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3VQbAmU",
     store: "Amazon",
-    category: "tops",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "women",
     description: "Size S-XXL V sweater more prints",
   },
   {
@@ -1621,7 +1608,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yafRiH",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty shabbos blouse Size XS-XXL More colors",
   },
   {
@@ -1631,7 +1618,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3THHlOg",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Hooded top Lots more colors Size XS-3X",
   },
   {
@@ -1640,8 +1627,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/612J-Ygrd7L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4y4iMsY",
     store: "Amazon",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "boots",
+    audience: "women",
     description: "Prime deal stretchy knee high boots - lots of colors",
   },
   {
@@ -1651,7 +1638,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ASRVTi",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Prime deal Tons of colors Size XS- XXL",
   },
   {
@@ -1661,7 +1648,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/55/64925qxvxp1j?ismg_ol=Bsud7ZvKi5F_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Everyday top from $4.99",
   },
   {
@@ -1671,7 +1658,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/55/6491tus6klk6?ismg_ol=DeDMwwrFdAR_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Organza cropped shabbos top",
   },
   {
@@ -1681,7 +1668,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/55/6491kr91tdsa?ismg_ol=4NgWKWzrFC7_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "From $21.67",
   },
   {
@@ -1691,7 +1678,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/55/6491aq6e9g5f?ismg_ol=D3h3nnMMH3D_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Found on SHEIN.",
   },
   {
@@ -1701,7 +1688,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/55/64917nonvkg0?ismg_ol=67KpddtpKS7_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Also available in SHEIN CURVE",
   },
   {
@@ -1710,8 +1697,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/06/25/ff/17823853874ac6e38c5f8283543a18112f7946a711_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/55/6490swxclidb?ismg_ol=9YGmkJb8XPS_01_KOC-C",
     store: "SHEIN",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "women",
     description: "Beautiful Turtleneck lots of colors From $13.85",
   },
   {
@@ -1720,7 +1707,7 @@ export const products: Product[] = [
     affiliateUrl: "https://spl.it/aV6IzI",
     store: "Kohl's",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Juniors' madden girl Cropped Puffer Vest ONLY $11.70with code TAKE25 and free shipping today!",
   },
   {
@@ -1730,7 +1717,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ze99sG",
     store: "Amazon",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Women/teens Cropped puffer jacket Size XS-XL",
   },
   {
@@ -1739,9 +1726,9 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/81FSUbGs2dL._SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4jFtaE3",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True Blush",
+    category: "beauty",
+    recommendationLabel: "personally_tried",
+    description: "Blush",
   },
   {
     slug: "komforme-environmental-material-memory-handles",
@@ -1749,7 +1736,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4rL7uIG",
     store: "Amazon",
     category: "boots",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Amazon Haul Kids boots Lots of colors",
   },
   {
@@ -1759,7 +1746,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4j4V9wS",
     store: "Amazon",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Karl Lagerfeld crossbody",
   },
   {
@@ -1769,7 +1756,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4APoL7y",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Air fryer",
   },
   {
@@ -1777,8 +1763,7 @@ export const products: Product[] = [
     name: "Adjustable measuring spoon baking cooking",
     affiliateUrl: "https://amzn.to/4ziyfXG",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "kitchen",
     description: "Prime Haul- adjustable measuring spoon",
   },
   {
@@ -1787,17 +1772,17 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3U7ZYv1",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Prime haul initial necklace",
   },
   {
     slug: "marlrin-shooting-games-toys-for-age-5-6",
     name: "Marlrin Shooting Games Toys for Age 5 6 7 8 9 10+ Year Old Boys, Kids Toy Sports & Outdoor Game with Moving",
-    image: "https://m.media-amazon.com/images/I/214GR+nS07L.jpg",
+    image: "https://m.media-amazon.com/images/I/71Rkk7mtTEL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4xURANy",
     store: "Amazon",
-    category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
+    holidays: ["yom-tov"],
     description: "Chol Hamoed activity outdoor/indoor game",
   },
   {
@@ -1806,8 +1791,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/81h1YBgilCL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4xOKDgX",
     store: "Amazon",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "girls",
     description: "Beautiful Girls sweater, some sizes only Size 5/6-13/14",
   },
   {
@@ -1817,27 +1802,27 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4xJ5xxQ",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["yom-tov"],
     description: "You can still get this paper goods on time for Yom tov! Service for 25",
   },
   {
     slug: "gootop-bug-zapper-outdoor-mosquito-zapper-4200v-3",
     name: "GOOTOP Bug Zapper Outdoor, Mosquito Zapper, 4200V 3 Prong Plug in Electric Fly Zapper, Mosquito Killer, Fly",
-    image: "https://m.media-amazon.com/images/I/31ILLajnQ2L.jpg",
+    image: "https://m.media-amazon.com/images/I/71fATgj5scL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4xFkfG8",
     store: "Amazon",
     category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["sukkos"],
     description: "Have your sukkah fly free with this Fly zapper - has great reviews!",
   },
   {
     slug: "owlzoom-motion-video-gaming-console-active-play-system",
     name: "Owlzoom Motion Video Gaming Console, Active Play System for Kids Ages 3-7",
-    image: "https://m.media-amazon.com/images/I/311MiYGXAGL.jpg",
+    image: "https://m.media-amazon.com/images/I/81SJKmsW0RL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3VNCmfB",
     store: "Amazon",
-    category: "home",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
+    holidays: ["yom-tov"],
     description: "Great at home Chol Hamoed activity - no wifi needed -you do need a screen though.",
   },
   {
@@ -1847,7 +1832,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/46BKxy3",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant satin skirt Size XS-XL More colrs!",
   },
   {
@@ -1857,7 +1842,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4hkLYFJ",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls Shabbos. coat- detachable bow Size 7-14 clip the coupon",
   },
   {
@@ -1867,7 +1852,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4dSkk1U",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls shabbos coat Size 7-14",
   },
   {
@@ -1877,7 +1862,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4y0ratP",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant puff sleeve sweater More colors! Size S-XXL",
   },
   {
@@ -1887,7 +1872,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yKtbuA",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    holidays: ["yom-tov"],
     description: "Can still come on time for yom tov! Beautiful knit top more color options Size S-XXL",
   },
   {
@@ -1896,8 +1882,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/6155exQFBFL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4y9mzWX",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "baby-girl",
     description: "Cute Baby girl sweatset",
   },
   {
@@ -1907,7 +1893,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4dimyHZ",
     store: "Amazon",
     category: "shoes",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens mary jane more colors",
   },
   {
@@ -1917,7 +1903,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4jjge6x",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens Mary Jane Shabbos shoes- Luggage color - More colors",
   },
   {
@@ -1926,8 +1912,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/dps/PS202609200630/a2ed90dbf8cc25c19e5ffbe16d4bb1a6512c421318b2371df75ae316787cb221_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/53/62s1cdzn8umo?ismg_ol=GsC7RQWxk8U_01_KOC-C",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
     description: "Pretty womens cut velvet top $15.99",
   },
   {
@@ -1937,7 +1923,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/53/62s10rp3d7vi?ismg_ol=G5BUizZuLbI_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "New in! Ivory gown $35.99",
   },
   {
@@ -1947,7 +1933,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/53/62s0ods3wtfl?ismg_ol=GCWmFHOtcHa_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "New in! Brown long sleeve shirt dress",
   },
   {
@@ -1957,7 +1943,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/477LqhU",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Limited time deal - Fur lined zip up sweatshirt size 0-3M-4T More colors Pink color",
   },
   {
@@ -1967,7 +1953,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3TihjRt",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Cute Girls sweatshirt- lots more options 95% cotton Size 6-14",
   },
   {
@@ -1977,7 +1963,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yV6ZOO",
     store: "Amazon",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful skirts - lots of options Size S-XXL",
   },
   {
@@ -1986,8 +1972,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/81n4gNnrBVL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4xEVrOD",
     store: "Amazon",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "men",
     description: "Limited time deal! Sturling mens watch",
   },
   {
@@ -1997,7 +1983,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3UXW73W",
     store: "Amazon",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Lots of different plaid skirts",
   },
   {
@@ -2007,7 +1993,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4AlKhRd",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Same look, not satin- more colors and prints",
   },
   {
@@ -2017,17 +2003,18 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4h3MMjI",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    holidays: ["yom-tov"],
     description: "Still need yom tov clothing? Beautiful satin turtleneck. Lots of colors! Limited Time deal",
   },
   {
     slug: "intex-64121ed-dura-beam-plus-pillow-rest-air",
     name: "Intex 64121ED Dura-Beam Plus Pillow Rest Air Mattress: Fiber-Tech – Twin Size – Built-in Electric Pump –",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/71WW-F-rpHL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4rp4JNd",
     store: "Amazon",
     category: "home",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["sukkos"],
     description: "Great for Sukkos! Twin size air mattres with built in pump",
   },
   {
@@ -2037,7 +2024,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yIi9pR",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty sweater dress it up or down! Limited time Size S-XXL More Colors!",
   },
   {
@@ -2047,7 +2034,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yHBo2J",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    holidays: ["yom-tov"],
     description: "Pretty Turtleneck top- Great for Chol Hamoed Size S-XL More Colors!",
   },
   {
@@ -2057,7 +2045,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4xEfCfr",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Great Everyday/house top. Limited time deal - Size S-XXL Lots of colors",
   },
   {
@@ -2067,8 +2055,10 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4hxvzzc",
     store: "Amazon",
     category: "sandals",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true! Great yom Kippur slippers",
+    audience: "women",
+    holidays: ["yom-tov"],
+    recommendationLabel: "personally_tried",
+    description: "Great yom Kippur slippers",
   },
   {
     slug: "new-autumn-winter-soft-warm-cardigan-woman-cashmere",
@@ -2078,7 +2068,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4DjGm6h",
     store: "AliExpress",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "100% merino wool hollow out cardigan more colors! $27.08+$2.72 shipping use this code: FSUS02 for $2 off $15",
   },
   {
@@ -2088,7 +2078,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/53/62d8zb2b4q51?ismg_ol=7qYFRROtRxb_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Also available in Curve Size XL-4XL",
   },
   {
@@ -2097,7 +2087,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p8gr5hoebyn",
     store: "Temu",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "French-Style Elegant Half-Turtleneck Puff Sleeve Top Size S-XL $18.54",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2107,7 +2097,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p7xqo8uy67w",
     store: "Temu",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant Hollow sweater Size S-XXL $26.07",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2117,7 +2107,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pyrsrxe8suy",
     store: "Temu",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Studded Round Neck Women's Sweater Size S-XL $24.35",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2127,7 +2117,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p3b1u7wehui",
     store: "Temu",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Women's French-Style Wool Sweater with High Neck Bow Collar Size S-XXL $27.36",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2137,7 +2127,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pu2dnjen3zd",
     store: "Temu",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cashmere studded sweater Womens Cashmere - more colors Size XS-XL $27.62",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2148,7 +2138,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4y1LBY5",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Puff sleeve sweater lots of colors size S-XL",
   },
   {
@@ -2158,7 +2148,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3TH7wVn",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant cashmere blend sweater more colors Size XS-XL",
   },
   {
@@ -2168,37 +2158,35 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4h9lOpw",
     store: "Amazon",
     category: "home",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true! Great for the Sukkah- Lifetime 6 Ft. fold in half folding table!",
+    holidays: ["sukkos"],
+    recommendationLabel: "personally_tried",
+    description: "Great for the Sukkah- Lifetime 6 Ft. fold in half folding table!",
   },
   {
     slug: "webake-log-cake-pan-silicone-log-cake-mold",
     name: "Webake Log Cake Pan Silicone Log Cake Mold with 2 Bark Mat, 11.8 Inch Large Christmas Cake Mold for Cake",
-    image: "https://m.media-amazon.com/images/I/21QOxbwnEpL.jpg",
+    image: "https://m.media-amazon.com/images/I/71nqe+KjVaL._AC_SL1254_.jpg",
     affiliateUrl: "https://amzn.to/4xueb2Y",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Looking for a easy and elegant ushpizin Idea? Chocolate logs or pops are easy and elegant! Recipe: 1 bar brown chocolate, 1 bar white chocolate, 1 jar chunky peanut butter, 1/2 cup crushed cornflakes. Directions: Put the chocolates in a 9x13 pan put it in the oven until fully melted -check and mix every few minutes (approx. 10 min.) add the peanut butter and put back in the oven for 5 minute. add the cornflakes mix well! pour into mold and freeze for a few hours until set. decorate with spritzes of melted chocolate or gold glitter, nut brittle... Big log",
   },
   {
     slug: "twinkie-pan-9-cavities-log-shape-non-stick",
     name: "Twinkie Pan, 9 Cavities Log Shape Non-Stick Silicone Dessert Molds",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/71jNeO7+oYL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4ABAqaj",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "individual logs",
   },
   {
     slug: "2-pack-silicone-popsicle-molds-largre-oval-4",
     name: "2 Pack Silicone Popsicle Molds, Largre Oval 4 Cavities Homemade Ice Pop Molds with 100 Wooden Sticks for Ice",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/61M4UIcE00L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4yGjkpN",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "kitchen",
     description: "Chocolate pops",
   },
   {
@@ -2207,7 +2195,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p1r8uvb42z2",
     store: "Temu",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Women' Elegant Sleeveless gown size S,M $26.32",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2218,7 +2206,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4h7i9tL",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "casual maternity top- great for a house top more colors Size S-XL",
   },
   {
@@ -2228,7 +2217,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4d8MZzN",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Elegant maternity turtleneck vest Size S-XXL",
   },
   {
@@ -2238,7 +2228,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4A9sOvc",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Elegant maternity sweater - more colors Size S-XXL",
   },
   {
@@ -2248,7 +2239,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3UZV4An",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "4 pack Waffle maternity top more color options",
   },
   {
@@ -2258,7 +2250,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3VAHzY3",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Denim maternity shirt coupon Size S-XXL",
   },
   {
@@ -2268,7 +2261,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4xzoOlp",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Button down maternity shirt- reviews show it runs large, size down. Size S-XXL",
   },
   {
@@ -2277,7 +2271,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4Ax7zns",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity Hooded sweatshirt Size XS-4XL",
   },
   {
@@ -2287,7 +2282,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3USzs9a",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "3 pack peplum top Lots of color options Size S-XXL",
   },
   {
@@ -2297,7 +2293,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4xFrqOI",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Elegant Mesh maternity top Size S-XXL",
   },
   {
@@ -2307,7 +2304,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4rdxMTC",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Elegant Maternity top Lots of colors",
   },
   {
@@ -2317,7 +2315,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4re8TXQ",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Elegant maternity sweater Size S-XL",
   },
   {
@@ -2326,7 +2325,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3V0Riqq",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Elegant maternity top Size S-XL",
   },
   {
@@ -2336,7 +2336,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4j8Q8mI",
     store: "Amazon",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity cardigan More colors Size XXS-4XL",
   },
   {
@@ -2346,7 +2347,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4j7TaHN",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Pretty maternity top More colors Size XS-4XL",
   },
   {
@@ -2356,7 +2358,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3V0RVQQ",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity side zipper top Lots of colors Size S-XXL",
   },
   {
@@ -2366,7 +2369,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3V0QUIu",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity peplum top- lots of color options Size XS-XL",
   },
   {
@@ -2376,7 +2380,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yHzOOq",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "3 Pack maternity tops lots of colors Size S-XXL",
   },
   {
@@ -2385,7 +2390,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/po5jwmq38jc",
     store: "Temu",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "French Black Jacquard Suspender Dress",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2396,7 +2401,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/53/629gyo323ymp?ismg_ol=8Ntg4bUvYFv_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Option 2 - Satin Blouse (French Black Jacquard Suspender Dress)",
   },
   {
@@ -2405,7 +2410,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pfvydau3wnh",
     store: "Temu",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "option 3- Tulle Blouse (French Black Jacquard Suspender Dress)",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2415,7 +2420,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pxy14bjiclw",
     store: "Temu",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful velour and satin combo elegant maxi Gown. More colors. Size S-XXL $29.30",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2426,7 +2431,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/53/628cz73bvkj2?ismg_ol=F7uSKeSOWSe_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "I put the jumper together with these shirt options through chatgpt Satin Jumper -length depends on your height follow size chart",
   },
   {
@@ -2436,7 +2441,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/53/628d6tcmj74d?ismg_ol=DUrtdUSNNmQ_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Organza Shirt",
   },
   {
@@ -2446,7 +2451,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/53/628dsgptyrg5?ismg_ol=4Wh0vv9GfSO_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Satin Shirt",
   },
   {
@@ -2456,7 +2461,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/53/628f059gslp6?ismg_ol=0Ciz9xs6OSF_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Flower organza shirt",
   },
   {
@@ -2467,7 +2472,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c33mQ5SH",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful jumper gown with beading $93.61 + $23.61 -Great reviews with a photo",
   },
   {
@@ -2475,18 +2480,17 @@ export const products: Product[] = [
     name: "Mac duggal jersey sleeveless satin skirt beaded neck gown 0400026537608",
     affiliateUrl: "https://spl.it/GBGKga",
     store: "Saks Fifth Avenue",
-    category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "women",
     description: "compare to Mac Duggal at Saks",
   },
   {
     slug: "amazon-com-oizeir-lazy-susan-turntable-2-pack",
     name: "Amazon.com - Oizeir Lazy Susan Turntable (2-Pack) - Clear Acrylic, Rotates 360 Degrees, Easily Organize Your",
-    image: "https://m.media-amazon.com/images/I/21zAHYIAUeL.jpg",
+    image: "https://m.media-amazon.com/images/I/71SRXcZjKGL._AC_SL1265_.jpg",
     affiliateUrl: "https://amzn.to/3Tzz6Ur",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "organization",
     description: "Round acrylic holder requested: 2 pack",
   },
   {
@@ -2495,19 +2499,19 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/51+Z5c1NevL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4rj40Nw",
     store: "Amazon",
-    category: "toys",
-    recommendationLabel: "chosen_for_look",
+    category: "camping",
     description: "Air pump for air mattress",
   },
   {
     slug: "intex-64757e-dura-beam-standard-downy-air-mattress",
     name: "Intex 64757E Dura-Beam Standard Downy Air Mattress: Fiber-Tech - Twin Size - 10in Bed Height - 300lb Weight",
-    image: "https://m.media-amazon.com/images/I/31EbaRzNAIL.jpg",
+    image: "https://m.media-amazon.com/images/I/512qT8VH7gL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4A7qy7I",
     store: "Amazon",
     category: "home",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried & True! Blow up bed perfect for Sukkah sleeping Twin Size",
+    holidays: ["sukkos"],
+    recommendationLabel: "personally_tried",
+    description: "Blow up bed perfect for Sukkah sleeping Twin Size",
   },
   {
     slug: "summer-holiday-dress-womens-dress-ladies-dress-womens",
@@ -2515,7 +2519,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p9javtkp4pw",
     store: "Temu",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Collared sleeveless button down maxi XS-XXL $18.23",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2525,7 +2529,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p11b30oy2eq",
     store: "Temu",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Fastest delivery: 5 BUSINESS DAYS Velvet Button Maxi Size S-XXl $24.56",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2535,7 +2539,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/poaseuaqm48",
     store: "Temu",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Women's Dark Burgundy Velvet Maxi Size S-XXL $15.94",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2545,7 +2549,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pxzdigovtqx",
     store: "Temu",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Temu- arrives in 5 business days V-neck Sleeveless Solid Color Dress $19.40",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2556,7 +2560,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4AcwGM0",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Velour maxi jumper -- lots more colors",
   },
   {
@@ -2566,7 +2570,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4hxqS7x",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Loose Maxi dress Size S-XL",
   },
   {
@@ -2576,7 +2580,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4Af6QXP",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cut velvet maxi - Black, Navy, Wine. XS-XL",
   },
   {
@@ -2586,7 +2590,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/46mOqXt",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Printed maxi. More colors and prints. Size XS-3XL",
   },
   {
@@ -2596,7 +2600,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4xWJ3dr",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Linen maxi jumper more colors! Size S-4X",
   },
   {
@@ -2606,7 +2610,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3VywIhh",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Lots of colors! Limited deal! Size XXS - 4XL",
   },
   {
@@ -2616,17 +2620,15 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/52/6249krdzmfry?ismg_ol=F3xbzc325l9_01_KOC-C",
     store: "SHEIN",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Shein Acrylic tray with handles 11''x14'' $11.50 Great Reviews!",
   },
   {
     slug: "12-x16-clear-acrylic-serving-tray-with-golden",
     name: "12\"x16\" Clear Acrylic Serving Tray with Golden Handles, Sturdy Huge Capacity Acrylic Tray for Coffee, Juice",
-    image: "https://m.media-amazon.com/images/I/31FbXe7iNFL.jpg",
+    image: "https://m.media-amazon.com/images/I/51LJ1LJXOWL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4j5dHgf",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Requested: Acrylic trays with handles 12''x16'' Great reviews",
   },
   {
@@ -2635,7 +2637,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p5ghdqrapjk",
     store: "Temu",
     category: "home",
-    recommendationLabel: "chosen_for_look",
     description: "Temu local warehouse: 4/5pcs Solar Starburst Lanterns with Remote Timer -8 Modes $9.81",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2644,8 +2645,7 @@ export const products: Product[] = [
     name: "Balloons 10 strings of balloons with led luminous transparent suitable wedding birthday",
     affiliateUrl: "https://temu.to/k/pmxxn9u4ku0",
     store: "Temu",
-    category: "electronics",
-    recommendationLabel: "chosen_for_look",
+    category: "home",
     description: "Temu local warehouse: 10 Balloons+10 Strings Of Light Wave Balloons with LED Luminous Transparent Bubble Balls $7.44",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2655,7 +2655,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pifx795unom",
     store: "Temu",
     category: "home",
-    recommendationLabel: "chosen_for_look",
     description: "Temu local warehouse: 4pcs Total Length 315 In, 80 Lights Eucalyptus Leaf Wreath String Light Pendant, -Battery-powered $9.70",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2664,8 +2663,7 @@ export const products: Product[] = [
     name: "12pcs large size hanging lantern with flickering led candles 9 37 height led vintage",
     affiliateUrl: "https://temu.to/k/pejek43jgog",
     store: "Temu",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "home",
     description: "Temu local warehouse: 12 Large-Size Hanging Lantern with Flickering LED Candles, 9.37'' - 3 colors $34.19",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2675,7 +2673,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pzx6pzkrc1n",
     store: "Temu",
     category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["sukkos"],
     description: "Temu local warehouse - delivery 1 business day. Ivy leaves with light for sukkah. $10.95",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2685,8 +2683,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/71mA8kr7JLL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4husoY3",
     store: "Amazon",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "women",
     description: "2 piece sweater set - make sure to clip the coupon Lots more colors Size S-XL",
   },
   {
@@ -2696,18 +2694,19 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4rf76lx",
     store: "Amazon",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful easy 2 piece set - comes in a few colors Size S-XXL",
   },
   {
     slug: "easy-going-outdoor-patio-curtains-2-panels-54x84",
     name: "Easy-Going Outdoor Patio Curtains 2 Panels, 54x84 inch, Beige",
-    image: "https://m.media-amazon.com/images/I/41KTWeX4d9L.jpg",
+    image: "https://m.media-amazon.com/images/I/811xBXmvdDL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4j4pD1H",
     store: "Amazon",
     category: "home",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Easy sukkah panels- washable and easy storage. Waterproof.- Lots of different sizes AMA on this",
+    holidays: ["sukkos"],
+    recommendationLabel: "personally_tried",
+    description: "Easy sukkah panels- washable and easy storage. Waterproof.- Lots of different sizes AMA on this",
   },
   {
     slug: "retrowavy-4-pcs-lighted-sukkah-fruit-hanging-decorations",
@@ -2716,7 +2715,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/471Jg3a",
     store: "Amazon",
     category: "home",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["sukkos"],
     description: "4 piece hanging lighted fruit",
   },
   {
@@ -2726,18 +2725,19 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4cIhs7x",
     store: "Amazon",
     category: "home",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["sukkos"],
     description: "Fruit hanging sukkah decoration",
   },
   {
     slug: "25pcs-38mm-crystal-chandelier-prism-pendants-suncatchers-hanging",
     name: "25pcs 38mm Crystal Chandelier Prism Pendants, Suncatchers Hanging Crystals",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/81R1GeoCCML._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4Ab89qD",
     store: "Amazon",
     category: "home",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Hanging crystal for the sukkah 25 pieces",
+    holidays: ["sukkos"],
+    recommendationLabel: "personally_tried",
+    description: "Hanging crystal for the sukkah 25 pieces",
   },
   {
     slug: "2d-flat-sunflower-painting-lamp-diamond-painting-night",
@@ -2745,7 +2745,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pzzidtguavp",
     store: "Temu",
     category: "home",
-    recommendationLabel: "chosen_for_look",
     description: "2D Flat Sunflower Diamond Art Painting Lamp. - Works with battery",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2755,7 +2754,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pd38j398k2t",
     store: "Temu",
     category: "home",
-    recommendationLabel: "chosen_for_look",
     description: "2D/ Flat Flower Table Lamp Diamond Painting Kit for DIY Art Decoration",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2765,7 +2763,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pdh8p7k7flh",
     store: "Temu",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Needle Felting Embroidery Kit for Beginners",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2775,7 +2772,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pefd4pqzbzm",
     store: "Temu",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "4pcs Elegant Diamond Painting Bookmarks",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2784,8 +2780,7 @@ export const products: Product[] = [
     name: "40 page coloring book suitable for travel pixel art mosaic activity book with hidden",
     affiliateUrl: "https://temu.to/k/poyn7qixcd3",
     store: "Temu",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "40 Page Mosaic Colored Book",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2794,8 +2789,7 @@ export const products: Product[] = [
     name: "2d flat printing 26 letter pearl art painting set floral leaf small decor round pearls",
     affiliateUrl: "https://temu.to/k/pqivpel3rl0",
     store: "Temu",
-    category: "home",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "Personalized initial pearl art",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2805,7 +2799,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p3068sr8wus",
     store: "Temu",
     category: "home",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["sukkos"],
     description: "Stunning pearl craft violin- perfect for the Sukkah",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2816,7 +2810,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4r17Avi",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant Womens velour robe- Can still get this tomorrow (depends on color/size) Lots of textured and solid options available",
   },
   {
@@ -2826,7 +2820,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4A6FBOY",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "You can still get this for tomorrow!",
   },
   {
@@ -2835,8 +2829,7 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/819DwJLyKnL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4r2fLHI",
     store: "Amazon",
-    category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "Friendship bracelet making kit",
   },
   {
@@ -2845,18 +2838,16 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/91YPsQ6nDKL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3UIpDKR",
     store: "Amazon",
-    category: "home",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "DIY Mosaic Photo Frame",
   },
   {
     slug: "diy-flower-craft-kits-magic-dyeing-florist-bouquet",
     name: "DIY Flower Craft Kits Magic Dyeing Florist Bouquet Maker Art Supplies Arts",
-    image: "https://m.media-amazon.com/images/I/51K6U6c+vRL.jpg",
+    image: "https://m.media-amazon.com/images/I/81HxSciKv0L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4ypMnO7",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "DIY Flower Craft Kits Magic Dyeing Bouquet Maker",
   },
   {
@@ -2866,17 +2857,15 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ypIcSr",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "DIY wooden magnets",
   },
   {
     slug: "klever-kits-4pcs-window-art-2-in-1",
     name: "Klever Kits 4PCS Window Art, 2-in-1 Gems and Gels Suncatcher, 2 Ways to Play Diamond and Gels, Arts & Crafts",
-    image: "https://m.media-amazon.com/images/I/51K6U6c+vRL.jpg",
+    image: "https://m.media-amazon.com/images/I/91OiahiGMhL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4iipR5b",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Gem and gels window art",
   },
   {
@@ -2884,8 +2873,7 @@ export const products: Product[] = [
     name: "Diy pearl painting mosaic art craft suitable for frameless diamond picture with irregular",
     affiliateUrl: "https://temu.to/k/p8gngdeqw6n",
     store: "Temu",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "Hello Kitty DIY Pearl Painting Mosaic Art",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2895,7 +2883,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/ppozajdgpvd",
     store: "Temu",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Wooden Painting Craft Kit for Kids, Glow In The Dark",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2905,7 +2892,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pq05l8l1qa6",
     store: "Temu",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "566pcs DIY Keychain Making Craft Set",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2915,7 +2901,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/peaie0v6aug",
     store: "Temu",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Personalize a puzzle and have your child put it together",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2925,7 +2910,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pdn308vqg8t",
     store: "Temu",
     category: "other",
-    recommendationLabel: "chosen_for_look",
     description: "Beginner sewing kit",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2935,7 +2919,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pcul0i8omyu",
     store: "Temu",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Marbling art",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2944,8 +2927,7 @@ export const products: Product[] = [
     name: "Foam texture painting kit 30pcs foam sheets craft paper 1 brush 1 droppers all in one",
     affiliateUrl: "https://temu.to/k/prfev7sgepk",
     store: "Temu",
-    category: "home",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "Magic 3D foam texture painting",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2954,8 +2936,7 @@ export const products: Product[] = [
     name: "Painting with floral basket cluster 5d diy pearl painting kit suitable for home wall",
     affiliateUrl: "https://temu.to/k/pou86s5t661",
     store: "Temu",
-    category: "organization",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "Pearl Painting",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2965,7 +2946,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/ph7vtxjz535",
     store: "Temu",
     category: "other",
-    recommendationLabel: "chosen_for_look",
     description: "I just came across this adorable picture ti cartoon on Temu $5.52",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -2976,7 +2956,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61ipl46v1mre?ismg_ol=AmPR1zQdrxQ_01_KOC-C",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Womens tweed aline skirt From $23.04",
   },
   {
@@ -2985,9 +2965,10 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/51PoSlHZrOL._AC_SL1000_.jpg",
     affiliateUrl: "https://amzn.to/4dsLU5H",
     store: "Amazon",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried & True! Gorgeous mens dress shoes",
+    category: "shoes",
+    audience: "men",
+    recommendationLabel: "personally_tried",
+    description: "Gorgeous mens dress shoes",
   },
   {
     slug: "clarks-men-s-whiddon-step-loafer-black-leather",
@@ -2996,8 +2977,9 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4iVkY25",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried & True! Mens shoes - Nice look and comfortable - I have this for my teenage son for weekday, its even nice enough for shabbos.",
+    audience: "men",
+    recommendationLabel: "personally_tried",
+    description: "Mens shoes - Nice look and comfortable - I have this for my teenage son for weekday, its even nice enough for shabbos.",
   },
   {
     slug: "pretied-head-scarf-for-women-lightweight-pretied-bandana",
@@ -3006,7 +2988,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ilhcyW",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Open back Tichel",
   },
   {
@@ -3017,7 +2999,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4bwy9Iv",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Pretty Girls earring $3.88 - more options in link",
   },
   {
@@ -3027,7 +3009,8 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4A5lEYM",
     store: "Amazon",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    holidays: ["yom-tov"],
     description: "Still need a top for Yom Tov? Simple yet elegant cardigan Size S-XL",
   },
   {
@@ -3036,9 +3019,10 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/714YeluCDSL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4qZC5BS",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true! Pretied Head Scarves very comfortable- lots of prints",
+    category: "accessories",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Pretied Head Scarves very comfortable- lots of prints",
   },
   {
     slug: "denim-lace-up-a-line-skirt-women-vintage",
@@ -3048,7 +3032,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4WfSV45",
     store: "AliExpress",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens denim midi skirt comes in 2 colors $31.49 use FAUS02 for $2 off order of $15 plus",
   },
   {
@@ -3058,7 +3042,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61i74cozxiuy?ismg_ol=KrE5x75HnJe_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys Sweatshirt with collar Size 4-7 $10.79",
   },
   {
@@ -3068,7 +3052,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61i4zehlrs5j?ismg_ol=DxQmt0PeVaX_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls jacket From $15.59 Size 8-12",
   },
   {
@@ -3078,18 +3062,18 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61i4mcw8y0qy?ismg_ol=AcHyanLYO67_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Tween cropped Bomber coat Size 8-12 comes in Black and Brown $31.49",
   },
   {
     slug: "lemeya-matte-gold-silverware-set-for-6-modern",
     name: "Lemeya Matte Gold Silverware Set for 6,Modern Stainless Steel Brushed Cutlery Set,30-Pieces Heavy Duty",
-    image: "https://m.media-amazon.com/images/I/41KTWeX4d9L.jpg",
+    image: "https://m.media-amazon.com/images/I/61QWrY9nxeL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/46LPm7L",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true! I have these cutlery sets in gold and silver- to match the placemats. Service for 6",
+    recommendationLabel: "personally_tried",
+    description: "I have these cutlery sets in gold and silver- to match the placemats. Service for 6",
   },
   {
     slug: "set-of-4-round-placemats-gold-heat-resistant",
@@ -3098,27 +3082,26 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4xczru0",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true! I have these placemats in gold and silver - so pretty and easy to clean. set of 8",
+    recommendationLabel: "personally_tried",
+    description: "I have these placemats in gold and silver - so pretty and easy to clean. set of 8",
   },
   {
     slug: "zydsubgs-gold-leaf-napkin-rings-set-of-8",
     name: "ZYDSUBGS Gold Leaf Napkin Rings Set of 8, Metal Material",
-    image: "https://m.media-amazon.com/images/I/21buCVfy6AL.jpg",
+    image: "https://m.media-amazon.com/images/I/81GScFOHNuL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4xJrCNo",
     store: "Amazon",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Beautiful gold leaf napkin rings set of 8",
   },
   {
     slug: "nuogo-set-of-12-apple-napkin-rings-metal",
     name: "Nuogo Set of 12 Apple Napkin Rings Metal Rosh Hashanah Napkin Ring, Red",
-    image: "https://m.media-amazon.com/images/I/31IuApDG-nL.jpg",
+    image: "https://m.media-amazon.com/images/I/71kqMGzq+XL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/46f3few",
     store: "Amazon",
-    category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    category: "kitchen",
+    holidays: ["rosh-hashanah"],
     description: "You can still get these pretty apple napkin ring in time for Yom Tov!",
   },
   {
@@ -3127,8 +3110,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/71+-2MdI1xL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4xeoCaW",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "shoes",
+    audience: "girls",
     description: "Adorable red girls T strap shoe Limited time deal - more color/options in link",
   },
   {
@@ -3137,8 +3120,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/71oTZwPPGtL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4A4fto0",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "shoes",
+    audience: "girls",
     description: "while looking for the boys shabbos shoes I came across this pretty girls shabbos Tstrap - Different colors and styles in link",
   },
   {
@@ -3147,7 +3130,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4xOvXPA",
     store: "Amazon",
     category: "shoes",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Buckle loafers more colors and styles in link",
   },
   {
@@ -3156,8 +3139,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/71+QN9BjNjL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4ytbbVD",
     store: "Amazon",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "shoes",
+    audience: "unisex-kids",
     description: "This looks like laces but is a velcro also available in black, black patent and white",
   },
   {
@@ -3167,7 +3150,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3Tk2SMQ",
     store: "Amazon",
     category: "shoes",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Toddler/boy lace shoes",
   },
   {
@@ -3176,8 +3159,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/61SJsWNflEL._AC_SL1200_.jpg",
     affiliateUrl: "https://amzn.to/3UwAGqx",
     store: "Amazon",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "shoes",
+    audience: "boys",
     description: "Toddler/boy Laces shoe",
   },
   {
@@ -3187,7 +3170,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3ViZZwi",
     store: "Amazon",
     category: "shoes",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Suede loafers",
   },
   {
@@ -3197,7 +3180,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3UIE0Pg",
     store: "Amazon",
     category: "shoes",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Toddler boys loafers - Lots of colors",
   },
   {
@@ -3206,8 +3189,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/81LkNt07JQL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4xeSu7a",
     store: "Amazon",
-    category: "bags",
-    recommendationLabel: "chosen_for_look",
+    category: "kitchen",
+    holidays: ["rosh-hashanah"],
     description: "Get it on time for Rosh Hashana! Set your table with individual honey dishes- 20 pack.",
   },
   {
@@ -3216,8 +3199,9 @@ export const products: Product[] = [
     affiliateUrl: "https://spl.it/zOoF3f",
     store: "U.S. Polo Assn.",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried & True! Pretty Watch- I have this for a high school girl. Now $27.99 Special promotion- Free shipping and 20% off with code LABOR20",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Pretty Watch- I have this for a high school girl. Now $27.99 Special promotion- Free shipping and 20% off with code LABOR20",
   },
   {
     slug: "women-s-tops-dressy-casual-plus-size-spring",
@@ -3225,8 +3209,9 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/81STDFdjEbL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4xiw98t",
     store: "Amazon",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
+    holidays: ["rosh-hashanah"],
     description: "Amazon Pretty womens top - can still get it on time for Rosh Hashana, Lots more colors! Size Small-3X",
   },
   {
@@ -3236,7 +3221,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61ets84rz240?ismg_ol=017xB14IJzz_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Teen girls corduroy fleece lined coat size 13-16 Black, Brown, white $34.69- reviews say its warm.",
   },
   {
@@ -3246,7 +3231,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61esqkmjm2bi?ismg_ol=7Au7KeQWhwZ_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant printed maxi dress / Robe $29.94",
   },
   {
@@ -3256,7 +3241,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3UHazx5",
     store: "Amazon",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Mock neck printed turtleneck on Amazon Lots of different options Size S-XXL",
   },
   {
@@ -3266,8 +3251,8 @@ export const products: Product[] = [
     currentPrice: 20.98,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c32ipjbj",
     store: "AliExpress",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "boots",
+    audience: "unisex-kids",
     description: "Adorable baby booties Size 18-25 $24.48",
   },
   {
@@ -3277,7 +3262,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yr4TWu",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "French Hair Clip",
   },
   {
@@ -3286,8 +3271,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S55fbb4a0cc22480e880d19ac1e94fb1eK.png",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3PertTF",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "women",
     description: "Chanel inspired scrunchie $1.98",
   },
   {
@@ -3298,7 +3283,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3kOLDSD",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Hair ribbon $3.12",
   },
   {
@@ -3308,7 +3293,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4WuaPMz",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "for 1 or $3.59 for 2",
   },
   {
@@ -3318,8 +3303,8 @@ export const products: Product[] = [
     currentPrice: 1.09,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3XccO3P",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "women",
     description: "Dressy rhinestone clip $1.88",
   },
   {
@@ -3329,8 +3314,8 @@ export const products: Product[] = [
     currentPrice: 1.1,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3LUhVkN",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "women",
     description: "+ shipping",
   },
   {
@@ -3339,8 +3324,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/spmp/2026/03/21/96/1774057332f7597d152cc108977127a6701ec9272d_square_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/51/61eofcv0ndkb?ismg_ol=AHfIond71js_01_KOC-C",
     store: "SHEIN",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "women",
     description: "for a pack of 4",
   },
   {
@@ -3351,7 +3336,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3gWMwL3",
     store: "AliExpress",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens Gorgeous plaid skirt $21.79 + $4.38 shipping Use code LDUS02 For $2 off $15",
   },
   {
@@ -3361,7 +3346,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4momIyV",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Kids knit collar sweater",
   },
   {
@@ -3370,8 +3355,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/dps/PS202608301301/2650f73e4243a5387403e63e88df886bb68248fc3607997b2aa03bfd683301c3_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/51/61cm90f5xphj?ismg_ol=4u5g3EF7vXr_01_KOC-C",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "coats-jackets",
+    audience: "girls",
     description: "Girls coat size 4-7 $25.29",
   },
   {
@@ -3381,7 +3366,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61cm0ufk5j68?ismg_ol=CPju5D1c50v_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Teen Zip up Size 13-16",
   },
   {
@@ -3391,7 +3376,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61closcs9ro7?ismg_ol=FTlbGeIUBh1_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Big kid zip up Size 8-13",
   },
   {
@@ -3401,7 +3386,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61cksabgftp6?ismg_ol=HdJuW35399K_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
+    holidays: ["sukkos"],
     description: "Kids zip up perfect for the Sukkah! Size 4-7 From $9.49- Lots of prints",
   },
   {
@@ -3411,7 +3397,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61ckc0b94mjx?ismg_ol=A54AIfKAlOo_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls Stylish Brown Plaid Shabbos dress Size 4-7 $11.69",
   },
   {
@@ -3421,7 +3407,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61ck55oewo3k?ismg_ol=IFUFETW1CLv_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Elegant Girls black Shabbos dress Size 4-7 $12.59",
   },
   {
@@ -3431,7 +3417,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/61cjzgh6c26q?ismg_ol=A5qoPYudE8g_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls winter top Size 1/2- 7/8 $7.12",
   },
   {
@@ -3441,8 +3427,8 @@ export const products: Product[] = [
     currentPrice: 27.5,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4UPayGz",
     store: "AliExpress",
-    category: "tops",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "women",
     description: "AS Teens/Women Crewneck sweater $33 Size XS-XXL",
   },
   {
@@ -3452,7 +3438,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3edegqp",
     store: "AliExpress",
     category: "home",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["sukkos"],
     description: "Leather Esrog holder $15.85",
   },
   {
@@ -3463,7 +3449,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4T5UOEt",
     store: "AliExpress",
     category: "shoes",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Prewalker baby shoes From $4.96",
   },
   {
@@ -3473,9 +3459,10 @@ export const products: Product[] = [
     currentPrice: 2.47,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3Wu7Ns1",
     store: "AliExpress",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true! Silly Sallies - Lots of colors from $4.84",
+    category: "jumpsuits",
+    audience: "unisex-kids",
+    recommendationLabel: "personally_tried",
+    description: "Silly Sallies - Lots of colors from $4.84",
   },
   {
     slug: "trendy-boys-spring-autumn-clothes-loose-casual-round",
@@ -3484,8 +3471,8 @@ export const products: Product[] = [
     currentPrice: 1.89,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4EgNFLP",
     store: "AliExpress",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "toddler-boy",
     description: "Boys sweatshirt $4.81 6M-6T",
   },
   {
@@ -3496,7 +3483,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3zWcwyN",
     store: "AliExpress",
     category: "shoes",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Baby winter prewalkers from $5.44",
   },
   {
@@ -3507,7 +3494,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4OPENN3",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "So cute! Boys sweat top From $8.75",
   },
   {
@@ -3517,7 +3504,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/618n7pjghhrr?ismg_ol=FHXCGhtPlEM_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty knit vest Size XS-L $8.31",
   },
   {
@@ -3527,7 +3514,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/618mzbnpe71c?ismg_ol=EGwvUZ5GjVg_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Satin sleeveless vest $7.51 - Tons of colors Size XS-XL",
   },
   {
@@ -3537,7 +3524,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/618mtclcztkg?ismg_ol=1XxyrxNHzB5_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Chunky knit gold button down vest $17.79",
   },
   {
@@ -3547,7 +3534,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/618mnne59eti?ismg_ol=HfZVdmOh7Ex_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Asymmetrical button design vest Size S-L",
   },
   {
@@ -3557,7 +3544,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/618m9cf2whtb?ismg_ol=5h7YU0CjY10_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Button down knit Vest Size XS-L from $9.35",
   },
   {
@@ -3567,7 +3554,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/618m39emi3is?ismg_ol=HxUyEi0ttNU_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant knit vest $11.35 Size S-XL",
   },
   {
@@ -3577,7 +3564,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/618lsqkovk79?ismg_ol=7QX5G8zwVHO_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Double breasted suit style vest $12.39",
   },
   {
@@ -3587,7 +3574,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/618m1eblj4tv?ismg_ol=1epQuE74VXc_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Also available in CURVE size XL-4XL",
   },
   {
@@ -3597,7 +3584,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/618lnf6ptufd?ismg_ol=GGpuYhp1TwO_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens simple knit vest $11.43",
   },
   {
@@ -3607,7 +3594,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/618le5qgwyt1?ismg_ol=H2NvBUgPSuw_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens knit vest Comes in lots of colors Size XXS-L $9.27",
   },
   {
@@ -3617,7 +3604,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/615eqwv3wnwj?ismg_ol=EgTZySasErO_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens Maxi/Robe also available in Gray in CURVE size XL-4XL",
   },
   {
@@ -3627,7 +3614,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/615dt3h1e3vd?ismg_ol=7ZGFlYM7qIG_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Satin Maxi/Robe $33.99",
   },
   {
@@ -3637,7 +3624,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/615dh1e8m1c1?ismg_ol=6BZfQPLYV01_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Full sleeve hi neck Maxi/robe",
   },
   {
@@ -3647,7 +3634,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/615cznxfxcf1?ismg_ol=CIHBy2cSSku_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Twist tie maxi/robe From $21.69",
   },
   {
@@ -3657,7 +3644,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/615c8fb2y2ps?ismg_ol=9J0rL3dFfTK_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "High neck black Maxi/robe $13.39 Size XS-XXXL",
   },
   {
@@ -3667,7 +3654,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/615blgl4rsbl?ismg_ol=71TVNRtdeaZ_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens straight maxi/robe - Lined From $9.50",
   },
   {
@@ -3677,7 +3664,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60y0v82jakao?ismg_ol=FFuDHCfjgVu_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls brown Shabbos jumper size 4-7 $9.12",
   },
   {
@@ -3686,8 +3673,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/06/16/ae/17500734438e001d7897ad85f86ac6bccc2e4ef29f_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/51/60y0ohdqftbz?ismg_ol=FSjhbta54JS_01_KOC-C",
     store: "SHEIN",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "Girls Brown Plaid Jumper Size 4-7 $6.66",
   },
   {
@@ -3697,8 +3684,8 @@ export const products: Product[] = [
     currentPrice: 3.55,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4Cfd2Eh",
     store: "AliExpress",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "Girls Knit suspender dress Size 2-8 $7.28",
   },
   {
@@ -3708,7 +3695,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4meDkj7",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Kids Brown Linen Shabbos jumper Size 2T-7/8y $23.91",
   },
   {
@@ -3718,7 +3705,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60wun2pb8p3z?ismg_ol=1DmZMy8GgRM_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant Knit cropped cardigan $21",
   },
   {
@@ -3728,7 +3715,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60wufw8acezm?ismg_ol=7K02bmwSUg0_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant open sweater $17.27",
   },
   {
@@ -3738,7 +3725,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60wu9jcpar37?ismg_ol=6VZW0YbI8vP_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant knit sweater $21.31",
   },
   {
@@ -3748,7 +3735,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60wtwrmh6czi?ismg_ol=HYvYIz27v86_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant lace Top- 2 colors White and Off white from $13.22",
   },
   {
@@ -3758,7 +3745,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60wtmyfyw598?ismg_ol=LuhGJCx7gEA_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant Pearl Cardigan $34.36",
   },
   {
@@ -3768,7 +3755,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60wsmgdczzu8?ismg_ol=AweXAh4VAv3_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant Blouse $12.29",
   },
   {
@@ -3779,8 +3766,9 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4djo5Ez",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True! I wear it this belt",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "I wear it this belt",
   },
   {
     slug: "women-s-satin-rose-print-blouse-long-sleeve",
@@ -3789,7 +3777,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60wqzr7a8u5o?ismg_ol=4nweSGfBoSi_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant Silk Printed shirt $12.68",
   },
   {
@@ -3799,8 +3787,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60wmf04dolo6?ismg_ol=BQAHsbfX9nD_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True girls Shabbos cardigan Size 2/3- 14 From $12.97",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Girls Shabbos cardigan Size 2/3- 14 From $12.97",
   },
   {
     slug: "shein-teen-girls-casual-hooded-padded-coat-leopard",
@@ -3809,7 +3798,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60weatmm6oln?ismg_ol=6Xuyr1vyHSj_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Teen Girl padded coat Size 13-16 $24.49",
   },
   {
@@ -3819,7 +3808,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60wdxvzbg45y?ismg_ol=FaSIg75hJ19_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Teen Winter Coat Shiny, Fleece lined size 13-16 $34.49",
   },
   {
@@ -3829,7 +3818,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/51/60wdqbp1v53v?ismg_ol=8lKaEAP4Qyg_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Short Shabbos jacket - Lots of color options!",
   },
   {
@@ -3839,7 +3828,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60w7pu0yzt4l?ismg_ol=231ghp9Alz6_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Short Shabbos jacket- closes with a zipper",
   },
   {
@@ -3849,7 +3838,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60w7g0ufsl0v?ismg_ol=Iyajli8Qc88_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty short winter shabbos jacket $37.99",
   },
   {
@@ -3859,7 +3848,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60w79tvxei5j?ismg_ol=G26o5im8vC4_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Elegant off white Shabbos coat $18- right now there isonly size 14 in stock",
   },
   {
@@ -3869,7 +3858,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60w71a33txzb?ismg_ol=LCkXAcqxe0B_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Shabbos coat black and camel size 13-16 $20.39",
   },
   {
@@ -3879,7 +3868,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60w6viwv06l2?ismg_ol=4M776ZPeaIS_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Teen sizes 13-16 $13.69",
   },
   {
@@ -3889,7 +3878,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60w6nqqho9p5?ismg_ol=4afFu7WGpy4_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Shabbos jacket 3/4 length $37.14",
   },
   {
@@ -3899,7 +3888,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60w5zshysewk?ismg_ol=5Kkpy0HaCvR_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Short Shabbos Jacket $30.15",
   },
   {
@@ -3909,7 +3898,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3Cq3qFb",
     store: "AliExpress",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Jacks- Latest Kids game - My kids had i blast playing with it! $4.74",
   },
   {
@@ -3919,7 +3907,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60uc4j5tbrco?ismg_ol=0hsPbdzIEtq_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "New Color In! $34.99 Great for a Elegant Shabbos Robe! Great Reviews on the other color!",
   },
   {
@@ -3929,8 +3917,8 @@ export const products: Product[] = [
     currentPrice: 25.66,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c35r1LLf",
     store: "AliExpress",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "toddler-girl",
     description: "Elegant black Toddler girl shabbos dress with matching baby - comes in 2 colors Dress- $25.18+ $3.04 shipping 9M-3T",
   },
   {
@@ -3941,7 +3929,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4n40ywp",
     store: "AliExpress",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Baby - $23.57+ $2.80 shipping 6M-24M",
   },
   {
@@ -3951,7 +3939,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60sv1zjf9rtt?ismg_ol=0X1TtfzSBoQ_01_KOC-C",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens leopard skirt (other color/patterns in this link) $23.11 Size 0-6",
   },
   {
@@ -3961,7 +3949,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60suu3ezr5lx?ismg_ol=9XoHnZB7exy_01_KOC-C",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens leopard skirt-( has a slit in the back) Size 0-6 $19.19",
   },
   {
@@ -3971,7 +3959,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c32ptBEB",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant Brown floral Maxi/robe Size S-XXL $19.68 Free returns within 15 days",
   },
   {
@@ -3982,7 +3970,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4rZXnrh",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens Velour shabbos robes brown and black - jumpers, turtlenck and cardigans size 2-16 $23.50-$36",
   },
   {
@@ -3992,7 +3980,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qojnpnk4st?ismg_ol=JMfjNPPlO02_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant jumper maxi/robe Size S-XL $13.89",
   },
   {
@@ -4002,7 +3990,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qorns6056t?ismg_ol=Ktbjc8FD8Wu_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Also Available in Shein Curve - Size XL-5XL $14.09",
   },
   {
@@ -4012,7 +4000,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qmosjyc7r3?ismg_ol=8DamMK3KbzF_01_KOC-C",
     store: "SHEIN",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Full sleeve collared robe $21.67 Size S-XL",
   },
   {
@@ -4022,7 +4010,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qm9rxgma19?ismg_ol=GAe4YrduGQ8_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Drape tie maxi/robe Sizze S-XL $40.41",
   },
   {
@@ -4032,7 +4020,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qlu7kphljk?ismg_ol=5A9An0CXp8B_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant velour full sleeve shabbos robe $29.99 Size S-XXL",
   },
   {
@@ -4042,7 +4030,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qgy61fibyo?ismg_ol=9qPlceZnULE_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "spaghetti strap jumper/ maxi dress Size XS-XL From $23.29",
   },
   {
@@ -4052,7 +4040,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qgkaum1uuq?ismg_ol=1FhYSei2XFB_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant pleated Maxi/robe Size S-XXL. $17.99",
   },
   {
@@ -4062,7 +4050,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qg5i48xr9z?ismg_ol=3gLTB32GaAE_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "fitted maxi jumper/robe $18.79 Size XS-XL",
   },
   {
@@ -4072,7 +4060,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qfqtbyr1vm?ismg_ol=2a7BHH6yapO_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Flowy maxi/robe - can be used as pre maternity too! Size XS-XXL $41",
   },
   {
@@ -4082,7 +4070,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qfdjui5nix?ismg_ol=11vVW2PFxeR_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "High neck maxi/ robe size S-XXXL $18.62",
   },
   {
@@ -4092,7 +4080,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qez4xdj80s?ismg_ol=2pu17D1Lmox_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Full sleeve maxi/robe Size S-XL color options available From $16.42",
   },
   {
@@ -4102,7 +4090,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60qekk35m160?ismg_ol=4xs2rKElCR3_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Maxi jumper/Robe $15.59 Size S-XXL",
   },
   {
@@ -4112,7 +4100,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60q8jiorkqxj?ismg_ol=9TfdqSFZ6yP_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Women Maxi Jumper- robe add a printed turtleneck/shirt or cardigan. Black is satin- not sure about the other colors Size S-XL from $16.51",
   },
   {
@@ -4122,7 +4110,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60pbmgqi4y99?ismg_ol=GppYB3V1QbU_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "New In! Girls dark gray shabbos coat size 2/3y - 7 - collar is removable for a different look! $17.69",
   },
   {
@@ -4133,7 +4121,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4PBMS9t",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Girls shabbos jumper size 18M-6T $15.17 Free returns within 15 days use code LDUS02 for $2 off orders $15",
   },
   {
@@ -4142,8 +4130,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sce6d83621bde4a8fabeeca4a9c8b6038j.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3WrLYX9",
     store: "AliExpress",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "Elegant Girls velour dress Size 2T-7 $18.72+ $4.88 shipping Free returns within 15 days use code LDUS02 for $2 off orders $15+",
   },
   {
@@ -4153,7 +4141,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60muk3keqyoz?ismg_ol=FqOjKvNYxPS_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Elegant baby/toddler dress up to size 3",
   },
   {
@@ -4162,8 +4150,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2024/10/22/2e/1729586855887d4460fed1f82807d6ad3d5a0de4b7_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/50/60mr9xlrwnyx?ismg_ol=1J0LS2Qb3zB_01_KOC-C",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "baby-girl",
     description: "Beautiful Baby girls knit set $13.27",
   },
   {
@@ -4172,8 +4160,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/09/10/82/1757499194b6485bd74d2adc593767430e3d7f2186_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/50/60mr29dg4zdz?ismg_ol=7CyCRbd1ARl_01_KOC-C",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Beautiful baby knit set $16.99",
   },
   {
@@ -4183,7 +4171,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60lhdt23ysnr?ismg_ol=11BQ6gyGjAC_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Houndstooth Knit turtleneck size XS-XXL $9.71",
   },
   {
@@ -4192,8 +4180,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/10/23/25/176118824024bc547a7807e3c6ceb724d743d4720c_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/50/60lgysfnrn00?ismg_ol=GsC6ziJ4DZZ_01_KOC-C",
     store: "SHEIN",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
     description: "Womens floral turtleneck Perfect for layering Size XS-XL $6.47",
   },
   {
@@ -4203,7 +4191,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60lgkx8ugs75?ismg_ol=7Q27wyaUekX_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens printed turtleneck- perfect for layering under a robe $8.29",
   },
   {
@@ -4213,7 +4201,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60lge8j2kgun?ismg_ol=DOXagHUwpMw_01_KOC-C",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "girls leopard skirt size 8-12",
   },
   {
@@ -4222,8 +4210,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/smartflow/2026/08/12/d8/17864692130d1659a8c4e676c401f96fcadba88bad_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/50/60l7qjmaz0os?ismg_ol=2QiPMQsXGdV_01_KOC-C",
     store: "SHEIN",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "toddler-boy",
     description: "The corduroy leopard family edit: Baby/Toddler sweat set size 6/9M-2/3y $13.59- use it with a black legging if you don’t like the pants",
   },
   {
@@ -4233,7 +4221,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60l8r3nxan0l?ismg_ol=Cu8KubYYDtf_01_KOC-C",
     store: "SHEIN",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Baby/Todler overalls Size 3/6M-2/3Y from $6.31 (The corduroy leopard family edit: Baby/Toddler sweat set size 6/9M-2/3y $13.59- use it with a black )",
   },
   {
@@ -4243,7 +4231,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60l94h3gl07u?ismg_ol=EsrWZth7Gah_01_KOC-C",
     store: "SHEIN",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Baby/Todler - option 2 Size 0/1M-2/3Y from $6.89 (The corduroy leopard family edit: Baby/Toddler sweat set size 6/9M-2/3y $13.59- use it with a black )",
   },
   {
@@ -4253,7 +4241,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60l9z22ph0y3?ismg_ol=2fe0xar5N0K_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Young boy leopard shirt size 4-7 $8 (The corduroy leopard family edit: Baby/Toddler sweat set size 6/9M-2/3y $13.59- use it with a black )",
   },
   {
@@ -4262,8 +4250,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/11/12/21/17629111853ddf332b8549f62b252f691ad11a7d47_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/50/60lasnjeg9vw?ismg_ol=3SepuhV5smZ_01_KOC-C",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "toddler-boy",
     description: "Toddler boy shirt Size 6/9M-2/3y $5.60 (The corduroy leopard family edit: Baby/Toddler sweat set size 6/9M-2/3y $13.59- use it with a black )",
   },
   {
@@ -4273,7 +4261,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60la81nry0zp?ismg_ol=99PyMWwfyts_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Toddler girls jumper up to size 2/3y $5.03 (The corduroy leopard family edit: Baby/Toddler sweat set size 6/9M-2/3y $13.59- use it with a black )",
   },
   {
@@ -4283,7 +4271,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60lb8png9bt6?ismg_ol=5yIKSqpWKY1_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls sweatshirt size 8-12 $8.15 (The corduroy leopard family edit: Baby/Toddler sweat set size 6/9M-2/3y $13.59- use it with a black )",
   },
   {
@@ -4293,7 +4281,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60lbf2j1d3kw?ismg_ol=KIRz6QS5cEA_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys half zip size 8-12 from $8.84 (The corduroy leopard family edit: Baby/Toddler sweat set size 6/9M-2/3y $13.59- use it with a black )",
   },
   {
@@ -4304,7 +4292,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3IJkxUj",
     store: "AliExpress",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Boys/girls kipling imitation black briefcase $9.19",
   },
   {
@@ -4313,8 +4301,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/07/21/4d/1784615928076d5db31b103b70ff09526d6b845b5e_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/50/60hwq1z8z3fm?ismg_ol=ARYUcCDpawl_01_KOC-C",
     store: "SHEIN",
-    category: "tops",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "girls",
     description: "2 Piece corduroy jumper and Tshirt size 4-7 $12.99",
   },
   {
@@ -4324,7 +4312,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60hwhvzn6x4b?ismg_ol=5lv2m9SdO1r_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "So pretty! Girls weekday corduroy leopard dress size 4-7",
   },
   {
@@ -4334,7 +4322,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60g3feip5sh9?ismg_ol=8nTNKdhsCOR_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Pretty Maternity turtleneck Size S-XXL",
   },
   {
@@ -4344,7 +4333,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60g2q4xge421?ismg_ol=HbmQgUVJjUi_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful brown wrap sweater sizeXS-L $17.79",
   },
   {
@@ -4354,7 +4343,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60g2i2vwu1pd?ismg_ol=8eDxKy9Wfzm_01_KOC-C",
     store: "SHEIN",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens Burgundy& Brown cardigan size XS-XL",
   },
   {
@@ -4363,8 +4352,9 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/dps/PS202608251296/eaf55364075727e84aa4a582dc48a21708f9a1b91c35367828de8de0245acf8f_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/50/60g293au60w0?ismg_ol=2vq9F3YgwZf_01_KOC-C",
     store: "SHEIN",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "women",
+    holidays: ["yom-tov"],
     description: "Pretty Womens sweater - perfect for Chol Hamoed 3 styles size XS-XXL",
   },
   {
@@ -4373,8 +4363,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/smartflow/2026/08/25/cc/1787623317ad95d4b85a21347212616271f28e7335_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/50/60g1y2pmkeio?ismg_ol=9jHZxD6CUZa_01_KOC-C",
     store: "SHEIN",
-    category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "women",
     description: "Womens brown 2 piece set $29.29 size XS-L 30% cotton!",
   },
   {
@@ -4384,7 +4374,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60g1ot9dtuhq?ismg_ol=JwU08nRpN09_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful womens shirt size XS-XL $18.33",
   },
   {
@@ -4395,7 +4385,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4mT4Vwf",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens Pretty knit sweater Size M-XXL only $12.81 !",
   },
   {
@@ -4406,7 +4396,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3wYPC9p",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty women knit top comes in 4 colors size S-3XL",
   },
   {
@@ -4417,7 +4407,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3eKSsUJ",
     store: "AliExpress",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens black everyday top size L-4XL",
   },
   {
@@ -4428,7 +4418,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2QhQX7Z",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Adorable baby girl knit shabbos set - sweater and pants sold separately",
   },
   {
@@ -4439,7 +4429,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3BzFnzH",
     store: "AliExpress",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls plaid midi skirt size 3-10/12",
   },
   {
@@ -4450,7 +4440,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4MurnCL",
     store: "AliExpress",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Matching girl skirt-runs short 2/3-14 $11.22",
   },
   {
@@ -4461,7 +4451,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3W1fK5v",
     store: "AliExpress",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Boys plaid shorts 12/18m-5/6t $9.20",
   },
   {
@@ -4472,7 +4462,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3l4zAoR",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "More baby/toddler options up to size 3",
   },
   {
@@ -4483,7 +4473,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c32qfjt9",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Lots of baby/toddler - up to size 3 options",
   },
   {
@@ -4494,7 +4484,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4kKVDWP",
     store: "AliExpress",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Another off white baby/toddler set up to size 6",
   },
   {
@@ -4504,8 +4494,8 @@ export const products: Product[] = [
     currentPrice: 10.17,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4deybBp",
     store: "AliExpress",
-    category: "tops",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "toddler-girl",
     description: "Adorable Baby/toddler set- up to size 6",
   },
   {
@@ -4516,7 +4506,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3DuWVeJ",
     store: "AliExpress",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Pretty Baby/Toddler matching up to size 6/7 $13",
   },
   {
@@ -4527,7 +4517,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3tdy7Ph",
     store: "AliExpress",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Beautiful kids brown plaid skirt size 2-15/16",
   },
   {
@@ -4538,7 +4528,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2IsVf31",
     store: "AliExpress",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Baby/ Toddler Black option up to size 6",
   },
   {
@@ -4548,8 +4538,8 @@ export const products: Product[] = [
     currentPrice: 7.01,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3P9P1sb",
     store: "AliExpress",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "toddler-girl",
     description: "Another baby/toddler option up to size 6 $15-$16",
   },
   {
@@ -4560,7 +4550,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c31eTgPV",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Matching baby/todder up to size 2-3 $13-$14",
   },
   {
@@ -4570,8 +4560,7 @@ export const products: Product[] = [
     currentPrice: 16.75,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c39mmqSF",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "home",
     description: "Desktop acrylic Rebbe pictures- perfect gift for husbands desk $16.85",
   },
   {
@@ -4580,8 +4569,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/09/26/0f/1758894110e6a3f500e0f568e15471216565bc0bd3_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/50/60ag0n5c6rep?ismg_ol=CAPzK1VMhGo_01_KOC-C",
     store: "SHEIN",
-    category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "boys",
     description: "Boys plaid button down shirt size 7-12 $9.27",
   },
   {
@@ -4591,7 +4580,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60aftokf1euj?ismg_ol=84FqMpDVjtE_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Beautiful boys collared tshirt size 4-12 $9.52",
   },
   {
@@ -4601,7 +4590,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60afag0ki5jj?ismg_ol=6pu23AmB2SF_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys stripe Tshirt with collar size 6-12 $8.84",
   },
   {
@@ -4610,8 +4599,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2024/11/28/67/1732763808c87946d85aed0c8802a2e4c087a6ad1b_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/50/60aa971d0p5j?ismg_ol=H4FAcLhKjYz_01_KOC-C",
     store: "SHEIN",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "boys",
     description: "Matching young boys corduroy shirt size 4-7 $5.10 size 4-7",
   },
   {
@@ -4621,7 +4610,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60aa2cehxu6r?ismg_ol=CVoQQUhHJpL_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Corduroy boys shirt size 8-12 $10.50",
   },
   {
@@ -4631,7 +4620,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60a9uq5736ux?ismg_ol=JPGuRcRM7bo_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys denim shirt size 8-12 $9.27 60% cotton",
   },
   {
@@ -4641,7 +4630,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60a9or2u08cd?ismg_ol=58oL9FsVXKX_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Oversized boys knit sweater size 8-12 $13.99",
   },
   {
@@ -4651,7 +4640,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/50/60a9flko01o4?ismg_ol=8tlozBuxc4M_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys winter knit sweater Size 8-13/14 $9.35",
   },
   {
@@ -4661,7 +4650,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/6084ytmcs5q9?ismg_ol=4rOiT90TsOe_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens suede dress - 3 colors. size XS-XL $27.21",
   },
   {
@@ -4671,7 +4660,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/607pymxpzhh9?ismg_ol=GKuPzq0tlv6_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful winter plaid brown womens dress $35.97 Size XS-XXL Brown belt - belt has no returns $5.43 ttps://onelink.shein.com/49/6084la9q00fl?ismg_ol=JrHMWQ6Ytf8_01_KOC-C",
   },
   {
@@ -4680,8 +4669,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/spmp/2025/10/23/4f/176119800172026cb242bfa9016bd992dd0c8047f1_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/607kg2gqwoz0?ismg_ol=J0yCgYOuKHg_01_KOC-C",
     store: "SHEIN",
-    category: "sets",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "women",
     description: "Plaid 2 piece hair clip $2.47",
   },
   {
@@ -4690,8 +4679,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_spmp/2024/11/06/25/17308768513759e4d81cfdd33990d488cbdb59db63_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/607k3klpxgqv?ismg_ol=9kJXLm4Yn5Q_01_KOC-C",
     store: "SHEIN",
-    category: "sets",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "toddler-girl",
     description: "2 piece Toddler hair clip $2.21",
   },
   {
@@ -4702,7 +4691,7 @@ export const products: Product[] = [
     affiliateUrl: "https://www.aliexpress.us/item/3256810212416993.html?src=google&src=google&albch=shopping&acnt=231-612-1468&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=_oFgTQeV&gclsrc=aw.ds&albagn=888888&ds_e_adid=&ds_e_matchtype=&ds_e_device=c&ds_e_network=x&ds_e_product_group_id=&ds_e_product_id=en3256810212416993&ds_e_product_merchant_id=106449600&ds_e_product_country=US&ds_e_product_language=en&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=23333650963&albag=&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gad_campaignid=23324517798&gbraid=0AAAABBR8kP3lx7ZZyOoFrg-Re8506GgL5&gclid=Cj0KCQjwnbrUBhDOARIsAKKhPpdWnEplQe1JqhMeSuyVbvGe_uGOflrbMFQP--wXENtyutTb6lsYP4caAtXyEALw_wcB&gatewayAdapt=glo2usa",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Brown Matching dress - $12.90 and romper $11.03",
   },
   {
@@ -4712,7 +4701,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/607cz8i64u8f?ismg_ol=Jz8fc2oPexQ_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Beautiful Toddler girl dress $9.68",
   },
   {
@@ -4722,7 +4711,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/607d6ez76qsa?ismg_ol=7NXdWsWQduB_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Matching baby knit top $7.69",
   },
   {
@@ -4733,7 +4722,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2RaMxnD",
     store: "AliExpress",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Pretty shirt size 3/4-7/8",
   },
   {
@@ -4742,8 +4731,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/12/17/77/1765953095523868bc9ac905c16e23915f7a82de8b_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/604up0vcljxd?ismg_ol=GWKUYfH5G4R_01_KOC-C",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "toddler-girl",
     description: "double collar toddler button down blouse - other options available",
   },
   {
@@ -4753,7 +4742,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/604uhem1a1qs?ismg_ol=0S6CZefTpRb_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Big collar Toddler button down blouse",
   },
   {
@@ -4762,8 +4751,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2024/12/27/17/1735286905ab7a8c6a81c5343703ebe1f08a6ccb5d_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/604u683r0u8v?ismg_ol=24RT2UXBZFq_01_KOC-C",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "toddler-girl",
     description: "another toddler blouse option $4.07",
   },
   {
@@ -4772,8 +4761,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/10/25/3e/17614046116e168e89691f1ed063bbb17247951a8f_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/604ts12qsisy?ismg_ol=8rfHearj655_01_KOC-C",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "toddler-girl",
     description: "Different options Toddler blouse - perfect for layering under a romper... $5 size 6/9m-2-3y",
   },
   {
@@ -4783,7 +4772,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/603dd7sr7kyk?ismg_ol=1ekA6VLvZM3_01_KOC-C",
     store: "SHEIN",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Pretty girls Jumper and shirt set size 2/3-7 $12.60",
   },
   {
@@ -4792,8 +4781,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/01/09/17/176793564560878d8c7e942d590189c7434bafe89c_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/603c9n8fxdcg?ismg_ol=FSzsKDe3hqs_01_KOC-C",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "toddler-girl",
     description: "Matching to above toddler girls knit 2 piece skirt set size6/9M-2/3y",
   },
   {
@@ -4804,7 +4793,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4UISveF",
     store: "AliExpress",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful black Organza floral shirt size XL- XXL $16.65 Free shipping 15 day free return",
   },
   {
@@ -4813,8 +4802,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/06/18/75/17817741984b684d7c1ebb5b97e5dca300559ab818_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/600qxdnjk0ud?ismg_ol=6I0VnDkTx9a_01_KOC-C",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "toddler-girl",
     description: "lots of options 2 Piece baby/Toddler girl set",
   },
   {
@@ -4823,8 +4812,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/07/09/a2/1752031078cdb97b06d4e16e066a739ac20de5ed06_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/600qmsulipu0?ismg_ol=2K2jRgZCC5g_01_KOC-C",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "toddler-girl",
     description: "So cute! Baby/toddler girls 2 piece set Size 6/9M-2/3Y",
   },
   {
@@ -4833,7 +4822,7 @@ export const products: Product[] = [
     affiliateUrl: "https://spl.it/oTVpJL",
     store: "Mango",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "MANGO Long sleeve plaid dress size XXS-4XL $59.99- pair it with a brown cardigan if you want a dressier look.",
   },
   {
@@ -4842,7 +4831,7 @@ export const products: Product[] = [
     affiliateUrl: "https://spl.it/ewD8b7",
     store: "Mango",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful MANGO plaid midi skirt size XXS-4XL $69.99",
   },
   {
@@ -4853,7 +4842,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3HcTNfl",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Mock neck Shabbos sweater comes in 3 colors $8.14+$9.29 shipping Free returns within 15 days",
   },
   {
@@ -4864,7 +4853,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3YHCz2F",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Beautiful Speckled knit Shabbos sweater Gray & Beige size 3M-6T Starting at $18 Free returns within 15 days",
   },
   {
@@ -4874,7 +4863,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4l39oU7",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Beautiful Shabbos chunky sweater Size 18M-8Y $17.62 +$4.88 shipping. Use coupon USBS03 for $3 off $15 Free returns within 15 days",
   },
   {
@@ -4884,7 +4873,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zxd5cwdp1f4?ismg_ol=3sWPGeaO5Mw_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys chunky knit sweater 3/6M-6y. $14.89 Other colors available too",
   },
   {
@@ -4894,7 +4883,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zwog1ovcqhg?ismg_ol=Kqxibp3dnOL_01_KOC-C",
     store: "SHEIN",
     category: "shoes",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Mary Jane shoes- single or double straps. black or brown suede starting from $14.98",
   },
   {
@@ -4904,7 +4893,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zwe53vpp9bs?ismg_ol=2Sa95EPXveZ_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful weekday top size XL-5XL $20.13",
   },
   {
@@ -4914,7 +4903,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zwdw69nofqy?ismg_ol=0AXvKIR0ITn_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Leopard perfect everyday top Sizes XS-Xl $11.29",
   },
   {
@@ -4924,7 +4913,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zwdj6ncpf3a?ismg_ol=DetkRH79l6P_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Leopard pefect everyday top size XL-3XL $14.69",
   },
   {
@@ -4934,7 +4923,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zwctbcrhes4?ismg_ol=0I0dnsQYUjv_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty Shabbos cardigan comes in lots of colors size XL-3XL $16.79",
   },
   {
@@ -4944,7 +4933,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zwcimlqktjx?ismg_ol=EBwx34WXmxo_01_KOC-C",
     store: "SHEIN",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens weekday top size comes in a few colors XL-3XL $21.41",
   },
   {
@@ -4954,7 +4943,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zwc4zb1j5li?ismg_ol=94vrGzgtt2P_01_KOC-C",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Navy plaid weekday skirt $18.29",
   },
   {
@@ -4964,7 +4953,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zw7cpwwglfq?ismg_ol=3QICAyQla6U_01_KOC-C",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful skirt Grey and brown",
   },
   {
@@ -4974,7 +4963,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zvwciih9cff?ismg_ol=JsXuZljb1c2_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant Navy wedding dress fully lined $52",
   },
   {
@@ -4984,7 +4973,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5ztyabb6eqmz?ismg_ol=DeMdjOLjmMF_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Maxi/ Gown $34.45",
   },
   {
@@ -4994,7 +4983,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3dLcNcJ",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Teens/ Womens dress $16.70. 15 day free returns",
   },
   {
@@ -5005,7 +4994,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c41OnLYn",
     store: "AliExpress",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Kids coat size 12M-6T Has great reviews lots of colors. 15 day free return $18.88",
   },
   {
@@ -5015,7 +5004,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5ztw3pwuobwa?smg_ol=IwtCmLVVwfx_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Gorgeous organza top $11.17",
   },
   {
@@ -5024,8 +5013,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/07/18/c6/1784356539f0311906da9c5775bb55e0176d9d187e_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/5ztvxquheclh?ismg_ol=9cxqNba7sLQ_01_KOC-C",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
     description: "Beautiful Chiffon top $12.40",
   },
   {
@@ -5034,8 +5023,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/spmp/2026/07/10/ee/1783654332bdb7bb703c547ef282313ab584bcdae6_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/5ztvm0lvibzs?ismg_ol=J4Zu1yXcluM_01_KOC-C",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
     description: "Pretty Organza high neck top $11.77",
   },
   {
@@ -5045,7 +5034,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5ztveiankdft?ismg_ol=6M9Y0cV13pi_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty organza top $20.19",
   },
   {
@@ -5056,7 +5045,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4dZvHqF",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys Winter Shabbos coat 2 colors Blue and beige 15 day returns $35",
   },
   {
@@ -5067,7 +5056,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2JaF9OL",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls winter Shabbos coat Size 3T-12T 3 colors pink, beige, purple. price starting from $16.48. 15 day returns",
   },
   {
@@ -5077,7 +5066,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zqgnskwn9jk?ismg_ol=FyiofTJpmgM_01_KOC-C",
     store: "SHEIN",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls Cardigan size 4-7 $8.79",
   },
   {
@@ -5087,7 +5076,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zqg6j25ptt3?ismg_ol=EkseUAkDDmU_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys half zip sweater size 4-7 $13.89",
   },
   {
@@ -5097,7 +5086,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zqgc89dfj8j?ismg_ol=9c50EEXaI3f_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Matching baby size 3/6m-2/3y $13.96",
   },
   {
@@ -5107,7 +5096,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zqg0i0rtcmh?ismg_ol=EgajmHwv3WC_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls corduroy dress size 4-8 $13.39",
   },
   {
@@ -5116,8 +5105,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/smartflow/2026/08/12/1f/17865169058d756165633d38ec85460804a3f4b96c_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/5zqfu9389t81?ismg_ol=BtAWwZmpUcL_01_KOC-C",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "women",
     description: "Satin wedding dress $27.29",
   },
   {
@@ -5127,7 +5116,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zqfcfu7buxi?ismg_ol=3UjQGoAsRLj_01_KOC-C",
     store: "SHEIN",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Simple cardigan 100% cotton - lots of other color options available, not all colors are cotton $16.59",
   },
   {
@@ -5136,8 +5125,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/07/23/54/178477154805933024f7592fe9eccaa3dd5e365d8e_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/49/5zqezc9tg5cj?ismg_ol=2QxxDbaXzXz_01_KOC-C",
     store: "SHEIN",
-    category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
     description: "Beautiful Organza polka dot shirt- can be dressed up or down depending on the skirt $13.19",
   },
   {
@@ -5147,7 +5136,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/49/5zqeqmjvu52a?ismg_ol=6cQJ7zp1KLz_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful weekday sweater $21.79",
   },
   {
@@ -5158,7 +5147,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4rgG1tp",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "I Just came cross this cute egg separator! $4.27 free shipping",
   },
   {
@@ -5168,7 +5156,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2JgFd3l",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Womens shabbos Robe",
   },
   {
@@ -5178,7 +5166,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c40dKNex",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful 14k gold filled ring has great reviews and 15 day return. Ring size 5-10 Price starting at $38.32",
   },
   {
@@ -5188,7 +5176,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3KTozjV",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Freshwater pearl earrings- Has great reviews! $2.89+ $3.04 shipping different size options available",
   },
   {
@@ -5197,8 +5185,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/spmp/2025/11/12/36/1762912870c3fc1d76c4a43801697fb02d13df7239_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/48/5zh8n95s1xly?ismg_ol=I8K48Sz5fZh_01_KOC-C",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "coats-jackets",
+    audience: "boys",
     description: "Brown Shabbos Boys Shabbos coat Size 4-12 $35.59",
   },
   {
@@ -5208,7 +5196,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zh7lxhpvpjy?ismg_ol=BeRQ7am3BEs_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Fur lined Shabbos coat Size 4-7 Black- $19.49 Gray-$14.24",
   },
   {
@@ -5218,7 +5206,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zh7wy2xiqkl?ismg_ol=36yceXmLNPD_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Gray comes in size 9/12M- 2/3Y $8.54",
   },
   {
@@ -5228,7 +5216,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zh4268obt35?ismg_ol=1qywjb4is68_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Hooded Shabbos coat Size 2/3-8 $13.29",
   },
   {
@@ -5238,7 +5226,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zh3rx9w1tmj?ismg_ol=C0guvz2ExuC_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys Plaid Shabbos coat size 4-8 $11.79",
   },
   {
@@ -5248,7 +5236,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zh3goskmgch?ismg_ol=5QvNdn9f4HK_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Zippered Shabbos coat fur lined $15.22 size 4-7",
   },
   {
@@ -5258,7 +5246,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zh388xsm4ha?ismg_ol=4s7Fe6c2APe_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Double breasted hooded boys Shabbos coat Size 4-7 $14.49",
   },
   {
@@ -5268,7 +5256,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zh2wskc2nlt?ismg_ol=46L189KK5Ab_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Gorgeous padded warm boys Shabbos coat size 3-11 $35.71",
   },
   {
@@ -5278,7 +5266,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zh18xylrbn7?ismg_ol=7HXBhgcCDa6_01_KOC-C",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful oversized jacket comes in off white and brown $19.44",
   },
   {
@@ -5288,7 +5276,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zh0oi029zx1?ismg_ol=KDqN84odV6u_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Hollow out lace elegant top - has a pretty back bow detail. comes in Black and white $13.49",
   },
   {
@@ -5298,7 +5286,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zh0e1567o69?ismg_ol=89it8c71dno_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Adorable Elegant Top $10.69",
   },
   {
@@ -5308,7 +5296,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zf5v5enwbam?ismg_ol=EIZAaP57Huu_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Easy everyday ribbed top Black and this green are Cotton the other colors are not. $8.99",
   },
   {
@@ -5318,7 +5306,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zf50megbdbg?ismg_ol=9DHvzagylXB_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful weekday top - Runs big, Check the measurements $21.29",
   },
   {
@@ -5328,7 +5316,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zdzgf9qhhg2?ismg_ol=DluTzquROn0_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Chiffon lined gown $48.99",
   },
   {
@@ -5339,7 +5327,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3o5kHjt",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Women/Teen velour shabbos robe",
   },
   {
@@ -5350,7 +5338,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2xNpxtH",
     store: "AliExpress",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Adorable family matching Pajamas /Tunic/ Nightgown- has great reviews",
   },
   {
@@ -5360,7 +5348,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zdloew1l2dw?ismg_ol=BenSylByV4b_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant white long sleeve satin blouse $12.69",
   },
   {
@@ -5370,7 +5358,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zdlg6xe8olb?ismg_ol=981EbsRVVEK_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty brown long maxi dress/ gown $37.60",
   },
   {
@@ -5380,7 +5368,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zdl71f8fiq9?ismg_ol=5ujxtlCX6UM_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cute and elegant weekday sweater top $18.97",
   },
   {
@@ -5390,7 +5378,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zdl0aqfd1lo?ismg_ol=7rZXK2Ivgcn_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "2 New colors added on this Shabbos sweater- Navy and Brown $31.20",
   },
   {
@@ -5400,7 +5388,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zdkilffzbla?ismg_ol=5CIOSGrWXC8_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "New Brown color added on this beautiful Shabbos sweater - dress it up or down depending on the skirt",
   },
   {
@@ -5410,7 +5398,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zdk2laf3aps?ismg_ol=EcjClO5O3fX_01_KOC-C43",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant Long brown Shabbos/wedding satin skirt $12.25",
   },
   {
@@ -5420,7 +5408,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zbmyr7ikdn6?ismg_ol=CfDjXwgNyEK_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "New in! Girls Pink corduroy jumper size 4-7 starting from $4.99",
   },
   {
@@ -5430,7 +5418,7 @@ export const products: Product[] = [
     affiliateUrl: "https://spl.it/2fZJHT",
     store: "Temu",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Temu Adorable baby girl romper size 6/9M- 2/3T $12.52",
   },
   {
@@ -5441,7 +5429,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3yooh55",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Easy kids dress! size 18M- 6T $10.55+ $8.62 shipping",
   },
   {
@@ -5451,7 +5439,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3Z21asR",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Baby bracelet lengths from 9cm- 18cm",
   },
   {
@@ -5461,7 +5449,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zb8k3y1p5br?ismg_ol=COhF2CXtTf3_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Easy, pretty everyday sweater top",
   },
   {
@@ -5471,7 +5459,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zb805qshgab?ismg_ol=CQpgmXyGYCg_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cotton everyday top $12.57",
   },
   {
@@ -5481,7 +5469,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zb76u5983ee?ismg_ol=EFeNPnP8lPJ_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Shabbos Cardigan sweater $26.91",
   },
   {
@@ -5491,7 +5479,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5zb6p8sc5ai9?ismg_ol=LcHrd7JZbWS_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Perfect house top $16.80",
   },
   {
@@ -5500,8 +5488,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S48045003a4224321acfd3d431cd7ec24d.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3Fhk5np",
     store: "AliExpress",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "girls",
     description: "More EM",
   },
   {
@@ -5510,7 +5498,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4WghuZp",
     store: "AliExpress",
     category: "other",
-    recommendationLabel: "chosen_for_look",
     description: "AW26 Childrens EM",
   },
   {
@@ -5520,7 +5507,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3jn5cun",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "AW26 Childrens LOU dresses, tops, skirts...",
   },
   {
@@ -5530,7 +5517,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c39FpYkB",
     store: "AliExpress",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Family matching blue corduroy collection",
   },
   {
@@ -5540,7 +5527,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3ZyhcuP",
     store: "AliExpress",
     category: "other",
-    recommendationLabel: "chosen_for_look",
     description: "Family matching brown corduroy collection",
   },
   {
@@ -5550,7 +5536,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5za7esrxebsr?ismg_ol=KONuqAdh2Ul_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Organza colored gown",
   },
   {
@@ -5560,7 +5546,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5za5l6zxcx7k?ismg_ol=Dui0HUbYElv_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful puff sleeve pintuck gown- has great reviews - reviews show this as floor length",
   },
   {
@@ -5570,7 +5556,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5za4rjk7i1p5?ismg_ol=DyMnULEc88X_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Full lace Gown summer and winter colors",
   },
   {
@@ -5580,7 +5566,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5z7uc8yxep8h",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "New in! Beautiful off white Gown $27.39",
   },
   {
@@ -5590,7 +5576,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5z7u4etiautg",
     store: "SHEIN",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty Mocha brown cardigan sweater $18.77",
   },
   {
@@ -5600,7 +5586,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5z7tmtgl58om",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful ivory sweater $15.28",
   },
   {
@@ -5610,7 +5596,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5z7sv51z7fc6",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys Corduroy shirts. Other colors available $9.22",
   },
   {
@@ -5620,7 +5606,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5z7sdxi9wax0",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Adorable kids reversible puffer vest $12.59",
   },
   {
@@ -5629,8 +5615,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/06/30/89/178278770892afe9b26b8a9694777ec5757c9fc335_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/48/5z7slrnoy1jk",
     store: "SHEIN",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "coats-jackets",
+    audience: "girls",
     description: "Matching Big girl version size 8-12 $10.99",
   },
   {
@@ -5639,8 +5625,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/06/25/39/17823710881ba470c726f34aa06d4b2647ed993d8d_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/48/5z7s5fohfsqo",
     store: "SHEIN",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "skirts",
+    audience: "women",
     description: "Womens Beautiful brown plaid skirt",
   },
   {
@@ -5649,8 +5635,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sc7aae1831a464f2bbf40a404cb5aac36i.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4mg0siF",
     store: "AliExpress",
-    category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "girls",
     description: "Brown corduroy jumper- comes with the shirt. size 4t-9 $20",
   },
   {
@@ -5660,7 +5646,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5z6b1grb5o4c",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls plaid shabbos dress size 4-7 $16.37",
   },
   {
@@ -5670,7 +5656,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5z6auxymr4zx",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty Vintage looking Blouse $6.65",
   },
   {
@@ -5680,7 +5666,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4lTfHOJ",
     store: "AliExpress",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cute Women's striped sweater $23.07",
   },
   {
@@ -5689,8 +5675,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S4e918fe8d5b645ae95475e963d4caa45K.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c348mqw7",
     store: "AliExpress",
-    category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    category: "pajamas",
+    audience: "unisex-kids",
     description: "Adorable AS Pj collection use this code for $1 offSB521PVHYAK5",
   },
   {
@@ -5699,8 +5685,7 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S36660e9b359149a7a487c7b1fd8b4057J.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c43qtCYB",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "kitchen",
     description: "Le Creuset imitation dutch oven - has great reviews",
   },
   {
@@ -5710,7 +5695,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2uhnNd9",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Le Creuset Heart Shaped Dish",
   },
   {
@@ -5718,8 +5702,7 @@ export const products: Product[] = [
     name: "Le Creuset",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c43rJHH9",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "kitchen",
     description: "Le Creuset",
   },
   {
@@ -5729,7 +5712,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5z2f4yh64if3",
     store: "SHEIN",
     category: "sandals",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "More Kids uggs $10.48",
   },
   {
@@ -5739,7 +5722,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/48/5z27t61ezpy3",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant wedding/vort dress $79.39",
   },
   {
@@ -5748,8 +5731,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sbbe0edd98364470ebfee3b17eed4b894r.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3JqDBTZ",
     store: "AliExpress",
-    category: "sandals",
-    recommendationLabel: "chosen_for_look",
+    category: "boots",
+    audience: "unisex-kids",
     description: "Kids Uggs size 21-36 lots of colors and bootie style also",
   },
   {
@@ -5759,7 +5742,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3J7FWHh",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Shabbos shoes",
   },
   {
@@ -5768,8 +5751,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sf57d711ef7ef4166b44ddaf63922ab4f3.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4ECMayX",
     store: "AliExpress",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "shoes",
+    audience: "unisex-kids",
     description: "Leather kids shoes",
   },
   {
@@ -5778,8 +5761,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S2ef59693562c482fbd28c0d5729b59c5f.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3GcWA5t",
     store: "AliExpress",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "The New Society Leopard dress Size 12m-12y $47",
   },
   {
@@ -5789,7 +5772,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yv36xgwhnci",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls black denim shirtdress size 8-12 $21.59",
   },
   {
@@ -5799,7 +5782,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yv2s4qk3j9p",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Pretty boys shabbos sweater off white with brown stitching 6/9M-2/3y",
   },
   {
@@ -5809,7 +5792,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yv2713nr41h",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens cropped coat $43.09",
   },
   {
@@ -5819,7 +5802,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yt6alp86ipn",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys cute top size 4-7",
   },
   {
@@ -5829,7 +5812,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2uA0iht",
     store: "AliExpress",
     category: "other",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["rosh-hashanah"],
     description: "Rosh hashana Acrylic Simanin 1 piece-$14.58 8 pieces $28.38",
   },
   {
@@ -5839,7 +5822,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3VsN4nH",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Looking for the perfect Shabbos gift? Havdala tray $21.98",
   },
   {
@@ -5849,7 +5831,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c36jjINZ",
     store: "AliExpress",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["sukkos"],
     description: "Adorable 3d puzzle Sukkah kit- entertain your kids between day camp and school 21.04",
   },
   {
@@ -5859,7 +5841,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4SjpE35",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Lucite wash cups $11.40",
   },
   {
@@ -5869,7 +5850,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4NYfsqT",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["rosh-hashanah"],
     description: "Placemats 4 pieces -$21.09. 6 pieces- $28.59. 10 pieces-$43.21",
   },
   {
@@ -5879,7 +5860,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c438H3wP",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Lucite Sliced Challah Holder or tray...",
   },
   {
@@ -5889,7 +5869,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3wOLtmR",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["rosh-hashanah"],
     description: "Beautiful Lucite Honey dish- Has great reviews. 3 Styles. Perfect for Chassan/Kallah gifting.",
   },
   {
@@ -5899,7 +5879,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3PS1WSb",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
+    holidays: ["rosh-hashanah"],
     description: "Shana Tova Napkins",
   },
   {
@@ -5908,8 +5888,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/spmp/2025/11/21/43/1763714129a48b83026757826c3e77d9541e601777_square_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5yrdad4jscce",
     store: "SHEIN",
-    category: "organization",
-    recommendationLabel: "chosen_for_look",
+    category: "kitchen",
+    holidays: ["rosh-hashanah"],
     description: "Thinking of Rosh Hashanah? Perfect no drip honey dispenser with stand $5.99",
   },
   {
@@ -5919,7 +5899,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yrbq0ss1c9p",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    holidays: ["yom-tov"],
     description: "Beautiful Shabbos / Yom Tov top $11.89",
   },
   {
@@ -5929,7 +5910,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yrbc7kznig3",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens vest top- can be dressed up or down. Comes in tons of colors some with a color $9.69",
   },
   {
@@ -5939,7 +5920,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yrac3bmfcta",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cute Womens Vest Top $11.19 comes in a few colors",
   },
   {
@@ -5949,7 +5930,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3jB6m83",
     store: "AliExpress",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Adorable Toddler briefcase $10.29+ $10.44 shipping",
   },
   {
@@ -5958,8 +5939,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/06/16/59/1781580237edad465161200f5fb3d0068894d6caf6_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5ypmiwvfec5u",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "toddler-girl",
     description: "So cute! 2 piece velour princess set comes in a few colors Size 6/9M- 2/3y $7.59",
   },
   {
@@ -5969,7 +5950,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ypmtzfo5f8d",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Pink comes in matching size 4-7 $7.42",
   },
   {
@@ -5978,8 +5959,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2022/08/12/1660268760d735b7b392a7c347574461daef95d44a_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5ypll3hcvs5d",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "pajamas",
+    audience: "toddler-girl",
     description: "2 piece velour burgundy PJs 6/9m -2/3y $7.43",
   },
   {
@@ -5989,7 +5970,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ypl9j5u47c7",
     store: "SHEIN",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Cute velour 2piece Friday night pj/robe comes in 3 colors $22- I would hem up the ruffle on the bottom of the pants or just use it with a black legging size 9/12m - 4y",
   },
   {
@@ -5998,8 +5979,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/07/05/47/17832327694f666daa6e803edfe80c75e07747fa9a_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5ypkcz5h90kk",
     store: "SHEIN",
-    category: "sets",
-    recommendationLabel: "chosen_for_look",
+    category: "pajamas",
+    audience: "toddler-girl",
     description: "Cute 2 piece Friday night pjs/robe size 9/12M-2-3y $8.29",
   },
   {
@@ -6009,7 +5990,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ypklkxbw85k",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Matching size 4-7 $11.69",
   },
   {
@@ -6018,8 +5999,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sd8d904ea406241b88a483b260daba54aF.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3WXMT7l",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Family matching plaid set",
   },
   {
@@ -6029,7 +6010,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yo5nxjblwqp",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Beautiful Shabbos top",
   },
   {
@@ -6039,7 +6021,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yo5azw0zk37",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Beautiful brown Shabbos maternity dress $20",
   },
   {
@@ -6049,7 +6032,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yo4nbiobup5",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Cute maternity shabbos robe top $12.90",
   },
   {
@@ -6059,7 +6043,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yo4dee2ymg6",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    holidays: ["yom-tov"],
+    maternity: true,
     description: "Beautiful maternity top perfect for Chol Hamoed shirt is attached",
   },
   {
@@ -6069,7 +6055,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yo44auy8t8p",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity Shabbos robe top $8.39",
   },
   {
@@ -6079,7 +6066,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yo3wasfuws6",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity Shabbos robe top $5.63",
   },
   {
@@ -6089,7 +6077,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yo1f0n3ctps",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity top comes in brown and off white",
   },
   {
@@ -6099,7 +6088,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yo14ppa5t33",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity Black Shabbos robe top $10.36",
   },
   {
@@ -6108,8 +6098,9 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2024/11/04/dc/173068641276730727ff304bd70e2aa3adf70c451f_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5yo0v8cxobb7",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
+    maternity: true,
     description: "Leopard Maternity shabbos robe top $7.91",
   },
   {
@@ -6119,7 +6110,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yo0gfml8ssl",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity Shabbos robe top comes in black and from $12.44 Burgundy",
   },
   {
@@ -6128,8 +6120,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/07/29/3e/17852932858d0c83e7c35cd19cbe9a0ec03aad2303_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5ylosf03bhfy",
     store: "SHEIN",
-    category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "women",
     description: "New in! Gorgeous 2 piece brown satin set. $35.19",
   },
   {
@@ -6139,7 +6131,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4pSQHQx",
     store: "AliExpress",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Adorable konges slojd kids briefcase comes in Small and Large Free returns within 15 days $20-$25 + $10 shipping",
   },
   {
@@ -6148,8 +6140,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/05/22/8e/17478960513df193c2b17d889a0573fbfbc9b4c982_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5ykmajol6nas",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "women",
     description: "Beautiful Organza floral dress - needs to be lined $47",
   },
   {
@@ -6159,7 +6151,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yklz3b4nvsi",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens Leopard midi dress $30.29",
   },
   {
@@ -6169,7 +6161,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yklqhj9ykga",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Anyone still looking for summer? Gorgeous blouse ! $16.09",
   },
   {
@@ -6179,7 +6171,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yklkaks7nrt",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Autumn colors maxi shirt dress",
   },
   {
@@ -6189,7 +6181,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ykl6dexlq22",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens button down skirt $16",
   },
   {
@@ -6197,8 +6189,8 @@ export const products: Product[] = [
     name: "K3670413 brn",
     affiliateUrl: "https://spl.it/TmjK4a",
     store: "DKNY",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "shoes",
+    audience: "unisex-kids",
     description: "Beautiful DKNY teen school shoes - Real leather. Black leather and Brown suede $83.40",
   },
   {
@@ -6208,7 +6200,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2R9tTXl",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Adorable kids N21 - sweatshirt for $29 compare at $129 in local stores. Lots of options sweaters/polos/dresses/skirts",
   },
   {
@@ -6218,7 +6210,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ykf9pv0ktvj",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful comfortable cotton Shirt dress $28.29",
   },
   {
@@ -6228,7 +6220,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ykcgtf47tao",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens Brown long sleeve maxi dress ( can be used as a shabbos robe) comes without the belt $32.79",
   },
   {
@@ -6237,7 +6229,7 @@ export const products: Product[] = [
     affiliateUrl: "https://spl.it/OAeSf8",
     store: "Walmart",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Walmart leggings 18M-5T $4.98",
   },
   {
@@ -6245,8 +6237,8 @@ export const products: Product[] = [
     name: "Wonder nation baby girl leggings sizes 0 24m",
     affiliateUrl: "https://spl.it/eKR1ao",
     store: "Walmart",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "baby-girl",
     description: "0-18m $4.98",
   },
   {
@@ -6255,9 +6247,10 @@ export const products: Product[] = [
     image: "https://target.scene7.com/is/image/Target/GUEST_9530eaf7-e6bd-45ff-8bd8-f5fba0ffaa77",
     affiliateUrl: "https://www.target.com/p/toddler-girls-solid-leggings-cat-jack/-/A-51148683?preselect=52293561#lnk=sametab",
     store: "Target",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
-    description: "Was asked for a good fit/quality legging - Tried and True Toddler boys/girls leggings from Target for $5",
+    category: "accessories",
+    audience: "unisex-kids",
+    recommendationLabel: "personally_tried",
+    description: "Was asked for a good fit/quality legging - Toddler boys/girls leggings from Target for $5",
   },
   {
     slug: "materniwear-maternity-side-slit-tie-high-neck-sweater",
@@ -6266,7 +6259,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yhzubq665n7?ismg_ol=c390459c24f3766a2720dd2ed513e4b5d6d21cda8257888c9d162cde5cb07eb7_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "New in! Beautiful maternity turtleneck vest $22.59",
   },
   {
@@ -6276,7 +6270,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yhz63mig0g9?ismg_ol=0788acbc3fb404e40f16403be73793687771aa18085d3217a2ce724fb0b259dc_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "New in! Gorgeous satin wedding skirt with lace hem $21.79",
   },
   {
@@ -6286,7 +6280,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3gjV6Jv",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Family matching velour shabbos outfit",
   },
   {
@@ -6296,7 +6290,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4kl16RD",
     store: "AliExpress",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Family Matching robe collection",
   },
   {
@@ -6306,7 +6300,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3UBBpTd",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Family matching robe collection",
   },
   {
@@ -6316,7 +6310,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3A5gtfV",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Family matching Brown plaid Shabbos set",
   },
   {
@@ -6325,8 +6319,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sf850096854c34a00990792ec2d38cf24a.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4SgIppD",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Family matching Shabbos set",
   },
   {
@@ -6336,7 +6330,7 @@ export const products: Product[] = [
     affiliateUrl: "https://spl.it/qJXklC",
     store: "Temu",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Temu cute Girls brown jumper size 3-7 $15",
   },
   {
@@ -6345,8 +6339,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S5ca7a327fe814b22aef3cdf2af985125Z.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4qWc1Hp",
     store: "AliExpress",
-    category: "toys",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "boys",
     description: "Boys polo sweatshirt with collar size 2/3t- 7/8 use code to get $2 off AEHT6GPI6K8M",
   },
   {
@@ -6355,8 +6349,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S510820b7e28a4069a040a4b9089e59beQ.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4U4Azcf",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Family matching gray denim set",
   },
   {
@@ -6366,7 +6360,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3LQvx51",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "cute Boys top Size 2/3T- size 14-16",
   },
   {
@@ -6376,7 +6370,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3UncXO7",
     store: "AliExpress",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Cute boys top size 9M-7 $6.22",
   },
   {
@@ -6385,8 +6379,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/06/23/e3/1782209975c23deb2024ce88ea4e61e84a28935b4d_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5ygn10u7s9yr?ismg_ol=eb18e4d2ed4cde910cdfd3258d076eff0b1f03c888daa3b099808fa46b2dca5c_01_KOC-C",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "toddler-boy",
     description: "Cute baby/Toddler bear sweatshirt set $9.79- lots of different options in the link",
   },
   {
@@ -6396,7 +6390,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ygmetqp6rb4?ismg_ol=f372bee22e45a5bcc44b824e15dee65d3b2a69b537068bc19525cbbe85bc92ef_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Baby / Toddler boy cute sweatshirt $7.79",
   },
   {
@@ -6405,8 +6399,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2023/10/31/ca/16987165273aed99b6f7874c6b565849e9850b642b_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5ygmajuad2jt?ismg_ol=56b1f0154a77a7708b730eff741e49a2184a07037d10a297c04193996bbb3ff4_01_KOC-C",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "toddler-boy",
     description: "Baby/Toddler boy plaid shirt",
   },
   {
@@ -6416,7 +6410,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ygl5vtcrnna?ismg_ol=5ce5db9d4ebf62fa5ef11e5caf72133a2899cb4a62bab5f79e92e121307fe65f_01_KOC-C",
     store: "SHEIN",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "3 pack baby boy/girl sweatshirt $12.63",
   },
   {
@@ -6426,7 +6420,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ygk6yyo2t62?ismg_ol=9b81dc9f7acd498ad00292f9e8074c8aeb4acd3be05eb90518377fbc73f98a0b_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-boy",
     description: "Baby hooded top 2 pack $12.89",
   },
   {
@@ -6436,7 +6430,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ygkf4y9svn3?ismg_ol=8a554f8b884351126436b77766a950fdff63267a6776f1f2f39e02001ff40ab5_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Matching size 4-7 $11.30",
   },
   {
@@ -6446,7 +6440,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ygjyd6tdhqc?ismg_ol=78f8916444b89c579bcaefe6edba459e2497b06a0ddcebc321a150c1636e0862_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-boy",
     description: "Baby waffle hooded top- 3 pack $15.70",
   },
   {
@@ -6456,7 +6450,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ygjiqv095hk?ismg_ol=e288cd3fea7cb4682dd2266f5c6290ffa0955998ebbd8561650b52fa689710b3_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Cute Baby boy/girl hooded top comes in lots of colors $5.77",
   },
   {
@@ -6466,7 +6460,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3Hi5Z8B",
     store: "AliExpress",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "Silicone stand pencil case",
   },
   {
@@ -6476,8 +6469,8 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2QfgsVV",
     store: "AliExpress",
     category: "school",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true cute silicone pencil shaped case",
+    recommendationLabel: "personally_tried",
+    description: "Cute silicone pencil shaped case",
   },
   {
     slug: "kokuyo-corduroy-pan-case-flat-open-multi-pocket",
@@ -6485,8 +6478,7 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sc990392968b24c7e9da24d8947ca3cfdK.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4kuUTI7",
     store: "AliExpress",
-    category: "bags",
-    recommendationLabel: "chosen_for_look",
+    category: "school",
     description: "Cute denim pencil case",
   },
   {
@@ -6496,7 +6488,6 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ygeoifr7fbr?ismg_ol=d6caba1069af2e4f806a2d466d2ef83f29b72486b30dccdf373049aecf81d0cb_01_KOC-C",
     store: "SHEIN",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "single zipper pencil $3.80",
   },
   {
@@ -6506,7 +6497,6 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yge9dv83kvu?ismg_ol=8c24963a3ba3d4d4f3bf1040e290652d9b2c63ee595e29c26b8bda40f79d1abb_01_KOC-C",
     store: "SHEIN",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "Great pencil case- lots of pockets $5.76",
   },
   {
@@ -6516,7 +6506,6 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ygdcc3l7wa3?ismg_ol=4a24c71e52ceea169d03aec22319a5c5eb7248cbc833965268efde4e0cde347a_01_KOC-C",
     store: "SHEIN",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "2 Pocket pencil case $3.75",
   },
   {
@@ -6526,7 +6515,6 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ygd51oh773d?ismg_ol=1784fd7c55336b17012ad4b3b7cd98d0350e37f0cb35206232fd285a16455f98_01_KOC-C",
     store: "SHEIN",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "Custom pencil case $7.61",
   },
   {
@@ -6536,7 +6524,6 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ygcxt8ecnk0?ismg_ol=4f5b2ef701a5e7fb595f8b15715d91b30c7b35f80f33923fc7c4ccaea4200164_01_KOC-C",
     store: "SHEIN",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "3 Pocket pencil case comes in lots of colors $5.50",
   },
   {
@@ -6546,7 +6533,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ydnifwj9zq3?ismg_ol=8d69f76ef033a80d30ded7ee671824b2702b10b0a288ee5a5e7f92b981026df1_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant wedding 2 piece set $55.89",
   },
   {
@@ -6556,7 +6543,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ydnc4zzbomj?ismg_ol=8a26dd9c1926592e993c36be62889032d52543200e6bd8158e48b0aadf3c0dc8_01_KOC-C",
     store: "SHEIN",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty and classy 2 piece set",
   },
   {
@@ -6566,7 +6553,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ydn6rmy8wen?ismg_ol=23aebaefc751c443b2855bdb017d1f28252545359a27fe288f8536342b45f914_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty 2 piece shabbos outfit",
   },
   {
@@ -6576,7 +6563,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ydms6sqb0bz?ismg_ol=bff3c4d7b357299a5686cdedf7439a8dbd8f0e955eb25481b9c3b2f124f3af41_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens Elegant organza floral dress",
   },
   {
@@ -6586,7 +6573,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3lhbOvd",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls denim jumper size 4-10",
   },
   {
@@ -6596,7 +6583,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yd4d6fuqjqx?ismg_ol=173a39cf5e7915df6f4ca1912d088255d2a328308f878462d339886fbe2e8fa9_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful elegant chiffon skirt $10.95",
   },
   {
@@ -6606,7 +6593,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yd46hq30k13?ismg_ol=aaffd42efb62380a3c02fa4788d3d689eec6ed74b7a587823ea54eb4b948f848_01_KOC-C",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Satin midi skirt $7.69",
   },
   {
@@ -6616,7 +6603,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yd3w6s9uy01?ismg_ol=83e4857d76b979b61eaa0bf086fbcbe422c9a7acbc0838630597385d1c52c013_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant shirt dress",
   },
   {
@@ -6626,7 +6613,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yd3p49ab5uh?ismg_ol=76c62bcae18806c02a20a2a0ea081d72b1633aebec62a6aaa32e1b53cb411c36_01_KOC-C",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "weekday brown plaid maxi skirt $32.09",
   },
   {
@@ -6636,7 +6623,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yd3j94z9agv?ismg_ol=dc0e632361f8702ae662516a69dafe27b32b65b38644a034959a01a1029d65fa_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful pleated top",
   },
   {
@@ -6646,7 +6633,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yd37wpkxxkg?ismg_ol=135efd04699f6cb9e9c37dab6b09f4b51462ff97e612fdd0e2230da68cad0e06_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Stunning high end look 3d floral mesh top",
   },
   {
@@ -6656,7 +6643,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yd2xvmxdaou?ismg_ol=16e1e604ef3513129627d5436e159bf4ed8b6f521deed900ecbb884229342f0b_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant lace top",
   },
   {
@@ -6665,7 +6652,7 @@ export const products: Product[] = [
     affiliateUrl: "https://us.shein.com/Women-Mock-Neck-Victorian-Lace-Puff-Sleeve-Shirt-Elegant-Vintage-Blouse-Going-Out-Outfits-For-Women-p-66894779.html?mallCode=1&imgRatio=3-4",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Victorian lace puff sleeve shirt $18.38",
   },
   {
@@ -6674,8 +6661,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/07/20/9f/1784525124f780336101f45213aed4b48a08d5006e_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5yd1xblb8p6r?ismg_ol=26c94a93a6d2f2b699cf42d908d021c65ad2fe192e9b3a255a295e8ecff2f603_01_KOC-C",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
     description: "Elegant organza top $9.15",
   },
   {
@@ -6685,7 +6672,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yd1l9iif7yo?ismg_ol=aec1cc739af64ba40450d700e1e21804394b2dcd0a94f32eaec2ccb1c74c9089_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful elegant shirt dress/gown - put a slip dress underneath to line $27.65",
   },
   {
@@ -6695,7 +6682,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yczs7gtrhvm?ismg_ol=b3fb2eb95a7021fabe71f94a2b7bd6d234c8273d71ebf7e57e3b703960e86fdc_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant satin and lace skirts in this link - lots of colors and options available Also in petite, Tall and Curve",
   },
   {
@@ -6705,7 +6692,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5yczdknkougl?ismg_ol=19d7e7f8d28ffbb5ce3f82a0e4394b88839ac563cd4ba9f5d1d72f238c406133_01_KOC-C",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Elegant womens lace top comes in a few colors $20.96",
   },
   {
@@ -6714,8 +6701,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/spmp/2026/03/02/33/177241477925908d64923dd7fe6557f946f996e5e7_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5ycz37qqd2kj?ismg_ol=aff58500f4b5d117c106ee08e66a4fa7ccc9d0e68a337928bbe87ce87b4a3b76_01_KOC-C",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
     description: "Elegant womens shirt $20.23",
   },
   {
@@ -6725,7 +6712,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ycypoe3jiow?ismg_ol=00cc3beac98e54a4837db7322d3084a582125c850a951b38b10df49fd677389d_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Tween girls denim jumper size 8-12 $10",
   },
   {
@@ -6735,8 +6722,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ycy7fct0jn5?ismg_ol=69c61f8eae7519f0c3bf93a5c845af389993d17e69c82be030bae657b0552821_01_KOC-C",
     store: "SHEIN",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Girls cardigan with collar- size 2/3-14 $17.03",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Girls cardigan with collar- size 2/3-14 $17.03",
   },
   {
     slug: "girls-long-sleeve-pure-cotton-shirt-with-turn",
@@ -6745,7 +6733,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ycx2ndt9tuu?ismg_ol=db1141c3f07de44d320a83ace8b6e9e9eab6f8b38558b8636a584fae50a612c2_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Adorable pure cotton shirt size 2/3-7",
   },
   {
@@ -6755,7 +6743,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ycwtjuoim3s?ismg_ol=ceefdfa81458ff43e9924a801cb1461746db335c1602db8e991dd68ae0b78cd6_01_KOC-C",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Brown floral shirt size 4-7 $7.19",
   },
   {
@@ -6765,7 +6753,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/47/5ycwe5ezv6z0?ismg_ol=84129900890e118a17129e9d1ce624f44351c76e2cdbd47060e3007302ace89f_01_KOC-",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls floral shirt- layer it under a black robe size 2/3-7",
   },
   {
@@ -6774,8 +6762,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/07/20/c1/1784518158dd293eafd7ab899abe97cb00b4b0782c_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/47/5ycw2wxnu1xz?ismg_ol=cf31aade2e52beb05a09df76c0b2d45e8629ad3f6a7db3b8da797ca39968fb19_01_KOC-C",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "girls",
     description: "Adorable young girls shirt size 4-7 $9.89",
   },
   {
@@ -6785,7 +6773,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5y5nmo5bqitq?ismg_ol=41c3dd1cdd0e24e0e6a6d02589c4a7ab79e73a69b93941aa2308804f3216a50e_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Kids knit sweater size4-7 $8.27",
   },
   {
@@ -6795,7 +6783,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5y5n85a4v9z4?ismg_ol=e9b854f679a03c81694f2699f4a6367c02c82319b2e53fab264aa65e3b3cd8e9_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Beautiful knit striped boys sweater size 4-8 $7.99 Lots of color options.",
   },
   {
@@ -6805,7 +6793,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5y2pm2p4abdj?ismg_ol=0d6eaca9a9c266b1d702f2d1842164072f7123ced868fc7c9d5552870cdaccc3_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Womens Denim maxi dress $34.50",
   },
   {
@@ -6814,7 +6802,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c44fVe9p",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys denim sweatshirt size 2T- 9-10T 2 colors",
   },
   {
@@ -6824,7 +6812,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3f6f9eX",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Cute boys sweatshirt 24M-6T $10",
   },
   {
@@ -6834,7 +6822,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xzkdssh4qmp?ismg_ol=7d3ea026a8bf59937697f89ec44faec781c89e6ae407959fcf04fd68214b7d07_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Casual v neck sweater",
   },
   {
@@ -6844,7 +6832,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xzk360h8oqz?ismg_ol=9e72e548868eb86f86ca0acb4a07ce5c5a1275db59fddd26ab358694b315313c_01_KOC-C",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cropped terry zip up hoodie sweatshirt. 97% cotton!",
   },
   {
@@ -6854,7 +6842,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xzjt4xtnci8?ismg_ol=d95248c3a53fd698def74c0b12f40344aeb946b3b4d16645b358e1302026f432_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity dress Cotton! comes in 4 colors. $18.97",
   },
   {
@@ -6864,7 +6853,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xy9g0qlgcku?ismg_ol=0834d31373746659ebdb1bb734185cd8f7bee162c676ef1d83e5ac10d01ee01c_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls Denim jumper size 3/4-7 $11.19",
   },
   {
@@ -6874,7 +6863,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xy9noyx812l?ismg_ol=306f5aee50c303167a5202026517f2a275467d86cfe804882e6e137d62763d0b_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Matching girls size 8-12 $9.25",
   },
   {
@@ -6884,7 +6873,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xy92r9472ji?ismg_ol=2f2014f24029453bf60cf21c4ee5c7f355e7185103ccce4cfef85ffd909957fc_01_KOC-C",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls denim dress 2 styles Size 3/4-7 $13.39",
   },
   {
@@ -6894,7 +6883,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c41Y7CxN",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Ritz Paris embroidery Womens knit collar top. $42",
   },
   {
@@ -6903,7 +6892,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3eD2nrp",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Adorable girls checked jumper and shirt (Sold separately) size 2/3- 9/10. 15 day free returns",
   },
   {
@@ -6913,7 +6902,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3tvEpXt",
     store: "AliExpress",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Girls/boys bomber coat 3 colors Make sure to clip the coupon when ordering. size 6-12M- 18y. $60-$70",
   },
   {
@@ -6923,7 +6912,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3nkY5Ef",
     store: "AliExpress",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Moose knuckles imitation Womens bomber coat $189 15 days Free return",
   },
   {
@@ -6932,8 +6921,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/12/06/52/1764986410ff4ab9e4398c019c6a78f3c15d86c290_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/46/5xwj31dlxxcr",
     store: "SHEIN",
-    category: "sets",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "toddler-girl",
     description: "Turtlenecks -for layering those jumpers 6-9M up to size 3 Loads of different options on this link",
   },
   {
@@ -6943,7 +6932,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwhgi4m6zou",
     store: "SHEIN",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Plaid 2 piece jumper- comes with the Turtleneck Size 2-3y - 7y $12.98",
   },
   {
@@ -6953,7 +6942,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwhb4rl5m4g",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Green corduroy toddler Jumper $6.69",
   },
   {
@@ -6963,7 +6952,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwgygzfl9xl",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Pretty Toddler girls Shabbos Jumper up to size 3",
   },
   {
@@ -6973,7 +6962,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwgfo7tese7",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Toddler Corduroy long sleeve dress",
   },
   {
@@ -6983,7 +6972,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwg5x0bysk6",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Cute Toddler Brown Corduroy Jumper",
   },
   {
@@ -6993,7 +6982,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwgawk4m0kc",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Matching size 4-7 $5.59",
   },
   {
@@ -7003,7 +6992,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwfyuhcdlwd",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Adorable toddler girl corduroy Jumper lots of options From $4.89",
   },
   {
@@ -7013,7 +7002,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwfl57lo83w",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Similar options to the above Toddler girl dress $4.48",
   },
   {
@@ -7022,8 +7011,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/10/16/f6/17605831189a4bb5e13cd7d934022e265a80a27053_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/46/5xwfaifmd8ve",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "toddler-girl",
     description: "Toddler girls dress from $6.19",
   },
   {
@@ -7033,7 +7022,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwf26ix8wnb",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "So cute! Toddler Denim cherry print jumper",
   },
   {
@@ -7043,7 +7032,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xweuq6pzju7",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Cute Toddler Denim Dress $8",
   },
   {
@@ -7052,8 +7041,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/06/09/5a/1780991265b23eea97021112792dfc67d0a6d52d85_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/46/5xwej5v70y68",
     store: "SHEIN",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "toddler-girl",
     description: "Adorable Toddler dress Lots of options From $5.98",
   },
   {
@@ -7063,7 +7052,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwea0d0t1ec",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Black and white striped dress $5.83",
   },
   {
@@ -7073,7 +7062,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwe1cm5m52d",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Brown stripe long sleeve dress $4.20 comes in 3 colors",
   },
   {
@@ -7083,7 +7072,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwdw185oti3",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Winter brown stripe dress $5.83",
   },
   {
@@ -7093,7 +7082,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwderpf7jaa",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Adorable Polo shirt jumper Tons of colors From $5.01",
   },
   {
@@ -7103,7 +7092,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xwd42ye6q87",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Perfect to start the year layer with a shell if you need long sleeve. Lots of styles $7.99",
   },
   {
@@ -7113,8 +7102,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xurxa5f7pjd",
     store: "SHEIN",
     category: "boots",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True high boots, patent , suede, knit $25",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "High boots, patent, suede, knit $25",
   },
   {
     slug: "1pair-girls-solid-casual-fishnet-tights-for-daily",
@@ -7123,8 +7113,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xuwmmywnhg5",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true girls Shabbos tights $2.80",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Girls Shabbos tights $2.80",
   },
   {
     slug: "dazy-young-girl-casual-everyday-commute-school-style",
@@ -7132,8 +7123,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/10/13/b3/17603374765bdc91b9ce45067e37353d00a3787adb_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/46/5xuv558rbpds",
     store: "SHEIN",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "Girls corduroy jumper size 4-7 $7.72",
   },
   {
@@ -7143,7 +7134,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xuumch5mrz8",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Corduroy burgundy dress with plaid size 4-7",
   },
   {
@@ -7153,7 +7144,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xuu5aujntn9",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Toddler girl long sleeve corduroy dress size 4-7 comes in a few colors $9.39",
   },
   {
@@ -7162,9 +7153,10 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sf4f4c60f2a594aafae05da1a3bd28445v.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3HDAdt9",
     store: "AliExpress",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True Toddler girls black and blue Denim Jumper 12M-6T It does run a little wide-I took it in for a narrow kid.",
+    category: "dresses",
+    audience: "toddler-girl",
+    recommendationLabel: "personally_tried",
+    description: "Toddler girls black and blue Denim Jumper 12M-6T It does run a little wide-I took it in for a narrow kid.",
   },
   {
     slug: "denim-suspender-skirt-spring-and-autumn-new-simple",
@@ -7172,7 +7164,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pf1ea93gy63",
     store: "Temu",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "or from Temu size 3-4y-7-8y",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -7183,7 +7175,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3SZcaRH",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Ali Kosher human Sheital - has great reviews and Free returns within 15 days 2 colors 10,12,14,16,18,20 in. length. With or without bangs. Silk top no lace front. 14 in. length $170",
   },
   {
@@ -7193,7 +7185,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xugowre4rxi",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful womens Aline plaid Skirt",
   },
   {
@@ -7203,7 +7195,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xug1k880hf7",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Womens suede weekday skirt Lots of colors $14-$20 depends on the color",
   },
   {
@@ -7213,7 +7205,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xufo0vlbuk8",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls gray shabbos dress size 4-7 $7.67",
   },
   {
@@ -7222,8 +7214,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2024/08/22/98/172434128420a59fa3d3200c5c7e3d7b9b3345ded3_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/46/5xuf8wb23seb",
     store: "SHEIN",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "Beautiful girls Shabbos dress size 4-7 $9.67 2 colors",
   },
   {
@@ -7233,7 +7225,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4m4IIkX",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful headband",
   },
   {
@@ -7242,8 +7234,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/10/29/33/176171687351460691f835e83580ee715b6c6de5bf_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/46/5xs4kk5on422",
     store: "SHEIN",
-    category: "kitchen",
-    recommendationLabel: "chosen_for_look",
+    category: "coats-jackets",
+    audience: "girls",
     description: "Stunning Princess style Shabbos coat size 4-7 comes in 4 colors",
   },
   {
@@ -7252,8 +7244,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2025/01/07/5d/1736239022afafca277af25719970b0e8abe8266de_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/46/5xs44pxqhhe6",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "coats-jackets",
+    audience: "toddler-girl",
     description: "Baby girl matching coat size 3m-3y $9.52",
   },
   {
@@ -7263,7 +7255,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xs3rmdcz483",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Pretty girls beige Shabbos coat with hat size 4-7 comes in 3 colors $10.19",
   },
   {
@@ -7273,7 +7265,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xs2ise2z5eg",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Gorgeous shabbos sweater- pearls on collar. Lots of colors",
   },
   {
@@ -7283,7 +7275,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xs1w1k8opou",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Gorgeous boys thick coat size 3-11 $34 4 colors",
   },
   {
@@ -7293,7 +7285,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3t7c5Mb",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Cute girls sweatshirt size 3-6 $9.54",
   },
   {
@@ -7302,8 +7294,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/08/14/ee/175515187987c853f9fe5c09e8218444a1d0bdb445_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/46/5xri247o1nbc",
     store: "SHEIN",
-    category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    category: "coats-jackets",
+    audience: "girls",
     description: "Girls matching Jacket/coat size 4-7 $6.74",
   },
   {
@@ -7313,7 +7305,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xriaxvn6hem",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Matching big girl size 8-12 $7.42",
   },
   {
@@ -7322,8 +7314,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sa0aa38d626ed479c9fbaae84a46c1b63r.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3pAY0HD",
     store: "AliExpress",
-    category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "unisex-kids",
     description: "Baby hat lots of options",
   },
   {
@@ -7332,8 +7324,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S536ef26988424d64a086b48f584c2d9cw.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3hyXVhV",
     store: "AliExpress",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "unisex-kids",
     description: "More kids hat options also scarves",
   },
   {
@@ -7342,7 +7334,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3AmGYGB",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Kids Winter hat and gloves Lots of colors",
   },
   {
@@ -7351,8 +7343,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S6e4048ed8d1f4e9fa6455db8f312685dC.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4codkfH",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Family matching green velour",
   },
   {
@@ -7361,8 +7353,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sb72b4918427e44258a22c6fa1e6c533dM.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2zGWD55",
     store: "AliExpress",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Matching family weekday set. Green velour",
   },
   {
@@ -7371,7 +7363,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3uRxMUf",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Gorgoues Michal Kors watch $33 has great reviews",
   },
   {
@@ -7381,7 +7373,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xr9cy11wgha",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls Shabbos dress size 8-12 can be dressed up with a cardigan $15.09",
   },
   {
@@ -7391,7 +7383,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/46/5xr85dfhylx3",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful sweater top can dress or down lots of colors $17.69",
   },
   {
@@ -7401,7 +7393,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3x5jJ8b",
     store: "AliExpress",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cute womens weekday top one size. Has great reviews Free returns within 15 days",
   },
   {
@@ -7409,8 +7401,8 @@ export const products: Product[] = [
     name: "Kids hair accessories- lots of options style and color",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c35BAdAX",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "unisex-kids",
     description: "Kids hair accessories- lots of options style and color",
   },
   {
@@ -7419,8 +7411,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S13b873f72bdf4cab90c1412c5df9312dQ.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4KSk6gr",
     store: "AliExpress",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "pajamas",
+    audience: "unisex-kids",
     description: "So cute! Family matching PJ. Night dress- cover the knee and matching baby stretchy",
   },
   {
@@ -7429,7 +7421,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pt3blyui1lg",
     store: "Temu",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Adorable school scrunchie $2",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -7440,7 +7432,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4Tf2zSP",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "THE NEW SOCIETY sweatshirt Size 2-12",
   },
   {
@@ -7449,8 +7441,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sd93ec53ab54f484d8cb66e2d13e00acaX.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4MRZ611",
     store: "AliExpress",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "THE NEW SOCIETY girls dresses size 2-12 $35",
   },
   {
@@ -7460,7 +7452,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3TVlxeX",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Adorable hair accessories",
   },
   {
@@ -7469,7 +7461,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3Re8qtZ",
     store: "AliExpress",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Aliexpress LOUD jumper, dress and skirt. Size 2-10",
   },
   {
@@ -7479,7 +7471,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4cpamR5",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Family matching shabbos robe set. Navy velour. Has great reviews! Teen version too!",
   },
   {
@@ -7489,7 +7481,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3qJkcfl",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Family matching Velour Shabbos robe set",
   },
   {
@@ -7499,7 +7491,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c378ufqR",
     store: "AliExpress",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Cute Boys sweatshirt top size 2-12 comes in 2 colors- collar is removable. Free returns within 15 days",
   },
   {
@@ -7509,7 +7501,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3UkzUwj",
     store: "AliExpress",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Family matching black denim cherry collection Aliexpress",
   },
   {
@@ -7519,7 +7511,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3e1l6Tz",
     store: "AliExpress",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Family matching Shabbos collection Aliexpress",
   },
   {
@@ -7528,8 +7520,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S8f9166493abf431d8c325be552586ad5U.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3OIbmSF",
     store: "AliExpress",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Family matching Navy/denim set",
   },
   {
@@ -7538,8 +7530,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S17586dab45bd4f37b579514805bfc0d6V.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3JEE06F",
     store: "AliExpress",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Family matching black denim pinstripe Aliexpress",
   },
   {
@@ -7548,8 +7540,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Se3f12cfadbb04e4eb52d255df490f5c6c.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3ulI4BV",
     store: "AliExpress",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Family matching denim set Aliexpress",
   },
   {
@@ -7558,8 +7550,8 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/Sfc3911802480465b8dcf601f440c02e3Y.png",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3GhEWnl",
     store: "AliExpress",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Family matching weekday outfits Aliexpress",
   },
   {
@@ -7567,8 +7559,8 @@ export const products: Product[] = [
     name: "Customized 1 initials bag charm for handbags personalized monogram name bag tag hexagon",
     affiliateUrl: "https://temu.to/k/pxhlxwngila",
     store: "Temu",
-    category: "bags",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "women",
     description: "Want to gift someone traveling something small? personalized handbag nametag lots of colors $3.25",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -7579,7 +7571,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xp1hedisetu",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "100% cotton oversized everyday top (can probably be used for maternity too as it runs big)",
   },
   {
@@ -7589,7 +7581,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xp11m4lxuyp",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "100% cotton shabbos shirt",
   },
   {
@@ -7599,7 +7591,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xp0dtt721q7",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "So cute! oversized everyday top - runs large $16..07",
   },
   {
@@ -7609,7 +7601,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xovf7jgz887",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Shabbos knit top $19.03",
   },
   {
@@ -7619,7 +7611,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xov4wlockqq",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful weekday top",
   },
   {
@@ -7629,7 +7621,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xouxq4mnhv3",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful simple shabbos turtleneck $14.68",
   },
   {
@@ -7639,7 +7631,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xouq9sfc18j",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful vest comes in 3 colors $13.69",
   },
   {
@@ -7649,7 +7641,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xougemv01vz",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Turtleneck sweater comes in 3 colors $15.22",
   },
   {
@@ -7659,7 +7651,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xooxy3y5d6o",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Young Girls denim long sleeve dress size 4-7 $12.29",
   },
   {
@@ -7669,7 +7661,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xop5ai3atq8",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Matching Big girl size 8-12 $16.49",
   },
   {
@@ -7679,7 +7671,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xonta30mrdc",
     store: "SHEIN",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Cherry print denim romper / heart romper",
   },
   {
@@ -7689,7 +7681,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xo12m6d52c1",
     store: "SHEIN",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Boys/girls denim romper 6-9M-2-3y $8.20",
   },
   {
@@ -7699,7 +7691,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xo0luewjcwb",
     store: "SHEIN",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Cute Denim romper cotton. 6-9m-2-3y $11.30",
   },
   {
@@ -7709,7 +7701,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xnsh84wdfk0",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cute short shabbos jacket $20",
   },
   {
@@ -7719,7 +7711,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xnspm0m01zb",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Shein curve- bigger sizes $22",
   },
   {
@@ -7729,8 +7721,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xnrqj8twxsn",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true back button top- very cute with a gold buckle belt $11.43 comes in a few colors",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Back button top- very cute with a gold buckle belt $11.43 comes in a few colors",
   },
   {
     slug: "stylish-and-versatile-enamel-heart-s925-sterling-silver",
@@ -7739,8 +7732,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xnraj3tkkzl",
     store: "SHEIN",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true Tiffany imitation earring S925 $7.52 please note: jewelry and hair accessories cannot be returned",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Tiffany imitation earring S925 $7.52 please note: jewelry and hair accessories cannot be returned",
   },
   {
     slug: "unisex-high-collar-baby-knitted-undershirt-infant-white",
@@ -7749,7 +7743,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xnqsrtt2szz",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "3 colors kids Turtleneck size 2-3y-10y",
   },
   {
@@ -7758,8 +7752,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2024/11/22/ab/173224702759d5b0352e71d29b718e8e2e0f809fae_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xng4qg8uc1k",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "jumpsuits",
+    audience: "unisex-kids",
     description: "Burgundy family matching: Baby boy/girl burgundy romper size 1M-3Y $6.14",
   },
   {
@@ -7768,8 +7762,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/11/07/9a/1762496702418f98d7ccc0e086c7c92bd93c62e63f_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xnnv7oa78ck",
     store: "SHEIN",
-    category: "tops",
-    recommendationLabel: "chosen_for_look",
+    category: "jumpsuits",
+    audience: "baby-girl",
     description: "Black or burgundy ribbed onesie turtleneck",
   },
   {
@@ -7779,7 +7773,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xnfpptrfmtl",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys corduroy shirt size 4-12 $8.54",
   },
   {
@@ -7789,7 +7783,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xno7ricsrxf",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girlrs burgundy jumper size 4-7 $5.24",
   },
   {
@@ -7799,7 +7793,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xnof5vj53ne",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Girls burgundy jumper size 8-12 $6.66",
   },
   {
@@ -7809,7 +7803,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xlpsskv6xxf",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Cute custom toddler briefcase lots of color options $22.80",
   },
   {
@@ -7819,8 +7813,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xlpi9qx5nnk",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true jumper with straps size 4-7 $6.29",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Jumper with straps size 4-7 $6.29",
   },
   {
     slug: "1pc-boys-girls-plush-material-construction-truck-excavator",
@@ -7829,7 +7824,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xlpahkjkm77",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Cute toddler briefcase $8.25",
   },
   {
@@ -7839,7 +7834,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xlp108734fr",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Cute corduroy briefcase $10.70",
   },
   {
@@ -7849,7 +7844,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xlowifnzjis",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Custom toddler briefcase $15.20",
   },
   {
@@ -7859,7 +7854,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xlol9ybrdjb",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Cute toddler briefcase $8.18",
   },
   {
@@ -7869,7 +7864,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xg6uu86vxeh",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Family girl matching: Baby girl weekday dress (you can hem up the plaid so it sticks out just a drop like a peplum top)",
   },
   {
@@ -7879,7 +7874,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xg5vvegtw7c",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Matching Young girls size 4-7",
   },
   {
@@ -7888,8 +7883,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/10/12/69/1760220729c95ab60aafa3530bc77992a80e8d6a2e_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xg6m8gc7b8g",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "Matching Young girls size 4-7",
   },
   {
@@ -7899,7 +7894,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xg3n70z61j4",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Matching girls size 8-12",
   },
   {
@@ -7909,7 +7904,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xg2wxx69v9y",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Cute plaid dress Size 4-7 $9.63",
   },
   {
@@ -7919,7 +7914,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xg2bsb86x19",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Adorable houndstooth jumper with turtleneck (can be even prettier for shabbos with a ivory turtleneck) size 4-7 $9.07",
   },
   {
@@ -7928,7 +7923,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pfxkbcld547",
     store: "Temu",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "cute, easy, practical baby/toddler top",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -7938,7 +7933,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pujv7zkkfr4",
     store: "Temu",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Adorable hooded denim patch heart sweat top baby/toddler girl 3 colors",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -7948,7 +7943,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p5k79rfi7mb",
     store: "Temu",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Cute cherry print sweat top baby/toddler girl",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -7958,7 +7953,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pric7v9huag",
     store: "Temu",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Adorable baby girl/toddler hooded sweat top comes in black, gray and white",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -7968,7 +7963,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pgqkv5s6lg0",
     store: "Temu",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Adorable baby/toddler girls sweat top 3-6m - 18-24m",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -7979,7 +7974,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xdqslbgq3j8",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "3 piece baby/ toddler girls top $15.83",
   },
   {
@@ -7989,7 +7984,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xdqi6fl4ndy",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Cute hooded baby/toddler girl sweatshirt $5.92",
   },
   {
@@ -7999,7 +7994,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xdqa2f0gj1n",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "baby / toddler girl cherry hooded sweatshirt $5.17",
   },
   {
@@ -8009,7 +8004,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xdpgmvez286",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Adorable shabbos vintage looking set can put tights underneath in the winter $17.08 3-6m-18-24m",
   },
   {
@@ -8018,8 +8013,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/07/22/25/1753171799d658e446a2e615c127588ed1d160a976_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xdonv06u98a",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "toddler-girl",
     description: "Girls 2 piece sweat set 6-9m -2-3y $8.24 comes in a few colors",
   },
   {
@@ -8029,7 +8024,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xdo509k8ao6",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Baby/toddler girl floral quilted jacket 6-9m-2-3y $11.62 9comes in 2 color)",
   },
   {
@@ -8039,7 +8034,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xdockjtmyab",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Matching young girl size 4-7 $14.23",
   },
   {
@@ -8049,7 +8044,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xdnsmcku066",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Adorable baby/toddler girls hooded heart top 6-9m-2-3y $8.54",
   },
   {
@@ -8059,7 +8054,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xdnlrppk4cp",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Cute baby /toddler girls top 6-9m-2-3y $6.22",
   },
   {
@@ -8069,7 +8064,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xcow5h12cgq",
     store: "SHEIN",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "2 piece green overall with plaid shirt 6-9m-2 2-3y $10.87 (comes in more colors too)",
   },
   {
@@ -8079,7 +8074,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xcp303wqz6n",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Matching plaid shirt (comes in more colors too) size 4 - 13-14 $7.51",
   },
   {
@@ -8089,7 +8084,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xco4l0hyes7",
     store: "SHEIN",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-boy",
     description: "Kangaroo pocket overalls $5.52",
   },
   {
@@ -8099,7 +8094,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xcnrfh2sbnl",
     store: "SHEIN",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "2 piece sweat set",
   },
   {
@@ -8109,7 +8104,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xcn1q3l5m6i",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Unisex Paris hooded sweatshirts",
   },
   {
@@ -8118,8 +8113,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/05/13/23/1778643991e2e37bff60889f0f15e3002fcc96c02f_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xcmrsyz5wrl",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "jumpsuits",
+    audience: "unisex-kids",
     description: "Cute corduroy overall boys and girls lots of cute colors. 6-9M-2-3y $7.59",
   },
   {
@@ -8128,7 +8123,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p6jebwguh9h",
     store: "Temu",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Boys brown sweat top 9-12m-3-4y",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -8139,7 +8134,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xclw0l2dr2e",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "adorable boys/girls corduroy jacket $13.49 size 6-9m- 2-3y",
   },
   {
@@ -8148,8 +8143,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/06/22/e1/17821215919255d64ec00072c3e8b34835b6794d1d_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xclm9dk72hk",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "unisex-kids",
     description: "Unisex sweat sets 6-9m -2-3y $9.74",
   },
   {
@@ -8158,7 +8153,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/psdkk7xrwub",
     store: "Temu",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-boy",
     description: "Adorable Toddler boy sweat top 3-6M - 18-24M $5.54",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -8169,7 +8164,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xckjmcrzerj",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "toddler boy plaid buttoned hooded top- can where as a top or as a jacket $7 The burgundy can be for girls (perfect for twins)",
   },
   {
@@ -8178,9 +8173,10 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2024/07/26/2f/1721996424e7d2b63917964f8180815ce3ba9a39d8_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xck4rneefjm",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true Toddler boy sweatshirt $4.12 6-9m-2-3y",
+    category: "sweaters",
+    audience: "toddler-boy",
+    recommendationLabel: "personally_tried",
+    description: "Toddler boy sweatshirt $4.12 6-9m-2-3y",
   },
   {
     slug: "cozy-pixies-baby-boy-army-green-hooded-sweatshirt",
@@ -8189,7 +8185,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xcjx3f2hu42",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Adorable quilted hooded sweat top 6-9m-2-3y $5.10",
   },
   {
@@ -8198,8 +8194,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2024/09/30/46/1727677329ab09684a5aac7daff46ac27b2d6ec067_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xcjp3ck6qp0",
     store: "SHEIN",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "unisex-kids",
     description: "6 sweat tops size 6-9m-2-3y $25.04",
   },
   {
@@ -8208,8 +8204,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/08/21/8e/1755746121fd74142858ed6f4439dca2ef6c943d2f_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xcj87n1hub4",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "toddler-boy",
     description: "Toddler boy hooded sweatshirt 6-9m-2-3y $7.79",
   },
   {
@@ -8219,7 +8215,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xcjd19r9r0u",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Matching size 4-7 $5.69",
   },
   {
@@ -8228,8 +8224,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/08/21/8e/1755746121fd74142858ed6f4439dca2ef6c943d2f_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xcjhqyejpyy",
     store: "SHEIN",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "boys",
     description: "Matching size 8-12 $7.04",
   },
   {
@@ -8238,8 +8234,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/04/09/cf/1775714584842de9f2f553b45d6671414859ecf985_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xciukcciacp",
     store: "SHEIN",
-    category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "toddler-boy",
     description: "Toddler boy hooded sweat top size 6-9m - 2-3y $6.07",
   },
   {
@@ -8249,7 +8245,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xcj3fzck5dm",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Matching size 4-7 $5.54",
   },
   {
@@ -8258,8 +8254,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/08/13/9e/1755055230ef45ad2abd0314c4e27de127556400ac_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xcii6fcuuzq",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "toddler-boy",
     description: "Toddler boys 2piece sweat set- pants look a little wide , you can put it on with a black legging if you like a slimmer look size 6-9m - 2-3y $9.37",
   },
   {
@@ -8269,7 +8265,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xchmzqrrn3n",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Perfect boys Rosh Chodesh sweater size 4-7 $10.64 (comes without the collar)",
   },
   {
@@ -8278,8 +8274,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/spmp/2026/05/29/e0/1780043760b412a724295a2bb0c6bc88a6100b6d94_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xc9i3lluex9",
     store: "SHEIN",
-    category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "girls black denim long sleeve dress size 4-8 $14.59",
   },
   {
@@ -8289,7 +8285,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xakoqx03u9v",
     store: "SHEIN",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Baby boy/toddler set of 2 cotton pj size 9 month-3 years $14.34",
   },
   {
@@ -8299,7 +8295,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xahiqwptpnq",
     store: "SHEIN",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Simple cotton unisex pjs $6-$9",
   },
   {
@@ -8309,7 +8305,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xah4pstlft8",
     store: "SHEIN",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Flower cotton pj 9 month - 3 years $7",
   },
   {
@@ -8319,7 +8315,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xagvw4uehx7",
     store: "SHEIN",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Bow cotton pj 9 month-3 years $7.78",
   },
   {
@@ -8329,7 +8325,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xagp3h0aryq",
     store: "SHEIN",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Ice cream PJ Cotton 9 months- 3 years $8.26",
   },
   {
@@ -8339,7 +8335,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xagh1fgbymb",
     store: "SHEIN",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Adorable 2 set cotton PJ 9 month-size 3 $14.72",
   },
   {
@@ -8349,7 +8345,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xac1duf84lv",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Baby/toddler up to size 3",
   },
   {
@@ -8359,7 +8355,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xaad5fgftrg",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "girls striped sweater can be matched with the boys striped posted earlier. size 4-7 comes in black, purple, light blue( can be for boys too)",
   },
   {
@@ -8369,7 +8365,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xa9q4qh4s2v",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Baby boy 2 piece knit shabbos set up to size 3",
   },
   {
@@ -8378,8 +8374,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/08/01/a8/1754025349d4961f6c8a10a96b40a8b07f7419dc96_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xaa6mmsn2i2",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "boys",
     description: "Matching size 4-7 (it comes with the pants)",
   },
   {
@@ -8389,7 +8385,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xa9fhyha4xr",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Matching big boy size 8-12 $12.22",
   },
   {
@@ -8399,7 +8395,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xa9bdz5u0ra",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "🔝Matching young boy sweater size 4-7 $14.89",
   },
   {
@@ -8409,7 +8405,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xa92ic66wi4",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Baby/Toddler boy striped knit top Lots of colors $7.34",
   },
   {
@@ -8418,8 +8414,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_pi/2024/10/18/af/1729244781206b72ae52354c76c6d0c5740b297b14_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xa8nrkuw5ai",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "toddler-boy",
     description: "adorable baby/toddler fleece 2 piece easy outfit hooded top. green and black",
   },
   {
@@ -8429,7 +8425,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xa856pdiipz",
     store: "SHEIN",
     category: "jumpsuits",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-boy",
     description: "Baby/Toddler boy 2 piece denim set overall is 90% cotton up to size 2-3 years lots of different color options",
   },
   {
@@ -8439,7 +8435,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xa7etnhxdo7",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Pretty maternity vest has 6% wool- so you might need to check it for shatnez $16.49",
   },
   {
@@ -8448,8 +8445,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/09/24/49/1758682785f4fbe49d0e540be5f2ba4f5faa58c3c9_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xa6ipfegw1x",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "girls",
     description: "Matching toddler size 4-7",
   },
   {
@@ -8458,8 +8455,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/09/10/83/1757500815c9a7ea6a39925398b1105a811c199d86_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xa69zph0i1j",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "baby-girl",
     description: "Adorable baby girl 2 piece knit",
   },
   {
@@ -8468,8 +8465,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/09/09/44/17574185724231d8b75b34a2033a2b812efcb38a03_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xa43w2fx250",
     store: "SHEIN",
-    category: "tops",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "girls",
     description: "Brown plaid jumper comes with the turtleneck size 4-7 $9.25",
   },
   {
@@ -8478,8 +8475,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/01/05/bb/17676056122de374402b14b0ae622c16943952dab3_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5xa3qyf5c40m",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "dresses",
+    audience: "girls",
     description: "Black denim toddler dress size 4-7 (right now only size 7 is available but keep on checking as they usually restock) comes in 3 colors $7.75",
   },
   {
@@ -8489,7 +8486,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xa3g5q2cbq5",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "I'm seeing lots of browns in the local stores: Brown plaid dress size 4-7 $6.72",
   },
   {
@@ -8499,7 +8496,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5xa3aalr8cgy",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Adorable toddler burgundy corduroy dress size 4-7 $8.25",
   },
   {
@@ -8509,7 +8506,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x93ke6m1bti",
     store: "SHEIN",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-boy",
     description: "Adorable 2 piece corduroy romper- collar can be removed $11.11",
   },
   {
@@ -8518,8 +8515,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/07/28/cd/17852037423f75fd3ce27a07d16cd5f03bcbcdd1bf_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5x944w46pim4",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "boys",
     description: "Matching young boys size 4-7 you can throw out the overalls for the bigger boys -its still worth the buy $10.12- $14.17",
   },
   {
@@ -8529,7 +8526,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x9183l2sxuz",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Matching young kid Bomber jacket size 4-8 $13.67",
   },
   {
@@ -8539,7 +8536,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x912kaz164d",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Big kid size 8-12 $15.89",
   },
   {
@@ -8549,8 +8546,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x90m0fmetuk",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true adorable toddler bomber jacket comes in 3 colors $12",
+    audience: "unisex-kids",
+    recommendationLabel: "personally_tried",
+    description: "Adorable toddler bomber jacket comes in 3 colors $12",
   },
   {
     slug: "emery-rose-two-tone-mock-neck-drop-shoulder",
@@ -8559,7 +8557,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x8vflzivvpc",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "This pretty top is a recommendation from someone on this group - comes in lots of beautiful colors Price range $11- $18",
   },
   {
@@ -8569,7 +8567,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x8o09aribz4",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful crew neck sweater- perfect for layering a shirt under comes in lots of stunning colors $14-$19",
   },
   {
@@ -8579,7 +8577,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x8noh34aj9z",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty winter sweater Black, Gray, Burgundy $12-$16",
   },
   {
@@ -8589,7 +8587,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x8nd4npdelg",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Casual everything sweatshirt tons of colors $24",
   },
   {
@@ -8599,7 +8597,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x8n4cyryec1",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cute simple navy quilted sweatshirt",
   },
   {
@@ -8609,7 +8607,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x8mp6f7r774",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Perfect casual fall top has great reviews $18-$22 (depends on size and color) a",
   },
   {
@@ -8619,7 +8617,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x6dc32h6ss4",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Adorable 2 piece toddler jumper Size 4-7 (yes it comes with the turtleneck) $6.88",
   },
   {
@@ -8629,7 +8627,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x6xvxooggmw",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "matching younger version (without turtleneck) $6.09",
   },
   {
@@ -8639,8 +8637,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x6xbpm9hgrc",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true house top super comfortable and very durable- I dry this one also. I wore this throughout pregnancy too. $8",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "House top super comfortable and very durable- I dry this one also. I wore this throughout pregnancy too. $8",
   },
   {
     slug: "shein-lune-women-s-fashion-casual-plaid-patchwork",
@@ -8649,7 +8648,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x6wsoyk074w",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Similar look",
   },
   {
@@ -8659,8 +8658,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x6wdaivcs29",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true house sweat top- I have it for a while I dry color did not fade",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "House sweat top- I have it for a while I dry color did not fade",
   },
   {
     slug: "women-s-casual-black-white-striped-long-sleeve",
@@ -8669,7 +8669,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x6w3hcc4unp",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Casual everday sweat top lots of colors $11",
   },
   {
@@ -8679,7 +8679,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x6vkepkxr8s",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "casual maternity top- can be used as a easy house top comes in 4 colors",
   },
   {
@@ -8689,7 +8690,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x6v7392fi8j",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Everyday maternity top comes in 4 colors",
   },
   {
@@ -8698,8 +8700,9 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/04/17/23/1776420886184b1eef0c626d4addcb5a861ea78762_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5x6uiv5eua12",
     store: "SHEIN",
-    category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
+    maternity: true,
     description: "Cute everday maternity top $18 Lots of colors",
   },
   {
@@ -8709,7 +8712,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x5fkvx7u87f",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "This adorable British style plaid briefcase was requested again",
   },
   {
@@ -8719,16 +8722,17 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4PfwG9H",
     store: "AliExpress",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true duck down kids coats comes in a few colors and styles",
+    audience: "unisex-kids",
+    recommendationLabel: "personally_tried",
+    description: "Duck down kids coats comes in a few colors and styles",
   },
   {
     slug: "alo-ribbons-0-99-shipping",
     name: "Alo Ribbons + 0.99 shipping",
     affiliateUrl: "https://www.ebay.com/itm/306587779242?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339168716&toolid=80006&mkevt=1",
     store: "eBay",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "accessories",
+    audience: "women",
     description: "Alo Ribbons $14.59 + 0.99 shipping",
   },
   {
@@ -8738,7 +8742,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3GDUfSj",
     store: "AliExpress",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Cute elementary briefcase. Lots of cute colors 2 sizes has great reviews! Free 90 day returns",
   },
   {
@@ -8748,7 +8752,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4rg1T79",
     store: "AliExpress",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Kipling imitation lots of colors $9 Great reviews. Free 90 day returns",
   },
   {
@@ -8758,7 +8762,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x547kye2ov1",
     store: "SHEIN",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-adult",
     description: "Simple bathrobe white & pink $18",
   },
   {
@@ -8768,7 +8772,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x53zb0qm2iv",
     store: "SHEIN",
     category: "pajamas",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-adult",
     description: "Personalized bathrobes $22.43",
   },
   {
@@ -8777,8 +8781,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/spmp/2026/07/10/9d/178364641141f8fd22332d1b849801c9a7241dada4_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5x53seeua8nn",
     store: "SHEIN",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "pajamas",
+    audience: "unisex-adult",
     description: "waffle knit personalized bathrobes $24.35",
   },
   {
@@ -8787,8 +8791,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/images3_spmp/2024/11/15/e2/17316515870778446c6a6ac6f0a3c675054d5de5c1_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/45/5x53p600rx3l",
     store: "SHEIN",
-    category: "toys",
-    recommendationLabel: "chosen_for_look",
+    category: "pajamas",
+    audience: "unisex-adult",
     description: "Personalized bathrobes",
   },
   {
@@ -8798,7 +8802,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x53f6we9xkz",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Cute elementary school briefcase 3 colors $14.33",
   },
   {
@@ -8808,7 +8812,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x5397u12249",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Small cute toddler briefcase - lots of colors",
   },
   {
@@ -8818,7 +8822,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x5321cz3uh4",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Simple Briefcase cute colors $16.60",
   },
   {
@@ -8828,7 +8832,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x52noevsht3",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "cute Personalized corduroy kids Briefcase",
   },
   {
@@ -8838,7 +8842,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/45/5x52dbi0wcq9",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Adorable Toddler corduroy Briefcase Lots of colors $5.93",
   },
   {
@@ -8848,7 +8852,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x3amgmxqwjo",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty satin blouse -for those that are more solid types. lots of colors $10",
   },
   {
@@ -8858,8 +8862,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x34obt73a10",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true under a robe- a simple linen look shirt (I had a light color for the summer) comes in lots of colors",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Under a robe- a simple linen look shirt (I had a light color for the summer) comes in lots of colors",
   },
   {
     slug: "emery-rose-vintage-floral-linen-look-shirt-floral",
@@ -8868,7 +8873,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x34gxg0h4d3",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Also comes in bigger sizes up to size 20 lotsof different prints and colors",
   },
   {
@@ -8878,7 +8883,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x340hirafip",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Floral blouse $11.69",
   },
   {
@@ -8887,8 +8892,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/spmp/2026/05/14/92/17787230804dc751bc8d59e17923d6da4212c09b4d_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/44/5x33tezr5kwc",
     store: "SHEIN",
-    category: "camping",
-    recommendationLabel: "chosen_for_look",
+    category: "tops",
+    audience: "women",
     description: "Pretty floral blouse $14.43",
   },
   {
@@ -8898,7 +8903,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x33klbs0qzf",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Comes in 3 colors $7-$10",
   },
   {
@@ -8908,7 +8913,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x2uxg5c001x",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Simple pink shabbos cardigan",
   },
   {
@@ -8918,7 +8923,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x2urj1zfbrv",
     store: "SHEIN",
     category: "cardigans",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Adorable young looking cardigan",
   },
   {
@@ -8928,7 +8933,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x2unoxu35es",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Shabbos pink cardigan",
   },
   {
@@ -8938,7 +8943,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x2uibkt3vqa",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Shabbos Pink Cardigan Requested",
   },
   {
@@ -8948,7 +8953,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x2too52kfa3",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "Boys Shabbos coat Comes in 4 colors",
   },
   {
@@ -8957,7 +8962,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/phquo2zw89m",
     store: "Temu",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Toddler girl options to go with the top",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -8967,7 +8972,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p2tlsvfpolb",
     store: "Temu",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "toddler-girl",
     description: "Adorable baby girl shabbos knit top 3-6m- 3-4 y $9.54",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -8978,7 +8983,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x1nkks59dck",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Summery knit sweater lots of colors",
   },
   {
@@ -8988,7 +8993,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x1nebum0d6y",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "3 colors Burgundy, Brown, light blue",
   },
   {
@@ -8998,8 +9003,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x1n5m4pnayq",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true cute summer shirt",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Cute summer shirt",
   },
   {
     slug: "emery-rose-fashion-graceful-high-quality-sweater-for",
@@ -9008,7 +9014,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x1n2hny39eu",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Lots of different colors also",
   },
   {
@@ -9018,7 +9024,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x1mzb855bvg",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Simple cable sweater",
   },
   {
@@ -9028,7 +9034,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x1mtk1wxccu",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cute back",
   },
   {
@@ -9038,7 +9044,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x1mrj1r5jco",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Found on SHEIN.",
   },
   {
@@ -9048,7 +9054,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x1moog5aopg",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Found on SHEIN.",
   },
   {
@@ -9058,7 +9064,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x1low0yquud",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Everyday light blue tops requested",
   },
   {
@@ -9068,7 +9074,6 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5x1ejw9258hk",
     store: "SHEIN",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Found on SHEIN.",
   },
   {
@@ -9077,8 +9082,7 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/spmp/2025/09/05/0d/1757042848345e142115d4b5d335d1677606508351_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/44/5x1eg24wbi2s",
     store: "SHEIN",
-    category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    category: "home",
     description: "Found on SHEIN.",
   },
   {
@@ -9087,7 +9091,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pt22ktvjn7u",
     store: "Temu",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Found on Temu.",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9097,7 +9100,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p5viid5ogmr",
     store: "Temu",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Found on Temu.",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9107,7 +9109,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pn839br7g1t",
     store: "Temu",
     category: "home",
-    recommendationLabel: "chosen_for_look",
     description: "Found on Temu.",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9116,8 +9117,8 @@ export const products: Product[] = [
     name: "Casual long sleeve tops for boys and girls designed for and",
     affiliateUrl: "https://temu.to/k/p9wk1j6qrl8",
     store: "Temu",
-    category: "tops",
-    recommendationLabel: "chosen_for_look",
+    category: "sweaters",
+    audience: "unisex-kids",
     description: "Another Family sweatshirt size 1-10 $15.99",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9128,7 +9129,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wy3fkhu35fz",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Baby shabbos jacket//coat navy outline Size 9-12m - size 2-3 yrs $13.29",
   },
   {
@@ -9137,8 +9138,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/10/22/af/1761117564e2c3c983af0fc567a572c60ed70d16c3_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/44/5wxzu61vaisx",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "girls",
     description: "Same thing another color Size 8-12",
   },
   {
@@ -9148,7 +9149,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wy02jxll0r1",
     store: "SHEIN",
     category: "sets",
-    recommendationLabel: "chosen_for_look",
+    audience: "girls",
     description: "Size 4-7",
   },
   {
@@ -9157,8 +9158,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/10/09/b6/1759972007593de79d521e042dd685a0d0fdf0f66d_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/44/5wxyha2aonpj",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "girls",
     description: "Adorable family matching outfit- Skirt runs short The top alone is adorable comes in 2 matching colors Size 4-7",
   },
   {
@@ -9167,8 +9168,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/11/17/41/17633416745bedc12a9a1e87e4e16b2394e30bc5c6_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/44/5wxymvbgb691",
     store: "SHEIN",
-    category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    category: "sets",
+    audience: "girls",
     description: "Size 8-12",
   },
   {
@@ -9178,7 +9179,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wxz77bx5mzb",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "baby-girl",
     description: "Baby Burgundy sweater",
   },
   {
@@ -9188,7 +9189,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wxzafqq73m6",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "not a perfect match but similar Boys Burgundy sweatshirt",
   },
   {
@@ -9198,7 +9199,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wxzft3ru910",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "boys",
     description: "not a perfect match but similar Boys Burgundy sweatshirt",
   },
   {
@@ -9208,7 +9209,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5ww5voauxoia",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Elegant 2 piece dusty blue maternity dress $18.95",
   },
   {
@@ -9218,7 +9220,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5ww5gvkj4mzr",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Elegant maternity dress comes in 6 colors $29",
   },
   {
@@ -9228,7 +9231,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5ww55f72l65a",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Casual weekday maternity dress comes in black, burgundy and beige $22",
   },
   {
@@ -9238,7 +9242,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5ww4szb1tovv",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Elegant Maternity dress- looks more summery (for those that are not up to winter yet) $29",
   },
   {
@@ -9248,7 +9253,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5ww4hyptrwvx",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity dress long sleeves comes in lots of colors",
   },
   {
@@ -9258,7 +9264,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5ww4340g91je",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Elegant maternity shabbos dress comes in 2 colors off white and gren $22.48",
   },
   {
@@ -9268,7 +9275,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5ww3ygatodo6",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Casual Maternity dress $21.59",
   },
   {
@@ -9278,7 +9286,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5ww3nfpmn4f3",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity jumper comes in 4 colors Black, Brown, Apricot, Green $25",
   },
   {
@@ -9288,7 +9297,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5ww3f5ryftcp",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Maternity shirt dress comes in 2 colors $22",
   },
   {
@@ -9297,7 +9307,8 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p8nwip6puxg",
     store: "Temu",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Grey Maternity skirt $13.29",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9308,7 +9319,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wvyhoxvx639",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Off white Maternity skirt $10",
   },
   {
@@ -9318,7 +9330,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wvycvb5tbf2",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Beautiful brown plaid weekday winter skirt $13.49",
   },
   {
@@ -9328,7 +9341,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wvy3vq3h8ie",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Tiered Maternity skirt Navy, Black, Brown starting from $12.67 depends on color",
   },
   {
@@ -9338,7 +9352,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wvxxorlt54y",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Black Maternity skirt Great reviews $11.39",
   },
   {
@@ -9348,7 +9363,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wvxntm1j9m2",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "everday maternity skirt comes in black and brown. Has great reviews $14.31",
   },
   {
@@ -9358,7 +9374,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4vRlssW",
     store: "Amazon",
     category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
     description: "2 piece",
   },
   {
@@ -9368,7 +9383,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4vQmfdQ",
     store: "Amazon",
     category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
     description: "Cute floral 2 pack",
   },
   {
@@ -9378,7 +9392,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4gPcwk2",
     store: "Amazon",
     category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
     description: "2 pack",
   },
   {
@@ -9388,7 +9401,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3TewdYQ",
     store: "Amazon",
     category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
     description: "Silicone 4 pack",
   },
   {
@@ -9397,7 +9409,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/45pPlWk",
     store: "Amazon",
     category: "baby-gear",
-    recommendationLabel: "chosen_for_look",
     description: "Requested: Baby pacifier clip pack of 3, lots of color combinations",
   },
   {
@@ -9406,7 +9417,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/ppqxja9vf6t",
     store: "Temu",
     category: "organization",
-    recommendationLabel: "chosen_for_look",
     description: "Comes in a few colors $20",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9416,7 +9426,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/ple6bov6wo7",
     store: "Temu",
     category: "organization",
-    recommendationLabel: "chosen_for_look",
     description: "While were at laundry - I found this great compartment laundry hamper with a counter! comes in 1,2,3,4 compartments. Local 2 day delivery $32",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9427,7 +9436,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wixgw1eua3q",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Pretty weekday sweater- 3 colors $11-$22",
   },
   {
@@ -9437,7 +9447,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wix2h4acrgn",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Cute denim maternity weekday shirt, comes in 3 colors price depends on the colors from $11- $28",
   },
   {
@@ -9447,7 +9458,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wix13siehah",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "or 3 pack shell",
   },
   {
@@ -9457,7 +9469,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wiwr0qtodov",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "2 pack maternity mock neck shells lots of colors",
   },
   {
@@ -9467,7 +9480,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wiwlndsn085",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Weekday sweater comes in 3 colors $14",
   },
   {
@@ -9477,7 +9491,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wiw1v3n446r",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Pretty winter shabbos Jacket comes in Black and gray price depends on size and color between $18-$24",
   },
   {
@@ -9487,7 +9502,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wivwzhw388i",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Winter padded coat $25.25",
   },
   {
@@ -9497,7 +9513,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wivr2ejsdzv",
     store: "SHEIN",
     category: "coats-jackets",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Warm Maternity jacket $26.64",
   },
   {
@@ -9507,7 +9524,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wiviaplrlsz",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "pretty weekday maternity sweater $11.75",
   },
   {
@@ -9517,7 +9535,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wivd96rlkwa",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Simple shabbos Maternity top $10.50",
   },
   {
@@ -9527,7 +9546,8 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wiv6ejvwy70",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
+    maternity: true,
     description: "Pretty weekday maternity top $17.43 Comes in black and burgundy",
   },
   {
@@ -9537,8 +9557,11 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/44/5wiuwpbez8nm",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true Maternity top better weekday (Chol Hamoed) or simple shabbos runs slightly large $15.50",
+    audience: "women",
+    holidays: ["yom-tov"],
+    maternity: true,
+    recommendationLabel: "personally_tried",
+    description: "Maternity top better weekday (Chol Hamoed) or simple shabbos runs slightly large $15.50",
   },
   {
     slug: "1-8-lcd-mp4-player-with-fm-radio",
@@ -9546,8 +9569,7 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S02ca5e976c3749a285caa23d318b4435t.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2wPoOSx",
     store: "AliExpress",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "electronics",
     description: "Mp4 No wifi",
   },
   {
@@ -9557,7 +9579,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4wTuGpo",
     store: "Amazon",
     category: "sandals",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-adult",
     description: "or these comes in different colors",
   },
   {
@@ -9566,8 +9588,8 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/61Ov+3vG47L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4fiFk1K",
     store: "Amazon",
-    category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    category: "shoes",
+    audience: "unisex-adult",
     description: "You can still get your Tish bav shoes for tomorrow (depends on your location) lots of colors men or women",
   },
   {
@@ -9577,7 +9599,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wfg8q989xzg",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Casual winter weekday top, comes in 4 colors",
   },
   {
@@ -9587,7 +9609,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wffyn7j06m8",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Cute young shabbos sweater comes in 7 colors",
   },
   {
@@ -9597,7 +9619,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wdkfv3sxely",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty shirt dress comes in 6 colors",
   },
   {
@@ -9607,7 +9629,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4f8VxIc",
     store: "Amazon",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "long Denim Shirt dress",
   },
   {
@@ -9617,7 +9639,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wdi9vet8ksg",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty weekday sweater lots of pretty colors",
   },
   {
@@ -9627,8 +9649,8 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4o8kRf5",
     store: "AliExpress",
     category: "electronics",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true Kosher Mp3",
+    recommendationLabel: "personally_tried",
+    description: "Kosher Mp3",
   },
   {
     slug: "heart-children",
@@ -9637,8 +9659,9 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4BsfOC3",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true adorable kids bracelet",
+    audience: "unisex-kids",
+    recommendationLabel: "personally_tried",
+    description: "Adorable kids bracelet",
   },
   {
     slug: "simple-colorful-heart-chain-adjustable-bracelet-gift-fashion",
@@ -9647,8 +9670,9 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c31Fi6yb",
     store: "AliExpress",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true adorable kids bracelet",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Adorable kids bracelet",
   },
   {
     slug: "personalized-laser-engraved-name-heart-charm-bracelet-for",
@@ -9656,7 +9680,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pnjx6n0dg83",
     store: "Temu",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Personalized kids gold bracelet",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9666,7 +9690,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pkh4gwnj1wz",
     store: "Temu",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Personalized kids bracelet",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9676,8 +9700,9 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/ppro6k12a0e",
     store: "Temu",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true adorable adjustable ring fits kids -I have it for my 3 year old",
+    audience: "unisex-kids",
+    recommendationLabel: "personally_tried",
+    description: "Adorable adjustable ring fits kids -I have it for my 3 year old",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
@@ -9687,7 +9712,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc7gn4hxg2c",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Denim Skirts",
   },
   {
@@ -9697,7 +9722,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc7j7uy80xb",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9706,8 +9731,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/06/10/de/1781062287efb503804e2d7483fe5574c90fc7a369_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/43/5wc7les74ys0",
     store: "SHEIN",
-    category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    category: "skirts",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9717,7 +9742,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc7npnhv9ul",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9727,7 +9752,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc7qm84u6fa",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9737,7 +9762,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc7tcvoluc6",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9747,7 +9772,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc7vfuuc9cf",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9756,8 +9781,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2025/05/15/37/174727239562588ed2d3ba6448754521723534c278_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/43/5wc7x12qluph",
     store: "SHEIN",
-    category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    category: "skirts",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9767,7 +9792,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc7yy4u5jl3",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9777,7 +9802,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc80p9tk9wc",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9787,7 +9812,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc81mtch7in",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9796,8 +9821,8 @@ export const products: Product[] = [
     image: "https://img.ltwebstatic.com/v4/j/pi/2026/03/30/b1/177484970439d99cc775964bd96a50403bda7b7237_thumbnail_720x.jpg",
     affiliateUrl: "https://onelink.shein.com/43/5wc83jvff4m5",
     store: "SHEIN",
-    category: "outdoor",
-    recommendationLabel: "chosen_for_look",
+    category: "skirts",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9807,7 +9832,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc8u2ue4pmc",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Denim Dresses (Denim Skirts)",
   },
   {
@@ -9817,7 +9842,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc8xr1gma3h",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Denim Dresses (Denim Skirts)",
   },
   {
@@ -9827,7 +9852,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wc8zm4ig5a9",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9837,7 +9862,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wcbj182drxj",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9847,7 +9872,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wccixlb5pry",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "(Denim Skirts)",
   },
   {
@@ -9856,8 +9881,9 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pta0p72e32o",
     store: "Temu",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true anabel aram imitation bracelet- its not a perfect imitation but pretty close",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Anabel aram imitation bracelet- its not a perfect imitation but pretty close",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
@@ -9867,7 +9893,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wbzlu119zfs",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Comes in lots of colors, beautiful weekday top",
   },
   {
@@ -9877,7 +9903,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wbxmd4q9imi",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful top comes in lots of colors, has great reviews",
   },
   {
@@ -9887,7 +9913,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wbs8eec8ky6",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pearl embellished shabbos sweater comes in White and gray",
   },
   {
@@ -9897,7 +9923,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5wbreh3gqmf6",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Simple Shabbos top comes in 3 colors",
   },
   {
@@ -9907,8 +9933,9 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ptSJcf",
     store: "Amazon",
     category: "shoes",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true Amazon basics womens shoes- these are super comfortable and pretty",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Amazon basics womens shoes- these are super comfortable and pretty",
   },
   {
     slug: "1pc-7-5cm-wide-embellished-square-stretch-elastic",
@@ -9916,7 +9943,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pjnz8hrl2e9",
     store: "Temu",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "I have the black one and white one- the black I did this belt",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9925,8 +9952,7 @@ export const products: Product[] = [
     name: "Rhinestones set of 50 sew on gems for diy fashion apparel shoes hats and bag",
     affiliateUrl: "https://temu.to/k/p0w6jv89sua",
     store: "Temu",
-    category: "shoes",
-    recommendationLabel: "chosen_for_look",
+    category: "other",
     description: "the white I put these pink rhinestones around the collar",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -9937,7 +9963,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5w9upnn19rf2",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful winter shabbos sweater comes in a few colors has great reviews",
   },
   {
@@ -9947,8 +9973,9 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/458H60S",
     store: "Amazon",
     category: "sneakers",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true girls sneakers super comfortable and looks adorable comes in a few colors now on limited deal",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Girls sneakers super comfortable and looks adorable comes in a few colors now on limited deal",
   },
   {
     slug: "anrabess-women-s-long-sleeve-cropped-crew-neck",
@@ -9957,7 +9984,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yAgbbW",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful knit better weekday cropped sweater- comes in tons of colors",
   },
   {
@@ -9967,7 +9994,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5w9s7ptb0yz9",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Winter shabbos sweater - comes in 4 colors",
   },
   {
@@ -9977,27 +10004,26 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5w8llna8rx4c",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Beautiful gown- Looks high end comes in lots of colors. Can dress it up with a rhinestone belt or stones around the neck. Very slenderizing.",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Beautiful gown- Looks high end comes in lots of colors. Can dress it up with a rhinestone belt or stones around the neck. Very slenderizing.",
   },
   {
     slug: "nature-puzzle-for-adult-500-piece-puzzle-mountain",
     name: "Nature Puzzle for Adult 500 Piece Puzzle Mountain Lake Landscape Puzzles Scenery, Jigsaw Puzzles Scenic, Art",
-    image: "https://m.media-amazon.com/images/I/31O+ElZxQXL.jpg",
+    image: "https://m.media-amazon.com/images/I/91tx3QMwLuL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/459SrOb",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Found on Amazon.",
   },
   {
     slug: "miniwan-colorful-embossed-flowers-puzzles-for-adults-1000",
     name: "MINIWAN Colorful Embossed Flowers Puzzles for Adults 1000 Pieces",
-    image: "https://m.media-amazon.com/images/I/31O+ElZxQXL.jpg",
+    image: "https://m.media-amazon.com/images/I/91N8Jql6YmL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4bQ7ujI",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "Puzzles for the adults to help pass the day😉",
   },
   {
@@ -10007,17 +10033,15 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4gMwps0",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Amazon Haul items: Diamond art",
   },
   {
     slug: "mr-pen-craft-scissors-decorative-edge-6-pack",
     name: "Mr. Pen- Craft Scissors Decorative Edge, 6 Pack, Bright Zig Zag Scissors",
-    image: "https://m.media-amazon.com/images/I/210MkR4pl3L.jpg",
+    image: "https://m.media-amazon.com/images/I/71oLNpwGpEL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3TJbv3f",
     store: "Amazon",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "6 Pack zig ag scissors (Amazon Haul items)",
   },
   {
@@ -10027,7 +10051,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yr9Xeg",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Colored feathers (Amazon Haul items)",
   },
   {
@@ -10036,27 +10059,24 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4bQ1d7E",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Air dry clay glaze (Amazon Haul items)",
   },
   {
     slug: "crayola-air-dry-clay-5lbs-teacher-supplies-natural",
     name: "Crayola Air Dry Clay (5lbs), Teacher Supplies, Natural White Modeling Clay for Kids, Sculpting Material, Bulk",
-    image: "https://m.media-amazon.com/images/I/41KTWeX4d9L.jpg",
+    image: "https://m.media-amazon.com/images/I/61orX92CK8L._AC_SL1081_.jpg",
     affiliateUrl: "https://amzn.to/44DPmpr",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Entertain your kids on Tisha Bav with these craft ideas Air dry clay",
   },
   {
     slug: "crayola-construction-paper-bulk-pack-480ct-school-art",
     name: "Crayola Construction Paper Bulk Pack 480ct, School Art & Craft Supplies",
-    image: "https://m.media-amazon.com/images/I/41KTWeX4d9L.jpg",
+    image: "https://m.media-amazon.com/images/I/61TbDzO158L._AC_SL1200_.jpg",
     affiliateUrl: "https://amzn.to/3T0q9TJ",
     store: "Amazon",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "Color paper",
   },
   {
@@ -10066,7 +10086,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4flK1Ii",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Craft sticks",
   },
   {
@@ -10075,88 +10094,80 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/61kexNVS1CS._AC_SL1001_.jpg",
     affiliateUrl: "https://amzn.to/44CYRoY",
     store: "Amazon",
-    category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    category: "other",
     description: "Stretchy bracelet string",
   },
   {
     slug: "mydbuysome-2774pcs-gem-stickers-jewels-for-crafts-adhesive",
     name: "MYDBUYSOME 2774pcs Gem Stickers Jewels for Crafts, Adhesive Gems Rhinestone",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/81-2bpsAPXL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4w597lQ",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Gem stickers",
   },
   {
     slug: "200-pcs-pipe-cleaners-craft-bulk-20-colors",
     name: "200 Pcs Pipe Cleaners Craft Bulk, 20 Colors Pipe Cleaner, Chenille Stems",
-    image: "https://m.media-amazon.com/images/I/31ZCzdgiFjL.jpg",
+    image: "https://m.media-amazon.com/images/I/81VAo1dwn-L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4yAzRMW",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Pipe cleaners",
   },
   {
     slug: "amazon-basics-purple-washable-school-glue-sticks-for",
     name: "Amazon Basics Purple Washable School Glue Sticks for Classroom Supplies and DIY Art, Dries Clear, 0.21 oz",
-    image: "https://m.media-amazon.com/images/I/21C9iRWWTsL.jpg",
+    image: "https://m.media-amazon.com/images/I/61ZMnkqRJAL._SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3T8yDrS",
     store: "Amazon",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "Stick glue",
   },
   {
     slug: "funtopia-1368pcs-6mm-glass-beads-for-bracelets-jewelry",
     name: "Funtopia 1368pcs 6mm Glass Beads for Bracelets Jewelry Making Supplies",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/81e72x9Jb9L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4pyuM3A",
     store: "Amazon",
     category: "accessories",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Bracelet beads",
   },
   {
     slug: "tulip-one-step-tie-dye-party-kit-18",
     name: "Tulip One-Step Tie Dye Party Kit, 18 Bottles, 14 Colors",
-    image: "https://m.media-amazon.com/images/I/21+ctl0CsmL.jpg",
+    image: "https://m.media-amazon.com/images/I/81NmZguru+L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4f9ejz8",
     store: "Amazon",
     category: "other",
-    recommendationLabel: "chosen_for_look",
     description: "Tie dye kit",
   },
   {
     slug: "pagather-acrylic-paint-markers-120-colors-dual-tip",
     name: "Pagather Acrylic Paint Markers, 120 Colors Dual Tip Fine & Brush Pens Set",
-    image: "https://m.media-amazon.com/images/I/21XRs-h9SVL.jpg",
+    image: "https://m.media-amazon.com/images/I/91lz4duH9PL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4aX5aay",
     store: "Amazon",
     category: "school",
-    recommendationLabel: "chosen_for_look",
     description: "Acrylic paint markers",
   },
   {
     slug: "klever-kits-unicorn-foil-art-arts-and-crafts",
     name: "Klever Kits Unicorn Foil Art- Arts & Crafts for Kids 4 and Up, Mess Free",
-    image: "https://m.media-amazon.com/images/I/21F5DO7cZvL.jpg",
+    image: "https://m.media-amazon.com/images/I/81fH9qu8oWL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4fttTEF",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Foil art kit",
   },
   {
     slug: "klever-kits-16-projects-gem-painting-kids-diamond",
     name: "Klever Kits 16 Projects Gem Painting, Kids Diamond Art Kit for Kids with 5D Diamond, Arts and Crafts for",
-    image: "https://m.media-amazon.com/images/I/21it9J4hq9L.jpg",
+    image: "https://m.media-amazon.com/images/I/91nhKfolb7L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4yv7e3A",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Gem painting kit",
   },
   {
@@ -10166,7 +10177,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4wuOS1n",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Rainbow scratch notebooks",
   },
   {
@@ -10175,18 +10185,16 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/71LqxbA1WCL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4fpGF70",
     store: "Amazon",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "10 pack play doh",
   },
   {
     slug: "lcy-wedshi-dough-tool-set-49-pcs-dough",
     name: "LCY WEDSHI Dough Tool Set, 49 Pcs Dough Tools Sets for Kids Ages 4-8, Dough Accessories Includes Animal",
-    image: "https://m.media-amazon.com/images/I/31tz7WB4X9L.jpg",
+    image: "https://m.media-amazon.com/images/I/71NTUjIw6qL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3RM2Psm",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "49 piece play doh tool set",
   },
   {
@@ -10196,7 +10204,6 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4wOpXW1",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "3000Pcs Arts and Crafts Supplies",
   },
   {
@@ -10206,17 +10213,16 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5w8ii61dt89r",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful shabbos top comes in 3 colors has great reviews!",
   },
   {
     slug: "2-pack-height-adjustable-kids-plastic-chairs-ergonomic",
     name: "2-Pack Height-Adjustable Kids Plastic Chairs – Ergonomic Backrest, Non-Slip Feet,Durable, 82Kg Weight",
-    image: "https://m.media-amazon.com/images/I/41KTWeX4d9L.jpg",
+    image: "https://m.media-amazon.com/images/I/61r2cktVVdL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/45aZAOb",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "home",
     description: "Great Tisha Bav chair Height adjustable pack of 2",
   },
   {
@@ -10224,8 +10230,7 @@ export const products: Product[] = [
     name: "Mackenzie childs courtly checks teapot salt pepper set",
     affiliateUrl: "https://www.macys.com/shop/product/mackenzie-childs-courtly-checks-teapot-salt-pepper-set?ID=11736205&tdp=cm_app~zMCOM-NAVAPP~xcm_zone~zPDP_ZONE_A~xcm_choiceId~zcidM05SIB-48f4a482-5153-434e-b685-5d33ee900a83%40HD5%40Similar%2Bitems%247923%2411736205~xcm_pos~zPos1~xcm_srcCatID~z7923",
     store: "Macy's",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "kitchen",
     description: "On sale now at macys",
   },
   {
@@ -10235,7 +10240,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c36BzP4n",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Found on AliExpress.",
   },
   {
@@ -10245,7 +10249,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c2zmidb9",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Found on AliExpress.",
   },
   {
@@ -10255,7 +10258,6 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3dpUxGr",
     store: "AliExpress",
     category: "kitchen",
-    recommendationLabel: "chosen_for_look",
     description: "Found on AliExpress.",
   },
   {
@@ -10265,8 +10267,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5w7vfjzzorhi",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true girls pullover sweatshirt $7.12 on Shein",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Girls pullover sweatshirt $7.12 on Shein",
   },
   {
     slug: "transparent-acrylic-shoe-rack-for-a-compact-storage",
@@ -10274,7 +10277,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p5v1d11yoq0",
     store: "Temu",
     category: "organization",
-    recommendationLabel: "chosen_for_look",
     description: "4 pack acrylic organizer can be used for lots of things $10.53 on Temu",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -10284,7 +10286,6 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p8uw6adwd1q",
     store: "Temu",
     category: "organization",
-    recommendationLabel: "chosen_for_look",
     description: "Acrylic cutlery holder $6.38 on Temu",
     hidden: true, // Temu, no photo yet: delete this line to show it
   },
@@ -10294,8 +10295,7 @@ export const products: Product[] = [
     image: "https://ae-pic-a1.aliexpress-media.com/kf/S2a4576e6c0dc43deb7351ae92b226dafL.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4OSmnsn",
     store: "AliExpress",
-    category: "school",
-    recommendationLabel: "chosen_for_look",
+    category: "bags",
     description: "Kipling imitation- Perfect School Briefcase all colors",
   },
   {
@@ -10305,7 +10305,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5w69nfo01bev",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Adorable kids briefcase only $5.33",
   },
   {
@@ -10315,8 +10315,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5w0n25t921al",
     store: "SHEIN",
     category: "tops",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true back tie shirt Comes in lots of colors",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Back tie shirt Comes in lots of colors",
   },
   {
     slug: "girl-s-casual-minimalist-front-button-a-line",
@@ -10325,8 +10326,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5w0mk0q1dnb9",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true Girls Denim skirt 10.87",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Girls Denim skirt 10.87",
   },
   {
     slug: "dazy-girls-round-neck-sleeveless-denim-dress",
@@ -10335,8 +10337,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5w0liuz2tfef",
     store: "SHEIN",
     category: "dresses",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried & true Black chambray dress- runs a little big washes beautifully and looks adorable on. $11.50",
+    audience: "girls",
+    recommendationLabel: "personally_tried",
+    description: "Black chambray dress- runs a little big washes beautifully and looks adorable on. $11.50",
   },
   {
     slug: "lovevook-laptop-backpack-women-15-6-inch-work",
@@ -10345,7 +10348,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4b1hJSa",
     store: "Amazon",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Pretty briefcase now on sale limited time deal! Comes in lots of colors but only this color is on sale",
   },
   {
@@ -10355,17 +10358,16 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5vydhi69ju6m",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Corduroy briefcase perfect for school $15.82",
   },
   {
     slug: "acstep-folding-kids-step-stool-with-back-support",
     name: "ACSTEP Folding Kids Step Stool with Back Support for Kids,9\" Plastic Kids Chair for Outdoor or Indoor Kitchen",
-    image: "https://m.media-amazon.com/images/I/41KTWeX4d9L.jpg",
+    image: "https://m.media-amazon.com/images/I/61HCq3g-PhL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/44uE3jp",
     store: "Amazon",
-    category: "kitchen",
-    recommendationLabel: "chosen_for_look",
+    category: "home",
     description: "Tisha bav chairs",
   },
   {
@@ -10375,37 +10377,34 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5vxi6lns1w2x",
     store: "SHEIN",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Fall top - comes in lots of colors",
   },
   {
     slug: "furwey-play-sand-17-6lbs-8-color-sensory",
     name: "FURWEY Play Sand,17.6lbs 8-Color Sensory Sand,Kids Shaping Sculpting",
-    image: "https://m.media-amazon.com/images/I/11GWaerpNhL.jpg",
+    image: "https://m.media-amazon.com/images/I/81aWf18Sa6L._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4vunijf",
     store: "Amazon",
-    category: "other",
-    recommendationLabel: "chosen_for_look",
+    category: "toys",
     description: "This one entertains the kids for hours",
   },
   {
     slug: "alexes-sand-art-kits-for-kids-sand-coloring",
     name: "ALEXES Sand Art Kits for Kids – Sand Coloring Kit - Colored Sand Painting",
-    image: "https://m.media-amazon.com/images/I/11GWaerpNhL.jpg",
+    image: "https://m.media-amazon.com/images/I/91acJqhjTxL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/3SUMt13",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Sand art for the little kids",
   },
   {
     slug: "dozeezop-6-pack-diamond-art-kit-for-adults",
     name: "DOZEEZOP 6-Pack Diamond Art Kit for Adults, 5D Diamond Painting 12x16 Inch",
-    image: "https://m.media-amazon.com/images/I/11GWaerpNhL.jpg",
+    image: "https://m.media-amazon.com/images/I/81qMAsvKGAL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/4pufGfs",
     store: "Amazon",
     category: "toys",
-    recommendationLabel: "chosen_for_look",
     description: "Diamond art kit- perfect to entertain kids on Tisha Bav",
   },
   {
@@ -10415,7 +10414,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5vxc0iqk77ys",
     store: "SHEIN",
     category: "bags",
-    recommendationLabel: "chosen_for_look",
+    audience: "unisex-kids",
     description: "Adorable Briefcase",
   },
   {
@@ -10425,8 +10424,9 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5vxbs2vswvoc",
     store: "SHEIN",
     category: "skirts",
-    recommendationLabel: "chosen_for_look",
-    description: "Tried and true beautiful skirt comes in more colors",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Beautiful skirt comes in more colors",
   },
   {
     slug: "women-s-short-knitted-cardigan-fashionable-casual-beige",
@@ -10435,7 +10435,7 @@ export const products: Product[] = [
     affiliateUrl: "https://onelink.shein.com/43/5vx9uh2jo65r",
     store: "SHEIN",
     category: "shabbos-elegant",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful Knit Shabbos top",
   },
   {
@@ -10445,7 +10445,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4fkEvFM",
     store: "Amazon",
     category: "sweaters",
-    recommendationLabel: "chosen_for_look",
+    audience: "women",
     description: "Beautiful weekday top Limited time deal",
   },
   {
@@ -10490,6 +10490,9 @@ export function getProductsByCategory(category: ProductCategoryType): Product[] 
 
 /** Products whose specific category rolls up into a given broad nav group (lib/data/categories.ts slug) — powers /category/[slug]. */
 export function getProductsByCategoryGroup(categoryGroupSlug: string): Product[] {
+  // Two sections are built from tags rather than the item type:
+  if (categoryGroupSlug === "yom-tov-holidays") return publicProducts.filter((product) => (product.holidays?.length ?? 0) > 0);
+  if (categoryGroupSlug === "tried-true") return publicProducts.filter((product) => product.recommendationLabel === "personally_tried");
   const categoriesInGroup = new Set(getProductCategoriesInGroup(categoryGroupSlug));
   return publicProducts.filter((product) => categoriesInGroup.has(product.category));
 }

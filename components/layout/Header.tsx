@@ -5,13 +5,14 @@ import { Logo } from "@/components/layout/Logo";
 import { DesktopNav } from "@/components/layout/DesktopNav";
 import { SearchBar } from "@/components/layout/SearchBar";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+import { getFashionMenu, getHolidayMenu } from "@/lib/data/menus";
 
 /** Site header: hamburger (mobile) + logo + primary nav (desktop) + search + favorites (SRS §5). */
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-surface/90 backdrop-blur">
       <Container className="flex h-16 items-center gap-4">
-        <MobileMenu />
+        <MobileMenu fashionLinks={getFashionMenu()} holidayLinks={getHolidayMenu()} />
         <Logo />
         <DesktopNav />
         <div className="ml-auto flex items-center gap-2">

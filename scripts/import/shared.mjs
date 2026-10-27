@@ -24,10 +24,10 @@ export const LABELS = [
  */
 const CATEGORY_KEYWORDS = [
   ["pajamas", ["pajama", "pajamas", "pyjama", "pyjamas", "pj", "pjs", "sleepwear", "nightgown", "nightdress", "robe", "loungewear"]],
-  ["jumpsuits", ["jumpsuit", "jumpsuits", "romper", "rompers", "overalls", "onesie"]],
+  ["jumpsuits", ["jumpsuit", "jumpsuits", "romper", "rompers", "overalls", "onesie", "onesies", "coveralls"]],
   ["sets", ["2 piece", "two piece", "2pcs", "3pcs", "outfit set", "co ord", "coord", "matching set", "tracksuit"]],
   ["cardigans", ["cardigan", "cardigans"]],
-  ["sweaters", ["sweater", "sweaters", "pullover", "jumper", "knit top", "sweatshirt", "hoodie"]],
+  ["sweaters", ["sweater", "sweaters", "pullover", "jumper", "knit top", "sweatshirt", "sweatshirts", "hoodie", "hoodies", "knit", "knitted", "turtleneck"]],
   ["coats-jackets", ["coat", "coats", "jacket", "jackets", "blazer", "parka", "puffer", "vest", "trench", "windbreaker"]],
   ["dresses", ["dress", "dresses", "gown", "maxi dress", "midi dress", "sweater dress", "shirt dress", "slip dress", "knit dress", "t shirt dress", "hoodie dress"]],
   ["skirts", ["skirt", "skirts"]],
@@ -37,7 +37,7 @@ const CATEGORY_KEYWORDS = [
   ["shoes", ["shoe", "shoes", "heels", "pumps", "flats", "loafers", "loafer", "mules", "oxfords", "clogs"]],
   ["bags", ["bag", "bags", "handbag", "purse", "tote", "backpack", "crossbody", "clutch", "wallet", "diaper bag"]],
   ["tops", ["top", "tops", "blouse", "shirt", "shirts", "tee", "t shirt", "tshirt", "tunic", "camisole", "cami", "bodysuit", "shell"]],
-  ["accessories", ["necklace", "earrings", "earring", "bracelet", "ring", "jewelry", "scarf", "snood", "headband", "hat", "beanie", "belt", "sunglasses", "watch", "hair clip", "claw clip", "wig", "headscarf", "tichel", "gloves"]],
+  ["accessories", ["necklace", "earrings", "earring", "bracelet", "ring", "jewelry", "scarf", "snood", "headband", "hat", "beanie", "belt", "sunglasses", "watch", "hair clip", "claw clip", "wig", "headscarf", "tichel", "gloves", "socks", "tights", "leggings", "scrunchie", "scrunchies", "barrette", "ponytail", "hair ties", "hair tie", "head scarves", "head scarf", "bow", "bows"]],
   ["beauty", ["makeup", "lipstick", "lip gloss", "mascara", "eyeliner", "foundation", "concealer", "serum", "moisturizer", "skincare", "skin care", "nail", "nails", "perfume", "lotion", "shampoo", "conditioner", "hair dryer", "curling", "straightener", "brush", "facial", "face mask"]],
   ["baby-gear", ["baby", "infant", "newborn", "stroller", "car seat", "crib", "bassinet", "pacifier", "bottle", "bib", "teether", "diaper", "high chair", "carrier", "swaddle", "toddler"]],
   ["toys", ["toy", "toys", "lego", "doll", "dolls", "puzzle", "plush", "stuffed", "game", "playset", "blocks", "kids play"]],
@@ -54,29 +54,127 @@ function words(text) {
   return " " + String(text || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim() + " ";
 }
 
-/** Best-guess category for a title (falls back to "other"). */
+/** Clothing, shoes, bags and accessories: what a title is when it names a garment. */
+export const APPAREL_CATEGORIES = new Set([
+  "dresses", "skirts", "tops", "sweaters", "cardigans", "sets", "jumpsuits", "pajamas", "coats-jackets",
+  "shoes", "boots", "sandals", "sneakers", "bags", "accessories", "shabbos-elegant",
+]);
+
+/**
+ * Phrases that describe WHERE or HOW clothing is worn, or a garment detail,
+ * not what the item is. SHEIN/Temu titles are full of them ("casual vacation
+ * home daily knit", "back to school dress", "lantern sleeve top", "outdoor
+ * casual beanie"), and the plain keyword pass used to file those under Home,
+ * School, Camping or Outdoor (Oct 2026 audit: 200+ misfiled). They are
+ * removed before matching.
+ */
+const CONTEXT_PHRASES = [
+  "vacation home", "home daily", "daily home", "home wear", "homewear", "home clothes", "homeclothes", "at home", "for home",
+  "stay home", "home outfit", "house wear",
+  "back to school", "school style", "school uniform", "for school", "school outfit", "school girl", "school boy", "high school",
+  "college style", "preppy school", "office wear", "office lady", "commute",
+  "outdoor casual", "indoor outdoor", "indoor and outdoor", "outdoor wear", "for outdoor", "outdoor sports",
+  "lantern sleeve", "lantern sleeves", "umbrella hem", "umbrella skirt", "kitchen party", "garden party", "beach vacation", "camping style",
+  "baby doll", "babydoll", "baby blue", "baby pink",
+];
+
+/** Garment details with no garment noun ("... peter pan collar bow decor"): still clothing, filed as tops when nothing better matches — never Home/School. */
+const GARMENT_DETAILS = ["long sleeve", "short sleeve", "sleeveless", "crew neck", "round neck", "v neck", "mock neck", "collar", "puff sleeve", "ruffle trim", "drop shoulder"];
+
+function stripContext(text) {
+  let out = text;
+  for (const phrase of CONTEXT_PHRASES) out = out.split(" " + phrase + " ").join(" ");
+  return out;
+}
+
+/**
+ * Best-guess category for a title (falls back to "other"). Two passes: if the
+ * title names a garment, shoe, bag or accessory, only those categories can
+ * win, so "home"/"school"/"outdoor"/"baby" inside a clothing title can't file
+ * it under Home & Kitchen, Home Office or Baby Gear. Otherwise the longest
+ * matching keyword wins across all categories.
+ */
 export function guessCategory(title, url = "") {
-  const sources = [words(title)];
+  const sources = [stripContext(words(title))];
   if (!title) {
     try {
       const u = new URL(url);
-      sources.push(words(decodeURIComponent(u.pathname)));
+      sources.push(stripContext(words(decodeURIComponent(u.pathname))));
     } catch {
       // not a URL — ignore
     }
   }
-  // The longest matching keyword wins ("water bottle" beats "bottle"); ties go to the earlier category.
-  let best = { category: "other", length: 0 };
   for (const text of sources) {
     if (text.trim() === "") continue;
-    for (const [category, keys] of CATEGORY_KEYWORDS) {
-      for (const key of keys) {
-        if (key.length > best.length && text.includes(" " + key + " ")) best = { category, length: key.length };
-      }
-    }
-    if (best.length) return best.category;
+    const apparel = bestMatch(text, (category) => APPAREL_CATEGORIES.has(category));
+    if (apparel) return apparel;
+    if (GARMENT_DETAILS.some((detail) => text.includes(" " + detail + " "))) return "tops";
+    const any = bestMatch(text, () => true);
+    if (any) return any;
   }
   return "other";
+}
+
+// The longest matching keyword wins ("water bottle" beats "bottle"); ties go to the earlier category.
+function bestMatch(text, allowed) {
+  let best = { category: "", length: 0 };
+  for (const [category, keys] of CATEGORY_KEYWORDS) {
+    if (!allowed(category)) continue;
+    for (const key of keys) {
+      if (key.length > best.length && text.includes(" " + key + " ")) best = { category, length: key.length };
+    }
+  }
+  return best.category;
+}
+
+/** True when a title or caption names clothing/shoes/bags/accessories (after removing "vacation home"-style context words). */
+export function looksLikeApparel(...texts) {
+  return texts.some((t) => {
+    if (!t) return false;
+    const text = stripContext(words(t));
+    return bestMatch(text, (category) => APPAREL_CATEGORIES.has(category)) !== "" || GARMENT_DETAILS.some((d) => text.includes(" " + d + " "));
+  });
+}
+
+/** Sara's "Tried and True" / "Tried & True" / "Tried n True" in a caption. */
+export const TRIED_TRUE = /tried\s*(?:and|&|n|'n'?|-n-)\s*true/i;
+
+/** Caption without the "Tried and True" phrase (it becomes the Tried & True badge instead). */
+export function stripTriedTrue(text) {
+  let s = String(text || "").replace(new RegExp(TRIED_TRUE.source, "gi"), "");
+  s = s
+    .replace(/^[\s!.\-–:,]+/, "")
+    .replace(/\s+([!.,])/g, "$1")
+    .replace(/([.!])\s*[!.]+/g, "$1")
+    .replace(/\(\s+/g, "(")
+    .replace(/\s{2,}/g, " ")
+    .trim()
+    .replace(/^[\-–:,!.]\s*/, "");
+  return s ? s[0].toUpperCase() + s.slice(1) : s;
+}
+
+const HOLIDAY_PATTERNS = [
+  ["rosh-hashanah", /rosh\s*hash[ao]n[ao]h?|rosh\s*hashona|shana\s*tova/i],
+  ["sukkos", /suk+[oa]?[st]\b|suc+[oa][st]\b|sukk?ah\b|succ?ah\b|sukka\b|suka\b|simch?as?\s*torah|simchat\s*torah|esrog|etrog|lulav/i],
+  ["chanukah", /[ck]?h?an+uk+ah?\b|chanuka|hanuk+ah?|menorah|dreidel/i],
+  ["purim", /purim|mishloach/i],
+  ["pesach", /pesach|passover|\bseder\b/i],
+  ["yom-tov", /yom\s*tov|yomtov|yuntif|yom\s*kippur|shavuos|chol\s*ha?moed|high holidays?/i],
+];
+
+/** Holiday tags from the caption (and the title, where it names the holiday). General "yom-tov" is dropped when a specific holiday is named. */
+export function holidaysFor(caption, title = "") {
+  const found = new Set();
+  for (const [holiday, pattern] of HOLIDAY_PATTERNS) if (pattern.test(caption || "") || pattern.test(title || "")) found.add(holiday);
+  if (found.size > 1) found.delete("yom-tov");
+  return [...found];
+}
+
+const MATERNITY = /matern|pregnan|nursing|breastfeed|\bbump\b/i;
+
+/** Maternity clothing: the caption or title says maternity / pregnancy / nursing. */
+export function isMaternity(caption, title = "") {
+  return MATERNITY.test(caption || "") || MATERNITY.test(title || "");
 }
 
 /** Strips store boilerplate from a page / preview title ("Amazon.com: X : Home & Kitchen" → "X"). */

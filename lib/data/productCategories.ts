@@ -30,7 +30,7 @@ export const productCategories: ProductCategoryOption[] = [
   { value: "sets", label: "Sets", group: "fashion-style" },
   { value: "jumpsuits", label: "Jumpsuits", group: "fashion-style" },
   { value: "pajamas", label: "Pajamas", group: "fashion-style" },
-  { value: "coats-jackets", label: "Coats & Jackets", group: "fashion-style" },
+  { value: "coats-jackets", label: "Outerwear", group: "fashion-style" },
   { value: "shoes", label: "Shoes", group: "fashion-style" },
   { value: "boots", label: "Boots", group: "fashion-style" },
   { value: "sandals", label: "Sandals", group: "fashion-style" },

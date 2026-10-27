@@ -65,9 +65,11 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         )}
 
         <div className="flex flex-col gap-6">
-          <div>
-            <RecommendationBadge type={product.recommendationLabel} />
-          </div>
+          {product.recommendationLabel ? (
+            <div>
+              <RecommendationBadge type={product.recommendationLabel} />
+            </div>
+          ) : null}
 
           <div>
             <h1 className="font-display text-h1 font-semibold tracking-tight text-foreground">{product.name}</h1>
