@@ -43,7 +43,7 @@ Open the CSV in Excel or Google Sheets. For each product you want on the site:
 | image | photo link; empty = neutral placeholder |
 | audience / occasion | optional, clothing only (e.g. `women` + `shabbos`) |
 | featured | `yes` to show it in Top Picks |
-| hidden | `yes` to keep it in the data but off the site. Temu rows with no photo are hidden automatically |
+| hidden | `yes` to keep it in the data but off the site. Temu rows with no photo are hidden automatically (photos found for Temu links are kept in `scripts/import/temu-photos.json` and used when the image column is empty) |
 | label | optional, default `chosen_for_look` |
 | description | starts as your caption from the chat; edit or clear it (empty = "Found on <store>.") |
 

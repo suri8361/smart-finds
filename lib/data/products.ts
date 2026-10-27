@@ -173,49 +173,49 @@ export const products: Product[] = [
   {
     slug: "kids-magnetic-building-blocks-3-year-olds-and",
     name: "Kids magnetic building blocks 3 year olds and up stem educational toy random colors",
+    image: "https://img.kwcdn.com/product/fancy/f14e9c5f-8235-4a13-9f53-9cbe589e181d.jpg",
     affiliateUrl: "https://temu.to/k/pol5hnnhc2q",
     store: "Temu",
     category: "toys",
     description: "Kids' Magnetic Building Blocks: 3-Year-Olds And Up STEM Educational Toy 36 Pieces for $9.05",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "12-color-glitter-marker-set-doodle-shimmering-watercolor",
     name: "12 color glitter marker set doodle shimmering watercolor pens 1pc encouragement card",
+    image: "https://img.kwcdn.com/product/open/db0ee30189814df883d4a706376bd28c-goods.jpeg",
     affiliateUrl: "https://temu.to/k/p5601qwaqks",
     store: "Temu",
     category: "school",
     description: "12-Color Glitter Marker Set price $3.60",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "handmade-bead-dotting-stickers-little-princess-girl-bead",
     name: "Handmade bead dotting stickers little princess girl bead dotting pen toy making childrens",
+    image: "https://img.kwcdn.com/product/fancy/4f2fee32-6e8b-4d10-a38d-42118aaccb0a.jpg",
     affiliateUrl: "https://temu.to/k/pu2z1t4tk1z",
     store: "Temu",
     category: "toys",
     description: "Dotting Pen Toy price $5.21",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "6-art-pens-with-heat-activated-tip-suitable",
     name: "6 art pens with heat activated tip suitable for diy crafts raised puffy textures for",
+    image: "https://img.kwcdn.com/product/open/8cb75cf6c917477cae9483a245c0362e-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pcaoajs35qc",
     store: "Temu",
     category: "school",
     holidays: ["chanukah"],
     description: "Great for Chanukah or any Sunday 6-Color 3D Popcorn Effect Art Pens with Heat-Activated Tip price $6.15",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "womens-detachable-sleeve-hooded-puffer-jacket-2-in",
     name: "Womens detachable sleeve hooded puffer jacket 2 in 1 convertible short padded coat and",
+    image: "https://img.kwcdn.com/product/fancy/3f699db8-38cd-4273-84de-fdebe92c3cb3.jpg",
     affiliateUrl: "https://temu.to/k/pwnfrcjlpcg",
     store: "Temu",
     category: "coats-jackets",
     audience: "women",
     description: "Women'S Detachable Sleeve Hooded Puffer Jacket, 2-In-1 Convertible Short Padded Coat And Sleeveless Vest, price $42.71 Size S-L",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "elladie-kids-1pc-young-girl-comfortable-casual-elegant",
@@ -483,22 +483,22 @@ export const products: Product[] = [
   {
     slug: "womens-elegant-french-inspired-minimalist-loose-fit-puffed",
     name: "Womens elegant french inspired minimalist loose fit puffed sleeve blouse solid color",
+    image: "https://img.kwcdn.com/product/fancy/0f79f36e-7bae-4151-a8ba-7332ea41ea24.jpg",
     affiliateUrl: "https://temu.to/k/phnwdoos1w2",
     store: "Temu",
     category: "shabbos-elegant",
     audience: "women",
     description: "Elegant white shirt to pair with these! $11.56 Size S-XXL",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "elegant-square-neck-sleeveless-maxi-dress-a-line",
     name: "Elegant square neck sleeveless maxi dress a line length dress with thin straps hip",
+    image: "https://img.kwcdn.com/product/fancy/51bdd830-51c2-44f2-b38c-78eb04aa7e8c.jpg",
     affiliateUrl: "https://temu.to/k/peqwkmklw25",
     store: "Temu",
     category: "dresses",
     audience: "women",
     description: "Found on Temu.",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "rafferiza-black-vertical-square-neck-elegant-french-back",
@@ -990,23 +990,23 @@ export const products: Product[] = [
   {
     slug: "boys-lined-crew-neck-sweatshirt-with-cute-cartoon",
     name: "Boys lined crew neck sweatshirt with cute cartoon sailboat print long sleeve pullover top",
+    image: "https://img.kwcdn.com/product/open/e5e5f911fa9f47aea74d963adf5d219a-goods.jpeg",
     affiliateUrl: "https://temu.to/k/puxw4s1gqae",
     store: "Temu",
     category: "sweaters",
     audience: "boys",
     recommendationLabel: "personally_tried",
     description: "Boys' Sweatshirt $10.14",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "projection-alarm-clock-ceiling-projection-alarm-clock-7",
     name: "Projection alarm clock ceiling projection alarm clock 7 7 inch large display screen led",
+    image: "https://img.kwcdn.com/product/fancy/3297f418-76f2-4431-93c4-061d6e223068.jpg",
     affiliateUrl: "https://temu.to/k/pz9zjt6b38o",
     store: "Temu",
     category: "electronics",
     recommendationLabel: "personally_tried",
     description: "Projection Alarm Clock $6.63 + $2.99 shipping local delivery (2 days)",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "women-s-mock-neck-pleated-midi-dress-sheer",
@@ -1144,12 +1144,12 @@ export const products: Product[] = [
   {
     slug: "2026-design-sweater-doll-collar-cardigan-early-autumn",
     name: "2026 design sweater doll collar cardigan early autumn high end bow sweater womens",
+    image: "https://img.kwcdn.com/product/open/3c8f648d384b40c4b76c6f8437e4c36a-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pszicdye9cd",
     store: "Temu",
     category: "shabbos-elegant",
     audience: "women",
     description: "Shabbos sweater $13.78",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "dazy-patchwork-contrast-color-plaid-loose-long-sleeve",
@@ -2084,52 +2084,52 @@ export const products: Product[] = [
   {
     slug: "2026-spring-summer-new-french-half-turtleneck-puff",
     name: "2026 spring summer new french half turtleneck puff sleeve cable openwork cropped top",
+    image: "https://img.kwcdn.com/product/fancy/6291ffb5-596c-4c4d-947e-5d72bb6164b7.jpg",
     affiliateUrl: "https://temu.to/k/p8gr5hoebyn",
     store: "Temu",
     category: "shabbos-elegant",
     audience: "women",
     description: "French-Style Elegant Half-Turtleneck Puff Sleeve Top Size S-XL $18.54",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "elegant-womens-white-thin-hollow-sweater-soft-and",
     name: "Elegant womens white thin hollow sweater soft and versatile crew neck adjustable cuffs",
+    image: "https://img.kwcdn.com/product/fancy/62df1c86-8115-4487-9a6d-7061c39c80f0.jpg",
     affiliateUrl: "https://temu.to/k/p7xqo8uy67w",
     store: "Temu",
     category: "shabbos-elegant",
     audience: "women",
     description: "Elegant Hollow sweater Size S-XXL $26.07",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "heavy-studded-drill-round-neck-soft-and-plush",
     name: "Heavy studded drill round neck soft and plush womens sweater 2026 autumn winter new style",
+    image: "https://img.kwcdn.com/product/fancy/91db2da0-9db1-4894-94b7-e883f931bbe1.jpg",
     affiliateUrl: "https://temu.to/k/pyrsrxe8suy",
     store: "Temu",
     category: "sweaters",
     audience: "women",
     description: "Studded Round Neck Women's Sweater Size S-XL $24.35",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "womens-french-style-wool-sweater-with-high-neck",
     name: "Womens french style wool sweater with high neck bow collar plush loose longline pullover",
+    image: "https://img.kwcdn.com/product/fancy/038d24f8-b778-4d23-8a83-03eed30f8203.jpg",
     affiliateUrl: "https://temu.to/k/p3b1u7wehui",
     store: "Temu",
     category: "sweaters",
     audience: "women",
     description: "Women's French-Style Wool Sweater with High Neck Bow Collar Size S-XXL $27.36",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "womens-pullover-winter-round-neck-short-cardigan-streetwear",
     name: "Womens pullover winter round neck short cardigan streetwear y2 elegant casual layer",
+    image: "https://img.kwcdn.com/product/open/c8113fd095624d2bbfdb70b027ea7ebb-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pu2dnjen3zd",
     store: "Temu",
     category: "cardigans",
     audience: "women",
     description: "Cashmere studded sweater Womens Cashmere - more colors Size XS-XL $27.62",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "women-s-puff-short-sleeve-sweater-tops-2025",
@@ -2192,12 +2192,12 @@ export const products: Product[] = [
   {
     slug: "women-elegant-sleeveless-dress-asymmetric-round-neck-dress",
     name: "Women elegant sleeveless dress asymmetric round neck dress suitable for weddings formal",
+    image: "https://img.kwcdn.com/product/fancy/7989ac35-c801-44a0-b632-fcfe6bb82b32.jpg",
     affiliateUrl: "https://temu.to/k/p1r8uvb42z2",
     store: "Temu",
     category: "shabbos-elegant",
     audience: "women",
     description: "Women' Elegant Sleeveless gown size S,M $26.32",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "maternity-sweatshirt-for-women-casual-long-sleeve-half",
@@ -2387,12 +2387,12 @@ export const products: Product[] = [
   {
     slug: "jacquard-suspender-dress-womens-summer-2026-new-waist",
     name: "Jacquard suspender dress womens summer 2026 new waist elegant light luxury long skirt",
+    image: "https://img.kwcdn.com/product/fancy/626d0b89-1839-4526-9bc1-d939c547ce87.jpg",
     affiliateUrl: "https://temu.to/k/po5jwmq38jc",
     store: "Temu",
     category: "dresses",
     audience: "women",
     description: "French Black Jacquard Suspender Dress",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "women-s-fashion-satin-blouse-long-sleeve-pointed",
@@ -2407,22 +2407,22 @@ export const products: Product[] = [
   {
     slug: "womens-shiny-tulle-blouse-long-sleeve-shiny-sheer",
     name: "Womens shiny tulle blouse long sleeve shiny sheer top shirt casual",
+    image: "https://img.kwcdn.com/product/open/d37b14bdef9d4456b401a67db6338dde-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pfvydau3wnh",
     store: "Temu",
     category: "tops",
     audience: "women",
     description: "option 3- Tulle Blouse (French Black Jacquard Suspender Dress)",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "women-s-dark-brown-neck-sleeveless-ruched-waist",
     name: "Women s dark brown neck sleeveless ruched waist shirred pleated flared dress women s",
+    image: "https://img.kwcdn.com/product/open/a91457e775024149b4f979d1442c87c9-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pxy14bjiclw",
     store: "Temu",
     category: "shabbos-elegant",
     audience: "women",
     description: "Beautiful velour and satin combo elegant maxi Gown. More colors. Size S-XXL $29.30",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "aveloria-modichic-minimalist-elegant-3d-diagonal-cut-double",
@@ -2516,42 +2516,42 @@ export const products: Product[] = [
   {
     slug: "summer-holiday-dress-womens-dress-ladies-dress-womens",
     name: "Summer holiday dress womens dress ladies dress womens summer dress womens summer dress",
+    image: "https://img.kwcdn.com/product/fancy/43d9569e-a4c6-42ec-9941-d0f3f7858d74.jpg",
     affiliateUrl: "https://temu.to/k/p9javtkp4pw",
     store: "Temu",
     category: "dresses",
     audience: "women",
     description: "Collared sleeveless button down maxi XS-XXL $18.23",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "elegant-solid-color-dress-for-women-velvet-deep",
     name: "Elegant solid color dress for women velvet deep v neck a line sleeveless slit maxi dress",
+    image: "https://img.kwcdn.com/product/fancy/0cd278be-4128-48a5-8f6a-5161b3d68e72.jpg",
     affiliateUrl: "https://temu.to/k/p11b30oy2eq",
     store: "Temu",
     category: "dresses",
     audience: "women",
     description: "Fastest delivery: 5 BUSINESS DAYS Velvet Button Maxi Size S-XXl $24.56",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "womens-dark-burgundy-long-dress-intricate-red-floral",
     name: "Womens dark burgundy long dress intricate red floral and scroll deep v neck sleeveless",
+    image: "https://img.kwcdn.com/product/open/089e52fcab80470480ba5a33c59634f2-goods.jpeg",
     affiliateUrl: "https://temu.to/k/poaseuaqm48",
     store: "Temu",
     category: "dresses",
     audience: "women",
     description: "Women's Dark Burgundy Velvet Maxi Size S-XXL $15.94",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "womens-v-neck-sleeveless-solid-color-dress-casual",
     name: "Womens v neck sleeveless solid color dress casual",
+    image: "https://img.kwcdn.com/product/fancy/38883cd8-ae23-4b21-aa17-ff5263fc6e36.jpg",
     affiliateUrl: "https://temu.to/k/pxzdigovtqx",
     store: "Temu",
     category: "dresses",
     audience: "women",
     description: "Temu- arrives in 5 business days V-neck Sleeveless Solid Color Dress $19.40",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "flessibili-women-s-sleeveless-velvet-maxi-dress-high",
@@ -2634,48 +2634,48 @@ export const products: Product[] = [
   {
     slug: "4-5pcs-solar-starburst-lanterns-with-remote-timer",
     name: "4 5pcs solar starburst lanterns with remote timer 8 adjustable brightness 240 360 480",
+    image: "https://img.kwcdn.com/product/fancy/e8beaf76-803d-431a-9c33-6b7727ee22e0.jpg",
     affiliateUrl: "https://temu.to/k/p5ghdqrapjk",
     store: "Temu",
     category: "home",
     description: "Temu local warehouse: 4/5pcs Solar Starburst Lanterns with Remote Timer -8 Modes $9.81",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "balloons-10-strings-of-balloons-with-led-luminous",
     name: "Balloons 10 strings of balloons with led luminous transparent suitable wedding birthday",
+    image: "https://img.kwcdn.com/product/open/d2358ec121d343e9b8346f22c906575e-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pmxxn9u4ku0",
     store: "Temu",
     category: "home",
     description: "Temu local warehouse: 10 Balloons+10 Strings Of Light Wave Balloons with LED Luminous Transparent Bubble Balls $7.44",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "4pcs-total-length-315-in-80-lights-eucalyptus",
     name: "4pcs total length 315 in 80 lights eucalyptus leaf wreath string light pendant battery",
+    image: "https://img.kwcdn.com/product/open/841bf1ddc484401381fd8c4a95eefd49-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pifx795unom",
     store: "Temu",
     category: "home",
     description: "Temu local warehouse: 4pcs Total Length 315 In, 80 Lights Eucalyptus Leaf Wreath String Light Pendant, -Battery-powered $9.70",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "12pcs-large-size-hanging-lantern-with-flickering-led",
     name: "12pcs large size hanging lantern with flickering led candles 9 37 height led vintage",
+    image: "https://img.kwcdn.com/product/fancy/9f66b765-07fb-4bbe-abf7-c3bdb5d98c4c.jpg",
     affiliateUrl: "https://temu.to/k/pejek43jgog",
     store: "Temu",
     category: "home",
     description: "Temu local warehouse: 12 Large-Size Hanging Lantern with Flickering LED Candles, 9.37'' - 3 colors $34.19",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "1pc-solar-outdoor-ivy-string-lights-8-177",
     name: "1pc solar outdoor ivy string lights 8 177 led fairy curtain lights artificial green",
+    image: "https://img.kwcdn.com/product/fancy/2263e69b-6a0a-4c91-b67f-4048eac9e0e2.jpg",
     affiliateUrl: "https://temu.to/k/pzx6pzkrc1n",
     store: "Temu",
     category: "outdoor",
     holidays: ["sukkos"],
     description: "Temu local warehouse - delivery 1 business day. Ivy leaves with light for sukkah. $10.95",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "glamaker-womens-2-piece-skirt-sets-fall-long",
@@ -2742,66 +2742,66 @@ export const products: Product[] = [
   {
     slug: "2d-flat-sunflower-painting-lamp-diamond-painting-night",
     name: "2d flat sunflower painting lamp diamond painting night light gifts diamond painting kit",
+    image: "https://img.kwcdn.com/product/open/39717094921949ebb1fb8978c10f21b5-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pzzidtguavp",
     store: "Temu",
     category: "home",
     description: "2D Flat Sunflower Diamond Art Painting Lamp. - Works with battery",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "2d-flat-flower-table-lamp-diamond-painting-kit",
     name: "2d flat flower table lamp diamond painting kit for diy art decoration suitable for",
+    image: "https://img.kwcdn.com/product/fancy/266aa729-9242-40fb-9116-825f75e256ed.jpg",
     affiliateUrl: "https://temu.to/k/pd38j398k2t",
     store: "Temu",
     category: "home",
     description: "2D/ Flat Flower Table Lamp Diamond Painting Kit for DIY Art Decoration",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "a-punch-needle-embroidery-kit-suitable-for-beginners",
     name: "A punch needle embroidery kit suitable for beginners including a punch instructions an",
+    image: "https://img.kwcdn.com/product/fancy/553ff906-afe8-4e5e-b68e-0f6bbe1b0d9f.jpg",
     affiliateUrl: "https://temu.to/k/pdh8p7k7flh",
     store: "Temu",
     category: "toys",
     description: "Needle Felting Embroidery Kit for Beginners",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "4-elegant-diamond-painting-bookmarks-irregular-acrylic-bookmarks",
     name: "4 elegant diamond painting bookmarks irregular acrylic bookmarks featuring bookshelf and",
+    image: "https://img.kwcdn.com/product/open/a841e9e478f04378ac525fae7efccf55-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pefd4pqzbzm",
     store: "Temu",
     category: "toys",
     description: "4pcs Elegant Diamond Painting Bookmarks",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "40-page-coloring-book-suitable-for-travel-pixel",
     name: "40 page coloring book suitable for travel pixel art mosaic activity book with hidden",
+    image: "https://img.kwcdn.com/product/open/f8e4d2b6879c40bda223eda4be61c1e2-goods.jpeg",
     affiliateUrl: "https://temu.to/k/poyn7qixcd3",
     store: "Temu",
     category: "toys",
     description: "40 Page Mosaic Colored Book",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "2d-flat-printing-26-letter-pearl-art-painting",
     name: "2d flat printing 26 letter pearl art painting set floral leaf small decor round pearls",
+    image: "https://img.kwcdn.com/product/fancy/eac16494-2629-4dac-81f1-15478ac52203.jpg",
     affiliateUrl: "https://temu.to/k/pqivpel3rl0",
     store: "Temu",
     category: "toys",
     description: "Personalized initial pearl art",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "1pc-diy-pearl-painting-with-violin-musical-note",
     name: "1pc diy pearl painting with violin musical note pearl drill kit suitable for home office",
+    image: "https://img.kwcdn.com/product/open/3c8c5b21e493440e895ae2efb5279a11-goods.jpeg",
     affiliateUrl: "https://temu.to/k/p3068sr8wus",
     store: "Temu",
     category: "home",
     holidays: ["sukkos"],
     description: "Stunning pearl craft violin- perfect for the Sukkah",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "amegoya-womens-velvet-dress-semi-formal-wedding-guest",
@@ -2871,83 +2871,83 @@ export const products: Product[] = [
   {
     slug: "diy-pearl-painting-mosaic-art-craft-suitable-for",
     name: "Diy pearl painting mosaic art craft suitable for frameless diamond picture with irregular",
+    image: "https://img.kwcdn.com/product/open/f3a41c1d94ad420fa46323011c9e01f9-goods.jpeg",
     affiliateUrl: "https://temu.to/k/p8gngdeqw6n",
     store: "Temu",
     category: "toys",
     description: "Hello Kitty DIY Pearl Painting Mosaic Art",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "wooden-painting-craft-kit-for-kids-glow-in",
     name: "Wooden painting craft kit for kids glow in the and crafts for kids ages 6 wood with art",
+    image: "https://img.kwcdn.com/product/open/aed8244b38d94caa81bbdd9991a98baf-goods.jpeg",
     affiliateUrl: "https://temu.to/k/ppozajdgpvd",
     store: "Temu",
     category: "toys",
     description: "Wooden Painting Craft Kit for Kids, Glow In The Dark",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "566pcs-diy-keychain-making-craft-set-adjustable-letter",
     name: "566pcs diy keychain making craft set adjustable letter heart shaped transparent bead",
+    image: "https://img.kwcdn.com/product/open/41a52f9f332a4ffa86afbe54855d98ae-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pq05l8l1qa6",
     store: "Temu",
     category: "toys",
     description: "566pcs DIY Keychain Making Craft Set",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "new-years-gift-valentines-day-customization-custom-photo",
     name: "New years gift valentines day customization custom photo portrait puzzle art personalized",
+    image: "https://img.kwcdn.com/product/fancy/244abed5-2d4c-4ae4-819a-3eb6c91686c0.jpg",
     affiliateUrl: "https://temu.to/k/peaie0v6aug",
     store: "Temu",
     category: "toys",
     description: "Personalize a puzzle and have your child put it together",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "27pcs-beginner-sewing-kit-set-multi-style-combinations",
     name: "27pcs beginner sewing kit set multi style combinations including plastic needles thread",
+    image: "https://img.kwcdn.com/product/fancy/be775716-0780-4092-b7df-4379df683731.jpg",
     affiliateUrl: "https://temu.to/k/pdn308vqg8t",
     store: "Temu",
     category: "other",
     description: "Beginner sewing kit",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "toys-for-kids-paint-and-crafts-kits-ideas",
     name: "Toys for kids paint and crafts kits ideas activities toys birthday christmas gifts for",
+    image: "https://img.kwcdn.com/product/fancy/72cf3650-1b71-484c-baa2-edb9ec3323c5.jpg",
     affiliateUrl: "https://temu.to/k/pcul0i8omyu",
     store: "Temu",
     category: "toys",
     description: "Marbling art",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "foam-texture-painting-kit-30pcs-foam-sheets-craft",
     name: "Foam texture painting kit 30pcs foam sheets craft paper 1 brush 1 droppers all in one",
+    image: "https://img.kwcdn.com/product/fancy/8336da36-cc44-45d0-b520-a6d125034290.jpg",
     affiliateUrl: "https://temu.to/k/prfev7sgepk",
     store: "Temu",
     category: "toys",
     description: "Magic 3D foam texture painting",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "painting-with-floral-basket-cluster-5d-diy-pearl",
     name: "Painting with floral basket cluster 5d diy pearl painting kit suitable for home wall",
+    image: "https://img.kwcdn.com/product/open/daf8cb98c5824da6a247a5185cfc3cf3-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pou86s5t661",
     store: "Temu",
     category: "toys",
     description: "Pearl Painting",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "personalized-photo-bobblehead-with-custom-photo-spring-base",
     name: "Personalized photo bobblehead with custom photo spring base suitable for car dashboard",
+    image: "https://img.kwcdn.com/product/fancy/f3bbe543-330b-43db-85c4-9c58f0adcda0.jpg",
     affiliateUrl: "https://temu.to/k/ph7vtxjz535",
     store: "Temu",
     category: "other",
     description: "I just came across this adorable picture ti cartoon on Temu $5.52",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "mobula-sound-spring-autumn-versatile-fashion-tweed-button",
@@ -7161,12 +7161,12 @@ export const products: Product[] = [
   {
     slug: "denim-suspender-skirt-spring-and-autumn-new-simple",
     name: "Denim suspender skirt spring and autumn new simple korean all match solid color loose",
+    image: "https://img.kwcdn.com/product/open/8ce04e85c9174e6abebafc8d7977063b-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pf1ea93gy63",
     store: "Temu",
     category: "skirts",
     audience: "girls",
     description: "or from Temu size 3-4y-7-8y",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "5x5-silk-base-wig-kosher-jewish-with-pu",
@@ -7418,12 +7418,12 @@ export const products: Product[] = [
   {
     slug: "vintage-square-scarf-style-hair-tie-for-low",
     name: "Vintage square scarf style hair tie for low ponytail versatile square scarf hair accessory",
+    image: "https://img.kwcdn.com/product/fancy/d31b39e9-1d3b-4056-b526-002db98d80ab.jpg",
     affiliateUrl: "https://temu.to/k/pt3blyui1lg",
     store: "Temu",
     category: "accessories",
     audience: "women",
     description: "Adorable school scrunchie $2",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "new-trend-26aw-tns-style-pure-cotton-sweatshirt",
@@ -7557,12 +7557,12 @@ export const products: Product[] = [
   {
     slug: "customized-1-initials-bag-charm-for-handbags-personalized",
     name: "Customized 1 initials bag charm for handbags personalized monogram name bag tag hexagon",
+    image: "https://img.kwcdn.com/product/fancy/52e293c4-9e30-4250-9a0f-487ee21e1956.jpg",
     affiliateUrl: "https://temu.to/k/pxhlxwngila",
     store: "Temu",
     category: "accessories",
     audience: "women",
     description: "Want to gift someone traveling something small? personalized handbag nametag lots of colors $3.25",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "musera-washed-oversized-long-sleeve-top-summer-sporty",
@@ -7920,52 +7920,52 @@ export const products: Product[] = [
   {
     slug: "girls-cute-watermelon-print-soft-crew-neck-sweatshirt",
     name: "Girls cute watermelon print soft crew neck sweatshirt light gray long sleeve pullover",
+    image: "https://img.kwcdn.com/product/fancy/86e1fdb8-c674-4104-a193-1e259fc62ddd.jpg",
     affiliateUrl: "https://temu.to/k/pfxkbcld547",
     store: "Temu",
     category: "sweaters",
     audience: "toddler-girl",
     description: "cute, easy, practical baby/toddler top",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "denim-heart-print-long-sleeve-hooded-sweatshirt-for",
     name: "Denim heart print long sleeve hooded sweatshirt for girls 0 3 years",
+    image: "https://img.kwcdn.com/product/fancy/9ecdc17f-3a68-4c3a-a455-2e9ab931b302.jpg",
     affiliateUrl: "https://temu.to/k/pujv7zkkfr4",
     store: "Temu",
     category: "sweaters",
     audience: "toddler-girl",
     description: "Adorable hooded denim patch heart sweat top baby/toddler girl 3 colors",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "baby-s-cute-cherry-hearts-hoodie-soft-long",
     name: "Baby s cute cherry hearts hoodie soft long sleeve round neck pullover machine washable",
+    image: "https://img.kwcdn.com/product/fancy/d1d9ae49-b2da-4348-9235-15a1cbf771de.jpg",
     affiliateUrl: "https://temu.to/k/p5k79rfi7mb",
     store: "Temu",
     category: "sweaters",
     audience: "toddler-girl",
     description: "Cute cherry print sweat top baby/toddler girl",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "0-5-years-hooded-sweatshirt-with-umbrella-heart",
     name: "0 5 years hooded sweatshirt with umbrella heart print pink red white long sleeve clothes",
+    image: "https://img.kwcdn.com/product/fancy/0498cb6b-9cb6-449b-bf11-142aae1e846e.jpg",
     affiliateUrl: "https://temu.to/k/pric7v9huag",
     store: "Temu",
     category: "sweaters",
     audience: "toddler-girl",
     description: "Adorable baby girl/toddler hooded sweat top comes in black, gray and white",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "baby-girls-cute-strawberry-print-crew-neck-sweatshirt",
     name: "Baby girls cute strawberry print crew neck sweatshirt polyester lightweight spring",
+    image: "https://img.kwcdn.com/product/fancy/3b0a8c54-ec74-44bb-94ec-2a7f141084eb.jpg",
     affiliateUrl: "https://temu.to/k/pgqkv5s6lg0",
     store: "Temu",
     category: "sweaters",
     audience: "baby-girl",
     description: "Adorable baby/toddler girls sweat top 3-6m - 18-24m",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "loomiva-3pcs-baby-girl-rainbow-pattern-knit-soft",
@@ -8120,12 +8120,12 @@ export const products: Product[] = [
   {
     slug: "autumn-sports-shirt-for-young-children-and-boys",
     name: "Autumn sports shirt for young children and boys with letter tractor print round neck long",
+    image: "https://img.kwcdn.com/product/open/01f1fdc5c1904f6fbdbcd0fa686c1f5b-goods.jpeg",
     affiliateUrl: "https://temu.to/k/p6jebwguh9h",
     store: "Temu",
     category: "tops",
     audience: "toddler-boy",
     description: "Boys brown sweat top 9-12m-3-4y",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "shein-vintaside-kids-baby-boy-casual-pocket-turndown",
@@ -8150,12 +8150,12 @@ export const products: Product[] = [
   {
     slug: "boys-lightweight-sweater-soft-everyday-long-sleeve-hoodie",
     name: "Boys lightweight sweater soft everyday long sleeve hoodie round neck for toddlers babies",
+    image: "https://img.kwcdn.com/product/fancy/07289f91-a1b8-4642-ad93-03894d3a2f8a.jpg",
     affiliateUrl: "https://temu.to/k/psdkk7xrwub",
     store: "Temu",
     category: "sweaters",
     audience: "baby-boy",
     description: "Adorable Toddler boy sweat top 3-6M - 18-24M $5.54",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "shein-casual-plaid-patchwork-button-front-shacket-for",
@@ -8959,22 +8959,22 @@ export const products: Product[] = [
   {
     slug: "baby-girls-suspender-skirt-solid-color-sleeveless-pleated",
     name: "Baby girls suspender skirt solid color sleeveless pleated cross strap suspender skirts",
+    image: "https://img.kwcdn.com/product/fancy/f4cce859-4042-47a2-a363-80313b0d24f3.jpg",
     affiliateUrl: "https://temu.to/k/phquo2zw89m",
     store: "Temu",
     category: "skirts",
     audience: "toddler-girl",
     description: "Toddler girl options to go with the top",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "spring-and-autumn-new-baby-girl-graphic-doll",
     name: "Spring and autumn new baby girl graphic doll collar knitted sweater kids pullover top the",
+    image: "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/74025db51b69506720e517f024683b7f.jpg",
     affiliateUrl: "https://temu.to/k/p2tlsvfpolb",
     store: "Temu",
     category: "shabbos-elegant",
     audience: "toddler-girl",
     description: "Adorable baby girl shabbos knit top 3-6m- 3-4 y $9.54",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "women-s-casual-solid-color-hollow-out-round",
@@ -9088,39 +9088,39 @@ export const products: Product[] = [
   {
     slug: "2pcs-custom-kitchen-towel-soft-absorbent-microfiber-dish",
     name: "2pcs custom kitchen towel soft absorbent microfiber dish cloths for cleaning decorative",
+    image: "https://img.kwcdn.com/product/open/4842d10b49bc4630a6ffcde4ed9880ba-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pt22ktvjn7u",
     store: "Temu",
     category: "kitchen",
     description: "Found on Temu.",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "1pc-personalized-kitchen-towels-with-name-text-dish",
     name: "1pc personalized kitchen towels with name text dish towels heavy duty for cooking baking",
+    image: "https://img.kwcdn.com/product/open/18ac04cd0b75400da7ed24866257e8cd-goods.jpeg",
     affiliateUrl: "https://temu.to/k/p5viid5ogmr",
     store: "Temu",
     category: "kitchen",
     description: "Found on Temu.",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "custom-1pc-embroidered-personalized-name-1-and-absorbent",
     name: "Custom 1pc embroidered personalized name 1 and absorbent towel thickened solid suitable",
+    image: "https://img.kwcdn.com/product/open/86db665cd9fb4290b1fc5cc6ca017433-goods.jpeg",
     affiliateUrl: "https://temu.to/k/pn839br7g1t",
     store: "Temu",
     category: "home",
     description: "Found on Temu.",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "casual-long-sleeve-tops-for-boys-and-girls",
     name: "Casual long sleeve tops for boys and girls designed for and",
+    image: "https://img.kwcdn.com/product/open/06b4bb16ccab4805bf336140d2dc36f2-goods.jpeg",
     affiliateUrl: "https://temu.to/k/p9wk1j6qrl8",
     store: "Temu",
     category: "sweaters",
     audience: "unisex-kids",
     description: "Another Family sweatshirt size 1-10 $15.99",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "souflis-french-vintage-autumn-winter-new-thickened-long",
@@ -9304,13 +9304,13 @@ export const products: Product[] = [
   {
     slug: "maternity-high-waist-maxi-skirt-with-pockets-soft",
     name: "Maternity high waist maxi skirt with pockets soft over belly pregnancy long flowy skirt",
+    image: "https://img.kwcdn.com/product/fancy/931a6e3e-83e5-4cf5-8405-8b50ea14940e.jpg",
     affiliateUrl: "https://temu.to/k/p8nwip6puxg",
     store: "Temu",
     category: "skirts",
     audience: "women",
     maternity: true,
     description: "Grey Maternity skirt $13.29",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "shein-solid-color-long-pocket-maternity-skirt-autumn",
@@ -9414,20 +9414,20 @@ export const products: Product[] = [
   {
     slug: "laundry-basket-3-bag-sorter-240l-laundry-home",
     name: "Laundry basket 3 bag sorter 240l laundry home decor hamper cart with heavy duty rolling",
+    image: "https://img.kwcdn.com/product/open/2024-06-04/1717481855329-804642476e894cae8b506ff42fb56413-goods.jpeg",
     affiliateUrl: "https://temu.to/k/ppqxja9vf6t",
     store: "Temu",
     category: "organization",
     description: "Comes in a few colors $20",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "laundry-hamper-with-wheels-laundry-basket-4-compartments",
     name: "Laundry hamper with wheels laundry basket 4 compartments 160l with shelf 4 removable",
+    image: "https://img.kwcdn.com/product/fancy/7ccdf5b2-ede3-4f2b-9579-069098ea162c.jpg",
     affiliateUrl: "https://temu.to/k/ple6bov6wo7",
     store: "Temu",
     category: "organization",
     description: "While were at laundry - I found this great compartment laundry hamper with a counter! comes in 1,2,3,4 compartments. Local 2 day delivery $32",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "shein-maternity-brown-long-sleeve-fitted-sweater-for",
@@ -9677,33 +9677,33 @@ export const products: Product[] = [
   {
     slug: "personalized-laser-engraved-name-heart-charm-bracelet-for",
     name: "Personalized laser engraved name heart charm bracelet for women chain with custom text",
+    image: "https://img.kwcdn.com/product/fancy/d5a3c60e-c752-42e3-a719-3a427f82d836.jpg",
     affiliateUrl: "https://temu.to/k/pnjx6n0dg83",
     store: "Temu",
     category: "accessories",
     audience: "unisex-kids",
     description: "Personalized kids gold bracelet",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "personalized-pink-red-blue-heart-stainle-steel-bracelet",
     name: "Personalized pink red blue heart stainle steel bracelet for s custom engraved ideal",
+    image: "https://img.kwcdn.com/product/fancy/a5ff9cb2-751f-48e4-b25a-9767c9a78cef.jpg",
     affiliateUrl: "https://temu.to/k/pkh4gwnj1wz",
     store: "Temu",
     category: "accessories",
     audience: "unisex-kids",
     description: "Personalized kids bracelet",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "1pc-womens-elegant-minimalist-adjustable-ring-copper-with",
     name: "1pc womens elegant minimalist adjustable ring copper with synthetic synthetic zirconia",
+    image: "https://img.kwcdn.com/product/fancy/3f6cd4f9-3a50-4fe6-98dc-cdefa1769ec4.jpg",
     affiliateUrl: "https://temu.to/k/ppro6k12a0e",
     store: "Temu",
     category: "accessories",
     audience: "unisex-kids",
     recommendationLabel: "personally_tried",
     description: "Adorable adjustable ring fits kids -I have it for my 3 year old",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "anewsta-elegant-women-s-denim-waist-belt-maxi",
@@ -9878,13 +9878,13 @@ export const products: Product[] = [
   {
     slug: "plated-with-enamel-hinged-bangles-bracelets",
     name: "Plated with enamel hinged bangles bracelets",
+    image: "https://img.kwcdn.com/local-goods-image/20add700cc/5899c81f-69be-4f19-a0f9-68254d107d98_1000x1000.jpeg.format.jpg",
     affiliateUrl: "https://temu.to/k/pta0p72e32o",
     store: "Temu",
     category: "accessories",
     audience: "women",
     recommendationLabel: "personally_tried",
     description: "Anabel aram imitation bracelet- its not a perfect imitation but pretty close",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "celisse-women-s-solid-color-high-neck-drop",
@@ -9940,21 +9940,21 @@ export const products: Product[] = [
   {
     slug: "1pc-7-5cm-wide-embellished-square-stretch-elastic",
     name: "1pc 7 5cm wide embellished square stretch elastic waist belt plus size regular sizes",
+    image: "https://img.kwcdn.com/product/fancy/d8528394-3a32-41bc-abbb-006b1c3474b3.jpg",
     affiliateUrl: "https://temu.to/k/pjnz8hrl2e9",
     store: "Temu",
     category: "accessories",
     audience: "women",
     description: "I have the black one and white one- the black I did this belt",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "rhinestones-set-of-50-sew-on-gems-for",
     name: "Rhinestones set of 50 sew on gems for diy fashion apparel shoes hats and bag",
+    image: "https://img.kwcdn.com/product/fancy/d9d5bc9b-709a-413f-b225-b2e8e5ea2184.jpg",
     affiliateUrl: "https://temu.to/k/p0w6jv89sua",
     store: "Temu",
     category: "other",
     description: "the white I put these pink rhinestones around the collar",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "high-quality-women-s-solid-color-knitted-button",
@@ -10274,20 +10274,20 @@ export const products: Product[] = [
   {
     slug: "transparent-acrylic-shoe-rack-for-a-compact-storage",
     name: "Transparent acrylic shoe rack for a compact storage solution for closets featuring a 4",
+    image: "https://img.kwcdn.com/product/fancy/5fdb1b00-dbbd-45dc-8b2a-ca11fe270526.jpg",
     affiliateUrl: "https://temu.to/k/p5v1d11yoq0",
     store: "Temu",
     category: "organization",
     description: "4 pack acrylic organizer can be used for lots of things $10.53 on Temu",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "transparent-4-panel-cutlery-storage-box-plastic-utensil",
     name: "Transparent 4 panel cutlery storage box plastic utensil organizer for kitchen countertops",
+    image: "https://img.kwcdn.com/product/fancy/406ca83b-dea4-496a-9c5d-7112e1037b32.jpg",
     affiliateUrl: "https://temu.to/k/p8uw6adwd1q",
     store: "Temu",
     category: "organization",
     description: "Acrylic cutlery holder $6.38 on Temu",
-    hidden: true, // Temu, no photo yet: delete this line to show it
   },
   {
     slug: "ladies",

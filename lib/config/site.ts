@@ -1,10 +1,11 @@
 /**
  * Site-wide contact details.
  *
- * TODO (Sara): replace CONTACT_EMAIL with the real address you want shoppers
- * and stores to use. It appears on /contact and on every legal page.
+ * CONTACT_EMAIL is the one place to change the contact address. The site never
+ * shows it as text: /contact, How We Make Money and the legal pages show an
+ * "Email" button that opens the visitor's mail app with this address.
  */
-export const CONTACT_EMAIL = "TODO-your-email@example.com";
+export const CONTACT_EMAIL = "suri8361@gmail.com";
 
 /** True while CONTACT_EMAIL is still the placeholder above. */
 export const CONTACT_EMAIL_IS_PLACEHOLDER = CONTACT_EMAIL.startsWith("TODO");

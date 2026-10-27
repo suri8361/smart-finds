@@ -38,6 +38,11 @@ import {
 const PRODUCTS_FILE = path.join(process.cwd(), "lib", "data", "products.ts");
 const ARRAY_START = "export const products: Product[] = [";
 const YES = new Set(["yes", "y", "x", "1", "true", "✓", "✔"]);
+// Temu won't give its photos to a plain download, so photos found by opening each
+// Temu link in a real browser are kept here (affiliate link -> photo) and used
+// when the sheet's image column is empty.
+const TEMU_PHOTOS_FILE = path.join(path.dirname(new URL(import.meta.url).pathname), "temu-photos.json");
+const TEMU_PHOTOS = fs.existsSync(TEMU_PHOTOS_FILE) ? JSON.parse(fs.readFileSync(TEMU_PHOTOS_FILE, "utf8")) : {};
 
 export function slugify(text) {
   return String(text)
@@ -123,7 +128,7 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
       checks.push({ row: rowNo, title: name, note: `category "${category}" but the title/caption reads like clothing — please check` });
     }
 
-    const image = (row.image || "").trim();
+    const image = (row.image || "").trim() || TEMU_PHOTOS[affiliateUrl] || "";
     const hideReason = YES.has(String(row.hidden || "").trim().toLowerCase())
       ? "hidden in the sheet"
       : store.toLowerCase() === "temu" && !image

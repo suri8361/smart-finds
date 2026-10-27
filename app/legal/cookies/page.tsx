@@ -29,7 +29,7 @@ export default function CookiesPage() {
         <p>
           Most browsers let you block or delete cookies in their settings. Blocking cookies on a store&apos;s site
           won&apos;t stop you from shopping there; it just means we may not get credit for the sale. More in our{" "}
-          <Link href="/legal/privacy">Privacy Policy</Link>, or email <ContactEmail />.
+          <Link href="/legal/privacy">Privacy Policy</Link>, or write to us: <ContactEmail />
         </p>
       </LegalSection>
     </LegalPage>

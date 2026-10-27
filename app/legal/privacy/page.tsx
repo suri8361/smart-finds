@@ -55,7 +55,7 @@ export default function PrivacyPage() {
       </LegalSection>
       <LegalSection title="Changes and contact">
         <p>
-          If this policy changes, we&apos;ll update the date at the top of this page. Questions? Email <ContactEmail />.
+          If this policy changes, we&apos;ll update the date at the top of this page. Questions? <ContactEmail />
         </p>
       </LegalSection>
     </LegalPage>

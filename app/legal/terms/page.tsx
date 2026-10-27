@@ -49,7 +49,7 @@ export default function TermsPage() {
       </LegalSection>
       <LegalSection title="Changes and contact">
         <p>
-          We may update these terms; the date at the top shows the latest version. Questions? Email <ContactEmail />.
+          We may update these terms; the date at the top shows the latest version. Questions? <ContactEmail />
         </p>
       </LegalSection>
     </LegalPage>

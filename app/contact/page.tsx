@@ -18,7 +18,7 @@ export default function ContactPage() {
     >
       <LegalSection title="Email">
         <p className="text-lg">
-          <ContactEmail />
+          <ContactEmail large />
         </p>
       </LegalSection>
       <LegalSection title="Good reasons to write">
