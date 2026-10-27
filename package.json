@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "import:links": "node scripts/import/import-chat-links.mjs",
-    "import:generate": "node scripts/import/generate-products.mjs"
+    "import:generate": "node scripts/import/generate-products.mjs",
+    "import:posts": "node scripts/import/add-chat-posts.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

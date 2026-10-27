@@ -44,10 +44,10 @@ const CATEGORY_KEYWORDS = [
   ["school", ["school", "notebook", "pencil", "pencils", "pens", "pen", "lunch box", "lunchbox", "binder", "stationery", "crayons", "markers", "backpack for school"]],
   ["kitchen", ["kitchen", "pan", "pot", "pots", "skillet", "knife", "knives", "cutting board", "blender", "air fryer", "mug", "cup", "cups", "plates", "bowl", "bowls", "utensil", "utensils", "spatula", "baking", "cookware", "kettle", "coffee", "tumbler", "water bottle", "food storage", "container"]],
   ["organization", ["organizer", "organizers", "storage", "bin", "bins", "basket", "baskets", "drawer", "shelf", "rack", "hanger", "hangers", "closet", "caddy"]],
-  ["electronics", ["charger", "cable", "usb", "bluetooth", "earbuds", "headphones", "speaker", "phone case", "iphone", "android", "tablet", "ipad", "laptop", "power bank", "led", "camera", "smart watch", "smartwatch", "airpods", "wireless"]],
+  ["electronics", ["charger", "cable", "usb", "bluetooth", "earbuds", "headphones", "speaker", "phone case", "iphone", "android", "tablet", "ipad", "laptop", "power bank", "led", "camera", "smart watch", "smartwatch", "airpods", "wireless", "mp3", "mp3 player", "mp4 player"]],
   ["camping", ["camping", "tent", "sleeping bag", "lantern", "hiking", "hammock", "campfire"]],
   ["outdoor", ["outdoor", "garden", "patio", "pool", "beach", "umbrella", "bike", "picnic", "cooler"]],
-  ["home", ["home", "decor", "pillow", "pillows", "blanket", "throw", "curtain", "curtains", "rug", "lamp", "candle", "vase", "frame", "bedding", "sheets", "towel", "towels", "mirror", "tablecloth", "wall art"]],
+  ["home", ["home", "decor", "pillow", "pillows", "blanket", "throw", "curtain", "curtains", "rug", "lamp", "candle", "vase", "frame", "bedding", "sheets", "towel", "towels", "mirror", "tablecloth", "wall art", "door sign", "doorplate", "door plate", "name sign"]],
 ];
 
 function words(text) {

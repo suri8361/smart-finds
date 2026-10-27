@@ -65,9 +65,10 @@ function parsePrice(value) {
 
 const q = (s) => JSON.stringify(s);
 
-function toLiteral(p) {
+export function toLiteral(p) {
   const lines = [`  {`, `    slug: ${q(p.slug)},`, `    name: ${q(p.name)},`];
   if (p.image) lines.push(`    image: ${q(p.image)},`);
+  if (p.images?.length) lines.push(`    images: ${q(p.images)},`);
   if (p.currentPrice !== undefined) lines.push(`    currentPrice: ${p.currentPrice},`);
   if (p.originalPrice) lines.push(`    originalPrice: ${p.originalPrice},`);
   lines.push(`    affiliateUrl: ${q(p.affiliateUrl)},`);

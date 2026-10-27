@@ -70,3 +70,22 @@ Amazon is switched off for now (`AMAZON_ENABLED` in `lib/config/affiliate.ts`).
 While it's off, Amazon products are kept in the list but hidden on the site.
 When it's on, `tag=smartfind0a21-20` is added to amazon.com links that don't
 already have a tag; amzn.to short links are used as posted.
+
+## Adding new chat posts (nightly)
+
+Tab reads new posts from the Smart Finds chat each night into a
+`new-posts-<date>.json` file (plus a `new-posts-images` folder with the photos).
+One command adds them to the top of the site, so they show first in New Finds:
+
+```
+npm run import:posts -- path/to/new-posts-<date>.json            # dry run: shows what it would add
+npm run import:posts -- path/to/new-posts-<date>.json --write    # adds them
+```
+
+It uses the same rules as above: the link exactly as posted, store from the link,
+category guessed from the title, Amazon shows "Check price on Amazon", others show
+the price in the post, Tried & True only when the caption says so, and links that
+are already on the site are skipped. Photos are copied into `public/finds/`.
+To fix a guess, put a `new-posts-<date>.overrides.json` beside the JSON, e.g.
+`{ "<message_id>": { "title": "Nicer title", "category": "home" } }`
+(also `audience`, `description`, `price`, `photos: [0, 2]`, `skip: true`).
