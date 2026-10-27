@@ -10503,7 +10503,6 @@ export const products: Product[] = [
     description: "Elegant burgundy A-line skirt with a sleek PU panel detail.",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Burgundy"],
-    featured: true,
   },
 ];
 

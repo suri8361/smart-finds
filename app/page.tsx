@@ -20,16 +20,23 @@ export default function Home() {
     return row;
   };
 
-  const featuredFirst = [...publicProducts.filter((p) => p.featured), ...publicProducts.filter((p) => !p.featured)];
+  // New Finds sits right under the hero and gets first pick: simply the newest posts (the list is newest-first).
+  const newFinds = take(publicProducts);
   const triedAndTrue = take(getProductsByCategoryGroup("tried-true"));
   const shabbos = take(getProductsByCategoryGroup("shabbos-elegant"));
-  const newFinds = take(featuredFirst);
   const yomTov = take(getProductsByCategoryGroup("yom-tov-holidays"));
   const home = take(getProductsByCategoryGroup("home-kitchen"));
 
   return (
     <>
       <Hero />
+      <ProductRow
+        eyebrow="Just added"
+        title="New Finds"
+        description="The latest finds on the site, newest first."
+        action={{ label: "See all new finds", href: "/new" }}
+        products={newFinds}
+      />
       <ShopByCategory />
       <FeaturedCollections />
       <ProductRow
@@ -46,13 +53,6 @@ export default function Home() {
         action={{ label: "Shop Shabbos & Elegant", href: "/category/shabbos-elegant" }}
         products={shabbos}
         tinted
-      />
-      <ProductRow
-        eyebrow="Just added"
-        title="New Finds"
-        description="The latest finds on the site."
-        action={{ label: "See all finds", href: "/search" }}
-        products={newFinds}
       />
       <ProductRow
         eyebrow="For every Yom Tov"

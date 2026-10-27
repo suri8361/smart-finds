@@ -71,6 +71,14 @@ export function MobileMenu({ fashionLinks, holidayLinks, showCollections = false
         <SearchBar />
 
         <nav aria-label="Mobile" className="flex flex-col gap-1">
+          <Link
+            href="/new"
+            onClick={() => setOpen(false)}
+            className="rounded-lg px-3 py-2 text-sm font-semibold text-foreground hover:bg-surface-muted"
+          >
+            New Finds
+          </Link>
+          <div className="my-2 h-px bg-border" />
           <p className="px-1 text-eyebrow font-semibold uppercase tracking-wide text-foreground/50">Categories</p>
           {[
             { label: "Fashion & Style", links: fashionLinks },

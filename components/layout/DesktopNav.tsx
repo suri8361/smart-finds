@@ -38,6 +38,9 @@ function NavDropdown({ label, links }: { label: string; links: MenuLink[] }) {
 export function DesktopNav() {
   return (
     <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
+      <Link href="/new" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+        New Finds
+      </Link>
       <details className="group relative">
         <summary className="flex cursor-pointer list-none items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
           Categories
