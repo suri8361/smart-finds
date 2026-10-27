@@ -28,8 +28,7 @@ export function Footer() {
             Smart Finds
           </Link>
           <p className="mt-3 max-w-sm text-sm text-foreground/70">
-            An independently curated shopping guide — every product is labeled with the specific reason it was
-            picked, so you always know why it&apos;s here.
+            An independently curated shopping guide. Items marked Tried &amp; True are ones I&apos;ve personally used.
           </p>
           <form action="#" className="mt-5 flex max-w-sm gap-2">
             <label htmlFor="newsletter-email" className="sr-only">
@@ -95,7 +94,7 @@ export function Footer() {
         <Container className="flex flex-col gap-4 py-6 text-xs text-foreground/60 sm:flex-row sm:items-start sm:justify-between">
           <p className="max-w-3xl">
             <strong className="font-semibold text-foreground/80">Affiliate Disclosure:</strong> Smart Finds
-            participates in affiliate programs with {AMAZON_ENABLED ? "Amazon, " : ""}SHEIN, AliExpress, Temu, eBay, and other
+            participates in affiliate programs with {AMAZON_ENABLED ? "Amazon, " : ""}SHEIN, AliExpress, Temu and other
             retailers. If you buy something through a link on this site, we may earn a commission — at no
             additional cost to you.{AMAZON_ENABLED ? " As an Amazon Associate I earn from qualifying purchases." : ""} Affiliate relationships never influence which products we choose to feature.
             Read more on our{" "}

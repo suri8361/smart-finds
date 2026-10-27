@@ -43,7 +43,7 @@ export default function AffiliateDisclosurePage() {
         </p>
         <p>
           <strong className="font-semibold text-foreground">Other stores.</strong> We also use affiliate links from other
-          retailers and affiliate networks, such as SHEIN, Temu, AliExpress and eBay. These work the same way: a small
+          retailers and affiliate networks, such as SHEIN, AliExpress and Temu. These work the same way: a small
           commission on qualifying purchases, at no extra cost to you.
         </p>
         <p>
@@ -54,9 +54,8 @@ export default function AffiliateDisclosurePage() {
 
       <LegalSection title="How this affects what we pick">
         <p>
-          It doesn&apos;t decide what we feature. Every product is labeled with the reason it was picked (for example
-          &ldquo;Great price&rdquo; or &ldquo;Popular pick&rdquo;). We only use the &ldquo;Personally tried&rdquo; label
-          for products we have actually used. Stores don&apos;t pay us to be listed, and they don&apos;t review or approve
+          It doesn&apos;t decide what we feature. We only mark a product &ldquo;Tried &amp; True&rdquo; when
+          we have actually used it. Stores don&apos;t pay us to be listed, and they don&apos;t review or approve
           what we write.
         </p>
       </LegalSection>

@@ -17,6 +17,7 @@ export default function HowWeMakeMoneyPage() {
           small commission. Your price doesn&apos;t change. That commission is how we pay for the site and the time it
           takes to find good products.
         </p>
+        <p>As an Amazon Associate I earn from qualifying purchases.</p>
       </LegalSection>
       <LegalSection title="What we don't do">
         <ul>
@@ -27,9 +28,8 @@ export default function HowWeMakeMoneyPage() {
       </LegalSection>
       <LegalSection title="How products get picked">
         <p>
-          Every product carries one label that says why it&apos;s here, like &ldquo;Great price&rdquo;,
-          &ldquo;Popular pick&rdquo; or &ldquo;Chosen for the look&rdquo;. A commission never changes that label, and
-          &ldquo;Personally tried&rdquo; is only used for things we&apos;ve really used.
+          Every product is picked for its style, value or popularity, never for the commission. Items marked
+          &ldquo;Tried &amp; True&rdquo; are ones I&apos;ve personally used.
         </p>
       </LegalSection>
       <LegalSection title="More detail">

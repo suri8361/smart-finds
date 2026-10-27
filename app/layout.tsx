@@ -29,12 +29,12 @@ export const metadata: Metadata = {
     template: "%s | Smart Finds",
   },
   description:
-    "Smart Finds is an independently curated shopping guide to great finds from across the web — every pick labeled with why it's here.",
+    "Smart Finds is an independently curated shopping guide to great finds from Amazon, SHEIN, AliExpress, Temu and more.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}>
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <Header />
         <main className="flex-1 pb-16 lg:pb-0">{children}</main>

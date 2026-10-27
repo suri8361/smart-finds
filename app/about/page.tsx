@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "About Smart Finds",
-  description: "Smart Finds is a curated collection of products from stores like SHEIN, AliExpress, Temu, and eBay.",
+  description: "Smart Finds is a curated collection of products from stores like Amazon, SHEIN, AliExpress, Temu and more.",
 };
 
 /**
@@ -17,7 +17,7 @@ export default function AboutPage() {
     <Container className="max-w-3xl py-16 sm:py-20">
       <h1 className="font-display text-h1 font-semibold tracking-tight text-foreground">About Smart Finds</h1>
       <div className="mt-6 flex flex-col gap-4 text-base text-foreground/70">
-        <p>Smart Finds is a curated collection of products from stores like SHEIN, AliExpress, Temu, and eBay.</p>
+        <p>Smart Finds is a curated collection of products from stores like Amazon, SHEIN, AliExpress, Temu and more.</p>
         <p>
           The goal is to make it easier to discover products that stand out for their style, value, popularity, or
           overall appeal.

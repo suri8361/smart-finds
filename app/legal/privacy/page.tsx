@@ -38,7 +38,7 @@ export default function PrivacyPage() {
       </LegalSection>
       <LegalSection title="When you click to a store">
         <p>
-          Product links take you to other websites, such as Amazon, SHEIN, Temu, AliExpress or eBay. Those stores and their
+          Product links take you to other websites, such as Amazon, SHEIN, AliExpress or Temu. Those stores and their
           affiliate networks may use cookies or similar tools to track that you came from Smart Finds and whether you made a
           purchase. What they collect is covered by their own privacy policies, not this one. We only receive commission
           reports from them, which don&apos;t tell us who you are.
