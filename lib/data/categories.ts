@@ -1,4 +1,4 @@
-import { ChefHat, Cpu, Gem, Monitor, Shirt, Sparkles, Tent } from "lucide-react";
+import { Baby, ChefHat, Cpu, Gem, Monitor, PackageOpen, Shirt, Sparkles, Tent, ToyBrick } from "lucide-react";
 import type { Category } from "@/types/catalog";
 
 /**
@@ -57,6 +57,25 @@ export const categories: Category[] = [
     name: "Home Office",
     description: "Desk setups, organization & work-from-home gear",
     icon: Monitor,
+  },
+  {
+    slug: "toys",
+    name: "Toys",
+    description: "Fun, gift-worthy toys, games & party favors for kids",
+    icon: ToyBrick,
+  },
+  {
+    slug: "baby-gear",
+    name: "Baby Gear",
+    description: "Clever baby & toddler essentials for everyday life",
+    icon: Baby,
+  },
+  {
+    // Slug stays "other" (it matches the product category value); shown as "More Finds".
+    slug: "other",
+    name: "More Finds",
+    description: "Handy finds that don't fit anywhere else",
+    icon: PackageOpen,
   },
 ];
 

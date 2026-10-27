@@ -58,7 +58,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "organization",
     recommendationLabel: "chosen_for_look",
-    description: "Great gift for those who tend to lose their car keys! $4.26",
+    description: "Great gift for those who tend to lose their car keys!",
   },
   {
     slug: "upgraded-37-keys-kids-piano-keyboard-with-mic",
@@ -68,7 +68,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "Great Chanuka gift $16.99",
+    description: "Great Chanuka gift",
   },
   {
     slug: "tao-ge-banana-costume-for-kids-boys-girls",
@@ -78,7 +78,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Want to be ahead of the game? Think Purim! banana costume $9.99 Size 6T and 10T",
+    description: "Want to be ahead of the game? Think Purim! banana costume Size 6T and 10T",
   },
   {
     slug: "2-pairs-winter-kids-gloves-stretchy-warm-knit",
@@ -88,7 +88,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     recommendationLabel: "chosen_for_look",
-    description: "Amazon Haul 2 pair gloves $4.19",
+    description: "Amazon Haul 2 pair gloves",
   },
   {
     slug: "amazon-essentials-x-sofia-grainge-unisex-kids-snug",
@@ -98,7 +98,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "pajamas",
     recommendationLabel: "chosen_for_look",
-    description: "Amazon Haul 2 pack Cotton PJs $19.99 Size 12M-14/16",
+    description: "Amazon Haul 2 pack Cotton PJs Size 12M-14/16",
   },
   {
     slug: "toothpaste-squeezer-4pcs-bottle-squeezer-tool-toothpaste-holder",
@@ -118,7 +118,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "outdoor",
     recommendationLabel: "chosen_for_look",
-    description: "Amazon Haul Silicone shoe covers Great for rain and snow $1.82",
+    description: "Amazon Haul Silicone shoe covers Great for rain and snow",
   },
   {
     slug: "a-hat-storage-marvel-suitable-for-baseball-caps",
@@ -128,7 +128,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "organization",
     recommendationLabel: "chosen_for_look",
-    description: "Amazon Haul Great accessory hanger $1.30",
+    description: "Amazon Haul Great accessory hanger",
   },
   {
     slug: "women-s-tall-waterproof-rain-boots-rubber-wide",
@@ -138,7 +138,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "outdoor",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and True! $37.99 Rain boots",
+    description: "Tried and True! Rain boots",
   },
   {
     slug: "fashion-short-rain-boots-for-women-waterproof-chelsea",
@@ -148,7 +148,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "boots",
     recommendationLabel: "chosen_for_look",
-    description: "LIMITED TIME DEAL $28.99 Short rain boots",
+    description: "LIMITED TIME DEAL Short rain boots",
   },
   {
     slug: "project-cloud-100-genuine-leather-micro-boots-for",
@@ -158,7 +158,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sandals",
     recommendationLabel: "chosen_for_look",
-    description: "LIMITED TIME DEAL Genuine leather $44.90",
+    description: "LIMITED TIME DEAL Genuine leather",
   },
   {
     slug: "women-s-knee-high-boots-black-round-toe",
@@ -168,7 +168,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "boots",
     recommendationLabel: "chosen_for_look",
-    description: "Knee high boots $59.98",
+    description: "Knee high boots",
   },
   {
     slug: "kids-magnetic-building-blocks-3-year-olds-and",
@@ -278,7 +278,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Young teen fleece lined coat Size 7-14 $29.99",
+    description: "Young teen fleece lined coat Size 7-14",
   },
   {
     slug: "amazon-essentials-women-s-relaxed-fit-cropped-full",
@@ -288,7 +288,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Amazon Essentials Warm coat Great reviews! $41.30",
+    description: "Amazon Essentials Warm coat Great reviews!",
   },
   {
     slug: "sxgyh-women-s-winter-cropped-puffer-jacket-coat",
@@ -298,7 +298,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Cropped down coat Great Reviews $35.97 More colors.",
+    description: "Cropped down coat Great Reviews More colors.",
   },
   {
     slug: "pioneer-camp-women-s-winter-cropped-puffer-jacket",
@@ -308,7 +308,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "coat Great Reviews! $73.79",
+    description: "coat Great Reviews!",
   },
   {
     slug: "sebby-short-hooded-puffer-jacket",
@@ -327,7 +327,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     recommendationLabel: "chosen_for_look",
-    description: "Hunter Beanie hat $26.56",
+    description: "Hunter Beanie hat",
   },
   {
     slug: "roybens-womens-satin-lined-beanie-for-men-wool",
@@ -397,7 +397,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Size 3/4-7/8 From $19.99",
+    description: "Size 3/4-7/8",
   },
   {
     slug: "2t-toddler-girl-corduroy-overall-dress-pinafore-jumper",
@@ -407,7 +407,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "2 piece corduroy kids $30 Size 2/3-5/6",
+    description: "2 piece corduroy kids Size 2/3-5/6",
   },
   {
     slug: "toddler-kids-baby-girl-dress-lantern-long-sleeve",
@@ -417,7 +417,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "corduroy dress- Great reviews! $24.99 more colors",
+    description: "corduroy dress- Great reviews! more colors",
   },
   {
     slug: "dazy-kids-young-girl-summer-casual-sweet-cute",
@@ -447,7 +447,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     recommendationLabel: "chosen_for_look",
-    description: "Pair with this turtleneck- more colors $16.99",
+    description: "Pair with this turtleneck- more colors",
   },
   {
     slug: "noomelfish-toddler-girls-corduroy-suspender-skirts-dress-army",
@@ -457,7 +457,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Same thing in corduroy $23.99",
+    description: "Same thing in corduroy",
   },
   {
     slug: "noomelfish-girls-suspender-skater-skirt-stretchy-cotton-flared",
@@ -467,7 +467,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and True ( I have the black one) From $15.99 Size 4T- 11/12",
+    description: "Tried and True ( I have the black one) Size 4T- 11/12",
   },
   {
     slug: "floerns-women-s-elegant-puff-long-sleeve-collared",
@@ -610,7 +610,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "electronics",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Great projector! can use with just a usb - Great for Chanukah parties. Now only $36.99 with applied coupon",
+    description: "Tried and True! Great projector! can use with just a usb - Great for Chanukah parties.",
   },
   {
     slug: "the-children-s-place-girls-lightweight-layering-jacket",
@@ -620,7 +620,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "The Children's Place Girls Jacket LIMITED TIME DEAL $29.98",
+    description: "The Children's Place Girls Jacket LIMITED TIME DEAL",
   },
   {
     slug: "tineco-floor-one-i5-stretch-wet-dry-vacuum",
@@ -630,7 +630,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Tineco Floor ONE i5 Stretch Wet Dry Vacuum and mop. Now only $199 was $299",
+    description: "Tried and True! Tineco Floor ONE i5 Stretch Wet Dry Vacuum and mop.",
   },
   {
     slug: "aelfric-eden-leopard-print-cardigan-sweaters-for-women",
@@ -640,7 +640,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "cardigans",
     recommendationLabel: "chosen_for_look",
-    description: "Aelfric Eden Leopard Print Cardigan Sweaters Limited time deal! was $79.95 now $44.99 Size XS-XL",
+    description: "Aelfric Eden Leopard Print Cardigan Sweaters Limited time deal! Size XS-XL",
   },
   {
     slug: "women-s-round-neck-long-sleeve-paneled-maxi",
@@ -700,7 +700,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "electronics",
     recommendationLabel: "chosen_for_look",
-    description: "Great Chanukah gift! Limited time deal $33.99",
+    description: "Great Chanukah gift! Limited time deal",
   },
   {
     slug: "bluerise-55-indoor-and-outdoor-toddler-trampoline-for",
@@ -710,7 +710,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Indoor & Outdoor Trampoline Limited time deal $89.98",
+    description: "Indoor & Outdoor Trampoline Limited time deal",
   },
   {
     slug: "hooever-women-s-winter-wool-coat-casual-notch",
@@ -720,7 +720,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Limited time deal $49.97 wool coat xs-xxl",
+    description: "Limited time deal wool coat xs-xxl",
   },
   {
     slug: "wuridiwa-180-party-favors-for-kids-fidget-toys",
@@ -730,7 +730,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "toys",
     recommendationLabel: "chosen_for_look",
-    description: "Amazon Haul 180 Party Favors prizes for Kids (great for Chanukah) $11.98",
+    description: "Amazon Haul 180 Party Favors prizes for Kids (great for Chanukah)",
   },
   {
     slug: "15-pack-kitchen-cleaning-sponges-dual-side-cleaning",
@@ -740,7 +740,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "Amazon Haul 15 pack kitchen sponges $1.84",
+    description: "Amazon Haul 15 pack kitchen sponges",
   },
   {
     slug: "sprayer-kitchen-cooking-470ml-bottle",
@@ -750,7 +750,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "2 in 1 Oil Sprayer. Amazon Haul $4.51",
+    description: "2 in 1 Oil Sprayer. Amazon Haul",
   },
   {
     slug: "box-of-50-magical-scratch-off-notes-rainbow",
@@ -760,7 +760,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "Think Chanukah Vacation! Box of 50 Magical Scratch-Off Amazon Haul $1.68",
+    description: "Think Chanukah Vacation! Box of 50 Magical Scratch-Off Amazon Haul",
   },
   {
     slug: "kodak-pixpro-fz45-16mp-compact-digital-camera-4x",
@@ -770,7 +770,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "electronics",
     recommendationLabel: "chosen_for_look",
-    description: "LIMITED TIME DEAL Kodak camera Now $99.99 Was $129.99",
+    description: "LIMITED TIME DEAL Kodak camera",
   },
   {
     slug: "shein-tween-girl-clothes-girls-gilet-body-warmer",
@@ -830,7 +830,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Down Jacket Size S-XXL More colors, Clip coupon for $29.36",
+    description: "Down Jacket Size S-XXL More colors, Clip coupon",
   },
   {
     slug: "karl-lagerfeld-women-s-iridescent-patch-pocket-puffer",
@@ -840,7 +840,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Karl Lagerfeld puffer jacket $133.38 Size XS-XL",
+    description: "Karl Lagerfeld puffer jacket Size XS-XL",
   },
   {
     slug: "karl-lagerfeld-paris-women-s-short-puffer-adjustable",
@@ -850,7 +850,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Karl Lagerfeld $168 Size XS-XL - More colors and styles Features: filler 50% down, 5o% feathers, removable hood, adjustable hem cord, snaps at cuffs",
+    description: "Karl Lagerfeld Size XS-XL - More colors and styles Features: filler 50% down, 5o% feathers, removable hood, adjustable hem cord, snaps at cuffs",
   },
   {
     slug: "vepose-women-s-lace-up-platform-knee-high",
@@ -860,7 +860,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "boots",
     recommendationLabel: "chosen_for_look",
-    description: "Lace up boots NOW $47.47 More colors in link",
+    description: "Lace up boots More colors in link",
   },
   {
     slug: "dkny-women-s-shoes-boots-black-85",
@@ -880,7 +880,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "electronics",
     recommendationLabel: "chosen_for_look",
-    description: "HP Laptop Now $309.99 Was $879.99",
+    description: "HP Laptop",
   },
   {
     slug: "amazon-essentials-women-s-oversized-fit-square-quilted",
@@ -890,7 +890,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Black Jacket Size SMALL ONLY $12.67 OTHER SIZES AND COLORS $41.31",
+    description: "Black Jacket Size SMALL ONLY OTHER SIZES AND COLORS",
   },
   {
     slug: "winter-new-arrival-women-s-fashion-casual-thickened",
@@ -940,7 +940,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     recommendationLabel: "chosen_for_look",
-    description: "Lacoste Watch Now only $55.2 Was $75",
+    description: "Lacoste Watch",
   },
   {
     slug: "bedsure-fluffy-bubble-faux-fur-throw-blanket-50",
@@ -950,7 +950,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "home",
     recommendationLabel: "chosen_for_look",
-    description: "Faux fur throw blanket Limited time deal $35.99 Lots of colors! Great Gift",
+    description: "Faux fur throw blanket Limited time deal Lots of colors! Great Gift",
   },
   {
     slug: "digital-calendar-10-1-smart-touchscreen-electronic-family",
@@ -960,7 +960,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "organization",
     recommendationLabel: "chosen_for_look",
-    description: "Digital calendar- makes a great gift Limited tie deal $67.99",
+    description: "Digital calendar- makes a great gift Limited tie deal",
   },
   {
     slug: "amiyan-toddler-boys-down-jacket-fur-collar-hood",
@@ -970,7 +970,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Boys down alternative coat from $24.99",
+    description: "Boys down alternative coat",
   },
   {
     slug: "tuonroad-baby-boys-girls-winter-coat-1-2t",
@@ -980,7 +980,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Kids Down alternative coat Size 1-7T from $19.99 Size",
+    description: "Kids Down alternative coat Size 1-7T Size",
   },
   {
     slug: "noomelfish-girls-suspender-skater-skirt-stretchy-cotton-flared-2",
@@ -990,7 +990,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "TRIED & TRUE Adorable girls suspender skirt $19.99 more colors",
+    description: "TRIED & TRUE Adorable girls suspender skirt more colors",
   },
   {
     slug: "boys-lined-crew-neck-sweatshirt-with-cute-cartoon",
@@ -1090,7 +1090,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Girls reversible DKNY coat $49.99",
+    description: "Girls reversible DKNY coat",
   },
   {
     slug: "dkny-girls-winter-coat-kids-sherpa-lined-hooded",
@@ -1100,7 +1100,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Girls coat DKNY $69.99 Size 4-16 More colors",
+    description: "Girls coat DKNY Size 4-16 More colors",
   },
   {
     slug: "shein-young-girls-solid-color-long-sleeved-zipper",
@@ -1130,7 +1130,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and True mens cotton socks. No pilling, No tearing - it really lasts. 12 Pairs $26.98 6 pairs $14.98 more colors",
+    description: "Tried and True mens cotton socks. No pilling, No tearing - it really lasts. 12 Pairs, 6 pairs more colors",
   },
   {
     slug: "zeagoo-womens-bomber-jacket-short-fall-jackets-casual",
@@ -1140,7 +1140,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Bomber jacket $29.99 more colors/pattern",
+    description: "Bomber jacket more colors/pattern",
   },
   {
     slug: "2026-design-sweater-doll-collar-cardigan-early-autumn",
@@ -1170,7 +1170,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Womens/teens Shabbos coat Size XS-XL $59.99 More color options",
+    description: "Womens/teens Shabbos coat Size XS-XL More color options",
   },
   {
     slug: "shein-women-off-white-twist-cable-knit-sweater",
@@ -1210,7 +1210,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Melissa & Doug Fire Chief Role Play Costume Now $23.49",
+    description: "PRIME DEAL. Melissa & Doug Fire Chief Role Play Costume",
   },
   {
     slug: "best-choice-products-kids-wooden-cottage-play-kitchen",
@@ -1220,7 +1220,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Adorable kids wood play kitchen- Now $84.98",
+    description: "PRIME DEAL. Adorable kids wood play kitchen",
   },
   {
     slug: "swarovski-teddy-bracelet-bear-pink-rose-gold-tone",
@@ -1230,7 +1230,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Swarovski Teddy bracelet now $75.04",
+    description: "PRIME DEAL. Swarovski Teddy bracelet",
   },
   {
     slug: "kendra-scott-cailin-14k-gold-plated-brass-pendant",
@@ -1240,7 +1240,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Pendant necklace NOW $35",
+    description: "PRIME DEAL. Pendant necklace",
   },
   {
     slug: "anrabess-sweaters-for-women-long-sleeve-lightweight-fall",
@@ -1269,7 +1269,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sets",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL Delsey Paris 2 piece luggage set Original price $549 now $199",
+    description: "PRIME DEAL Delsey Paris 2 piece luggage set",
   },
   {
     slug: "everfoams-women-s-fuzzy-slippers-cozy-house-shoes",
@@ -1289,7 +1289,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "boots",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL Hunter Short Rain boots only $80 (this color only)",
+    description: "PRIME DEAL Hunter Short Rain boots (this color only)",
   },
   {
     slug: "gerber-unisex-baby-5-pack-solid-onesies-bodysuits",
@@ -1299,7 +1299,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Gerber baby 5 pack onesie $11.07",
+    description: "PRIME DEAL. Gerber baby 5 pack onesie",
   },
   {
     slug: "levi-s-flight-bomber-jacket-black-sm",
@@ -1329,7 +1329,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL Women/Teen winter cropped coat More colors $30.38",
+    description: "PRIME DEAL Women/Teen winter cropped coat More colors",
   },
   {
     slug: "flygo-womens-quilted-puffer-jackets-winter-cropped-full",
@@ -1339,7 +1339,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL Womens/Teens cropped winter coat $39.99 Size S-XL",
+    description: "PRIME DEAL Womens/Teens cropped winter coat Size S-XL",
   },
   {
     slug: "hunter-clothes-girls-sherpa-lined-barn-jacket-mid",
@@ -1349,7 +1349,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "New on Amazon Hunter girls sherpa lined jacket Size 2T-12 From $30.99",
+    description: "New on Amazon Hunter girls sherpa lined jacket Size 2T-12",
   },
   {
     slug: "levi-s-womens-original-sherpa-trucker-jacket",
@@ -1359,7 +1359,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL Levi's women/teen jacket Size XS-XL From $50.23 More colors but only these 4 are Prime day deals",
+    description: "PRIME DEAL Levi's women/teen jacket Size XS-XL More colors but only these 4 are Prime day deals",
   },
   {
     slug: "women-s-long-sleeve-classic-v-neck-casual",
@@ -1369,7 +1369,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL Tons of colors starting from $18.99",
+    description: "PRIME DEAL Tons of colors",
   },
   {
     slug: "yll-karaoke-machine-for-kids-birthday-gifts-for",
@@ -1379,7 +1379,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Kids love singing? This is the perfect gift! Karaoke Machine Now $18.90- more colors",
+    description: "PRIME DEAL. Kids love singing? This is the perfect gift! Karaoke Machine - more colors",
   },
   {
     slug: "picassotiles-100-piece-magnetic-tiles-race-track-toy",
@@ -1389,7 +1389,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "toys",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Buy your Chanukah gifts- 100 Piece Magnetic Tiles Race Track Now $59.99",
+    description: "PRIME DEAL. Buy your Chanukah gifts- 100 Piece Magnetic Tiles Race Track",
   },
   {
     slug: "stokke-yoyo3-travel-stroller-from-6-months-easy",
@@ -1399,7 +1399,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL Stokke YOYO3 Travel Stroller Now $319.99",
+    description: "PRIME DEAL Stokke YOYO3 Travel Stroller",
   },
   {
     slug: "hasbro-gaming-connect-4-strategy-board-game-for",
@@ -1409,7 +1409,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "toys",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL Connect 4 game $7.49",
+    description: "PRIME DEAL Connect 4 game",
   },
   {
     slug: "hp-14-inch-laptop-hd-display-intel-n150",
@@ -1419,7 +1419,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "electronics",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. HP 14 inch Laptop $229.99",
+    description: "PRIME DEAL. HP 14 inch Laptop",
   },
   {
     slug: "farberware-forged-induction-ceramic-nonstick-cookware-set-12",
@@ -1429,7 +1429,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Farberware 12 pc set $97.49",
+    description: "PRIME DEAL. Farberware 12 pc set",
   },
   {
     slug: "polo-ralph-lauren-men-s-athletic-performance-cotton",
@@ -1439,7 +1439,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. POLO RALPH LAUREN Men's Athletic Performance Cotton Crew Socks $22.06 More colors",
+    description: "PRIME DEAL. POLO RALPH LAUREN Men's Athletic Performance Cotton Crew Socks More colors",
   },
   {
     slug: "heilaiyi-wall-mounted-clothes-hanger-clothes-drying-rack",
@@ -1449,7 +1449,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "organization",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL $41.02 Wall mounted dryer rack",
+    description: "PRIME DEAL Wall mounted dryer rack",
   },
   {
     slug: "ring-battery-doorbell",
@@ -1459,7 +1459,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL Ring battery doorbell $39.99",
+    description: "PRIME DEAL Ring battery doorbell",
   },
   {
     slug: "steve-madden-cropped-puffer-jacket-trendy-warm-winter",
@@ -1469,7 +1469,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Steve Madden Cropped Puffer Jacket Size XS-3X $46.74",
+    description: "PRIME DEAL. Steve Madden Cropped Puffer Jacket Size XS-3X",
   },
   {
     slug: "keurig-k-supreme-gen-2-hot-and-iced",
@@ -1479,7 +1479,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "Keurig K supreme Hot & Iced Single Serve K-Cup Pod Coffee Maker Now $94.99",
+    description: "Keurig K supreme Hot & Iced Single Serve K-Cup Pod Coffee Maker",
   },
   {
     slug: "amazon-com-roborock-2026-new-qrevo-s-pro",
@@ -1489,7 +1489,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Roborock robot mop Now $384.99",
+    description: "PRIME DEAL. Roborock robot mop",
   },
   {
     slug: "tineco-floor-one-s7-stretch-ultra-cordless-wet",
@@ -1499,7 +1499,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "PRIME DEAL. Tried and True! Tineco mop $349",
+    description: "PRIME DEAL. Tried and True! Tineco mop",
   },
   {
     slug: "caraway-16-piece-deluxe-non-stick-ceramic-cookware",
@@ -1509,7 +1509,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "Prime deal- list price $865 Now $562 Caraway 16 pc pot set",
+    description: "Prime deal - Caraway 16 pc pot set",
   },
   {
     slug: "women-s-elegant-a-line-fold-two-piece",
@@ -1552,7 +1552,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Pretty knit sweater Size S-L clip the coupon for $29.74",
+    description: "Pretty knit sweater Size S-L clip the coupon",
   },
   {
     slug: "furnex-sweaters-for-women-work-cropped-v-neck",
@@ -1562,7 +1562,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Collared sweater $28.99 Size S-XXL",
+    description: "Collared sweater Size S-XXL",
   },
   {
     slug: "zeagoo-womens-sleeveless-tops-turtleneck-sweater-business-casual",
@@ -1572,7 +1572,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Vest Turtleneck $19.99 Size S-L More colors/prints",
+    description: "Vest Turtleneck Size S-L More colors/prints",
   },
   {
     slug: "zeagoo-women-s-2025-fall-crewneck-cropped-sweater",
@@ -1582,7 +1582,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Prime deal Crewneck cropped sweater from $18.99 More colors",
+    description: "Prime deal Crewneck cropped sweater More colors",
   },
   {
     slug: "ninja-slushi-professional-drink-maker-fs301",
@@ -1592,7 +1592,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "Prime deal Ninja Pro Slush machine $229",
+    description: "Prime deal Ninja Pro Slush machine",
   },
   {
     slug: "timeson-sweaters-for-women-fall-cozy-halloween-lightweight",
@@ -1612,7 +1612,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     recommendationLabel: "chosen_for_look",
-    description: "From $9.49 Size S-XXL V sweater more prints",
+    description: "Size S-XXL V sweater more prints",
   },
   {
     slug: "tankaneo-womens-scalloped-hem-blouse-puff-sleeve-business",
@@ -1622,7 +1622,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Pretty shabbos blouse $23.79 Size XS-XXL More colors",
+    description: "Pretty shabbos blouse Size XS-XXL More colors",
   },
   {
     slug: "shewin-women-waffle-hoodie-pullover-top-hooded-sweatshirt",
@@ -1632,7 +1632,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Hooded top from $14.99 Lots more colors Size XS-3X",
+    description: "Hooded top Lots more colors Size XS-3X",
   },
   {
     slug: "modatope-rounded-toe-flat-stretchy-dress-knee-high",
@@ -1642,7 +1642,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Prime deal stretchy knee high boots- $55.99 lots of colors",
+    description: "Prime deal stretchy knee high boots - lots of colors",
   },
   {
     slug: "trendy-queen-womens-mock-neck-sweatshirts-oversized-pullover",
@@ -1652,7 +1652,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Prime deal from $23.99 Tons of colors Size XS- XXL",
+    description: "Prime deal Tons of colors Size XS- XXL",
   },
   {
     slug: "spring-autumn-and-winter-simple-round-neck-fashionable",
@@ -1731,7 +1731,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     recommendationLabel: "chosen_for_look",
-    description: "Women/teens Cropped puffer jacket $29.99 Size XS-XL",
+    description: "Women/teens Cropped puffer jacket Size XS-XL",
   },
   {
     slug: "wet-n-wild-color-icon-blush-effortless-matte",
@@ -1741,7 +1741,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and True Blush $3.28",
+    description: "Tried and True Blush",
   },
   {
     slug: "komforme-environmental-material-memory-handles",
@@ -1750,7 +1750,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "boots",
     recommendationLabel: "chosen_for_look",
-    description: "Amazon Haul Kids boots $19.99 Lots of colors",
+    description: "Amazon Haul Kids boots Lots of colors",
   },
   {
     slug: "karl-lagerfeld-paris-women-s-laffayette-chain-strap",
@@ -1760,7 +1760,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "bags",
     recommendationLabel: "chosen_for_look",
-    description: "Karl Lagerfeld crossbody now $86.79",
+    description: "Karl Lagerfeld crossbody",
   },
   {
     slug: "chefman-2-qt-mini-air-fryer-digital-space",
@@ -1770,7 +1770,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "Air fryer now $39.99",
+    description: "Air fryer",
   },
   {
     slug: "adjustable-measuring-spoon-baking-cooking",
@@ -1779,7 +1779,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "Prime Haul- adjustable measuring spoon 0.87",
+    description: "Prime Haul- adjustable measuring spoon",
   },
   {
     slug: "separable-layered-initial-pendant-necklace",
@@ -1788,7 +1788,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     recommendationLabel: "chosen_for_look",
-    description: "Prime haul initial necklace only 0.76",
+    description: "Prime haul initial necklace",
   },
   {
     slug: "marlrin-shooting-games-toys-for-age-5-6",
@@ -1808,7 +1808,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Beautiful Girls sweater, some sizes only $7.49 originally $19.99 Size 5/6-13/14",
+    description: "Beautiful Girls sweater, some sizes only Size 5/6-13/14",
   },
   {
     slug: "glowserve-175-piece-disposable-plastic-plates-dinnerware-set",
@@ -1818,7 +1818,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "You can still get this paper goods on time for Yom tov! $29.99 - Service for 25",
+    description: "You can still get this paper goods on time for Yom tov! Service for 25",
   },
   {
     slug: "gootop-bug-zapper-outdoor-mosquito-zapper-4200v-3",
@@ -1828,7 +1828,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "outdoor",
     recommendationLabel: "chosen_for_look",
-    description: "Have your sukkah fly free with this Fly zapper - has great reviews! Now $32.99",
+    description: "Have your sukkah fly free with this Fly zapper - has great reviews!",
   },
   {
     slug: "owlzoom-motion-video-gaming-console-active-play-system",
@@ -1838,7 +1838,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "home",
     recommendationLabel: "chosen_for_look",
-    description: "Great at home Chol Hamoed activity - no wifi needed -you do need a screen though. $63.99",
+    description: "Great at home Chol Hamoed activity - no wifi needed -you do need a screen though.",
   },
   {
     slug: "makabo-women-s-maxi-satin-brown-skirts-summer",
@@ -1848,7 +1848,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Elegant satin skirt Size XS-XL From $27.42 More colrs!",
+    description: "Elegant satin skirt Size XS-XL More colrs!",
   },
   {
     slug: "grace-karin-girls-dress-coat-fall-winter-double",
@@ -1858,7 +1858,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Girls Shabbos. coat- detachable bow Size 7-14 clip the coupon for $35.99",
+    description: "Girls Shabbos. coat- detachable bow Size 7-14 clip the coupon",
   },
   {
     slug: "grace-karin-girls-black-winter-peacoat-coat-jacket",
@@ -1868,7 +1868,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Girls shabbos coat $39.98 Size 7-14",
+    description: "Girls shabbos coat Size 7-14",
   },
   {
     slug: "grace-karin-long-sleeve-crochet-fall-sweaters-for",
@@ -1878,7 +1878,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Elegant puff sleeve sweater More colors! Size S-XXL from $24.69",
+    description: "Elegant puff sleeve sweater More colors! Size S-XXL",
   },
   {
     slug: "grace-karin-women-fall-long-sleeve-v-neck",
@@ -1888,7 +1888,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Can still come on time for yom tov! Beautiful knit top more color options Size S-XXL from $22.99",
+    description: "Can still come on time for yom tov! Beautiful knit top more color options Size S-XXL",
   },
   {
     slug: "allshope-toddler-baby-girl-fall-outfit-patchwork-long",
@@ -1898,7 +1898,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Cute Baby girl sweatset from $9.49",
+    description: "Cute Baby girl sweatset",
   },
   {
     slug: "trary-mary-jane-shoes-women-mary-jane-flats",
@@ -1908,7 +1908,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     recommendationLabel: "chosen_for_look",
-    description: "Womens mary jane from $11.99 more colors",
+    description: "Womens mary jane more colors",
   },
   {
     slug: "hingswink-mary-jane-shoes-women-woven-ballet-flats",
@@ -1918,7 +1918,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Womens Mary Jane Shabbos shoes- Luggage color now $16.99 - More colors",
+    description: "Womens Mary Jane Shabbos shoes- Luggage color - More colors",
   },
   {
     slug: "anewsta-modern-retro-style-lantern-sleeve-random-floral",
@@ -1958,7 +1958,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Limited time deal - Fur lined zip up sweatshirt size 0-3M-4T More colors Pink color now $10.56",
+    description: "Limited time deal - Fur lined zip up sweatshirt size 0-3M-4T More colors Pink color",
   },
   {
     slug: "welaken-kids-girls-rainbow-sweatshirt-loved-long-sleeve",
@@ -1968,7 +1968,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Cute Girls sweatshirt- lots more options 95% cotton $14.99 Size 6-14",
+    description: "Cute Girls sweatshirt- lots more options 95% cotton Size 6-14",
   },
   {
     slug: "zeagoo-plaid-skirts-for-women-elastic-waist-aline",
@@ -1978,7 +1978,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "skirts",
     recommendationLabel: "chosen_for_look",
-    description: "Beautiful skirts - lots of options Size S-XXL from $19.99",
+    description: "Beautiful skirts - lots of options Size S-XXL",
   },
   {
     slug: "stuhrling-original-mens-skeleton-automatic-dress-watch-with",
@@ -1988,7 +1988,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Limited time deal! Sturling mens watch $99",
+    description: "Limited time deal! Sturling mens watch",
   },
   {
     slug: "pink-queen-maxi-tartan-skirts-for-women-2026",
@@ -1998,7 +1998,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "skirts",
     recommendationLabel: "chosen_for_look",
-    description: "Lots of different plaid skirts $24",
+    description: "Lots of different plaid skirts",
   },
   {
     slug: "funlingo-puff-long-sleeve-shirts-women-mock-neck",
@@ -2018,7 +2018,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Still need yom tov clothing? Beautiful satin turtleneck. Lots of colors! Limited Time deal price between $14.99-$17.99",
+    description: "Still need yom tov clothing? Beautiful satin turtleneck. Lots of colors! Limited Time deal",
   },
   {
     slug: "intex-64121ed-dura-beam-plus-pillow-rest-air",
@@ -2028,7 +2028,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "home",
     recommendationLabel: "chosen_for_look",
-    description: "Great for Sukkos! Twin size air mattres with built in pump Now $40.12",
+    description: "Great for Sukkos! Twin size air mattres with built in pump",
   },
   {
     slug: "womens-sweaters-fall-outfits-long-sleeve-tops-dressy",
@@ -2038,7 +2038,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Pretty sweater dress it up or down! Limited time only $19.99 Size S-XXL More Colors!",
+    description: "Pretty sweater dress it up or down! Limited time Size S-XXL More Colors!",
   },
   {
     slug: "zeagoo-women-s-turtleneck-sweater-fall-winter-casual",
@@ -2048,7 +2048,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Pretty Turtleneck top- Great for Chol Hamoed From $26.99 Size S-XL More Colors!",
+    description: "Pretty Turtleneck top- Great for Chol Hamoed Size S-XL More Colors!",
   },
   {
     slug: "wiholl-sweatshirts-for-women-crewneck-long-sleeve-loose",
@@ -2058,7 +2058,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     recommendationLabel: "chosen_for_look",
-    description: "Great Everyday/house top. Limited time deal only $14.98 - Size S-XXL Lots of colors",
+    description: "Great Everyday/house top. Limited time deal - Size S-XXL Lots of colors",
   },
   {
     slug: "puma-womens-cool-cat-slide-casual-sandals-casual",
@@ -2068,7 +2068,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sandals",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and true! Great yom Kippur slippers $28.35",
+    description: "Tried and true! Great yom Kippur slippers",
   },
   {
     slug: "new-autumn-winter-soft-warm-cardigan-woman-cashmere",
@@ -2149,7 +2149,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Puff sleeve sweater now only $19.99 lots of colors size S-XL",
+    description: "Puff sleeve sweater lots of colors size S-XL",
   },
   {
     slug: "suuksess-women-cashmere-blend-v-neck-wrap-sweater",
@@ -2159,7 +2159,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Elegant cashmere blend sweater now only $45.52 more colors Size XS-XL",
+    description: "Elegant cashmere blend sweater more colors Size XS-XL",
   },
   {
     slug: "lifetime-6-foot-fold-in-half-table-light",
@@ -2169,7 +2169,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "home",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and true! Great for the Sukkah- Lifetime 6 Ft. $84.02 fold in half folding table!",
+    description: "Tried and true! Great for the Sukkah- Lifetime 6 Ft. fold in half folding table!",
   },
   {
     slug: "webake-log-cake-pan-silicone-log-cake-mold",
@@ -2219,7 +2219,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "casual maternity top- great for a house top $9.99 more colors Size S-XL",
+    description: "casual maternity top- great for a house top more colors Size S-XL",
   },
   {
     slug: "makemechic-women-s-maternity-sweater-vest-fall-pregnancy",
@@ -2229,7 +2229,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Elegant maternity turtleneck vest $32.99 Size S-XXL",
+    description: "Elegant maternity turtleneck vest Size S-XXL",
   },
   {
     slug: "ouges-women-s-wool-blend-maternity-sweater-crossover",
@@ -2239,7 +2239,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Elegant maternity sweater - more colors Size S-XXL $32.99-$37.99",
+    description: "Elegant maternity sweater - more colors Size S-XXL",
   },
   {
     slug: "xaatren-4-pack-womens-maternity-long-sleeve-shirts",
@@ -2249,7 +2249,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     recommendationLabel: "chosen_for_look",
-    description: "4 pack Waffle maternity top more color options $42.99",
+    description: "4 pack Waffle maternity top more color options",
   },
   {
     slug: "mari-gabriel-women-s-maternity-denim-top-long",
@@ -2259,7 +2259,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     recommendationLabel: "chosen_for_look",
-    description: "Denim maternity shirt coupon price $37.99 Size S-XXL",
+    description: "Denim maternity shirt coupon Size S-XXL",
   },
   {
     slug: "mari-gabriel-maternity-button-down-shirts-long-sleeve",
@@ -2269,7 +2269,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     recommendationLabel: "chosen_for_look",
-    description: "Button down maternity shirt- reviews show it runs large, size down. Size S-XXL $29.99",
+    description: "Button down maternity shirt- reviews show it runs large, size down. Size S-XXL",
   },
   {
     slug: "roseseek-maternity-sweatshirts-hoodies-pullover",
@@ -2278,7 +2278,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Maternity Hooded sweatshirt Size XS-4XL $12.99",
+    description: "Maternity Hooded sweatshirt Size XS-4XL",
   },
   {
     slug: "ekouaer-3-packs-maternity-shirts-long-sleeve-tops",
@@ -2288,7 +2288,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     recommendationLabel: "chosen_for_look",
-    description: "3 pack peplum top Lots of color options Size S-XXL $36.99",
+    description: "3 pack peplum top Lots of color options Size S-XXL",
   },
   {
     slug: "foucome-maternity-sweaters-trendy-hollow-out-pregnancy-tops",
@@ -2298,7 +2298,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Elegant Mesh maternity top $28.99 Size S-XXL",
+    description: "Elegant Mesh maternity top Size S-XXL",
   },
   {
     slug: "fmeyoa-women-s-maternity-shirt-long-sleeve-top",
@@ -2308,7 +2308,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Elegant Maternity top Lots of colors $29.99",
+    description: "Elegant Maternity top Lots of colors",
   },
   {
     slug: "liu-and-qu-women-s-maternity-oversized-sweaters",
@@ -2318,7 +2318,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Elegant maternity sweater $14.99-$19.99 Size S-XL",
+    description: "Elegant maternity sweater Size S-XL",
   },
   {
     slug: "debelly-pregnancy-sweater-maternity-pullover",
@@ -2327,7 +2327,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Elegant maternity top $14.99 Size S-XL",
+    description: "Elegant maternity top Size S-XL",
   },
   {
     slug: "cozyease-women-s-maternity-button-down-shirt-casual",
@@ -2337,7 +2337,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "cardigans",
     recommendationLabel: "chosen_for_look",
-    description: "Maternity cardigan More colors $18.99 Size XXS-4XL",
+    description: "Maternity cardigan More colors Size XXS-4XL",
   },
   {
     slug: "roseseek-women-s-long-sleeve-crew-neck-maternity",
@@ -2347,7 +2347,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Pretty maternity top More colors $9.99-$12.99 Size XS-4XL",
+    description: "Pretty maternity top More colors Size XS-4XL",
   },
   {
     slug: "women-s-maternity-shirts-long-sleeve-sweatshirt-zipper",
@@ -2357,7 +2357,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Maternity side zipper top Lots of colors Only $9.99 Size S-XXL",
+    description: "Maternity side zipper top Lots of colors Size S-XXL",
   },
   {
     slug: "motherhood-maternity-women-s-long-sleeve-empire-waist",
@@ -2367,7 +2367,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     recommendationLabel: "chosen_for_look",
-    description: "Maternity peplum top- lots of color options $26.60 Size XS-XL",
+    description: "Maternity peplum top- lots of color options Size XS-XL",
   },
   {
     slug: "3-pack-women-maternity-shirts-long-sleeve-pregnancy",
@@ -2377,7 +2377,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     recommendationLabel: "chosen_for_look",
-    description: "3 Pack maternity tops lots of colors $26.72 Size S-XXL",
+    description: "3 Pack maternity tops lots of colors Size S-XXL",
   },
   {
     slug: "jacquard-suspender-dress-womens-summer-2026-new-waist",
@@ -2487,7 +2487,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "Round acrylic holder requested: 2 pack $17.99",
+    description: "Round acrylic holder requested: 2 pack",
   },
   {
     slug: "intex-quickfill-electric-air-pump-inflates-and-deflates",
@@ -2507,7 +2507,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "home",
     recommendationLabel: "chosen_for_look",
-    description: "Tried & True! Blow up bed perfect for Sukkah sleeping Twin Size $12.97",
+    description: "Tried & True! Blow up bed perfect for Sukkah sleeping Twin Size",
   },
   {
     slug: "summer-holiday-dress-womens-dress-ladies-dress-womens",
@@ -2557,7 +2557,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Velour maxi jumper -- lots more colors $54.99",
+    description: "Velour maxi jumper -- lots more colors",
   },
   {
     slug: "ulovmi-women-summer-long-dress-sleeveless-loose-maxi",
@@ -2567,7 +2567,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Loose Maxi dress Size S-XL $19.99",
+    description: "Loose Maxi dress Size S-XL",
   },
   {
     slug: "cider-fall-velvet-maxi-dress-women-v-neck",
@@ -2577,7 +2577,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Cut velvet maxi - Black, Navy, Wine. XS-XL $39.99",
+    description: "Cut velvet maxi - Black, Navy, Wine. XS-XL",
   },
   {
     slug: "grecerelle-women-s-summer-sleeveless-casual-long-tank",
@@ -2587,7 +2587,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Printed maxi. More colors and prints. Size XS-3XL $24.99",
+    description: "Printed maxi. More colors and prints. Size XS-3XL",
   },
   {
     slug: "rainday-women-s-linen-dress-sleeveness-casual-maxi",
@@ -2597,7 +2597,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Linen maxi jumper $36.90 more colors! Size S-4X",
+    description: "Linen maxi jumper more colors! Size S-4X",
   },
   {
     slug: "grecerelle-women-s-summer-crew-neck-loose-split",
@@ -2607,7 +2607,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Lots of colors! Limited deal! $19.99 Size XXS - 4XL",
+    description: "Lots of colors! Limited deal! Size XXS - 4XL",
   },
   {
     slug: "11-x14-clear-acrylic-serving-tray-with-golden",
@@ -2627,7 +2627,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "Requested: Acrylic trays with handles 12''x16'' $18.89 Great reviews",
+    description: "Requested: Acrylic trays with handles 12''x16'' Great reviews",
   },
   {
     slug: "4-5pcs-solar-starburst-lanterns-with-remote-timer",
@@ -2687,7 +2687,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "2 piece sweater set - make sure to clip the coupon price for $35.99 Lots more colors Size S-XL",
+    description: "2 piece sweater set - make sure to clip the coupon Lots more colors Size S-XL",
   },
   {
     slug: "women-s-2-piece-skirt-set-long-sleeve",
@@ -2697,7 +2697,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sets",
     recommendationLabel: "chosen_for_look",
-    description: "Beautiful easy 2 piece set only $26.99- comes in a few colors Size S-XXL",
+    description: "Beautiful easy 2 piece set - comes in a few colors Size S-XXL",
   },
   {
     slug: "easy-going-outdoor-patio-curtains-2-panels-54x84",
@@ -2727,7 +2727,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "home",
     recommendationLabel: "chosen_for_look",
-    description: "Fruit hanging sukkah decoration $18.99",
+    description: "Fruit hanging sukkah decoration",
   },
   {
     slug: "25pcs-38mm-crystal-chandelier-prism-pendants-suncatchers-hanging",
@@ -2737,7 +2737,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "home",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and True! Hanging crystal for the sukkah 25 pieces for $16.99",
+    description: "Tried and True! Hanging crystal for the sukkah 25 pieces",
   },
   {
     slug: "2d-flat-sunflower-painting-lamp-diamond-painting-night",
@@ -2817,7 +2817,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Elegant Womens velour robe- Can still get this tomorrow (depends on color/size) $59.99 Lots of textured and solid options available",
+    description: "Elegant Womens velour robe- Can still get this tomorrow (depends on color/size) Lots of textured and solid options available",
   },
   {
     slug: "mitilly-long-sleeve-dress-for-women-modest-formal",
@@ -2827,7 +2827,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "You can still get this for tomorrow! $45.99",
+    description: "You can still get this for tomorrow!",
   },
   {
     slug: "euclidean-cube-2-in-1-friendship-bracelet-making",
@@ -2987,7 +2987,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "Tried & True! Gorgeous mens dress shoes $89.99",
+    description: "Tried & True! Gorgeous mens dress shoes",
   },
   {
     slug: "clarks-men-s-whiddon-step-loafer-black-leather",
@@ -2997,7 +2997,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Tried & True! Mens shoes - Nice look and comfortable - I have this for my teenage son for weekday, its even nice enough for shabbos. From $53.74 depends on size",
+    description: "Tried & True! Mens shoes - Nice look and comfortable - I have this for my teenage son for weekday, its even nice enough for shabbos.",
   },
   {
     slug: "pretied-head-scarf-for-women-lightweight-pretied-bandana",
@@ -3007,7 +3007,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     recommendationLabel: "chosen_for_look",
-    description: "Open back Tichel $22.99",
+    description: "Open back Tichel",
   },
   {
     slug: "hecheng-1pair-small-hoop-earrings-wholesale-rainbow-cz",
@@ -3028,7 +3028,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "Still need a top for Yom Tov? Simple yet elegant cardigan $34.99 Size S-XL",
+    description: "Still need a top for Yom Tov? Simple yet elegant cardigan Size S-XL",
   },
   {
     slug: "madison-headwear-pretied-head-scarves-for-women-featuring",
@@ -3038,7 +3038,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and true! Pretied Head Scarves very comfortable- lots of prints $15.95",
+    description: "Tried and true! Pretied Head Scarves very comfortable- lots of prints",
   },
   {
     slug: "denim-lace-up-a-line-skirt-women-vintage",
@@ -3089,7 +3089,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and true! I have these cutlery sets in gold and silver- to match the placemats. Service for 6 $46.99",
+    description: "Tried and true! I have these cutlery sets in gold and silver- to match the placemats. Service for 6",
   },
   {
     slug: "set-of-4-round-placemats-gold-heat-resistant",
@@ -3099,7 +3099,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and true! I have these placemats in gold and silver - so pretty and easy to clean. set of 8- $17.99",
+    description: "Tried and true! I have these placemats in gold and silver - so pretty and easy to clean. set of 8",
   },
   {
     slug: "zydsubgs-gold-leaf-napkin-rings-set-of-8",
@@ -3109,7 +3109,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "kitchen",
     recommendationLabel: "chosen_for_look",
-    description: "Beautiful gold leaf napkin rings set of 8 $15.99",
+    description: "Beautiful gold leaf napkin rings set of 8",
   },
   {
     slug: "nuogo-set-of-12-apple-napkin-rings-metal",
@@ -3119,7 +3119,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     recommendationLabel: "chosen_for_look",
-    description: "You can still get these pretty apple napkin ring in time for Yom Tov! $11.99",
+    description: "You can still get these pretty apple napkin ring in time for Yom Tov!",
   },
   {
     slug: "otter-momo-toddler-little-girls-oxford-mary-jane",
@@ -3129,7 +3129,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Adorable red girls T strap shoe Limited time deal- $20.99 more color/options in link",
+    description: "Adorable red girls T strap shoe Limited time deal - more color/options in link",
   },
   {
     slug: "estine-toddler-little-girls-dress-ballet-shoes-baby",
@@ -3139,7 +3139,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "while looking for the boys shabbos shoes I came across this pretty girls shabbos Tstrap $29.99- Different colors and styles in link",
+    description: "while looking for the boys shabbos shoes I came across this pretty girls shabbos Tstrap - Different colors and styles in link",
   },
   {
     slug: "buckle-loafers-more-colors-and-styles-in-link",
@@ -3148,7 +3148,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     recommendationLabel: "chosen_for_look",
-    description: "Buckle loafers more colors and styles in link $21.99",
+    description: "Buckle loafers more colors and styles in link",
   },
   {
     slug: "dream-pairs-kids-dress-uniform-formal-casual-oxford",
@@ -3158,7 +3158,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     recommendationLabel: "chosen_for_look",
-    description: "This looks like laces but is a velcro $28.99 also available in black, black patent and white",
+    description: "This looks like laces but is a velcro also available in black, black patent and white",
   },
   {
     slug: "patpat-boys-girls-dress-shoes-oxford-loafers-formal",
@@ -3168,7 +3168,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     recommendationLabel: "chosen_for_look",
-    description: "Toddler/boy lace shoes From $23.99",
+    description: "Toddler/boy lace shoes",
   },
   {
     slug: "meckior-toddler-boys-girls-black-dress-shoes-little",
@@ -3178,7 +3178,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Toddler/boy Laces shoe $22.99",
+    description: "Toddler/boy Laces shoe",
   },
   {
     slug: "fudaolee-boys-girls-slip-on-loafers-dress-flat",
@@ -3188,7 +3188,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     recommendationLabel: "chosen_for_look",
-    description: "Suede loafers $18.99",
+    description: "Suede loafers",
   },
   {
     slug: "lonsoen-boys-girls-loafers-dress-shoes-slip-on",
@@ -3198,7 +3198,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     recommendationLabel: "chosen_for_look",
-    description: "Toddler boys loafers - Lots of colors $17.99",
+    description: "Toddler boys loafers - Lots of colors",
   },
   {
     slug: "20-pack-glass-honey-jars-1-5-oz",
@@ -3208,7 +3208,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "bags",
     recommendationLabel: "chosen_for_look",
-    description: "Get it on time for Rosh Hashana! Set your table with individual honey dishes- 20 pack $19.99.",
+    description: "Get it on time for Rosh Hashana! Set your table with individual honey dishes- 20 pack.",
   },
   {
     slug: "ladies-slate-blue-square-face-watch",
@@ -3227,7 +3227,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "school",
     recommendationLabel: "chosen_for_look",
-    description: "Amazon Pretty womens top - can still get it on time for Rosh Hashana, Only $14.99 Lots more colors! Size Small-3X",
+    description: "Amazon Pretty womens top - can still get it on time for Rosh Hashana, Lots more colors! Size Small-3X",
   },
   {
     slug: "shein-fashionable-stand-collar-corduroy-long-sleeve-padded",
@@ -3257,7 +3257,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     recommendationLabel: "chosen_for_look",
-    description: "Beautiful Mock neck printed turtleneck on Amazon from only $9.99 Lots of different options Size S-XXL",
+    description: "Beautiful Mock neck printed turtleneck on Amazon Lots of different options Size S-XXL",
   },
   {
     slug: "2025-new-winter-baby-snow-boots-leather-warm",
@@ -9369,7 +9369,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Cute floral 2 pack 9.99",
+    description: "Cute floral 2 pack",
   },
   {
     slug: "2pcs-wood-star-silicone-pacifier-clip-for-baby",
@@ -9379,7 +9379,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "2 pack 9.98",
+    description: "2 pack",
   },
   {
     slug: "moribox-silicone-pacifier-clip-for-baby-girls-paci",
@@ -9389,7 +9389,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Silicone 4 pack for 7.99",
+    description: "Silicone 4 pack",
   },
   {
     slug: "symbolife-pacifier-handmade-birthday-christmas",
@@ -9398,7 +9398,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "baby-gear",
     recommendationLabel: "chosen_for_look",
-    description: "Requested: Baby pacifier clip 12.99 pack of 3, lots of color combinations",
+    description: "Requested: Baby pacifier clip pack of 3, lots of color combinations",
   },
   {
     slug: "laundry-basket-3-bag-sorter-240l-laundry-home",
@@ -9558,7 +9558,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sandals",
     recommendationLabel: "chosen_for_look",
-    description: "or these $19.99 comes in different colors",
+    description: "or these comes in different colors",
   },
   {
     slug: "beslip-garden-clogs-for-women-and-men-comfy",
@@ -9568,7 +9568,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "outdoor",
     recommendationLabel: "chosen_for_look",
-    description: "You can still get your Tish bav shoes for tomorrow (depends on your location) $16.99 lots of colors men or women",
+    description: "You can still get your Tish bav shoes for tomorrow (depends on your location) lots of colors men or women",
   },
   {
     slug: "anewsta-women-s-casual-elegant-drop-shoulder-long",
@@ -9948,7 +9948,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sneakers",
     recommendationLabel: "chosen_for_look",
-    description: "Tried and true girls sneakers super comfortable and looks adorable comes in a few colors now on limited deal $29.90",
+    description: "Tried and true girls sneakers super comfortable and looks adorable comes in a few colors now on limited deal",
   },
   {
     slug: "anrabess-women-s-long-sleeve-cropped-crew-neck",
@@ -10008,7 +10008,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "toys",
     recommendationLabel: "chosen_for_look",
-    description: "Amazon Haul items: Diamond art starting at $5",
+    description: "Amazon Haul items: Diamond art",
   },
   {
     slug: "mr-pen-craft-scissors-decorative-edge-6-pack",
@@ -10217,7 +10217,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "other",
     recommendationLabel: "chosen_for_look",
-    description: "Great Tisha Bav chair Height adjustable pack of 2 for $36.53",
+    description: "Great Tisha Bav chair Height adjustable pack of 2",
   },
   {
     slug: "mackenzie-childs-courtly-checks-teapot-salt-pepper-set",
@@ -10346,7 +10346,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "bags",
     recommendationLabel: "chosen_for_look",
-    description: "Pretty briefcase now on sale limited time deal! Comes in lots of colors but only this color is on sale for $20.79",
+    description: "Pretty briefcase now on sale limited time deal! Comes in lots of colors but only this color is on sale",
   },
   {
     slug: "lightweight-corduroy-backpack-for-teens-olive-green-adjustable-2",
@@ -10446,7 +10446,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     recommendationLabel: "chosen_for_look",
-    description: "Beautiful weekday top Limited time deal for $23.97",
+    description: "Beautiful weekday top Limited time deal",
   },
   {
     slug: "burgundy-pu-panel-a-line-skirt",

@@ -196,3 +196,51 @@ export function parseCsv(text) {
   const header = nonEmpty[0].map((h) => h.trim().toLowerCase());
   return nonEmpty.slice(1).map((r) => Object.fromEntries(header.map((h, i) => [h, (r[i] ?? "").trim()])));
 }
+
+/**
+ * Remove price mentions from a caption, keeping the rest of the words.
+ * Amazon Associates rules don't allow showing a stored price, so Amazon
+ * captions go through this before they reach the site ("Great Chanuka gift
+ * $16.99" → "Great Chanuka gift"). Handles $16.99, $16, 16.99$, bare 16.99,
+ * ranges ($14.99-$17.99) and the words that only exist to introduce a price
+ * ("now only", "was", "from", "for", "under", "list price", ...).
+ */
+const MONEY = String.raw`(?:\$\s?\d[\d,]*(?:\.\d+)?|(?<![\w.$/-])\d[\d,]*(?:\.\d+)?\$(?!\d)|(?<![\w.$/-])\d{1,4}\.\d{2}(?![\d%.]|\s*(?:oz|lbs?|in|inch(?:es)?|cm|mm|ft|ml|l|kg|g|qt|"|'')\b))`;
+const PRICE_QUALIFIER = String.raw`(?:now\s+only|now|was|starting\s+(?:at|from)|from|under|original(?:ly)?(?:\s+price)?|list\s+price|price\s+between|price|for)`;
+const PRICE_RE = new RegExp(
+  String.raw`(\s*[-–:]\s*)?` + // a dash/colon right before the price
+    String.raw`(?:\b(?:only|${PRICE_QUALIFIER})\s+)*` + // words that only introduce the price
+    `${MONEY}(?:\\s*(?:-|–|to)\\s*${MONEY})?` + // the price or a range
+    String.raw`(?:\s+(?:depends on size|with applied coupon))?` +
+    String.raw`(\s*[-–]+(?=\s|$))?`, // a dash right after it
+  "gi"
+);
+// "only" stays when it's about sizes/colours ("SMALL ONLY $12.67", "some sizes only $7.49").
+const KEEP_ONLY_BEFORE = /\b(sizes?|small|medium|large|x+l)\s*$/i;
+
+export function stripPrices(text) {
+  if (!text) return text;
+  const original = String(text);
+  let found = false;
+  let out = original.replace(PRICE_RE, (match, dashBefore, dashAfter, offset, whole) => {
+    found = true;
+    const lead = match.match(/^\s*(?:[-–:]\s*)?(only)\b/i);
+    const keep = lead && KEEP_ONLY_BEFORE.test(whole.slice(0, offset)) ? ` ${lead[1]}` : "";
+    const before = whole.slice(0, offset).trim();
+    const after = whole.slice(offset + match.length).trim();
+    if ((dashBefore || dashAfter) && before && after && !/[.!?,]$/.test(before)) return `${keep} - `;
+    // "12 Pairs $26.98 6 pairs $14.98" → "12 Pairs, 6 pairs"
+    if (/[A-Za-z]$/.test(before) && /^\d/.test(after)) return `${keep}, `;
+    return `${keep} `;
+  });
+  if (!found) return original; // no price: leave her words exactly as they were
+  out = out
+    .replace(/\(\s*\)/g, "")
+    .replace(/\s+([,.!?;:)])/g, "$1")
+    .replace(/([.!?])\s*[-–]+\s+/g, "$1 ")
+    .replace(/,\s*([.!?])/g, "$1")
+    .replace(/\s{2,}/g, " ")
+    .replace(/^[\s,;:–-]+|[\s,;:–-]+$/g, "")
+    .trim();
+  return out;
+}

@@ -19,7 +19,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { AUDIENCES, CATEGORIES, LABELS, OCCASIONS, parseCsv, storeFromUrl } from "./shared.mjs";
+import { AUDIENCES, CATEGORIES, LABELS, OCCASIONS, parseCsv, storeFromUrl, stripPrices } from "./shared.mjs";
 
 const PRODUCTS_FILE = path.join(process.cwd(), "lib", "data", "products.ts");
 const ARRAY_START = "export const products: Product[] = [";
@@ -123,7 +123,8 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
       audience: audience || undefined,
       occasion: occasion || undefined,
       recommendationLabel: label,
-      description: (row.description || "").trim() || `Found on ${store}.`,
+      // Amazon captions lose any price mention too (Associates rules: no stored prices).
+      description: (isAmazon ? stripPrices((row.description || "").trim()) : (row.description || "").trim()) || `Found on ${store}.`,
       featured: YES.has(String(row.featured || "").trim().toLowerCase()),
       hidden: hideReason !== "",
       hiddenWhy: hideReason,

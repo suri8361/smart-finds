@@ -6,9 +6,8 @@ export interface ProductCategoryOption {
   /**
    * The broad nav group (a slug in lib/data/categories.ts) this specific
    * category rolls up into, for /category/[slug] and its related-collections
-   * lookup. A few (toys, baby-gear, other) don't cleanly fit an existing
-   * group and are left unmapped — products with those categories just won't
-   * surface on any of the current /category/[slug] pages.
+   * lookup. Toys, baby-gear and other each have their own nav group of the
+   * same slug ("other" is shown as "More Finds").
    */
   group?: string;
 }
@@ -45,13 +44,13 @@ export const productCategories: ProductCategoryOption[] = [
   { value: "home", label: "Home", group: "home-kitchen" },
   { value: "kitchen", label: "Kitchen", group: "home-kitchen" },
   { value: "organization", label: "Organization", group: "home-office" },
-  { value: "toys", label: "Toys" },
-  { value: "baby-gear", label: "Baby Gear" },
+  { value: "toys", label: "Toys", group: "toys" },
+  { value: "baby-gear", label: "Baby Gear", group: "baby-gear" },
   { value: "school", label: "School", group: "home-office" },
   { value: "electronics", label: "Electronics", group: "tech-electronics" },
   { value: "outdoor", label: "Outdoor", group: "outdoor-camping" },
   { value: "camping", label: "Camping", group: "outdoor-camping" },
-  { value: "other", label: "Other" },
+  { value: "other", label: "More Finds", group: "other" },
 ];
 
 export function getProductCategoryLabel(value: ProductCategoryType): string | undefined {
