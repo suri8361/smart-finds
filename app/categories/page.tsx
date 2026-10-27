@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { CategoryTile } from "@/components/home/CategoryTile";
-import { categories } from "@/lib/data/categories";
+import { getHomeCategories } from "@/lib/data/home";
 
 export const metadata: Metadata = {
   title: "Categories",
@@ -23,9 +23,9 @@ export default function CategoriesPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {categories.map((category) => (
-          <CategoryTile key={category.slug} category={category} />
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
+        {getHomeCategories(1).map((entry) => (
+          <CategoryTile key={entry.category.slug} entry={entry} />
         ))}
       </div>
     </Container>

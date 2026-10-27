@@ -8,8 +8,8 @@ import { categories } from "@/lib/data/categories";
 import { SearchBar } from "@/components/layout/SearchBar";
 import type { MenuLink } from "@/lib/data/menus";
 
-const supportLinks = [
-  { href: "/collections", label: "Collections" },
+const collectionsLink = { href: "/collections", label: "Collections" };
+const baseSupportLinks = [
   { href: "/about", label: "About Smart Finds" },
   { href: "/favorites", label: "Favorites" },
 ];
@@ -39,9 +39,12 @@ interface MobileMenuProps {
   /** Built on the server (lib/data/menus.ts) so the product data never ships to the browser. */
   fashionLinks: MenuLink[];
   holidayLinks: MenuLink[];
+  /** Only true once at least one collection has products (otherwise /collections is empty). */
+  showCollections?: boolean;
 }
 
-export function MobileMenu({ fashionLinks, holidayLinks }: MobileMenuProps) {
+export function MobileMenu({ fashionLinks, holidayLinks, showCollections = false }: MobileMenuProps) {
+  const supportLinks = showCollections ? [collectionsLink, ...baseSupportLinks] : baseSupportLinks;
   const [open, setOpen] = useState(false);
   const mounted = useSyncExternalStore(
     subscribe,

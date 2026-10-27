@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { categories } from "@/lib/data/categories";
+import { getCollectionsWithProducts } from "@/lib/data/collections";
 import { getFashionMenu, getHolidayMenu, type MenuLink } from "@/lib/data/menus";
 
 /**
@@ -71,14 +72,16 @@ export function DesktopNav() {
         Tried &amp; True
       </Link>
 
-      <Link href="/collections" className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
-        Collections
-      </Link>
+      {getCollectionsWithProducts().length > 0 ? (
+        <Link href="/collections" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+          Collections
+        </Link>
+      ) : null}
       <Link
         href="/about"
-        className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted"
+        className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted"
       >
-        About Smart Finds
+        About
       </Link>
     </nav>
   );
