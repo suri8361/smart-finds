@@ -6,9 +6,8 @@ export interface ProductCategoryOption {
   /**
    * The broad nav group (a slug in lib/data/categories.ts) this specific
    * category rolls up into, for /category/[slug] and its related-collections
-   * lookup. A few (toys, baby-gear, other) don't cleanly fit an existing
-   * group and are left unmapped — products with those categories just won't
-   * surface on any of the current /category/[slug] pages.
+   * lookup. Toys, baby-gear and other each have their own nav group of the
+   * same slug ("other" is shown as "More Finds").
    */
   group?: string;
 }
@@ -31,25 +30,27 @@ export const productCategories: ProductCategoryOption[] = [
   { value: "sets", label: "Sets", group: "fashion-style" },
   { value: "jumpsuits", label: "Jumpsuits", group: "fashion-style" },
   { value: "pajamas", label: "Pajamas", group: "fashion-style" },
-  { value: "coats-jackets", label: "Coats & Jackets", group: "fashion-style" },
+  { value: "coats-jackets", label: "Outerwear", group: "fashion-style" },
   { value: "shoes", label: "Shoes", group: "fashion-style" },
   { value: "boots", label: "Boots", group: "fashion-style" },
   { value: "sandals", label: "Sandals", group: "fashion-style" },
   { value: "sneakers", label: "Sneakers", group: "fashion-style" },
   { value: "bags", label: "Bags", group: "fashion-style" },
   { value: "accessories", label: "Accessories", group: "fashion-style" },
+  // Its own nav group: elegant, modest picks (clothing, shoes, bags)
+  { value: "shabbos-elegant", label: "Shabbos & Elegant", group: "shabbos-elegant" },
   // Everything else
   { value: "beauty", label: "Beauty", group: "beauty-personal-care" },
   { value: "home", label: "Home", group: "home-kitchen" },
   { value: "kitchen", label: "Kitchen", group: "home-kitchen" },
   { value: "organization", label: "Organization", group: "home-office" },
-  { value: "toys", label: "Toys" },
-  { value: "baby-gear", label: "Baby Gear" },
+  { value: "toys", label: "Toys", group: "toys" },
+  { value: "baby-gear", label: "Baby Gear", group: "baby-gear" },
   { value: "school", label: "School", group: "home-office" },
   { value: "electronics", label: "Electronics", group: "tech-electronics" },
   { value: "outdoor", label: "Outdoor", group: "outdoor-camping" },
   { value: "camping", label: "Camping", group: "outdoor-camping" },
-  { value: "other", label: "Other" },
+  { value: "other", label: "More Finds", group: "other" },
 ];
 
 export function getProductCategoryLabel(value: ProductCategoryType): string | undefined {

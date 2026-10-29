@@ -1,5 +1,5 @@
 import type { Collection } from "@/types/catalog";
-import { products } from "@/lib/data/products";
+import { publicProducts as products } from "@/lib/data/products";
 import { getProductCategoriesInGroup } from "@/lib/data/productCategories";
 
 /**
@@ -35,6 +35,12 @@ export const collections: Collection[] = [
     accent: "amber",
   },
 ];
+
+/** Collections that currently have at least one public product — the homepage only shows these. */
+export function getCollectionsWithProducts(): Collection[] {
+  const used = new Set(products.map((product) => product.collection).filter(Boolean));
+  return collections.filter((collection) => used.has(collection.slug));
+}
 
 export function getCollectionBySlug(slug: string): Collection | undefined {
   return collections.find((collection) => collection.slug === slug);

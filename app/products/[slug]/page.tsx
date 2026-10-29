@@ -10,28 +10,30 @@ import { ProductImage } from "@/components/product/ProductImage";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { SizeMeasurementsTable } from "@/components/product/SizeMeasurementsTable";
 import { RecommendationBadge } from "@/components/product/RecommendationBadge";
-import { products, getProductBySlug, getRelatedProducts } from "@/lib/data/products";
+import { publicProducts, getPublicProductBySlug, getRelatedProducts } from "@/lib/data/products";
 import { getCategoryBySlug } from "@/lib/data/categories";
 import { getProductCategoryLabel, getProductCategoryGroup } from "@/lib/data/productCategories";
 import { getCollectionsContainingProduct } from "@/lib/data/collections";
 import { getAudienceLabel } from "@/lib/data/audiences";
 import { getOccasionLabel } from "@/lib/data/occasions";
-import { formatPrice } from "@/lib/utils/formatPrice";
+import { ProductPrice } from "@/components/product/ProductPrice";
+import { FavoriteButton } from "@/components/product/FavoriteButton";
+import { getOutboundUrl } from "@/lib/affiliate";
 
 export function generateStaticParams() {
-  return products.map((product) => ({ slug: product.slug }));
+  return publicProducts.map((product) => ({ slug: product.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/products/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = getPublicProductBySlug(slug);
   if (!product) return {};
   return { title: product.name, description: product.description };
 }
 
 export default async function ProductPage({ params }: PageProps<"/products/[slug]">) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = getPublicProductBySlug(slug);
 
   if (!product) {
     notFound();
@@ -63,9 +65,11 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         )}
 
         <div className="flex flex-col gap-6">
-          <div>
-            <RecommendationBadge type={product.recommendationLabel} />
-          </div>
+          {product.recommendationLabel ? (
+            <div>
+              <RecommendationBadge type={product.recommendationLabel} />
+            </div>
+          ) : null}
 
           <div>
             <h1 className="font-display text-h1 font-semibold tracking-tight text-foreground">{product.name}</h1>
@@ -74,18 +78,14 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
 
           <div className="flex flex-col gap-4 rounded-2xl border border-border bg-surface-muted p-5">
             <div>
-              <div className="flex items-baseline gap-3">
-                <span className="text-2xl font-semibold text-foreground">{formatPrice(product.currentPrice)}</span>
-                {product.originalPrice ? (
-                  <span className="text-sm text-foreground/40 line-through">{formatPrice(product.originalPrice)}</span>
-                ) : null}
-              </div>
+              <ProductPrice product={product} size="lg" />
               <p className="mt-1 text-sm text-foreground/60">{product.store}</p>
             </div>
 
-            <Button href={product.affiliateUrl} target="_blank" rel="noopener noreferrer" size="lg">
+            <Button href={getOutboundUrl(product)} target="_blank" rel="noopener noreferrer" size="lg">
               View Find
             </Button>
+            <FavoriteButton slug={product.slug} name={product.name} variant="full" />
 
             <p className="text-xs leading-relaxed text-foreground/50">
               Some links on Smart Finds are{" "}

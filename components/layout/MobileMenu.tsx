@@ -3,12 +3,13 @@
 import { useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { categories } from "@/lib/data/categories";
 import { SearchBar } from "@/components/layout/SearchBar";
+import type { MenuLink } from "@/lib/data/menus";
 
-const supportLinks = [
-  { href: "/collections", label: "Collections" },
+const collectionsLink = { href: "/collections", label: "Collections" };
+const baseSupportLinks = [
   { href: "/about", label: "About Smart Finds" },
   { href: "/favorites", label: "Favorites" },
 ];
@@ -34,7 +35,16 @@ const supportLinks = [
  */
 const subscribe = () => () => {};
 
-export function MobileMenu() {
+interface MobileMenuProps {
+  /** Built on the server (lib/data/menus.ts) so the product data never ships to the browser. */
+  fashionLinks: MenuLink[];
+  holidayLinks: MenuLink[];
+  /** Only true once at least one collection has products (otherwise /collections is empty). */
+  showCollections?: boolean;
+}
+
+export function MobileMenu({ fashionLinks, holidayLinks, showCollections = false }: MobileMenuProps) {
+  const supportLinks = showCollections ? [collectionsLink, ...baseSupportLinks] : baseSupportLinks;
   const [open, setOpen] = useState(false);
   const mounted = useSyncExternalStore(
     subscribe,
@@ -61,8 +71,41 @@ export function MobileMenu() {
         <SearchBar />
 
         <nav aria-label="Mobile" className="flex flex-col gap-1">
+          <Link
+            href="/new"
+            onClick={() => setOpen(false)}
+            className="rounded-lg px-3 py-2 text-sm font-semibold text-foreground hover:bg-surface-muted"
+          >
+            New Finds
+          </Link>
+          <div className="my-2 h-px bg-border" />
           <p className="px-1 text-eyebrow font-semibold uppercase tracking-wide text-foreground/50">Categories</p>
-          {categories.map((category) => (
+          {[
+            { label: "Fashion & Style", links: fashionLinks },
+            { label: "Yom Tov & Holidays", links: holidayLinks },
+          ].map((group) => (
+            <details key={group.label} className="group">
+              <summary className="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-foreground hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
+                {group.label}
+                <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" aria-hidden="true" />
+              </summary>
+              <div className="ml-3 flex flex-col border-l border-border pl-2">
+                {group.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="rounded-lg px-3 py-2 text-sm text-foreground/80 hover:bg-surface-muted"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </details>
+          ))}
+          {categories
+            .filter((category) => category.slug !== "fashion-style" && category.slug !== "yom-tov-holidays")
+            .map((category) => (
             <Link
               key={category.slug}
               href={`/category/${category.slug}`}

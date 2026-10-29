@@ -88,10 +88,10 @@ export default function AdminProductsPage() {
                   <p className="text-xs text-foreground/50">{product.slug}</p>
                 </td>
                 <td className="px-4 py-3 text-foreground/70">{product.store}</td>
-                <td className="px-4 py-3 text-foreground/70">{formatPrice(product.currentPrice)}</td>
+                <td className="px-4 py-3 text-foreground/70">{product.currentPrice !== undefined ? formatPrice(product.currentPrice) : "—"}</td>
                 <td className="px-4 py-3 text-foreground/70">{getProductCategoryLabel(product.category) ?? product.category}</td>
                 <td className="px-4 py-3 text-foreground/70">{product.audience ? getAudienceLabel(product.audience) : "—"}</td>
-                <td className="px-4 py-3 text-foreground/70">{product.featured ? "Yes" : "—"}</td>
+                <td className="px-4 py-3 text-foreground/70">{product.hidden ? "Hidden" : product.featured ? "Yes" : "—"}</td>
                 <td className="px-4 py-3">
                   <Button href={`/admin/products/${product.slug}/edit`} size="sm" variant="outline">
                     Edit

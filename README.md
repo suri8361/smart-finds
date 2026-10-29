@@ -1,3 +1,14 @@
+# Smart Finds
+
+A curated affiliate shopping guide (Next.js, no database). Products live in `lib/data/products.ts`.
+
+- **Add products from Google Chat:** see [scripts/import/README.md](scripts/import/README.md).
+- **Store switches and the Amazon tag:** `lib/config/affiliate.ts` (Amazon is off until the Associates account is confirmed).
+- **Contact email shown on the site:** `lib/config/site.ts` (still a TODO placeholder).
+- **Favorites** are saved in the shopper's own browser (no login). **Search** runs in the browser over product name, store and category.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

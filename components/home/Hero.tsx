@@ -1,43 +1,81 @@
 import Link from "next/link";
-import { BadgeCheck, ShoppingBag, Sparkles, Star, Tags } from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { getHeroProducts, getHomeStats } from "@/lib/data/home";
+import type { Product } from "@/types/catalog";
+import { cn } from "@/lib/utils/cn";
 
-const trustPoints = [
-  { icon: Tags, label: "Carefully selected finds worth checking out" },
-  { icon: Sparkles, label: "Great finds from across the web, all in one place." },
-];
+function HeroPhoto({ product, className, tried }: { product: Product; className?: string; tried?: boolean }) {
+  return (
+    <Link
+      href={`/products/${product.slug}`}
+      className={cn(
+        "group relative block overflow-hidden rounded-3xl border border-white/70 bg-surface shadow-card ring-1 ring-black/5",
+        className
+      )}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element -- product photos come from each store's own domain. */}
+      <img
+        src={product.image}
+        alt={product.name}
+        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+      />
+      {tried ? (
+        <span className="absolute left-3 top-3 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-label-tried-bg px-2.5 py-1 text-[11px] font-semibold text-label-tried-fg shadow">
+          <BadgeCheck className="h-3.5 w-3.5" aria-hidden="true" />
+          Tried &amp; True
+        </span>
+      ) : null}
+    </Link>
+  );
+}
 
 /**
- * Homepage hero. The visual side is a small collage of product-card-shaped
- * placeholders (not a single empty abstract shape) — one panel doubles as a
- * preview of the real recommendation-label system (SRS §1.2) rather than
- * generic decoration, so the hero reads as "shopping site" from the first
- * screen instead of "SaaS landing page."
+ * Homepage hero: headline + real product photos from the catalog (see
+ * lib/data/home.ts for which ones). The numbers under the buttons are counted
+ * from the live product list, so they stay true as finds are added.
  */
 export function Hero() {
+  const [main, second, third] = getHeroProducts();
+  const stats = getHomeStats();
+
   return (
     <section className="relative overflow-hidden border-b border-border bg-linear-to-b from-taupe-200 via-surface-muted to-background dark:from-surface-muted dark:via-background dark:to-background">
-      <Container className="grid gap-10 py-14 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14 lg:py-20">
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-brand-200/30 blur-3xl" aria-hidden="true" />
+      <Container className="relative grid gap-12 py-12 sm:py-16 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-16 lg:py-20">
         <div>
-          <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-600">
-            Hand-picked finds worth sharing
-          </p>
-          <h1 className="mt-3 font-display text-display font-semibold tracking-tight text-foreground">
-            Discover Smart Finds
+          <p className="text-eyebrow font-semibold uppercase tracking-[0.18em] text-brand-600">Hand-picked finds worth sharing</p>
+          <h1 className="mt-4 font-display text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl">
+            Smart finds,
+            <br />
+            <span className="italic text-brand-700">all in one place.</span>
           </h1>
-          <p className="mt-5 max-w-xl text-base text-foreground/70 sm:text-lg">
-            Browse hand-picked finds, great deals, and products worth checking out.
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-foreground/70 sm:text-lg">
+            Fashion, Shabbos &amp; Yom Tov outfits, home, toys and more, picked one by one from Amazon, SHEIN,
+            AliExpress, Temu and other stores.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href="#shop-by-category" size="lg">
               Browse Finds
             </Button>
-            <Button href="/about" variant="outline" size="lg">
-              About Smart Finds
+            <Button href="/category/tried-true" variant="outline" size="lg">
+              Tried &amp; True
             </Button>
           </div>
-          <p className="mt-4 max-w-xl text-xs leading-relaxed text-foreground/50">
+
+          <dl className="mt-10 flex max-w-md divide-x divide-border/80 border-t border-border/70 pt-6">
+            <div className="pr-6">
+              <dt className="text-xs uppercase tracking-wide text-foreground/50">Finds</dt>
+              <dd className="font-display text-2xl font-semibold text-foreground">{stats.finds.toLocaleString("en-US")}</dd>
+            </div>
+            <div className="pl-6">
+              <dt className="text-xs uppercase tracking-wide text-foreground/50">Tried &amp; True</dt>
+              <dd className="font-display text-2xl font-semibold text-foreground">{stats.triedAndTrue}</dd>
+            </div>
+          </dl>
+
+          <p className="mt-6 max-w-lg text-xs leading-relaxed text-foreground/50">
             Some links on Smart Finds are{" "}
             <Link
               href="/legal/affiliate-disclosure"
@@ -47,39 +85,15 @@ export function Hero() {
             </Link>
             . If you purchase through them, we may earn a commission at no extra cost to you.
           </p>
-          <div className="mt-10 flex flex-col gap-2 border-t border-border/70 pt-6 text-sm text-foreground/60 sm:flex-row sm:items-center sm:gap-6">
-            {trustPoints.map(({ icon: Icon, label }) => (
-              <span key={label} className="inline-flex items-center gap-1.5">
-                <Icon className="h-4 w-4 text-brand-600" aria-hidden="true" />
-                {label}
-              </span>
-            ))}
-          </div>
         </div>
 
-        <div className="relative mx-auto h-[360px] w-full max-w-md sm:h-[420px] lg:mx-0 lg:h-[460px]" aria-hidden="true">
-          <div className="absolute -inset-10 -z-10 rounded-full bg-brand-200/15 blur-3xl" />
-
-          <div className="absolute right-4 top-2 h-36 w-28 rotate-6 rounded-[1.5rem] bg-linear-to-br from-sage-200 to-sage-100 shadow-xl sm:right-6 sm:h-44 sm:w-36" />
-
-          <div className="absolute left-1/2 top-1/2 flex h-60 w-48 -translate-x-1/2 -translate-y-1/2 -rotate-3 flex-col justify-between rounded-[1.5rem] bg-linear-to-br from-taupe-300 to-taupe-200 p-5 shadow-2xl sm:h-72 sm:w-60">
-            <ShoppingBag className="h-7 w-7 text-brand-800" />
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-brand-800/70">Today&apos;s pick</p>
-              <p className="font-display text-xl text-brand-900">Warm Weather Edit</p>
-            </div>
+        {main ? (
+          <div className="grid h-[380px] grid-cols-[1.2fr_1fr] grid-rows-2 gap-3 sm:h-[520px] sm:gap-4 lg:h-[560px]">
+            <HeroPhoto product={main} className="row-span-2" />
+            {second ? <HeroPhoto product={second} /> : null}
+            {third ? <HeroPhoto product={third} tried={third.recommendationLabel === "personally_tried"} /> : null}
           </div>
-
-          <div className="absolute bottom-6 left-0 z-10 flex items-center gap-2 rounded-2xl bg-surface px-4 py-3 shadow-xl sm:bottom-10 sm:left-2">
-            <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-            <span className="text-sm font-semibold text-foreground">Highly Rated</span>
-          </div>
-
-          <div className="absolute right-0 top-0 z-10 flex items-center gap-1.5 rounded-full bg-label-tried-bg px-3 py-1.5 text-xs font-semibold text-label-tried-fg shadow-lg">
-            <BadgeCheck className="h-3.5 w-3.5" />
-            Personally Tried
-          </div>
-        </div>
+        ) : null}
       </Container>
     </section>
   );

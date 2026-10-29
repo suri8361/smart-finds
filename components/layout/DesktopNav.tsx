@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { categories } from "@/lib/data/categories";
+import { getCollectionsWithProducts } from "@/lib/data/collections";
+import { getFashionMenu, getHolidayMenu, type MenuLink } from "@/lib/data/menus";
 
 /**
  * Primary desktop navigation. The category mega-menu uses a native
@@ -11,9 +13,34 @@ import { categories } from "@/lib/data/categories";
  * navigating away — acceptable for this milestone, revisit if/when a
  * headless-UI library (SRS §20) is introduced for more complex interactions.
  */
+function NavDropdown({ label, links }: { label: string; links: MenuLink[] }) {
+  return (
+    <details className="group relative">
+      <summary className="flex cursor-pointer list-none items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
+        {label}
+        <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" aria-hidden="true" />
+      </summary>
+      <div className="absolute left-0 top-full z-20 mt-2 w-56 rounded-2xl border border-border bg-surface p-2 shadow-card">
+        <ul className="flex flex-col">
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} className="block rounded-xl px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </details>
+  );
+}
+
 export function DesktopNav() {
   return (
     <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
+      <Link href="/new" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+        New Finds
+      </Link>
       <details className="group relative">
         <summary className="flex cursor-pointer list-none items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
           Categories
@@ -42,14 +69,22 @@ export function DesktopNav() {
         </div>
       </details>
 
-      <Link href="/collections" className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
-        Collections
+      <NavDropdown label="Fashion" links={getFashionMenu()} />
+      <NavDropdown label="Yom Tov & Holidays" links={getHolidayMenu()} />
+      <Link href="/category/tried-true" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+        Tried &amp; True
       </Link>
+
+      {getCollectionsWithProducts().length > 0 ? (
+        <Link href="/collections" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+          Collections
+        </Link>
+      ) : null}
       <Link
         href="/about"
-        className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted"
+        className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted"
       >
-        About Smart Finds
+        About
       </Link>
     </nav>
   );
