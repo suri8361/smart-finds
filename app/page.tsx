@@ -40,9 +40,9 @@ export default function Home() {
       <ShopByCategory />
       <FeaturedCollections />
       <ProductRow
-        eyebrow="Sara's own"
+        eyebrow="Personally tried"
         title="Tried & True"
-        description="Things Sara has bought and used herself."
+        description="Things we've bought and used ourselves."
         action={{ label: "See all Tried & True", href: "/category/tried-true" }}
         products={triedAndTrue}
       />

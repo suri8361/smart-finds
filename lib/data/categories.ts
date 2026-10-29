@@ -48,10 +48,10 @@ export const categories: Category[] = [
     icon: CalendarHeart,
   },
   {
-    // Built from recommendationLabel "personally_tried" — finds Sara has tried herself.
+    // Built from recommendationLabel "personally_tried" — finds that were personally tried.
     slug: "tried-true",
     name: "Tried & True",
-    description: "Finds Sara has bought and used herself",
+    description: "Finds we've bought and used ourselves",
     icon: BadgeCheck,
   },
   {
