@@ -4,6 +4,7 @@ import { ShopByCategory } from "@/components/home/ShopByCategory";
 import { ProductRow } from "@/components/home/ProductRow";
 import { Container } from "@/components/ui/Container";
 import { MessageUsCallout } from "@/components/contact/MessageUs";
+import { JoinChat } from "@/components/home/JoinChat";
 import { getProductsByCategoryGroup, publicProducts } from "@/lib/data/products";
 import { getHeroProducts, getHomeCategories, pickRow } from "@/lib/data/home";
 
@@ -36,7 +37,9 @@ export default function Home() {
         description="The latest finds on the site, newest first."
         action={{ label: "See all new finds", href: "/new" }}
         products={newFinds}
+        priceNote
       />
+      <JoinChat />
       <ShopByCategory />
       <FeaturedCollections />
       <ProductRow

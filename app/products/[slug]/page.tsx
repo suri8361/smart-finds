@@ -18,7 +18,8 @@ import { getAudienceLabel } from "@/lib/data/audiences";
 import { getOccasionLabel } from "@/lib/data/occasions";
 import { ProductPrice } from "@/components/product/ProductPrice";
 import { FavoriteButton } from "@/components/product/FavoriteButton";
-import { getOutboundUrl } from "@/lib/affiliate";
+import { PriceNote } from "@/components/product/PriceNote";
+import { getOutboundUrl, showsStoredPrice } from "@/lib/affiliate";
 
 export function generateStaticParams() {
   return publicProducts.map((product) => ({ slug: product.slug }));
@@ -80,6 +81,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
             <div>
               <ProductPrice product={product} size="lg" />
               <p className="mt-1 text-sm text-foreground/60">{product.store}</p>
+              {showsStoredPrice(product) && product.currentPrice !== undefined ? <PriceNote className="mt-1" /> : null}
             </div>
 
             <Button href={getOutboundUrl(product)} target="_blank" rel="noopener noreferrer" size="lg">
@@ -155,6 +157,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         <h2 className="font-display text-h2 font-semibold text-foreground">Related Products</h2>
         <ProductGrid
           products={relatedProducts}
+          showPriceNote={false}
           emptyTitle="No related products yet"
           emptyDescription="Check back soon — we're always adding new finds in this category."
         />

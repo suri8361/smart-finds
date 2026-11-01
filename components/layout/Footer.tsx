@@ -4,6 +4,7 @@ import { categories } from "@/lib/data/categories";
 import { retailers } from "@/lib/data/retailers";
 import { AMAZON_ENABLED } from "@/lib/config/affiliate";
 import { MessageUsLink } from "@/components/contact/MessageUs";
+import { PRICE_DISCLAIMER } from "@/lib/config/site";
 
 const trustLinks = [
   { href: "/about", label: "About Smart Finds" },
@@ -97,8 +98,11 @@ export function Footer() {
           </div>
         </Container>
         <Container className="pb-6 text-xs text-foreground/50">
-          © {new Date().getFullYear()} Smart Finds. Not a retailer — all purchases are completed on the
-          retailer&apos;s site.
+          <p>{PRICE_DISCLAIMER}</p>
+          <p className="mt-1">
+            © {new Date().getFullYear()} Smart Finds. Not a retailer — all purchases are completed on the
+            retailer&apos;s site.
+          </p>
         </Container>
       </div>
     </footer>
