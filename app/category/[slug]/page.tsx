@@ -11,6 +11,7 @@ import { CollectionCard } from "@/components/home/CollectionCard";
 import { MessageUsCallout } from "@/components/contact/MessageUs";
 import { categories, getCategoryBySlug } from "@/lib/data/categories";
 import { getProductsByCategoryGroup } from "@/lib/data/products";
+import { loadCatalog } from "@/lib/data/catalog";
 import { getCollectionsRelatedToCategory } from "@/lib/data/collections";
 import {
   filterByHoliday,
@@ -71,6 +72,7 @@ function ChipRow({ label, children }: { label: string; children: ReactNode }) {
 export default async function CategoryPage({ params, searchParams }: PageProps<"/category/[slug]">) {
   const { slug } = await params;
   const query = await searchParams;
+  await loadCatalog();
   const category = getCategoryBySlug(slug);
 
   if (!category) {

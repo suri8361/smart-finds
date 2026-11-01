@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { CategoryTile } from "@/components/home/CategoryTile";
 import { getHomeCategories } from "@/lib/data/home";
+import { loadCatalog } from "@/lib/data/catalog";
 
 export const metadata: Metadata = {
   title: "Categories",
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
 };
 
 /** Categories landing page — reuses the same CategoryTile used on the homepage's "Shop by Category" section. */
-export default function CategoriesPage() {
+export default async function CategoriesPage() {
+  await loadCatalog();
   return (
     <Container className="flex flex-col gap-10 py-10 sm:py-14">
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Categories" }]} />

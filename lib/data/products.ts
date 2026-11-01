@@ -11236,71 +11236,95 @@ export const products: Product[] = [
   },
 ];
 
-/**
- * Products that may appear on public pages. Products from a store that's
- * switched off in lib/config/affiliate.ts (Amazon, for now) are left out.
- * Every public lookup below reads this list; the local admin tool still sees
- * the full `products` list.
+/*
+ * ----------------------------------------------------------------------------
+ * LIVE LIST (Nov 2026). The array above is the copy bundled with each deploy.
+ * The live site reads the newest list from the `data` branch while it runs
+ * (lib/data/catalog.ts calls setLiveProducts), so new finds show up without a
+ * deploy. Every lookup below reads the live list; if the data branch can't be
+ * reached, the bundled copy above is used.
+ * ----------------------------------------------------------------------------
  */
-export const publicProducts: Product[] = products.filter(isProductPublic);
+let liveProducts: Product[] = products;
+let livePublicProducts: Product[] = products.filter(isProductPublic);
+
+/** Swap in a newer product list (newest first). Called by lib/data/catalog.ts only. */
+export function setLiveProducts(next: Product[]): void {
+  liveProducts = next;
+  livePublicProducts = next.filter(isProductPublic);
+}
+
+/** Every product, including hidden ones — admin use. */
+export function getAllProducts(): Product[] {
+  return liveProducts;
+}
+
+/**
+ * Products that may appear on public pages, newest first. Products marked
+ * `hidden`, or from a store that's switched off in lib/config/affiliate.ts,
+ * are left out. Every public lookup below reads this list.
+ */
+export function getPublicProducts(): Product[] {
+  return livePublicProducts;
+}
 
 /** Any product by slug, including ones from a switched-off store — admin use. */
 export function getProductBySlug(slug: string): Product | undefined {
-  return products.find((product) => product.slug === slug);
+  return liveProducts.find((product) => product.slug === slug);
 }
 
 /** A product by slug, only if it may appear on public pages. */
 export function getPublicProductBySlug(slug: string): Product | undefined {
-  return publicProducts.find((product) => product.slug === slug);
+  return livePublicProducts.find((product) => product.slug === slug);
 }
 
 /** Products with this exact specific category (e.g. "dresses"). */
 export function getProductsByCategory(category: ProductCategoryType): Product[] {
-  return publicProducts.filter((product) => product.category === category);
+  return livePublicProducts.filter((product) => product.category === category);
 }
 
 /** Products whose specific category rolls up into a given broad nav group (lib/data/categories.ts slug) — powers /category/[slug]. */
 export function getProductsByCategoryGroup(categoryGroupSlug: string): Product[] {
   // Two sections are built from tags rather than the item type:
-  if (categoryGroupSlug === "yom-tov-holidays") return publicProducts.filter((product) => (product.holidays?.length ?? 0) > 0);
-  if (categoryGroupSlug === "tried-true") return publicProducts.filter((product) => product.recommendationLabel === "personally_tried");
+  if (categoryGroupSlug === "yom-tov-holidays") return livePublicProducts.filter((product) => (product.holidays?.length ?? 0) > 0);
+  if (categoryGroupSlug === "tried-true") return livePublicProducts.filter((product) => product.recommendationLabel === "personally_tried");
   const categoriesInGroup = new Set(getProductCategoriesInGroup(categoryGroupSlug));
-  return publicProducts.filter((product) => categoriesInGroup.has(product.category));
+  return livePublicProducts.filter((product) => categoriesInGroup.has(product.category));
 }
 
 /** Products from one store, matched case-insensitively on the `store` text — powers /retailers/[slug]. */
 export function getProductsByStore(storeName: string): Product[] {
   const wanted = storeName.trim().toLowerCase();
-  return publicProducts.filter((product) => product.store.trim().toLowerCase() === wanted);
+  return livePublicProducts.filter((product) => product.store.trim().toLowerCase() === wanted);
 }
 
 export function getProductsByCollection(collectionSlug: string): Product[] {
-  return publicProducts.filter((product) => product.collection === collectionSlug);
+  return livePublicProducts.filter((product) => product.collection === collectionSlug);
 }
 
 /** Products for a given audience (clothing/fashion items only carry this field). */
 export function getProductsByAudience(audience: AudienceType): Product[] {
-  return publicProducts.filter((product) => product.audience === audience);
+  return livePublicProducts.filter((product) => product.audience === audience);
 }
 
 /** Products matching both category (WHAT) and audience (WHO) — e.g. "dresses" for "women". */
 export function getProductsByCategoryAndAudience(category: ProductCategoryType, audience: AudienceType): Product[] {
-  return publicProducts.filter((product) => product.category === category && product.audience === audience);
+  return livePublicProducts.filter((product) => product.category === category && product.audience === audience);
 }
 
 /** Products for a given occasion (clothing/fashion items only carry this field) — e.g. "shabbos". */
 export function getProductsByOccasion(occasion: OccasionType): Product[] {
-  return publicProducts.filter((product) => product.occasion === occasion);
+  return livePublicProducts.filter((product) => product.occasion === occasion);
 }
 
 /** Products matching both audience (WHO) and occasion (WHEN) — e.g. "women" for "shabbos". */
 export function getProductsByAudienceAndOccasion(audience: AudienceType, occasion: OccasionType): Product[] {
-  return publicProducts.filter((product) => product.audience === audience && product.occasion === occasion);
+  return livePublicProducts.filter((product) => product.audience === audience && product.occasion === occasion);
 }
 
 /** Products matching both category (WHAT) and occasion (WHEN) — e.g. "skirts" for "shabbos". */
 export function getProductsByCategoryAndOccasion(category: ProductCategoryType, occasion: OccasionType): Product[] {
-  return publicProducts.filter((product) => product.category === category && product.occasion === occasion);
+  return livePublicProducts.filter((product) => product.category === category && product.occasion === occasion);
 }
 
 /** Products matching category (WHAT), audience (WHO), and occasion (WHEN) together — e.g. "skirts" for "women" for "shabbos". */
@@ -11309,7 +11333,7 @@ export function getProductsByCategoryAudienceAndOccasion(
   audience: AudienceType,
   occasion: OccasionType
 ): Product[] {
-  return publicProducts.filter(
+  return livePublicProducts.filter(
     (product) => product.category === category && product.audience === audience && product.occasion === occasion
   );
 }
@@ -11320,12 +11344,12 @@ export function getProductsByCategoryAudienceAndOccasion(
  * (the list is newest-first), so the section is never nearly empty.
  */
 export function getFeaturedProducts(limit = 8): Product[] {
-  const featured = publicProducts.filter((product) => product.featured);
-  const newest = publicProducts.filter((product) => !product.featured && product.image);
+  const featured = livePublicProducts.filter((product) => product.featured);
+  const newest = livePublicProducts.filter((product) => !product.featured && product.image);
   return [...featured, ...newest].slice(0, Math.max(limit, featured.length));
 }
 
 /** Other products in the same category, excluding the product itself — powers "Related Products" on the product detail page. */
 export function getRelatedProducts(product: Product, limit = 4): Product[] {
-  return publicProducts.filter((p) => p.slug !== product.slug && p.category === product.category).slice(0, limit);
+  return livePublicProducts.filter((p) => p.slug !== product.slug && p.category === product.category).slice(0, limit);
 }

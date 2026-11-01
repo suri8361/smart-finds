@@ -110,8 +110,20 @@ export function Hero({ now = new Date() }: { now?: Date }) {
 
         {main ? (
           <div className="grid h-[380px] grid-cols-[1.2fr_1fr] grid-rows-2 gap-3 sm:h-[520px] sm:gap-4 lg:h-[560px]">
-            <HeroPhoto product={main.product} focus={main.focus} className="row-span-2" />
-            {second ? <HeroPhoto product={second.product} focus={second.focus} /> : null}
+            {/* The "Tried & True" badge goes on every Tried & True photo, whichever spot it's in. */}
+            <HeroPhoto
+              product={main.product}
+              focus={main.focus}
+              className="row-span-2"
+              tried={main.product.recommendationLabel === "personally_tried"}
+            />
+            {second ? (
+              <HeroPhoto
+                product={second.product}
+                focus={second.focus}
+                tried={second.product.recommendationLabel === "personally_tried"}
+              />
+            ) : null}
             {third ? (
               <HeroPhoto
                 product={third.product}

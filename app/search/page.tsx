@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SearchResults } from "@/components/search/SearchResults";
-import { publicProducts } from "@/lib/data/products";
+import { getPublicProducts } from "@/lib/data/products";
+import { loadCatalog } from "@/lib/data/catalog";
 
 export const metadata: Metadata = {
   title: "Search",
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 };
 
 /** Search page — the product list is static; filtering happens in the browser (components/search/SearchResults.tsx). */
-export default function SearchPage() {
+export default async function SearchPage() {
+  await loadCatalog();
   return (
     <Container className="flex flex-col gap-8 py-10 sm:py-14">
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Search" }]} />
@@ -20,7 +22,7 @@ export default function SearchPage() {
         <h1 className="mt-2 font-display text-h1 font-bold tracking-tight text-foreground">Search</h1>
       </div>
       <Suspense fallback={<div className="h-12 w-full rounded-full border border-border bg-surface" />}>
-        <SearchResults products={publicProducts} />
+        <SearchResults products={getPublicProducts()} />
       </Suspense>
     </Container>
   );

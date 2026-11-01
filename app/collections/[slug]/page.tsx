@@ -5,6 +5,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { collections, getCollectionBySlug } from "@/lib/data/collections";
 import { getProductsByCollection } from "@/lib/data/products";
+import { loadCatalog } from "@/lib/data/catalog";
 import { collectionAccentClasses } from "@/lib/utils/collectionAccent";
 
 export function generateStaticParams() {
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/collections/[slug
 
 export default async function CollectionPage({ params }: PageProps<"/collections/[slug]">) {
   const { slug } = await params;
+  await loadCatalog();
   const collection = getCollectionBySlug(slug);
 
   if (!collection) {

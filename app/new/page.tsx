@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
-import { publicProducts } from "@/lib/data/products";
+import { getPublicProducts } from "@/lib/data/products";
+import { loadCatalog } from "@/lib/data/catalog";
 
 export const metadata: Metadata = {
   title: "New Finds",
@@ -13,8 +14,9 @@ export const metadata: Metadata = {
 const NEW_FINDS_LIMIT = 48;
 
 /** New Finds — the most recent posts, newest first (lib/data/products.ts keeps the newest at the top). */
-export default function NewFindsPage() {
-  const newest = publicProducts.filter((product) => product.image).slice(0, NEW_FINDS_LIMIT);
+export default async function NewFindsPage() {
+  await loadCatalog();
+  const newest = getPublicProducts().filter((product) => product.image).slice(0, NEW_FINDS_LIMIT);
 
   return (
     <Container className="flex flex-col gap-10 py-10 sm:py-14">

@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# data-branch files (they live on the `data` branch, never here)
+/catalog.json
+/hero.json

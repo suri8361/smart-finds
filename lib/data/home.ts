@@ -1,6 +1,6 @@
 import type { Category, Product } from "@/types/catalog";
 import { categories } from "@/lib/data/categories";
-import { getProductsByCategoryGroup, getPublicProductBySlug, publicProducts } from "@/lib/data/products";
+import { getProductsByCategoryGroup, getPublicProductBySlug, getPublicProducts } from "@/lib/data/products";
 import {
   heroPickFocus,
   heroPickSlug,
@@ -79,7 +79,7 @@ export function getHeroPhotos(now: Date = new Date()): HeroPhoto[] {
     }
   }
   if (photos.length < 3) {
-    for (const product of pickRow(publicProducts, 3 - photos.length, used)) {
+    for (const product of pickRow(getPublicProducts(), 3 - photos.length, used)) {
       photos.push({ product, focus: "center" });
     }
   }
@@ -111,7 +111,7 @@ export function getHomeCategories(minFinds = MIN_FINDS_FOR_HOME_TILE): HomeCateg
 
 export function getHomeStats() {
   return {
-    finds: publicProducts.length,
+    finds: getPublicProducts().length,
     triedAndTrue: getProductsByCategoryGroup("tried-true").length,
   };
 }

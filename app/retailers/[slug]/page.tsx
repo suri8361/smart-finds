@@ -5,6 +5,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { retailers, retailerBySlug } from "@/lib/data/retailers";
 import { getProductsByStore } from "@/lib/data/products";
+import { loadCatalog } from "@/lib/data/catalog";
 
 export function generateStaticParams() {
   return retailers.map((retailer) => ({ slug: retailer.slug }));
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/retailers/[slug]"
 /** Simple per-store listing — every public product whose store matches this retailer. */
 export default async function RetailerPage({ params }: PageProps<"/retailers/[slug]">) {
   const { slug } = await params;
+  await loadCatalog();
   const retailer = retailerBySlug[slug];
 
   if (!retailer) {

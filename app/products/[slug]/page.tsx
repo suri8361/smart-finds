@@ -10,7 +10,8 @@ import { ProductImage } from "@/components/product/ProductImage";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { SizeMeasurementsTable } from "@/components/product/SizeMeasurementsTable";
 import { RecommendationBadge } from "@/components/product/RecommendationBadge";
-import { publicProducts, getPublicProductBySlug, getRelatedProducts } from "@/lib/data/products";
+import { getPublicProducts, getPublicProductBySlug, getRelatedProducts } from "@/lib/data/products";
+import { loadCatalog } from "@/lib/data/catalog";
 import { getCategoryBySlug } from "@/lib/data/categories";
 import { getProductCategoryLabel, getProductCategoryGroup } from "@/lib/data/productCategories";
 import { getCollectionsContainingProduct } from "@/lib/data/collections";
@@ -21,12 +22,16 @@ import { FavoriteButton } from "@/components/product/FavoriteButton";
 import { PriceNote } from "@/components/product/PriceNote";
 import { getOutboundUrl, showsStoredPrice } from "@/lib/affiliate";
 
-export function generateStaticParams() {
-  return publicProducts.map((product) => ({ slug: product.slug }));
+// Every find known at build time is pre-built; a find added later on the data branch is built on its
+// first visit (dynamicParams stays on) and then kept like the others.
+export async function generateStaticParams() {
+  await loadCatalog();
+  return getPublicProducts().map((product) => ({ slug: product.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/products/[slug]">): Promise<Metadata> {
   const { slug } = await params;
+  await loadCatalog();
   const product = getPublicProductBySlug(slug);
   if (!product) return {};
   return { title: product.name, description: product.description };
@@ -34,6 +39,7 @@ export async function generateMetadata({ params }: PageProps<"/products/[slug]">
 
 export default async function ProductPage({ params }: PageProps<"/products/[slug]">) {
   const { slug } = await params;
+  await loadCatalog();
   const product = getPublicProductBySlug(slug);
 
   if (!product) {
