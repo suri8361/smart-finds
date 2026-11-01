@@ -8,7 +8,7 @@ import { JoinChat } from "@/components/home/JoinChat";
 import { getProductsByCategoryGroup, publicProducts } from "@/lib/data/products";
 import { getHeroProducts, getHomeCategories, pickRow } from "@/lib/data/home";
 
-// The hero photos change every 3 days (lib/data/hero-rotation.ts). The page is
+// The hero photos follow the season and change every 3 days (lib/data/hero-rotation.ts). The page is
 // rebuilt in the background at most every 10 minutes, so the new set shows up
 // shortly after midnight New York time without a new deploy.
 export const revalidate = 600;

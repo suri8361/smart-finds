@@ -2,10 +2,9 @@ import type { Category, Product } from "@/types/catalog";
 import { categories } from "@/lib/data/categories";
 import { getProductsByCategoryGroup, getPublicProductBySlug, publicProducts } from "@/lib/data/products";
 import {
-  HERO_ROTATION,
   heroPickFocus,
   heroPickSlug,
-  heroSetIndex,
+  heroRotationFor,
   type HeroPhoto,
   type HeroSet,
 } from "@/lib/data/hero-rotation";
@@ -60,17 +59,18 @@ const HERO_SPOTS: (keyof HeroSet)[] = ["tall", "top", "bottom"];
 
 /**
  * The three hero photos showing on `now` (tall, top, bottom): the current set
- * from lib/data/hero-rotation.ts, which changes every 3 days. A product that is
- * no longer on the site is replaced by the same spot in the following sets, and
- * as a last resort by the newest finds with a photo.
+ * of the current season from lib/data/hero-rotation.ts, which changes every 3
+ * days. A product that is no longer on the site is replaced by the same spot in
+ * the season's following sets, and as a last resort by the newest finds with
+ * a photo.
  */
 export function getHeroPhotos(now: Date = new Date()): HeroPhoto[] {
-  const start = heroSetIndex(now);
+  const { sets, index: start } = heroRotationFor(now);
   const used = new Set<string>();
   const photos: HeroPhoto[] = [];
   for (const spot of HERO_SPOTS) {
-    for (let step = 0; step < HERO_ROTATION.length; step += 1) {
-      const pick = HERO_ROTATION[(start + step) % HERO_ROTATION.length][spot];
+    for (let step = 0; step < sets.length; step += 1) {
+      const pick = sets[(start + step) % sets.length][spot];
       const product = getPublicProductBySlug(heroPickSlug(pick));
       if (!withPhoto(product) || used.has(product.slug)) continue;
       used.add(product.slug);
