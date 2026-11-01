@@ -189,7 +189,7 @@ export function AddProductImporter() {
 
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-h1 font-semibold text-foreground">Add Product</h1>
+          <h1 className="font-display tracking-tight text-h1 font-bold text-foreground">Add Product</h1>
           <p className="mt-2 max-w-2xl text-sm text-foreground/60">
             Paste a Source Product URL to try to pull in its title, price, images, sizes, and description. Nothing
             is saved until you click <strong>Add to Smart Finds</strong>, which writes the new product straight
@@ -224,7 +224,7 @@ export function AddProductImporter() {
       </section>
 
       <section className="flex flex-col gap-3">
-        <h2 className="font-display text-h3 font-semibold text-foreground">Select photos</h2>
+        <h2 className="font-display tracking-tight text-h3 font-bold text-foreground">Select photos</h2>
         <p className="text-sm text-foreground/60">
           {images.length > 0
             ? `${images.length} image${images.length === 1 ? "" : "s"} found. `
@@ -244,7 +244,7 @@ export function AddProductImporter() {
       </section>
 
       <section className="flex flex-col gap-6 rounded-2xl border border-border bg-surface p-5 shadow-card">
-        <h2 className="font-display text-h3 font-semibold text-foreground">Product details</h2>
+        <h2 className="font-display tracking-tight text-h3 font-bold text-foreground">Product details</h2>
         <ProductFormFields form={form} updateField={updateField} onNameChange={handleNameChange} onSlugChange={handleSlugChange} />
       </section>
 
@@ -302,7 +302,7 @@ export function AddProductImporter() {
 
       {generatedCode ? (
         <section className="flex flex-col gap-3">
-          <h2 className="font-display text-h3 font-semibold text-foreground">Generated code</h2>
+          <h2 className="font-display tracking-tight text-h3 font-bold text-foreground">Generated code</h2>
           <p className="text-sm text-foreground/60">
             Copy this and paste it as a new entry in the{" "}
             <code className="rounded bg-surface-muted px-1 py-0.5 text-xs">products</code> array in{" "}

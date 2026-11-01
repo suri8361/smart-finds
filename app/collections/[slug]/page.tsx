@@ -5,6 +5,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { collections, getCollectionBySlug } from "@/lib/data/collections";
 import { getProductsByCollection } from "@/lib/data/products";
+import { loadCatalog } from "@/lib/data/catalog";
 import { collectionAccentClasses } from "@/lib/utils/collectionAccent";
 
 export function generateStaticParams() {
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/collections/[slug
 
 export default async function CollectionPage({ params }: PageProps<"/collections/[slug]">) {
   const { slug } = await params;
+  await loadCatalog();
   const collection = getCollectionBySlug(slug);
 
   if (!collection) {
@@ -30,13 +32,13 @@ export default async function CollectionPage({ params }: PageProps<"/collections
 
   return (
     <Container className="flex flex-col gap-10 py-10 sm:py-14">
-      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Collections" }, { label: collection.title }]} />
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Collections", href: "/collections" }, { label: collection.title }]} />
 
       <div
         className={`overflow-hidden rounded-3xl bg-linear-to-br px-8 py-14 sm:px-12 sm:py-20 ${collectionAccentClasses[collection.accent]}`}
       >
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-700">Collection</p>
-        <h1 className="mt-3 max-w-2xl font-display text-h1 font-semibold tracking-tight text-foreground">
+        <h1 className="mt-3 max-w-2xl font-display text-h1 font-bold tracking-tight text-foreground">
           {collection.title}
         </h1>
         <p className="mt-4 max-w-xl text-base text-foreground/70">{collection.description}</p>

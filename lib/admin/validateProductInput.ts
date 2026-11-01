@@ -37,7 +37,6 @@ export function validateProductCodeInput(input: Partial<ProductCodeInput>): Vali
   if (!input.affiliateUrl) missing.push("affiliate URL");
   if (!input.store) missing.push("store");
   if (!input.category) missing.push("category");
-  if (!input.recommendationLabel) missing.push("recommendation label");
   if (!input.description) missing.push("description");
 
   if (missing.length > 0) {
@@ -60,7 +59,7 @@ export function validateProductCodeInput(input: Partial<ProductCodeInput>): Vali
     return { valid: false, message: `"${input.occasion}" isn't a recognized occasion.` };
   }
 
-  if (!VALID_RECOMMENDATION_LABELS.has(input.recommendationLabel!)) {
+  if (input.recommendationLabel && !VALID_RECOMMENDATION_LABELS.has(input.recommendationLabel)) {
     return { valid: false, message: `"${input.recommendationLabel}" isn't a recognized recommendation label.` };
   }
 

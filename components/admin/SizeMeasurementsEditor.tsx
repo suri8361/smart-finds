@@ -69,7 +69,7 @@ export function SizeMeasurementsEditor({
   return (
     <>
       <div>
-        <h2 className="font-display text-h3 font-semibold text-foreground">Size &amp; Measurements</h2>
+        <h2 className="font-display tracking-tight text-h3 font-bold text-foreground">Size &amp; Measurements</h2>
         <p className="mt-1 text-sm text-foreground/60">
           Optional — for clothing items where you have real measurements from the retailer&rsquo;s size chart.
           Leave this section empty for products that don&rsquo;t need it.

@@ -27,7 +27,7 @@ export function ProductImage({ product, className, iconClassName = "h-10 w-10 te
   const categoryGroup = categoryGroupSlug ? getCategoryBySlug(categoryGroupSlug) : undefined;
 
   if (product.image) {
-    const isFashion = categoryGroupSlug === "fashion-style";
+    const isFashion = categoryGroupSlug === "fashion-style" || categoryGroupSlug === "shabbos-elegant";
     return (
       <div className={cn("overflow-hidden bg-taupe-200", className)}>
         {/* eslint-disable-next-line @next/next/no-img-element -- product photos can come from any store's arbitrary domain, so next/image's fixed remotePatterns allowlist isn't practical here. */}

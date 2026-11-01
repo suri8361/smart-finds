@@ -10,28 +10,37 @@ import { ProductImage } from "@/components/product/ProductImage";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { SizeMeasurementsTable } from "@/components/product/SizeMeasurementsTable";
 import { RecommendationBadge } from "@/components/product/RecommendationBadge";
-import { products, getProductBySlug, getRelatedProducts } from "@/lib/data/products";
+import { getPublicProducts, getPublicProductBySlug, getRelatedProducts } from "@/lib/data/products";
+import { loadCatalog } from "@/lib/data/catalog";
 import { getCategoryBySlug } from "@/lib/data/categories";
 import { getProductCategoryLabel, getProductCategoryGroup } from "@/lib/data/productCategories";
 import { getCollectionsContainingProduct } from "@/lib/data/collections";
 import { getAudienceLabel } from "@/lib/data/audiences";
 import { getOccasionLabel } from "@/lib/data/occasions";
-import { formatPrice } from "@/lib/utils/formatPrice";
+import { ProductPrice } from "@/components/product/ProductPrice";
+import { FavoriteButton } from "@/components/product/FavoriteButton";
+import { PriceNote } from "@/components/product/PriceNote";
+import { getOutboundUrl, showsStoredPrice } from "@/lib/affiliate";
 
-export function generateStaticParams() {
-  return products.map((product) => ({ slug: product.slug }));
+// Every find known at build time is pre-built; a find added later on the data branch is built on its
+// first visit (dynamicParams stays on) and then kept like the others.
+export async function generateStaticParams() {
+  await loadCatalog();
+  return getPublicProducts().map((product) => ({ slug: product.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/products/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  await loadCatalog();
+  const product = getPublicProductBySlug(slug);
   if (!product) return {};
   return { title: product.name, description: product.description };
 }
 
 export default async function ProductPage({ params }: PageProps<"/products/[slug]">) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  await loadCatalog();
+  const product = getPublicProductBySlug(slug);
 
   if (!product) {
     notFound();
@@ -63,29 +72,34 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         )}
 
         <div className="flex flex-col gap-6">
-          <div>
-            <RecommendationBadge type={product.recommendationLabel} />
-          </div>
+          {product.recommendationLabel ? (
+            <div>
+              <RecommendationBadge type={product.recommendationLabel} />
+            </div>
+          ) : null}
 
           <div>
-            <h1 className="font-display text-h1 font-semibold tracking-tight text-foreground">{product.name}</h1>
+            <h1 className="font-display text-h1 font-bold tracking-tight text-foreground">{product.name}</h1>
             <p className="mt-3 text-base text-foreground/70">{product.description}</p>
           </div>
 
           <div className="flex flex-col gap-4 rounded-2xl border border-border bg-surface-muted p-5">
             <div>
-              <div className="flex items-baseline gap-3">
-                <span className="text-2xl font-semibold text-foreground">{formatPrice(product.currentPrice)}</span>
-                {product.originalPrice ? (
-                  <span className="text-sm text-foreground/40 line-through">{formatPrice(product.originalPrice)}</span>
-                ) : null}
-              </div>
-              <p className="mt-1 text-sm text-foreground/60">{product.store}</p>
+              <ProductPrice product={product} size="lg" />
+              {showsStoredPrice(product) && product.currentPrice !== undefined ? (
+                <>
+                  <p className="mt-1 text-sm text-foreground/60">{product.store}</p>
+                  <PriceNote className="mt-1" />
+                </>
+              ) : (
+                <p className="text-sm text-foreground/60">{product.store}</p>
+              )}
             </div>
 
-            <Button href={product.affiliateUrl} target="_blank" rel="noopener noreferrer" size="lg">
+            <Button href={getOutboundUrl(product)} target="_blank" rel="noopener noreferrer" size="lg">
               View Find
             </Button>
+            <FavoriteButton slug={product.slug} name={product.name} variant="full" />
 
             <p className="text-xs leading-relaxed text-foreground/50">
               Some links on Smart Finds are{" "}
@@ -102,7 +116,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
       </div>
 
       <section className="border-t border-border pt-10">
-        <h2 className="font-display text-h2 font-semibold text-foreground">Product Details</h2>
+        <h2 className="font-display tracking-tight text-h2 font-bold text-foreground">Product Details</h2>
         <dl className="mt-6 grid gap-x-8 gap-y-4 text-sm sm:grid-cols-2">
           <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
             <dt className="text-foreground/60">Category</dt>
@@ -152,16 +166,17 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
       ) : null}
 
       <section className="flex flex-col gap-6 border-t border-border pt-10">
-        <h2 className="font-display text-h2 font-semibold text-foreground">Related Products</h2>
+        <h2 className="font-display tracking-tight text-h2 font-bold text-foreground">Related Products</h2>
         <ProductGrid
           products={relatedProducts}
+          showPriceNote={false}
           emptyTitle="No related products yet"
           emptyDescription="Check back soon — we're always adding new finds in this category."
         />
       </section>
 
       <section className="flex flex-col gap-6 border-t border-border pt-10">
-        <h2 className="font-display text-h2 font-semibold text-foreground">Related Collections</h2>
+        <h2 className="font-display tracking-tight text-h2 font-bold text-foreground">Related Collections</h2>
         {relatedCollections.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {relatedCollections.map((collection) => (

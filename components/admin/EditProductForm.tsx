@@ -165,7 +165,7 @@ export function EditProductForm({ product }: { product: Product }) {
 
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-h1 font-semibold text-foreground">Edit Product</h1>
+          <h1 className="font-display tracking-tight text-h1 font-bold text-foreground">Edit Product</h1>
           <p className="mt-2 max-w-2xl text-sm text-foreground/60">
             Editing <code className="rounded bg-surface-muted px-1 py-0.5 text-xs">{product.slug}</code>. Saving
             writes the changes straight into{" "}
@@ -212,7 +212,7 @@ export function EditProductForm({ product }: { product: Product }) {
       </section>
 
       <section className="flex flex-col gap-3">
-        <h2 className="font-display text-h3 font-semibold text-foreground">Photos</h2>
+        <h2 className="font-display tracking-tight text-h3 font-bold text-foreground">Photos</h2>
         <p className="text-sm text-foreground/60">
           Click a photo to make it the <strong>primary</strong> (card) image — check the box on any others to
           include them in the product&rsquo;s photo gallery, or paste a new image URL below to add one.
@@ -228,7 +228,7 @@ export function EditProductForm({ product }: { product: Product }) {
       </section>
 
       <section className="flex flex-col gap-6 rounded-2xl border border-border bg-surface p-5 shadow-card">
-        <h2 className="font-display text-h3 font-semibold text-foreground">Product details</h2>
+        <h2 className="font-display tracking-tight text-h3 font-bold text-foreground">Product details</h2>
         <ProductFormFields form={form} updateField={updateField} />
       </section>
 

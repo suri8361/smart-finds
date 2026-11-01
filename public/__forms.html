@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Forms</title>
+  </head>
+  <body>
+    <!--
+      Netlify Forms detection only (Next.js runtime v5). Visitors never see this page:
+      the home page "join the chat" box (components/home/JoinChat.tsx) POSTs to this file.
+      Field names here must match that form exactly.
+    -->
+    <form name="join-chat" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="join-chat" />
+      <input name="bot-field" type="text" />
+      <input name="email" type="email" />
+    </form>
+  </body>
+</html>

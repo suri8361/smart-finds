@@ -14,7 +14,7 @@ export function EmptyState({ icon: Icon = PackageSearch, title, description, act
   return (
     <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-border bg-surface-muted px-6 py-16 text-center">
       <Icon className="h-8 w-8 text-foreground/30" aria-hidden="true" />
-      <p className="font-display text-lg text-foreground">{title}</p>
+      <p className="font-display tracking-tight font-semibold text-lg text-foreground">{title}</p>
       {description ? <p className="max-w-sm text-sm text-foreground/60">{description}</p> : null}
       {action ? (
         <Button href={action.href} variant="outline" size="sm" className="mt-2">

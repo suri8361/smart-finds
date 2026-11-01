@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils/cn";
 
 /** Exported so other places that need the display text (e.g. the admin importer's label picker) don't hand-maintain a second copy. */
 export const RECOMMENDATION_LABELS: Record<SelectionReasonType, { text: string; icon: LucideIcon }> = {
-  personally_tried: { text: "Personally Tried", icon: BadgeCheck },
+  personally_tried: { text: "Tried & True", icon: BadgeCheck },
   chosen_for_look: { text: "Chosen for the Look", icon: Palette },
   popular_pick: { text: "Popular Pick", icon: Flame },
   highly_rated: { text: "Highly Rated", icon: Star },

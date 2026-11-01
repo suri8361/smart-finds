@@ -136,7 +136,7 @@ export function ProductFormFields({ form, updateField, onNameChange, onSlugChang
             onChange={(event) => updateField("recommendationLabel", event.target.value as SelectionReasonType)}
             className={inputClass}
           >
-            <option value="">Choose a label…</option>
+            <option value="">No badge</option>
             {Object.entries(RECOMMENDATION_LABELS).map(([value, { text }]) => (
               <option key={value} value={value}>
                 {text}
@@ -164,7 +164,7 @@ export function ProductFormFields({ form, updateField, onNameChange, onSlugChang
 
       {form.recommendationLabel === "personally_tried" ? (
         <p className="text-xs text-amber-700 dark:text-amber-400">
-          Only use &ldquo;Personally Tried&rdquo; if someone on your team has actually used this product.
+          Only use &ldquo;Tried &amp; True&rdquo; if someone on your team has actually used this product.
         </p>
       ) : null}
 

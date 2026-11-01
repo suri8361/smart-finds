@@ -34,7 +34,7 @@ export default function AdminProductsPage() {
 
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-h1 font-semibold text-foreground">Manage Products</h1>
+          <h1 className="font-display tracking-tight text-h1 font-bold text-foreground">Manage Products</h1>
           <p className="mt-2 text-sm text-foreground/60">
             {products.length} product{products.length === 1 ? "" : "s"} in{" "}
             <code className="rounded bg-surface-muted px-1 py-0.5 text-xs">lib/data/products.ts</code>.
@@ -88,10 +88,10 @@ export default function AdminProductsPage() {
                   <p className="text-xs text-foreground/50">{product.slug}</p>
                 </td>
                 <td className="px-4 py-3 text-foreground/70">{product.store}</td>
-                <td className="px-4 py-3 text-foreground/70">{formatPrice(product.currentPrice)}</td>
+                <td className="px-4 py-3 text-foreground/70">{product.currentPrice !== undefined ? formatPrice(product.currentPrice) : "—"}</td>
                 <td className="px-4 py-3 text-foreground/70">{getProductCategoryLabel(product.category) ?? product.category}</td>
                 <td className="px-4 py-3 text-foreground/70">{product.audience ? getAudienceLabel(product.audience) : "—"}</td>
-                <td className="px-4 py-3 text-foreground/70">{product.featured ? "Yes" : "—"}</td>
+                <td className="px-4 py-3 text-foreground/70">{product.hidden ? "Hidden" : product.featured ? "Yes" : "—"}</td>
                 <td className="px-4 py-3">
                   <Button href={`/admin/products/${product.slug}/edit`} size="sm" variant="outline">
                     Edit

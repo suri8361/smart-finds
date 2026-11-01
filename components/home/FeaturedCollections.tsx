@@ -1,10 +1,12 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CollectionCard } from "@/components/home/CollectionCard";
-import { collections } from "@/lib/data/collections";
+import { getCollectionsWithProducts } from "@/lib/data/collections";
 
-/** "Featured Collections" homepage section (SRS §3.1, §4 `/collections/[slug]`). */
+/** "Featured Collections" homepage section (SRS §3.1, §4 `/collections/[slug]`). Hidden until a collection has products. */
 export function FeaturedCollections() {
+  const collections = getCollectionsWithProducts();
+  if (collections.length === 0) return null;
   return (
     <section className="py-16 sm:py-20">
       <Container className="flex flex-col gap-8">

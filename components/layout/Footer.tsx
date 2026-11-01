@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { categories } from "@/lib/data/categories";
 import { retailers } from "@/lib/data/retailers";
+import { AMAZON_ENABLED } from "@/lib/config/affiliate";
+import { MessageUsLink } from "@/components/contact/MessageUs";
+import { PRICE_DISCLAIMER } from "@/lib/config/site";
 
 const trustLinks = [
   { href: "/about", label: "About Smart Finds" },
@@ -23,31 +25,15 @@ export function Footer() {
     <footer className="border-t border-border bg-surface-muted">
       <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-5">
         <div className="sm:col-span-2 lg:col-span-2">
-          <Link href="/" className="font-display text-xl font-semibold text-foreground">
+          <Link href="/" className="font-display tracking-tight text-xl font-bold text-foreground">
             Smart Finds
           </Link>
           <p className="mt-3 max-w-sm text-sm text-foreground/70">
-            An independently curated shopping guide — every product is labeled with the specific reason it was
-            picked, so you always know why it&apos;s here.
+            An independently curated shopping guide. Items marked Tried &amp; True are ones I&apos;ve personally used.
           </p>
-          <form action="#" className="mt-5 flex max-w-sm gap-2">
-            <label htmlFor="newsletter-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              required
-              placeholder="you@example.com"
-              className="h-10 flex-1 rounded-full border border-border bg-surface px-4 text-sm text-foreground placeholder:text-foreground/40 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30"
-            />
-            <Button type="submit" size="sm">
-              Subscribe
-            </Button>
-          </form>
-          <p className="mt-2 text-xs text-foreground/50">
-            Newsletter signup is a visual placeholder — no email is sent yet.
-          </p>
+          <MessageUsLink className="mt-5 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-surface px-4 py-2 text-sm font-medium text-brand-700 transition-colors hover:border-brand-500 hover:bg-brand-50">
+            Looking for something? Message us
+          </MessageUsLink>
         </div>
 
         <div>
@@ -94,9 +80,9 @@ export function Footer() {
         <Container className="flex flex-col gap-4 py-6 text-xs text-foreground/60 sm:flex-row sm:items-start sm:justify-between">
           <p className="max-w-3xl">
             <strong className="font-semibold text-foreground/80">Affiliate Disclosure:</strong> Smart Finds
-            participates in affiliate programs with SHEIN, AliExpress, Temu, eBay, and other
+            participates in affiliate programs with {AMAZON_ENABLED ? "Amazon, " : ""}SHEIN, AliExpress, Temu and other
             retailers. If you buy something through a link on this site, we may earn a commission — at no
-            additional cost to you. Affiliate relationships never influence which products we choose to feature.
+            additional cost to you.{AMAZON_ENABLED ? " As an Amazon Associate I earn from qualifying purchases." : ""} Affiliate relationships never influence which products we choose to feature.
             Read more on our{" "}
             <Link href="/how-we-make-money" className="underline hover:text-foreground">
               How We Make Money
@@ -112,8 +98,11 @@ export function Footer() {
           </div>
         </Container>
         <Container className="pb-6 text-xs text-foreground/50">
-          © {new Date().getFullYear()} Smart Finds. Not a retailer — all purchases are completed on the
-          retailer&apos;s site.
+          <p>{PRICE_DISCLAIMER}</p>
+          <p className="mt-1">
+            © {new Date().getFullYear()} Smart Finds. Not a retailer — all purchases are completed on the
+            retailer&apos;s site.
+          </p>
         </Container>
       </div>
     </footer>

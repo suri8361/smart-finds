@@ -3,8 +3,7 @@ import { cn } from "@/lib/utils/cn";
 
 /**
  * Native GET form — submits to `/search?q=...` without any client-side JS.
- * The `/search` route itself is not built until a later milestone, so
- * submitting this form 404s for now; the visual/markup contract is final.
+ * The /search page reads `q` and filters products in the browser.
  */
 export function SearchBar({ className }: { className?: string }) {
   return (
