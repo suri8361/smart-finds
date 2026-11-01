@@ -22,7 +22,7 @@ export default function NewFindsPage() {
 
       <div className="max-w-2xl">
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-600">Just added</p>
-        <h1 className="mt-2 font-display text-h1 font-semibold tracking-tight text-foreground">New Finds</h1>
+        <h1 className="mt-2 font-display text-h1 font-bold tracking-tight text-foreground">New Finds</h1>
         <p className="mt-3 text-base text-foreground/70">The latest finds on the site, newest first.</p>
       </div>
 

@@ -73,7 +73,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
           ) : null}
 
           <div>
-            <h1 className="font-display text-h1 font-semibold tracking-tight text-foreground">{product.name}</h1>
+            <h1 className="font-display text-h1 font-bold tracking-tight text-foreground">{product.name}</h1>
             <p className="mt-3 text-base text-foreground/70">{product.description}</p>
           </div>
 
@@ -110,7 +110,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
       </div>
 
       <section className="border-t border-border pt-10">
-        <h2 className="font-display text-h2 font-semibold text-foreground">Product Details</h2>
+        <h2 className="font-display tracking-tight text-h2 font-bold text-foreground">Product Details</h2>
         <dl className="mt-6 grid gap-x-8 gap-y-4 text-sm sm:grid-cols-2">
           <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
             <dt className="text-foreground/60">Category</dt>
@@ -160,7 +160,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
       ) : null}
 
       <section className="flex flex-col gap-6 border-t border-border pt-10">
-        <h2 className="font-display text-h2 font-semibold text-foreground">Related Products</h2>
+        <h2 className="font-display tracking-tight text-h2 font-bold text-foreground">Related Products</h2>
         <ProductGrid
           products={relatedProducts}
           showPriceNote={false}
@@ -170,7 +170,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
       </section>
 
       <section className="flex flex-col gap-6 border-t border-border pt-10">
-        <h2 className="font-display text-h2 font-semibold text-foreground">Related Collections</h2>
+        <h2 className="font-display tracking-tight text-h2 font-bold text-foreground">Related Collections</h2>
         {relatedCollections.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {relatedCollections.map((collection) => (

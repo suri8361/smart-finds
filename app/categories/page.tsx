@@ -17,7 +17,7 @@ export default function CategoriesPage() {
 
       <div className="max-w-2xl">
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-600">Browse</p>
-        <h1 className="mt-2 font-display text-h1 font-semibold tracking-tight text-foreground">All Categories</h1>
+        <h1 className="mt-2 font-display text-h1 font-bold tracking-tight text-foreground">All Categories</h1>
         <p className="mt-3 text-base text-foreground/70">
           Every category opens with hand-picked top picks before the full, filterable grid.
         </p>

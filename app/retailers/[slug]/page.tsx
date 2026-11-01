@@ -34,7 +34,7 @@ export default async function RetailerPage({ params }: PageProps<"/retailers/[sl
 
       <div className="max-w-2xl">
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-600">Shop by retailer</p>
-        <h1 className="mt-2 font-display text-h1 font-semibold tracking-tight text-foreground">{retailer.name} Finds</h1>
+        <h1 className="mt-2 font-display text-h1 font-bold tracking-tight text-foreground">{retailer.name} Finds</h1>
         <p className="mt-3 text-base text-foreground/70">
           Our picks from {retailer.name}. Every link opens {retailer.name}&apos;s own site, where you check out.
         </p>

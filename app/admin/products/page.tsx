@@ -34,7 +34,7 @@ export default function AdminProductsPage() {
 
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-h1 font-semibold text-foreground">Manage Products</h1>
+          <h1 className="font-display tracking-tight text-h1 font-bold text-foreground">Manage Products</h1>
           <p className="mt-2 text-sm text-foreground/60">
             {products.length} product{products.length === 1 ? "" : "s"} in{" "}
             <code className="rounded bg-surface-muted px-1 py-0.5 text-xs">lib/data/products.ts</code>.

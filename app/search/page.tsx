@@ -17,7 +17,7 @@ export default function SearchPage() {
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Search" }]} />
       <div className="max-w-2xl">
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-600">Find it fast</p>
-        <h1 className="mt-2 font-display text-h1 font-semibold tracking-tight text-foreground">Search</h1>
+        <h1 className="mt-2 font-display text-h1 font-bold tracking-tight text-foreground">Search</h1>
       </div>
       <Suspense fallback={<div className="h-12 w-full rounded-full border border-border bg-surface" />}>
         <SearchResults products={publicProducts} />

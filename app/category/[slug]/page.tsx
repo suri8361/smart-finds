@@ -124,7 +124,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps<"
         <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-taupe-200 text-brand-600">
           <Icon className="h-6 w-6" aria-hidden="true" />
         </span>
-        <h1 className="mt-4 font-display text-h1 font-semibold tracking-tight text-foreground">{category.name}</h1>
+        <h1 className="mt-4 font-display text-h1 font-bold tracking-tight text-foreground">{category.name}</h1>
         <p className="mt-3 text-base text-foreground/70">{category.description}</p>
       </div>
 
@@ -197,7 +197,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps<"
       />
 
       <div className="flex flex-col gap-6 border-t border-border pt-10">
-        <h2 className="font-display text-h3 font-semibold text-foreground">Related Collections</h2>
+        <h2 className="font-display tracking-tight text-h3 font-bold text-foreground">Related Collections</h2>
         {relatedCollections.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {relatedCollections.map((collection) => (

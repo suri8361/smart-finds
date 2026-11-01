@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileTabBar } from "@/components/layout/MobileTabBar";
@@ -15,12 +15,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Warm serif reserved for headlines/wordmarks only (`font-display` utility,
-// wired up in globals.css) — body and UI copy stay in Geist Sans.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Clean, modern sans (bold, upright) for headlines/wordmarks only
+// (`font-display tracking-tight font-semibold` utility, wired up in globals.css) — body and UI copy stay
+// in Geist Sans. Swapped in for Fraunces on Nov 1, 2026: the serif + italic
+// was hard on the eyes.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  style: ["normal", "italic"],
+  weight: ["600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}>
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <Header />
         <main className="flex-1 pb-16 lg:pb-0">{children}</main>

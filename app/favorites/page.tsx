@@ -15,7 +15,7 @@ export default function FavoritesPage() {
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Favorites" }]} />
       <div className="max-w-2xl">
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-600">Saved for later</p>
-        <h1 className="mt-2 font-display text-h1 font-semibold tracking-tight text-foreground">Your Favorites</h1>
+        <h1 className="mt-2 font-display text-h1 font-bold tracking-tight text-foreground">Your Favorites</h1>
       </div>
       <FavoritesList products={publicProducts} />
     </Container>

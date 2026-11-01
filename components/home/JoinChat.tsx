@@ -44,7 +44,7 @@ export function JoinChat() {
                 <Bell className="h-6 w-6" aria-hidden="true" />
               </span>
               <div>
-                <h2 className="font-display text-h3 font-semibold tracking-tight text-foreground">
+                <h2 className="font-display text-h3 font-bold tracking-tight text-foreground">
                   Get deals the moment I post them!
                 </h2>
                 <p className="mt-1.5 max-w-md text-sm text-foreground/70 sm:text-base">

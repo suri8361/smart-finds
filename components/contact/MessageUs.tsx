@@ -47,7 +47,7 @@ export function MessageUsCallout({ className, compact = false }: { className?: s
             <MessageCircle className="h-6 w-6" aria-hidden="true" />
           </span>
           <div>
-            <h2 className={cn("font-display font-semibold tracking-tight text-foreground", compact ? "text-xl" : "text-h3")}>
+            <h2 className={cn("font-display font-bold tracking-tight text-foreground", compact ? "text-xl" : "text-h3")}>
               Looking for something specific?
             </h2>
             <p className="mt-1.5 max-w-md text-sm text-foreground/70 sm:text-base">

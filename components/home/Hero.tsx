@@ -46,10 +46,10 @@ export function Hero() {
       <Container className="relative grid gap-12 py-12 sm:py-16 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-16 lg:py-20">
         <div>
           <p className="text-eyebrow font-semibold uppercase tracking-[0.18em] text-brand-600">Hand-picked finds worth sharing</p>
-          <h1 className="mt-4 font-display text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl">
+          <h1 className="mt-4 font-display text-[2.6rem] font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl">
             Smart finds,
             <br />
-            <span className="italic text-brand-700">all in one place.</span>
+            <span className="text-brand-700">all in one place.</span>
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-foreground/70 sm:text-lg">
             Fashion, Shabbos &amp; Yom Tov outfits, home, toys and more, picked one by one from Amazon, SHEIN,
@@ -67,11 +67,11 @@ export function Hero() {
           <dl className="mt-10 flex max-w-md divide-x divide-border/80 border-t border-border/70 pt-6">
             <div className="pr-6">
               <dt className="text-xs uppercase tracking-wide text-foreground/50">Finds</dt>
-              <dd className="font-display text-2xl font-semibold text-foreground">{stats.finds.toLocaleString("en-US")}</dd>
+              <dd className="font-display tracking-tight text-2xl font-bold text-foreground">{stats.finds.toLocaleString("en-US")}</dd>
             </div>
             <div className="pl-6">
               <dt className="text-xs uppercase tracking-wide text-foreground/50">Tried &amp; True</dt>
-              <dd className="font-display text-2xl font-semibold text-foreground">{stats.triedAndTrue}</dd>
+              <dd className="font-display tracking-tight text-2xl font-bold text-foreground">{stats.triedAndTrue}</dd>
             </div>
           </dl>
 

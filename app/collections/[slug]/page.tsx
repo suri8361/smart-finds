@@ -36,7 +36,7 @@ export default async function CollectionPage({ params }: PageProps<"/collections
         className={`overflow-hidden rounded-3xl bg-linear-to-br px-8 py-14 sm:px-12 sm:py-20 ${collectionAccentClasses[collection.accent]}`}
       >
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-700">Collection</p>
-        <h1 className="mt-3 max-w-2xl font-display text-h1 font-semibold tracking-tight text-foreground">
+        <h1 className="mt-3 max-w-2xl font-display text-h1 font-bold tracking-tight text-foreground">
           {collection.title}
         </h1>
         <p className="mt-4 max-w-xl text-base text-foreground/70">{collection.description}</p>

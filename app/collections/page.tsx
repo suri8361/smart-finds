@@ -17,7 +17,7 @@ export default function CollectionsPage() {
 
       <div className="max-w-2xl">
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-600">Curated edits</p>
-        <h1 className="mt-2 font-display text-h1 font-semibold tracking-tight text-foreground">All Collections</h1>
+        <h1 className="mt-2 font-display text-h1 font-bold tracking-tight text-foreground">All Collections</h1>
         <p className="mt-3 text-base text-foreground/70">Small, themed groups of finds, picked to go together.</p>
       </div>
 

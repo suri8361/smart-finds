@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <Container className="max-w-3xl py-16 sm:py-20">
-      <h1 className="font-display text-h1 font-semibold tracking-tight text-foreground">About Smart Finds</h1>
+      <h1 className="font-display text-h1 font-bold tracking-tight text-foreground">About Smart Finds</h1>
       <div className="mt-6 flex flex-col gap-4 text-base text-foreground/70">
         <p>Smart Finds is a curated collection of products from stores like Amazon, SHEIN, AliExpress, Temu and more.</p>
         <p>
