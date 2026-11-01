@@ -8,11 +8,17 @@ import { JoinChat } from "@/components/home/JoinChat";
 import { getProductsByCategoryGroup, publicProducts } from "@/lib/data/products";
 import { getHeroProducts, getHomeCategories, pickRow } from "@/lib/data/home";
 
+// The hero photos change every 3 days (lib/data/hero-rotation.ts). The page is
+// rebuilt in the background at most every 10 minutes, so the new set shows up
+// shortly after midnight New York time without a new deploy.
+export const revalidate = 600;
+
 export default function Home() {
+  const now = new Date();
   // Each row skips anything already shown higher up, so no find appears twice on the page.
   // Photos already used in the hero and on the category tiles count as shown too.
   const shown = new Set<string>([
-    ...getHeroProducts().map((p) => p.slug),
+    ...getHeroProducts(now).map((p) => p.slug),
     ...getHomeCategories().flatMap((entry) => (entry.cover ? [entry.cover.slug] : [])),
   ]);
   const take = (products: typeof publicProducts) => {
@@ -30,7 +36,7 @@ export default function Home() {
 
   return (
     <>
-      <Hero />
+      <Hero now={now} />
       <ProductRow
         eyebrow="Just added"
         title="New Finds"

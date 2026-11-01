@@ -1,6 +1,14 @@
 import type { Category, Product } from "@/types/catalog";
 import { categories } from "@/lib/data/categories";
 import { getProductsByCategoryGroup, getPublicProductBySlug, publicProducts } from "@/lib/data/products";
+import {
+  HERO_ROTATION,
+  heroPickFocus,
+  heroPickSlug,
+  heroSetIndex,
+  type HeroPhoto,
+  type HeroSet,
+} from "@/lib/data/hero-rotation";
 
 /**
  * Home page picks. Every photo shown on the home page comes from a real
@@ -8,13 +16,6 @@ import { getProductsByCategoryGroup, getPublicProductBySlug, publicProducts } fr
  * here is a stock photo or a made-up item. If a slug below is ever removed or
  * hidden, the home page quietly falls back to the next product with a photo.
  */
-
-/** The three products in the hero collage (first one is the large photo; the last is a Tried & True find). */
-const HERO_PRODUCT_SLUGS = [
-  "anewsta-autumn-winter-new-fashion-elegant-stand-collar",
-  "bedsure-fluffy-bubble-faux-fur-throw-blanket-50",
-  "dazy-kids-young-girl-summer-casual-sweet-cute",
-];
 
 /** The photo used on each category tile (a product from that category). */
 const CATEGORY_COVER_SLUGS: Record<string, string> = {
@@ -55,11 +56,39 @@ export function pickRow(products: Product[], limit = 8, exclude: Set<string> = n
   return row;
 }
 
-export function getHeroProducts(): Product[] {
-  const chosen = HERO_PRODUCT_SLUGS.map((slug) => getPublicProductBySlug(slug)).filter(withPhoto);
-  if (chosen.length >= 3) return chosen.slice(0, 3);
-  const fill = pickRow(publicProducts, 3 - chosen.length, new Set(chosen.map((p) => p.slug)));
-  return [...chosen, ...fill];
+const HERO_SPOTS: (keyof HeroSet)[] = ["tall", "top", "bottom"];
+
+/**
+ * The three hero photos showing on `now` (tall, top, bottom): the current set
+ * from lib/data/hero-rotation.ts, which changes every 3 days. A product that is
+ * no longer on the site is replaced by the same spot in the following sets, and
+ * as a last resort by the newest finds with a photo.
+ */
+export function getHeroPhotos(now: Date = new Date()): HeroPhoto[] {
+  const start = heroSetIndex(now);
+  const used = new Set<string>();
+  const photos: HeroPhoto[] = [];
+  for (const spot of HERO_SPOTS) {
+    for (let step = 0; step < HERO_ROTATION.length; step += 1) {
+      const pick = HERO_ROTATION[(start + step) % HERO_ROTATION.length][spot];
+      const product = getPublicProductBySlug(heroPickSlug(pick));
+      if (!withPhoto(product) || used.has(product.slug)) continue;
+      used.add(product.slug);
+      photos.push({ product, focus: heroPickFocus(pick) });
+      break;
+    }
+  }
+  if (photos.length < 3) {
+    for (const product of pickRow(publicProducts, 3 - photos.length, used)) {
+      photos.push({ product, focus: "center" });
+    }
+  }
+  return photos;
+}
+
+/** The hero's products (same three as getHeroPhotos), e.g. so rows below don't repeat them. */
+export function getHeroProducts(now: Date = new Date()): Product[] {
+  return getHeroPhotos(now).map((photo) => photo.product);
 }
 
 export interface HomeCategory {

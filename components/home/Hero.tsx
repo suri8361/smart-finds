@@ -2,11 +2,28 @@ import Link from "next/link";
 import { BadgeCheck } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { getHeroProducts, getHomeStats } from "@/lib/data/home";
+import { getHeroPhotos, getHomeStats } from "@/lib/data/home";
+import type { HeroPhotoFocus } from "@/lib/data/hero-rotation";
 import type { Product } from "@/types/catalog";
 import { cn } from "@/lib/utils/cn";
 
-function HeroPhoto({ product, className, tried }: { product: Product; className?: string; tried?: boolean }) {
+const FOCUS_CLASS: Record<HeroPhotoFocus, string> = {
+  top: "object-top",
+  center: "",
+  bottom: "object-bottom",
+};
+
+function HeroPhoto({
+  product,
+  className,
+  tried,
+  focus = "center",
+}: {
+  product: Product;
+  className?: string;
+  tried?: boolean;
+  focus?: HeroPhotoFocus;
+}) {
   return (
     <Link
       href={`/products/${product.slug}`}
@@ -19,7 +36,10 @@ function HeroPhoto({ product, className, tried }: { product: Product; className?
       <img
         src={product.image}
         alt={product.name}
-        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        className={cn(
+          "h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]",
+          FOCUS_CLASS[focus]
+        )}
       />
       {tried ? (
         <span className="absolute left-3 top-3 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-label-tried-bg px-2.5 py-1 text-[11px] font-semibold text-label-tried-fg shadow">
@@ -32,12 +52,13 @@ function HeroPhoto({ product, className, tried }: { product: Product; className?
 }
 
 /**
- * Homepage hero: headline + real product photos from the catalog (see
- * lib/data/home.ts for which ones). The numbers under the buttons are counted
+ * Homepage hero: headline + real product photos from the catalog. The three
+ * photos change by themselves every 3 days (the sets are listed in
+ * lib/data/hero-rotation.ts). The numbers under the buttons are counted
  * from the live product list, so they stay true as finds are added.
  */
-export function Hero() {
-  const [main, second, third] = getHeroProducts();
+export function Hero({ now = new Date() }: { now?: Date }) {
+  const [main, second, third] = getHeroPhotos(now);
   const stats = getHomeStats();
 
   return (
@@ -89,9 +110,15 @@ export function Hero() {
 
         {main ? (
           <div className="grid h-[380px] grid-cols-[1.2fr_1fr] grid-rows-2 gap-3 sm:h-[520px] sm:gap-4 lg:h-[560px]">
-            <HeroPhoto product={main} className="row-span-2" />
-            {second ? <HeroPhoto product={second} /> : null}
-            {third ? <HeroPhoto product={third} tried={third.recommendationLabel === "personally_tried"} /> : null}
+            <HeroPhoto product={main.product} focus={main.focus} className="row-span-2" />
+            {second ? <HeroPhoto product={second.product} focus={second.focus} /> : null}
+            {third ? (
+              <HeroPhoto
+                product={third.product}
+                focus={third.focus}
+                tried={third.product.recommendationLabel === "personally_tried"}
+              />
+            ) : null}
           </div>
         ) : null}
       </Container>
