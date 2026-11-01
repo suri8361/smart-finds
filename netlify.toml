@@ -1,0 +1,3 @@
+# This branch is data only. Netlify must never build it (a build here would do nothing useful).
+[build]
+  ignore = "exit 0"
