@@ -19,7 +19,7 @@ import { isProductPublic } from "@/lib/affiliate";
  *                      will show a neutral placeholder instead)
  *   currentPrice      optional plain number, USD, e.g. 19.99. Leave it out
  *                      when you don't have a current price (the site shows
- *                      "Check price on <store>"); Amazon never shows one.
+ *                      no price, just the store); Amazon never shows one.
  *   originalPrice     optional — only set this if it's a genuine discount
  *   affiliateUrl      the real outbound affiliate/product link
  *   store             plain text store name, e.g. "SHEIN", "eBay"
@@ -1482,17 +1482,6 @@ export const products: Product[] = [
     store: "Amazon",
     category: "electronics",
     description: "I got the standard one.",
-  },
-  {
-    slug: "official-licensed-google-tv-happrun-native-1080p-bluetooth",
-    name: "HAPPRUN 1080P Projector with Google TV",
-    image: "https://m.media-amazon.com/images/I/71Nb0U2NE0L._AC_SL1500_.jpg",
-    affiliateUrl: "https://amzn.to/4iuMOl6",
-    store: "Amazon",
-    category: "electronics",
-    holidays: ["chanukah"],
-    recommendationLabel: "personally_tried",
-    description: "Great projector! Can use with just a USB. Great for Chanukah parties.",
   },
   {
     slug: "the-children-s-place-girls-lightweight-layering-jacket",

@@ -4,7 +4,7 @@
  *
  * Only rows with "yes" (or y / x / 1 / true) in the approve column are used.
  * Each row needs: title, affiliate_url and a valid category. Price is
- * optional: without one the site shows "Check price on <store>" (Amazon never
+ * optional: without one the site shows no price, just the store (Amazon never
  * shows a price). Rows that are missing something are listed and skipped,
  * never guessed. Temu rows without a photo (and rows with "yes" in a hidden
  * column) are added with `hidden: true`: kept in the data, off the site.

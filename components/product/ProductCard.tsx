@@ -59,7 +59,7 @@ export function ProductCard({ product, compact = false }: { product: Product; co
  * and the View Find button. Fits two per row on a phone.
  */
 function CompactProductCard({ product, showBadge }: { product: Product; showBadge: boolean }) {
-  const storeInPrice = !showsStoredPriceFor(product);
+  const hasPrice = showsStoredPriceFor(product);
   return (
     <div className="group/card flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-shadow hover:shadow-lg">
       <div className="relative">
@@ -83,7 +83,7 @@ function CompactProductCard({ product, showBadge }: { product: Product; showBadg
         <div className="mt-auto flex flex-col gap-2.5 pt-1">
           <div className="text-xs sm:text-sm">
             <ProductPrice product={product} />
-            {storeInPrice ? null : <p className="mt-0.5 text-xs text-foreground/50">{product.store}</p>}
+            <p className={hasPrice ? "mt-0.5 text-xs text-foreground/50" : "text-xs text-foreground/50"}>{product.store}</p>
           </div>
           <Button href={getOutboundUrl(product)} target="_blank" rel="noopener noreferrer" size="sm" className="w-full">
             View Find
@@ -94,7 +94,7 @@ function CompactProductCard({ product, showBadge }: { product: Product; showBadg
   );
 }
 
-/** True when ProductPrice shows a number (so the store name needs its own line); false when it already says "Check price on <store>". */
+/** True when ProductPrice shows a number; false when it renders nothing (Amazon, or no stored price). */
 function showsStoredPriceFor(product: Product): boolean {
   return showsStoredPrice(product) && product.currentPrice !== undefined;
 }

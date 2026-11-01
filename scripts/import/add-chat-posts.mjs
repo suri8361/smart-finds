@@ -198,7 +198,7 @@ function main() {
     } else if (p.image) {
       p.hidden = false;
     }
-    const price = p.currentPrice !== undefined ? `$${p.currentPrice}` : `Check price on ${p.store}`;
+    const price = p.currentPrice !== undefined ? `$${p.currentPrice}` : "no price";
     console.log(`  + ${p.name.slice(0, 60)} | ${p.store} | ${p.category}${p.audience ? "/" + p.audience : ""} | ${price} | ${files.length} photo(s)${p.recommendationLabel ? " | Tried & True" : ""}${p.hidden ? " | HIDDEN" : ""}`);
   }
   if (!products.length) return;

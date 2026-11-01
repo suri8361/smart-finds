@@ -38,7 +38,7 @@ Open the CSV in Excel or Google Sheets. For each product you want on the site:
 | approve | `yes` |
 | title | fix it if it's wrong or empty |
 | category | one of the 27: dresses, skirts, tops, sweaters, cardigans, sets, jumpsuits, pajamas, coats-jackets, shoes, boots, sandals, sneakers, bags, accessories, shabbos-elegant, beauty, home, kitchen, organization, toys, baby-gear, school, electronics, outdoor, camping, other |
-| price | optional; empty = the site shows "Check price on <store>". Amazon never shows a price ("Check price on Amazon") |
+| price | optional; empty = the site shows no price (just the store). Amazon never shows a price |
 | original_price | optional, only for a real discount |
 | image | photo link; empty = neutral placeholder |
 | audience / occasion | optional, clothing only (e.g. `women` + `shabbos`) |
@@ -83,8 +83,8 @@ npm run import:posts -- path/to/new-posts-<date>.json --write    # adds them
 ```
 
 It uses the same rules as above: the link exactly as posted, store from the link,
-category guessed from the title, Amazon shows "Check price on Amazon", others show
-the price in the post, Tried & True only when the caption says so, and links that
+category guessed from the title, Amazon shows no price, others show
+the price in the post (or none), Tried & True only when the caption says so, and links that
 are already on the site are skipped. Photos are copied into `public/finds/`.
 To fix a guess, put a `new-posts-<date>.overrides.json` beside the JSON, e.g.
 `{ "<message_id>": { "title": "Nicer title", "category": "home" } }`

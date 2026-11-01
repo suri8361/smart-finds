@@ -80,8 +80,14 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
           <div className="flex flex-col gap-4 rounded-2xl border border-border bg-surface-muted p-5">
             <div>
               <ProductPrice product={product} size="lg" />
-              <p className="mt-1 text-sm text-foreground/60">{product.store}</p>
-              {showsStoredPrice(product) && product.currentPrice !== undefined ? <PriceNote className="mt-1" /> : null}
+              {showsStoredPrice(product) && product.currentPrice !== undefined ? (
+                <>
+                  <p className="mt-1 text-sm text-foreground/60">{product.store}</p>
+                  <PriceNote className="mt-1" />
+                </>
+              ) : (
+                <p className="text-sm text-foreground/60">{product.store}</p>
+              )}
             </div>
 
             <Button href={getOutboundUrl(product)} target="_blank" rel="noopener noreferrer" size="lg">

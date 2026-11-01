@@ -64,7 +64,7 @@ export default function AffiliateDisclosurePage() {
         <p>
           Prices, deals and stock change often and are set by each store. A price shown on Smart Finds is what we saw when
           we added the product, so always check the final price on the store&apos;s site before you buy. For Amazon
-          products we don&apos;t show a price; tap &ldquo;Check price on Amazon&rdquo; to see the current one.
+          products we don&apos;t show a price; tap &ldquo;View Find&rdquo; to see the current one on Amazon.
         </p>
         <p>
           Smart Finds is not a store. Orders, payments, shipping, returns and customer service are all handled by the store

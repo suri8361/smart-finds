@@ -132,7 +132,7 @@ export interface Product {
   image?: string;
   /** Additional gallery photos, in display order — powers the thumbnail row and lightbox on the product detail page. `image` above is typically also the first entry here; omit entirely for a single-photo product. */
   images?: string[];
-  /** Current price as a plain number in USD, e.g. 19.99. Optional: when there is none (and always for Amazon), the site shows "Check price on <store>" instead. */
+  /** Current price as a plain number in USD, e.g. 19.99. Optional: when there is none (and always for Amazon), the site shows no price. */
   currentPrice?: number;
   /** The pre-discount price, if this is a deal — shown struck through next to currentPrice. Omit if there's no discount. */
   originalPrice?: number;

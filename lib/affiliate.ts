@@ -51,7 +51,7 @@ export function getOutboundUrl(product: Pick<Product, "affiliateUrl">): string {
   return withAffiliateTag(product.affiliateUrl);
 }
 
-/** False for Amazon products and for products with no stored price (they show "Check price on <store>" instead). */
+/** False for Amazon products and for products with no stored price (they show no price). */
 export function showsStoredPrice(product: Pick<Product, "store" | "affiliateUrl" | "currentPrice">): boolean {
   return !isAmazonProduct(product) && typeof product.currentPrice === "number" && product.currentPrice > 0;
 }
