@@ -157,8 +157,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0hKy9FoG",
     store: "Amazon",
     category: "home",
-    holidays: ["chanukah"],
-    description: "More colors. Amazon Haul find for Chanuka grab bags.",
+    description: "More colors. Amazon haul great finds.",
   },
   {
     slug: "lcd-writing-tablet",
@@ -167,8 +166,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0d048q4U",
     store: "Amazon",
     category: "toys",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "300-cute-stickers",
@@ -177,8 +175,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0hcWZUez",
     store: "Amazon",
     category: "toys",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "look-and-find-coloring-book",
@@ -187,8 +184,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B03B6VTYv",
     store: "Amazon",
     category: "toys",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "reusable-puffy-sticker-book",
@@ -197,8 +193,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B00luRG7u",
     store: "Amazon",
     category: "toys",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "lemon-tea-cart-building-blocks",
@@ -207,8 +202,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0bP43hmS",
     store: "Amazon",
     category: "toys",
-    holidays: ["chanukah"],
-    description: "261 pieces. Amazon Haul find for Chanuka grab bags.",
+    description: "261 pieces. Amazon haul great finds.",
   },
   {
     slug: "fruit-shop-car-building-blocks",
@@ -217,8 +211,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B02WjNaPB",
     store: "Amazon",
     category: "toys",
-    holidays: ["chanukah"],
-    description: "237 pieces. Amazon Haul find for Chanuka grab bags.",
+    description: "237 pieces. Amazon haul great finds.",
   },
   {
     slug: "sponge-holders-with-hooks-4-pack",
@@ -227,8 +220,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B07tr8AOu",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "corn-stripper",
@@ -237,8 +229,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0fp5FEW0",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "stainless-steel-soup-spoons",
@@ -247,8 +238,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B01kHSwSI",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "mini-silicone-oven-mitts",
@@ -257,8 +247,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B084eaP7n",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Set of 2. Amazon Haul find for Chanuka grab bags.",
+    description: "Set of 2. Amazon haul great finds.",
   },
   {
     slug: "grocery-bag-holder",
@@ -267,8 +256,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0bDGLgrn",
     store: "Amazon",
     category: "organization",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "hand-garlic-press",
@@ -277,8 +265,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0epkuvQ1",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "crinkle-cutter",
@@ -287,8 +274,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B01Ff9db9",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "7-inch-kitchen-tongs",
@@ -297,8 +283,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B036CmBb9",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "collapsible-kitchen-funnel",
@@ -307,8 +292,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B06R77ltr",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "finger-guard-for-cutting",
@@ -317,8 +301,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0iFuiSnm",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "adhesive-steel-hooks-4-pack",
@@ -327,8 +310,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0eztbtnW",
     store: "Amazon",
     category: "organization",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "heavy-duty-kitchen-scissors",
@@ -337,8 +319,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0eu0JHSo",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "bottle-and-can-opener",
@@ -347,8 +328,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0iBKoNeT",
     store: "Amazon",
     category: "kitchen",
-    holidays: ["chanukah"],
-    description: "Amazon Haul find for Chanuka grab bags.",
+    description: "Amazon haul great finds.",
   },
   {
     slug: "travel-initial-jewelry-box",
