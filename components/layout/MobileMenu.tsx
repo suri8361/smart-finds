@@ -7,6 +7,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { categories } from "@/lib/data/categories";
 import { SearchBar } from "@/components/layout/SearchBar";
 import type { MenuLink } from "@/lib/data/menus";
+import { cn } from "@/lib/utils/cn";
 
 const collectionsLink = { href: "/collections", label: "Collections" };
 const baseSupportLinks = [
@@ -68,7 +69,7 @@ export function MobileMenu({ fashionLinks, holidayLinks, showCollections = false
           </button>
         </div>
 
-        <SearchBar />
+        <SearchBar id="menu-search" />
 
         <nav aria-label="Mobile" className="flex flex-col gap-1">
           <Link
@@ -95,8 +96,12 @@ export function MobileMenu({ fashionLinks, holidayLinks, showCollections = false
                     key={link.href}
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="rounded-lg px-3 py-2 text-sm text-foreground/80 hover:bg-surface-muted"
+                    className={cn(
+                      "rounded-lg py-2 text-sm hover:bg-surface-muted",
+                      link.sub ? "pl-7 pr-3 text-foreground/70" : "px-3 text-foreground/80"
+                    )}
                   >
+                    {link.sub ? <span aria-hidden="true" className="mr-1.5 text-foreground/30">↳</span> : null}
                     {link.label}
                   </Link>
                 ))}

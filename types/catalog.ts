@@ -41,6 +41,14 @@ export type AudienceType =
   | "unisex-adult";
 
 /**
+ * Kids finds only (kids clothing, toys, baby gear): who it's for in the Kids
+ * section's Girls / Boys split (Sara, Nov 2, 2026). "both" shows under Girls
+ * AND Boys. Optional: when it's missing the site works it out from `audience`
+ * (girl audiences → girls, boy audiences → boys, anything else → both).
+ */
+export type KidsForType = "girls" | "boys" | "both";
+
+/**
  * WHAT a product is (lib/data/productCategories.ts has the friendly display
  * labels and which broad nav group — lib/data/categories.ts — each one rolls
  * up into, where applicable). Every clothing/fashion value here is reused
@@ -148,6 +156,8 @@ export interface Product {
   collection?: string;
   /** WHO the item is for — clothing/fashion products only, omit otherwise. One of the 10 values above. */
   audience?: AudienceType;
+  /** Kids finds only: "girls", "boys" or "both" (shows under Girls and Boys). Optional — worked out from `audience` when missing. */
+  kidsFor?: KidsForType;
   /** WHEN it's typically worn — clothing/fashion products only, omit otherwise. One of "weekday", "shabbos", "both". */
   occasion?: OccasionType;
   /** Optional — at most one label from the controlled vocabulary above. Leave it out unless it's meaningful (no badge is shown). */

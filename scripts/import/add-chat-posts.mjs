@@ -15,6 +15,10 @@
  *   - description: her caption without the link (Amazon: without prices too)
  *   - category: guessed from the title (same guesser as the chat importer);
  *     clothing/shoes default to audience "women"
+ *   - kidsFor (kids clothing, toys, baby gear): "girls", "boys" or "both", inferred from the
+ *     audience, title and caption ("both" when unsure; shows under Girls AND Boys)
+ *   - "grab bag" captions (Sara, Nov 2 2026): never tagged Chanukah, and the grab-bag sentence
+ *     reads "Amazon haul great finds." on the site
  *   - Tried & True: only when her caption says "Tried and True"
  *   - photos: copied into public/finds/<slug>-<n>.jpg (Google Chat photo links
  *     only open signed in). The first photo is the card photo; extra photos go
@@ -24,7 +28,7 @@
  *
  * Fix a guess with an overrides file next to the JSON
  * (new-posts-<date>.overrides.json), keyed by message_id or affiliate link:
- *   { "<message_id>": { "title": "...", "category": "home", "audience": "women",
+ *   { "<message_id>": { "title": "...", "category": "home", "audience": "women", "kidsFor": "girls",
  *                        "description": "...", "photos": [0, 2], "skip": true } }
  *
  * Usage:
@@ -166,6 +170,7 @@ function main() {
       store,
       category,
       audience,
+      kids_for: o.kidsFor ?? "",
       price: o.price ?? firstPrice(post.text),
       description: o.description || captionFrom(post.text),
       image: picks.length ? "(photo)" : "",
@@ -199,7 +204,7 @@ function main() {
       p.hidden = false;
     }
     const price = p.currentPrice !== undefined ? `$${p.currentPrice}` : "no price";
-    console.log(`  + ${p.name.slice(0, 60)} | ${p.store} | ${p.category}${p.audience ? "/" + p.audience : ""} | ${price} | ${files.length} photo(s)${p.recommendationLabel ? " | Tried & True" : ""}${p.hidden ? " | HIDDEN" : ""}`);
+    console.log(`  + ${p.name.slice(0, 60)} | ${p.store} | ${p.category}${p.audience ? "/" + p.audience : ""}${p.kidsFor ? "/" + p.kidsFor : ""} | ${price} | ${files.length} photo(s)${p.recommendationLabel ? " | Tried & True" : ""}${p.hidden ? " | HIDDEN" : ""}`);
   }
   if (!products.length) return;
   if (!write) {

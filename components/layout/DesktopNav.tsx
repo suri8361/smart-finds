@@ -24,7 +24,15 @@ function NavDropdown({ label, links }: { label: string; links: MenuLink[] }) {
         <ul className="flex flex-col">
           {links.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="block rounded-xl px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+              <Link
+                href={link.href}
+                className={
+                  link.sub
+                    ? "block rounded-xl py-1.5 pl-7 pr-3 text-sm text-foreground/75 hover:bg-surface-muted"
+                    : "block rounded-xl px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted"
+                }
+              >
+                {link.sub ? <span aria-hidden="true" className="mr-1.5 text-foreground/30">↳</span> : null}
                 {link.label}
               </Link>
             </li>

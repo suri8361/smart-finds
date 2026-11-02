@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Heart, Home, LayoutGrid, Search } from "lucide-react";
+import { Heart, Home, LayoutGrid } from "lucide-react";
 import { useFavorites } from "@/lib/favorites";
 import { cn } from "@/lib/utils/cn";
 
 const tabs = [
   { href: "/", label: "Home", icon: Home, match: (path: string) => path === "/" },
-  { href: "/search", label: "Search", icon: Search, match: (path: string) => path.startsWith("/search") },
   {
     href: "/categories",
     label: "Categories",
@@ -21,7 +20,8 @@ const tabs = [
 /**
  * App-like bottom tab bar for mobile (SRS §5, §13). The full SRS spec
  * includes a 5th "Account" tab — omitted since the site has no accounts;
- * favorites are saved on the device instead. The current tab is highlighted,
+ * favorites are saved on the device instead. Search is not a tab: on phones it
+ * sits at the top, in the header (Sara, Nov 2, 2026). The current tab is highlighted,
  * and Favorites shows a count once something is saved.
  */
 export function MobileTabBar() {

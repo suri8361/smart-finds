@@ -166,8 +166,55 @@ const HOLIDAY_PATTERNS = [
 export function holidaysFor(caption, title = "") {
   const found = new Set();
   for (const [holiday, pattern] of HOLIDAY_PATTERNS) if (pattern.test(caption || "") || pattern.test(title || "")) found.add(holiday);
+  // Sara (Nov 2, 2026): "good for Chanuka grab bags" finds are NOT Chanukah finds. They go in their
+  // normal category only, so a grab-bag caption never puts a find in the Chanukah section.
+  if (GRAB_BAG.test(caption || "") && !(HOLIDAY_PATTERNS.find(([h]) => h === "chanukah")[1].test(title || ""))) found.delete("chanukah");
   if (found.size > 1) found.delete("yom-tov");
   return [...found];
+}
+
+/** "grab bag(s)" in a caption, any spelling ("grabbags", "grab-bag"). */
+export const GRAB_BAG = /grab[\s-]*bags?/i;
+
+/**
+ * Sara (Nov 2, 2026): captions like "Stock up for your Chanuka grab bags!" read on the site as
+ * "Amazon haul great finds." Every sentence that mentions grab bags is replaced by that one phrase.
+ */
+export function grabBagWording(text) {
+  if (!GRAB_BAG.test(text || "")) return text;
+  const sentences = String(text).match(/[^.!?]+[.!?]*/g) || [String(text)];
+  const kept = sentences.map((s) => s.trim()).filter((s) => s && !GRAB_BAG.test(s) && !/^(coming up|stock up)\b/i.test(s));
+  return [...kept, "Amazon haul great finds."].join(" ");
+}
+
+/** Who a kids find is for (Product.kidsFor): "girls", "boys" or "both" (shows under Girls AND Boys). */
+export const KIDS_FOR = ["girls", "boys", "both"];
+const KID_AUDIENCES = new Set(["girls", "boys", "toddler-girl", "toddler-boy", "baby-girl", "baby-boy", "unisex-kids"]);
+const KID_CATEGORIES = new Set(["toys", "baby-gear"]);
+const GIRL_WORDS = /\b(girls?|girl'?s|daughters?|princess(es)?|dress(es)?|skirts?|tutus?|ballerinas?|bows?|hair ?(clips?|bows?|ties?|accessor(y|ies))|headbands?|scrunchies?|shawls?|tights|mary ?janes?|unicorns?|barbie|dolls?|purses?|bracelets?|necklaces?|earrings?|nail polish|makeup)\b/i;
+const BOY_WORDS = /\b(boys?|boy'?s|sons?|bow ?ties?|neckties?|kippahs?|yarmulkes?|tzitzis|excavators?|trucks?|tractors?)\b/i;
+const BOTH_WORDS = /\b(unisex|boys?\W+(and|&|or|\/)\W*girls?|girls?\W+(and|&|or|\/)\W*boys?|gender[ -]?neutral)\b/i;
+
+/** True for a find that belongs in Kids: a kids audience, or a toy / baby-gear find. */
+export function isKidsFind(audience, category) {
+  return KID_AUDIENCES.has(audience || "") || KID_CATEGORIES.has(category || "");
+}
+
+/**
+ * Girls / boys / both for a kids find, from the audience, then the title and caption (Sara, Nov 2, 2026:
+ * the Kids section is split into Girls and Boys). Neutral or unsure → "both". Undefined for non-kids finds.
+ */
+export function kidsForOf({ audience = "", category = "", title = "", caption = "" } = {}) {
+  if (!isKidsFind(audience, category)) return undefined;
+  const text = `${title} ${caption}`;
+  if (BOTH_WORDS.test(text)) return "both";
+  if (/(^|-)girls?$/.test(audience)) return BOY_WORDS.test(title) && !GIRL_WORDS.test(title) ? "boys" : "girls";
+  if (/(^|-)boys?$/.test(audience)) return GIRL_WORDS.test(title) && !BOY_WORDS.test(title) ? "girls" : "boys";
+  const girl = GIRL_WORDS.test(text);
+  const boy = BOY_WORDS.test(text);
+  if (girl && !boy) return "girls";
+  if (boy && !girl) return "boys";
+  return "both";
 }
 
 const MATERNITY = /matern|pregnan|nursing|breastfeed|\bbump\b/i;

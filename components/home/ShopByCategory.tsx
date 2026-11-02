@@ -13,7 +13,7 @@ export function ShopByCategory() {
   const entries = getHomeCategories();
   if (entries.length === 0) return null;
   return (
-    <section id="shop-by-category" className="scroll-mt-20 bg-surface-muted py-14 sm:py-20">
+    <section id="shop-by-category" className="scroll-mt-32 md:scroll-mt-20 bg-surface-muted py-14 sm:py-20">
       <Container className="flex flex-col gap-8">
         <SectionHeading
           eyebrow="Browse"

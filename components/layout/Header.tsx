@@ -8,11 +8,15 @@ import { MobileMenu } from "@/components/layout/MobileMenu";
 import { getCollectionsWithProducts } from "@/lib/data/collections";
 import { getFashionMenu, getHolidayMenu } from "@/lib/data/menus";
 
-/** Site header: hamburger (mobile) + logo + primary nav (desktop) + search + favorites (SRS §5). */
+/**
+ * Site header: hamburger (mobile) + logo + primary nav (desktop) + search + favorites (SRS §5).
+ * Phones get the search bar in its own row right under the logo, so it's at the top of every page
+ * and stays there while scrolling (Sara, Nov 2, 2026: search belongs on top, not at the bottom).
+ */
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-surface/90 backdrop-blur">
-      <Container className="flex h-16 items-center gap-4">
+      <Container className="flex h-14 items-center gap-4 md:h-16">
         <MobileMenu fashionLinks={getFashionMenu()} holidayLinks={getHolidayMenu()} showCollections={getCollectionsWithProducts().length > 0} />
         <Logo />
         <DesktopNav />
@@ -28,6 +32,9 @@ export function Header() {
             <Heart className="h-5 w-5" aria-hidden="true" />
           </Link>
         </div>
+      </Container>
+      <Container className="pb-3 md:hidden">
+        <SearchBar id="mobile-search" />
       </Container>
     </header>
   );

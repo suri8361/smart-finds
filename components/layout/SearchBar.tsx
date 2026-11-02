@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils/cn";
  * Native GET form — submits to `/search?q=...` without any client-side JS.
  * The /search page reads `q` and filters products in the browser.
  */
-export function SearchBar({ className }: { className?: string }) {
+export function SearchBar({ className, id = "site-search" }: { className?: string; id?: string }) {
   return (
     <form action="/search" method="GET" role="search" className={cn("w-full", className)}>
-      <label htmlFor="site-search" className="sr-only">
+      <label htmlFor={id} className="sr-only">
         Search Smart Finds
       </label>
       <div className="relative">
@@ -17,7 +17,7 @@ export function SearchBar({ className }: { className?: string }) {
           aria-hidden="true"
         />
         <input
-          id="site-search"
+          id={id}
           name="q"
           type="search"
           placeholder="Search curated finds…"

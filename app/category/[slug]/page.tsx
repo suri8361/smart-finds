@@ -37,6 +37,9 @@ export async function generateMetadata({ params }: PageProps<"/category/[slug]">
 
 /** Sections whose clothing gets the Women / Men / Kids / Maternity chips. */
 const SHOPPER_SECTIONS = new Set(["fashion-style", "shabbos-elegant"]);
+/** Kids-only sections that get All / Girls / Boys chips (Sara, Nov 2, 2026). */
+const KIDS_SECTIONS = new Set(["toys", "baby-gear"]);
+const GENDER_CHIPS = new Set(["girls", "boys"]);
 
 function one(value: string | string[] | undefined): string | undefined {
   return Array.isArray(value) ? value[0] : value;
@@ -87,7 +90,12 @@ export default async function CategoryPage({ params, searchParams }: PageProps<"
   const showType = category.slug === "fashion-style";
   const showHoliday = category.slug === "yom-tov-holidays";
 
-  const shopperOpts = showShopper ? shopperOptions(allProducts) : [];
+  const showKidsSplit = KIDS_SECTIONS.has(category.slug);
+  const shopperOpts = showShopper
+    ? shopperOptions(allProducts)
+    : showKidsSplit
+      ? shopperOptions(allProducts).filter((option) => GENDER_CHIPS.has(option.value))
+      : [];
   const shop = shopperOpts.some((option) => option.value === one(query.shop)) ? one(query.shop) : undefined;
   const byShopper = filterByShopper(allProducts, shop);
 
@@ -108,9 +116,10 @@ export default async function CategoryPage({ params, searchParams }: PageProps<"
     return `/category/${category.slug}${qs ? `?${qs}` : ""}`;
   };
 
-  const kidsPicked = shop === "kids" || !!getShopperFilter(shop)?.kids;
-  const mainShoppers = shopperOpts.filter((option) => !option.kids);
-  const kidShoppers = shopperOpts.filter((option) => option.kids);
+  const kidsPicked = !showKidsSplit && (shop === "kids" || !!getShopperFilter(shop)?.kids);
+  // Toys / Baby Gear: Girls and Boys sit right in the first row (everything there is for kids).
+  const mainShoppers = showKidsSplit ? shopperOpts : shopperOpts.filter((option) => !option.kids);
+  const kidShoppers = showKidsSplit ? [] : shopperOpts.filter((option) => option.kids);
 
   return (
     <Container className="flex flex-col gap-10 py-10 sm:py-14">

@@ -26,8 +26,11 @@ import {
   LABELS,
   OCCASIONS,
   TRIED_TRUE,
+  KIDS_FOR,
+  grabBagWording,
   holidaysFor,
   isMaternity,
+  kidsForOf,
   looksLikeApparel,
   parseCsv,
   storeFromUrl,
@@ -75,6 +78,7 @@ export function toLiteral(p) {
   lines.push(`    store: ${q(p.store)},`);
   lines.push(`    category: ${q(p.category)},`);
   if (p.audience) lines.push(`    audience: ${q(p.audience)},`);
+  if (p.kidsFor) lines.push(`    kidsFor: ${q(p.kidsFor)},`);
   if (p.occasion) lines.push(`    occasion: ${q(p.occasion)},`);
   if (p.holidays?.length) lines.push(`    holidays: ${q(p.holidays)},`);
   if (p.maternity) lines.push(`    maternity: true,`);
@@ -153,6 +157,10 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
       store,
       category,
       audience: audience || undefined,
+      // Kids finds: Girls / Boys / both (both shows under Girls AND Boys). A sheet/override value wins; else inferred.
+      kidsFor: KIDS_FOR.includes(String(row.kids_for || "").trim().toLowerCase())
+        ? String(row.kids_for).trim().toLowerCase()
+        : kidsForOf({ audience, category, title: name, caption }),
       occasion: occasion || undefined,
       recommendationLabel: label || undefined,
       holidays: row.holidays !== undefined && String(row.holidays).trim() !== ""
@@ -165,6 +173,7 @@ export function rowsToProducts(rows, existingSlugs = new Set(), existingUrls = n
       description: (() => {
         let text = triedTrue ? stripTriedTrue(caption) : caption;
         if (isAmazon) text = stripPrices(text);
+        text = grabBagWording(text);
         return text || `Found on ${store}.`;
       })(),
       featured: YES.has(String(row.featured || "").trim().toLowerCase()),

@@ -89,9 +89,9 @@ export const HERO_SEASONS: Record<HeroSeason, HeroSet[]> = {
   // WINTER (Nov–Feb): sweaters, coats, velvet, warm colors, cozy home.
   // Every set has at least one Tried & True find (T&T) that fits winter.
   winter: [
-    // 1. toddler's quilted bomber jacket (T&T) · grey crystal-flower sweater · white faux fur throw
+    // 1. girls' plaid suspender skirt outfit (T&T) · grey crystal-flower sweater · white faux fur throw
     {
-      tall: "shein-baby-boy-girl-zip-up-quilted-bomber",
+      tall: "shein-1pc-young-girl-cute-retro-casual-plaid",
       top: { slug: "anewsta-handmade-crystal-velvet-commuter-christmas-round-neck", focus: "top" },
       bottom: { slug: "bedsure-fluffy-bubble-faux-fur-throw-blanket-50", focus: "top" },
     },

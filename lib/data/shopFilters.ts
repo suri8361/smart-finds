@@ -1,4 +1,4 @@
-import type { AudienceType, Product, ProductCategoryType } from "@/types/catalog";
+import type { AudienceType, KidsForType, Product, ProductCategoryType } from "@/types/catalog";
 import { productCategories } from "@/lib/data/productCategories";
 import { holidayChips } from "@/lib/data/holidays";
 
@@ -9,6 +9,39 @@ import { holidayChips } from "@/lib/data/holidays";
  */
 
 const KID_AUDIENCES: AudienceType[] = ["girls", "boys", "toddler-girl", "toddler-boy", "baby-girl", "baby-boy", "unisex-kids"];
+const GIRL_AUDIENCES: AudienceType[] = ["girls", "toddler-girl", "baby-girl"];
+const BOY_AUDIENCES: AudienceType[] = ["boys", "toddler-boy", "baby-boy"];
+/** Item types that are kids finds even without a kids audience. */
+const KID_CATEGORIES: ProductCategoryType[] = ["toys", "baby-gear"];
+
+/** Kids clothing (a kids audience) or a toy / baby-gear find. */
+export function isKidsFind(product: Product): boolean {
+  return (!!product.audience && KID_AUDIENCES.includes(product.audience)) || KID_CATEGORIES.includes(product.category);
+}
+
+/**
+ * Girls / boys / both for a kids find (Sara, Nov 2, 2026: the Kids section is split into Girls and Boys).
+ * Uses `kidsFor` when the data has it; otherwise works it out from `audience` (unsure → both).
+ */
+export function kidsForOf(product: Product): KidsForType | undefined {
+  if (!isKidsFind(product)) return undefined;
+  if (product.kidsFor === "girls" || product.kidsFor === "boys" || product.kidsFor === "both") return product.kidsFor;
+  if (product.audience && GIRL_AUDIENCES.includes(product.audience)) return "girls";
+  if (product.audience && BOY_AUDIENCES.includes(product.audience)) return "boys";
+  return "both";
+}
+
+/** Shows under Girls ("girls" or "both"). */
+export const isForGirls = (product: Product) => {
+  const who = kidsForOf(product);
+  return who === "girls" || who === "both";
+};
+
+/** Shows under Boys ("boys" or "both"). */
+export const isForBoys = (product: Product) => {
+  const who = kidsForOf(product);
+  return who === "boys" || who === "both";
+};
 
 export interface ShopperFilter {
   value: string;
@@ -23,8 +56,8 @@ export const shopperFilters: ShopperFilter[] = [
   { value: "maternity", label: "Maternity", match: (p) => p.maternity === true },
   { value: "men", label: "Men", match: (p) => p.audience === "men" || p.audience === "unisex-adult" },
   { value: "kids", label: "Kids", match: (p) => !!p.audience && KID_AUDIENCES.includes(p.audience) },
-  { value: "girls", label: "Girls", kids: true, match: (p) => p.audience === "girls" },
-  { value: "boys", label: "Boys", kids: true, match: (p) => p.audience === "boys" },
+  { value: "girls", label: "Girls", kids: true, match: isForGirls },
+  { value: "boys", label: "Boys", kids: true, match: isForBoys },
   {
     value: "baby-toddler",
     label: "Baby & Toddler",
