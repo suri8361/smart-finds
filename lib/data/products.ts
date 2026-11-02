@@ -32,6 +32,10 @@ import { isProductPublic } from "@/lib/affiliate";
  *                      One of the 10 values in lib/data/audiences.ts
  *                      (AudienceType in types/catalog.ts). Omit for anything
  *                      that isn't clothing/fashion.
+ *   kidsFor           optional, kids finds only (kids clothing, toys, baby
+ *                      gear): "girls", "boys" or "both" — the Kids section's
+ *                      Girls / Boys split ("both" shows under both). When
+ *                      missing, the site works it out from `audience`.
  *   occasion          optional, clothing/fashion items only — WHEN it's
  *                      typically worn: "weekday", "shabbos", or "both". See
  *                      lib/data/occasions.ts (OccasionType in
@@ -166,6 +170,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0d048q4U",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Amazon haul great finds.",
   },
   {
@@ -175,6 +180,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0hcWZUez",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Amazon haul great finds.",
   },
   {
@@ -184,6 +190,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B03B6VTYv",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Amazon haul great finds.",
   },
   {
@@ -193,6 +200,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B00luRG7u",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Amazon haul great finds.",
   },
   {
@@ -202,6 +210,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0bP43hmS",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "261 pieces. Amazon haul great finds.",
   },
   {
@@ -211,6 +220,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B02WjNaPB",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "237 pieces. Amazon haul great finds.",
   },
   {
@@ -515,6 +525,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Reversible kids beanie.",
   },
   {
@@ -525,6 +536,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "12 beanies in one pack.",
   },
   {
@@ -535,6 +547,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Kids cuffed knit beanie.",
   },
   {
@@ -546,6 +559,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Beanie, shawl and gloves set.",
   },
   {
@@ -557,6 +571,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Kids beanie.",
   },
   {
@@ -568,6 +583,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Hat set with shawl.",
   },
   {
@@ -579,6 +595,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Knit beanie with a bow.",
   },
   {
@@ -590,6 +607,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Kids beanie. Tons of colors! 3 sizes.",
   },
   {
@@ -600,6 +618,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "More kids winter hats, gloves and shawls.",
   },
   {
@@ -610,6 +629,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Kids winter hats, gloves and shawls.",
   },
   {
@@ -798,6 +818,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B07GhwfRg",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     holidays: ["chanukah"],
     description: "Super cute and pretty! Great Chanuka gift. Great reviews!",
   },
@@ -808,6 +829,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0hI6wmNa",
     store: "Amazon",
     category: "toys",
+    kidsFor: "boys",
     recommendationLabel: "personally_tried",
     description: "Adorable pull back car includes the mat! Great gift for boy age 1-5.",
   },
@@ -1026,6 +1048,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0fiOuPXA",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     holidays: ["chanukah"],
     description: "Great Chanuka gift.",
   },
@@ -1036,6 +1059,7 @@ export const products: Product[] = [
     affiliateUrl: "https://link.amazon/B0hpZj6uG",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     holidays: ["purim"],
     description: "Want to be ahead of the game? Think Purim! Banana costume, size 6T and 10T.",
   },
@@ -1047,6 +1071,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "2 pair gloves.",
   },
   {
@@ -1057,6 +1082,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "pajamas",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "2 pack cotton PJs, size 12M-14/16.",
   },
   {
@@ -1134,6 +1160,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pol5hnnhc2q",
     store: "Temu",
     category: "toys",
+    kidsFor: "both",
     description: "36 pieces. Ages 3 and up. Random colors.",
   },
   {
@@ -1152,6 +1179,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pu2z1t4tk1z",
     store: "Temu",
     category: "toys",
+    kidsFor: "girls",
     description: "Little princess bead dotting stickers and pen.",
   },
   {
@@ -1182,6 +1210,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Gorgeous shabbos jacket/coat. Size 4-7.",
   },
   {
@@ -1192,6 +1221,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Baby version.",
   },
   {
@@ -1202,6 +1232,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Fur lined coat. Size 13-16. Different options in link.",
   },
   {
@@ -1212,6 +1243,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Teens coat. Size 13-16.",
   },
   {
@@ -1222,6 +1254,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Teen coat. Size 13-16.",
   },
   {
@@ -1232,6 +1265,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Young teen fleece lined coat. Size 7-14.",
   },
   {
@@ -1353,6 +1387,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Size 3/4-7/8.",
   },
   {
@@ -1363,6 +1398,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "2 piece corduroy. Size 2/3-5/6.",
   },
   {
@@ -1373,6 +1409,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Corduroy dress. Great reviews! More colors.",
   },
   {
@@ -1383,6 +1420,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Size 4-7.",
   },
@@ -1394,6 +1432,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Comes with the green sweater but I match it to a black turtleneck. Size 4-7.",
   },
@@ -1405,6 +1444,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "tops",
     audience: "girls",
+    kidsFor: "girls",
     description: "Pair with this turtleneck. More colors available.",
   },
   {
@@ -1415,6 +1455,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Same thing in corduroy.",
   },
   {
@@ -1425,6 +1466,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "I have the black one. Sizes 4T-11/12.",
   },
@@ -1568,6 +1610,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Lightweight layering jacket in Frappe Quilted.",
   },
   {
@@ -1657,6 +1700,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4zaQzSZ",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Indoor and outdoor trampoline in pink or blue.",
   },
   {
@@ -1676,6 +1720,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ii0VKx",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     holidays: ["chanukah"],
     description: "Fidget toys and prizes for kids. Great for Chanukah.",
   },
@@ -1724,6 +1769,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls puffer vest, size 8-12.",
   },
   {
@@ -1734,6 +1780,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Teen girls corduroy coat. More styles in this link. Size 13-16.",
   },
   {
@@ -1744,6 +1791,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls sweater, size 8-13.",
   },
   {
@@ -1754,6 +1802,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Little girls hooded sweatshirt, size 3/4-13/14.",
   },
   {
@@ -1764,6 +1813,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Teen coat, size 13-16.",
   },
   {
@@ -1845,6 +1895,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "coats-jackets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Kids 80% down-filled coat.",
   },
   {
@@ -1865,6 +1916,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Lacoste watch, 33mm, 5ATM water resistant.",
   },
   {
@@ -1893,6 +1945,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Boys down alternative coat.",
   },
   {
@@ -1903,6 +1956,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Kids down alternative coat, size 1-7T.",
   },
   {
@@ -1913,6 +1967,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Adorable girls suspender skirt. More colors.",
   },
@@ -1924,6 +1979,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     recommendationLabel: "personally_tried",
     description: "Boys' sweatshirt.",
   },
@@ -2017,6 +2073,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls reversible DKNY coat.",
   },
   {
@@ -2027,6 +2084,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls coat DKNY. Size 4-16. More colors.",
   },
   {
@@ -2037,6 +2095,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls coat. Size 4-7.",
   },
   {
@@ -2047,6 +2106,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls coat. Size 12-16.",
   },
   {
@@ -2138,6 +2198,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4hMj2H7",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Melissa & Doug Fire Chief role play costume.",
   },
   {
@@ -2147,6 +2208,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4zknEv6",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Adorable kids wood play kitchen.",
   },
   {
@@ -2226,6 +2288,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "jumpsuits",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Gerber baby 5-pack onesie.",
   },
   {
@@ -2276,6 +2339,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "New on Amazon Hunter girls sherpa lined jacket. Size 2T-12.",
   },
   {
@@ -2305,6 +2369,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ARNbNX",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Kids love singing? This is the perfect gift! More colors.",
   },
   {
@@ -2314,6 +2379,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4zn3r8c",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     holidays: ["chanukah"],
     description: "Buy your Chanukah gifts. 100-piece magnetic tiles race track.",
   },
@@ -2324,6 +2390,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/47DCp0a",
     store: "Amazon",
     category: "baby-gear",
+    kidsFor: "both",
     description: "Stokke YOYO3 Travel Stroller.",
   },
   {
@@ -2333,6 +2400,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4i2Uo6l",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Connect 4 game.",
   },
   {
@@ -2705,6 +2773,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4xURANy",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     holidays: ["yom-tov"],
     description: "Chol Hamoed activity outdoor/indoor game.",
   },
@@ -2716,6 +2785,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Beautiful girls sweater, some sizes only. Size 5/6-13/14.",
   },
   {
@@ -2745,6 +2815,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3VNCmfB",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     holidays: ["yom-tov"],
     description: "Great at-home Chol Hamoed activity—no wifi needed, you do need a screen though.",
   },
@@ -2766,6 +2837,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls shabbos coat—detachable bow. Size 7-14.",
   },
   {
@@ -2776,6 +2848,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls shabbos coat. Size 7-14.",
   },
   {
@@ -2807,6 +2880,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sets",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Cute baby girl sweatset.",
   },
   {
@@ -2867,6 +2941,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Fur lined zip up sweatshirt. Size 0-3M-4T. More colors, including pink.",
   },
   {
@@ -2877,6 +2952,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Cute girls sweatshirt with lots more options. 95% cotton. Size 6-14.",
   },
   {
@@ -3690,6 +3766,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pdh8p7k7flh",
     store: "Temu",
     category: "toys",
+    kidsFor: "both",
     description: "Needle felting embroidery kit for beginners.",
   },
   {
@@ -3699,6 +3776,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pefd4pqzbzm",
     store: "Temu",
     category: "toys",
+    kidsFor: "both",
     description: "4pcs elegant diamond painting bookmarks.",
   },
   {
@@ -3708,6 +3786,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/poyn7qixcd3",
     store: "Temu",
     category: "toys",
+    kidsFor: "both",
     description: "40 page mosaic colored book.",
   },
   {
@@ -3717,6 +3796,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pqivpel3rl0",
     store: "Temu",
     category: "toys",
+    kidsFor: "girls",
     description: "Personalized initial pearl art.",
   },
   {
@@ -3756,6 +3836,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4r2fLHI",
     store: "Amazon",
     category: "toys",
+    kidsFor: "girls",
     description: "Friendship bracelet making kit.",
   },
   {
@@ -3765,6 +3846,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3UIpDKR",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "DIY mosaic photo frame craft kit.",
   },
   {
@@ -3774,6 +3856,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ypMnO7",
     store: "Amazon",
     category: "toys",
+    kidsFor: "girls",
     description: "DIY flower craft kit with magic dyeing bouquet maker.",
   },
   {
@@ -3783,6 +3866,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4ypIcSr",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "DIY wooden magnets craft kit.",
   },
   {
@@ -3792,6 +3876,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4iipR5b",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Gem and gels window art suncatcher.",
   },
   {
@@ -3801,6 +3886,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/p8gngdeqw6n",
     store: "Temu",
     category: "toys",
+    kidsFor: "girls",
     description: "Hello Kitty DIY pearl painting mosaic art.",
   },
   {
@@ -3810,6 +3896,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/ppozajdgpvd",
     store: "Temu",
     category: "toys",
+    kidsFor: "both",
     description: "Wooden painting craft kit for kids, glow in the dark.",
   },
   {
@@ -3819,6 +3906,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pq05l8l1qa6",
     store: "Temu",
     category: "toys",
+    kidsFor: "both",
     description: "566-piece DIY keychain making craft set.",
   },
   {
@@ -3828,6 +3916,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/peaie0v6aug",
     store: "Temu",
     category: "toys",
+    kidsFor: "both",
     description: "Personalize a puzzle and have your child put it together.",
   },
   {
@@ -3846,6 +3935,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pcul0i8omyu",
     store: "Temu",
     category: "toys",
+    kidsFor: "both",
     description: "Marbling art craft kit.",
   },
   {
@@ -3855,6 +3945,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/prfev7sgepk",
     store: "Temu",
     category: "toys",
+    kidsFor: "both",
     description: "Magic 3D foam texture painting kit.",
   },
   {
@@ -3864,6 +3955,7 @@ export const products: Product[] = [
     affiliateUrl: "https://temu.to/k/pou86s5t661",
     store: "Temu",
     category: "toys",
+    kidsFor: "both",
     description: "Pearl painting kit with floral basket design.",
   },
   {
@@ -3926,6 +4018,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "girls",
+    kidsFor: "girls",
     description: "Pretty girls earring. More options in link.",
   },
   {
@@ -3969,6 +4062,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys sweatshirt with collar. Size 4-7.",
   },
   {
@@ -3979,6 +4073,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls jacket. Size 8-12.",
   },
   {
@@ -3989,6 +4084,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Tween cropped bomber coat. Size 8-12, comes in black and brown.",
   },
   {
@@ -4038,6 +4134,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     audience: "girls",
+    kidsFor: "girls",
     description: "Adorable red girls T-strap shoe. More color/options in link.",
   },
   {
@@ -4048,6 +4145,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     audience: "girls",
+    kidsFor: "girls",
     description: "While looking for the boys shabbos shoes, I came across this pretty girls shabbos T-strap. Different colors and styles in link.",
   },
   {
@@ -4068,6 +4166,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Looks like laces but is velcro. Also available in black, black patent and white.",
   },
   {
@@ -4078,6 +4177,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     audience: "boys",
+    kidsFor: "boys",
     description: "Toddler/boy lace shoes.",
   },
   {
@@ -4088,6 +4188,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     audience: "boys",
+    kidsFor: "boys",
     description: "Toddler/boy laces shoe.",
   },
   {
@@ -4098,6 +4199,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Suede loafers.",
   },
   {
@@ -4108,6 +4210,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "shoes",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Toddler boys loafers. Lots of colors.",
   },
   {
@@ -4128,6 +4231,7 @@ export const products: Product[] = [
     store: "U.S. Polo Assn.",
     category: "accessories",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Pretty watch. I have this for a high school girl. Free shipping and 20% off with code LABOR20.",
   },
@@ -4150,6 +4254,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Teen girls corduroy fleece lined coat. Size 13-16. Black, brown, white. Reviews say it's warm.",
   },
   {
@@ -4181,6 +4286,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "boots",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Adorable baby booties. Size 18-25.",
   },
   {
@@ -4275,6 +4381,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sweaters",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Kids knit collar sweater.",
   },
   {
@@ -4285,6 +4392,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls coat. Size 4-7.",
   },
   {
@@ -4295,6 +4403,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Teen zip-up. Size 13-16.",
   },
   {
@@ -4305,6 +4414,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Big kid zip-up. Size 8-13.",
   },
   {
@@ -4315,6 +4425,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     holidays: ["sukkos"],
     description: "Kids zip-up, perfect for the Sukkah! Size 4-7. Lots of prints.",
   },
@@ -4326,6 +4437,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls stylish brown plaid Shabbos dress. Size 4-7.",
   },
   {
@@ -4336,6 +4448,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Elegant girls black Shabbos dress. Size 4-7.",
   },
   {
@@ -4346,6 +4459,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls winter top. Size 1/2-7/8.",
   },
   {
@@ -4378,6 +4492,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shoes",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Prewalker baby shoes.",
   },
   {
@@ -4389,6 +4504,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "jumpsuits",
     audience: "unisex-kids",
+    kidsFor: "both",
     recommendationLabel: "personally_tried",
     description: "Silly Sallies. Lots of colors.",
   },
@@ -4401,6 +4517,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sweaters",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Boys sweatshirt. 6M-6T.",
   },
   {
@@ -4412,6 +4529,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shoes",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Baby winter prewalkers.",
   },
   {
@@ -4423,6 +4541,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sweaters",
     audience: "toddler-boy",
+    kidsFor: "both",
     description: "So cute! Boys sweat top.",
   },
   {
@@ -4593,6 +4712,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls brown Shabbos jumper. Size 4-7.",
   },
   {
@@ -4603,6 +4723,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls brown plaid jumper. Size 4-7.",
   },
   {
@@ -4614,6 +4735,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls knit suspender dress. Size 2-8.",
   },
   {
@@ -4624,6 +4746,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Kids brown linen Shabbos jumper. Size 2T-7/8y.",
   },
   {
@@ -4716,6 +4839,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Girls Shabbos cardigan. Size 2/3-14.",
   },
@@ -4727,6 +4851,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Teen girl padded coat with leopard print lining. Size 13-16.",
   },
   {
@@ -4737,6 +4862,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Teen winter coat, shiny and fleece-lined. Size 13-16.",
   },
   {
@@ -4777,6 +4903,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Elegant off-white Shabbos coat. Right now there is only size 14 in stock.",
   },
   {
@@ -4787,6 +4914,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Shabbos coat in black and camel. Size 13-16.",
   },
   {
@@ -4797,6 +4925,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Teen sizes 13-16.",
   },
   {
@@ -4826,6 +4955,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3Cq3qFb",
     store: "AliExpress",
     category: "toys",
+    kidsFor: "both",
     description: "Jacks, latest kids game. My kids had a blast playing with it!",
   },
   {
@@ -4847,6 +4977,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Elegant black toddler girl Shabbos dress with matching baby. Comes in 2 colors. 9M-3T.",
   },
   {
@@ -4858,6 +4989,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "tops",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Baby bodysuit, 6M-24M.",
   },
   {
@@ -5039,6 +5171,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "New in! Girls dark gray shabbos coat, size 2/3y-7. Collar is removable for a different look!",
   },
   {
@@ -5050,6 +5183,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Girls shabbos jumper, size 18M-6T. Free returns within 15 days. Use code LDUS02 for $2 off orders.",
   },
   {
@@ -5060,6 +5194,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Elegant baby/toddler dress up to size 3.",
   },
   {
@@ -5070,6 +5205,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Beautiful baby girls knit set.",
   },
   {
@@ -5080,6 +5216,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Beautiful baby knit set.",
   },
   {
@@ -5120,6 +5257,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "skirts",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls leopard skirt, size 8-12.",
   },
   {
@@ -5130,6 +5268,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "The corduroy leopard family edit: Baby/toddler sweat set, size 6/9M-2/3y. Use it with a black legging if you don't like the pants.",
   },
   {
@@ -5140,6 +5279,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Baby/toddler overalls, size 3/6M-2/3Y.",
   },
   {
@@ -5150,6 +5290,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Baby/toddler option 2, size 0/1M-2/3Y.",
   },
   {
@@ -5160,6 +5301,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Young boy leopard shirt, size 4-7.",
   },
   {
@@ -5170,6 +5312,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Toddler boy shirt, size 6/9M-2/3y.",
   },
   {
@@ -5180,6 +5323,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Toddler girls jumper up to size 2/3y.",
   },
   {
@@ -5190,6 +5334,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls sweatshirt, size 8-12.",
   },
   {
@@ -5200,6 +5345,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys half zip, size 8-12.",
   },
   {
@@ -5211,6 +5357,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Boys/girls Kipling imitation black briefcase.",
   },
   {
@@ -5221,6 +5368,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Two-piece corduroy jumper and T-shirt, size 4-7.",
   },
   {
@@ -5231,6 +5379,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "So pretty! Girls weekday corduroy leopard dress, size 4-7.",
   },
   {
@@ -5337,6 +5486,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Adorable baby girl knit Shabbos set. Sweater and pants sold separately.",
   },
   {
@@ -5348,6 +5498,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "skirts",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls' plaid midi skirt, size 3-10/12.",
   },
   {
@@ -5359,6 +5510,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "skirts",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching girl skirt. Runs short, size 2/3-14.",
   },
   {
@@ -5370,6 +5522,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "jumpsuits",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Boys' plaid shorts, size 12/18m-5/6t.",
   },
   {
@@ -5381,6 +5534,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "More baby/toddler options, up to size 3.",
   },
   {
@@ -5392,6 +5546,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Lots of baby/toddler options, up to size 3.",
   },
   {
@@ -5403,6 +5558,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "jumpsuits",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Another off-white baby/toddler set, up to size 6.",
   },
   {
@@ -5414,6 +5570,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Adorable baby/toddler set, up to size 6.",
   },
   {
@@ -5425,6 +5582,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "jumpsuits",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Pretty baby/toddler matching, up to size 6/7.",
   },
   {
@@ -5436,6 +5594,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "skirts",
     audience: "girls",
+    kidsFor: "girls",
     description: "Beautiful kids' brown plaid skirt, size 2-15/16.",
   },
   {
@@ -5447,6 +5606,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "jumpsuits",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Baby/toddler black option, up to size 6.",
   },
   {
@@ -5458,6 +5618,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Another baby/toddler option, up to size 6.",
   },
   {
@@ -5469,6 +5630,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Matching baby/toddler, up to size 2-3.",
   },
   {
@@ -5489,6 +5651,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys' plaid button down shirt, size 7-12.",
   },
   {
@@ -5499,6 +5662,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Beautiful boys' collared t-shirt, size 4-12.",
   },
   {
@@ -5509,6 +5673,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys' stripe t-shirt with collar, size 6-12.",
   },
   {
@@ -5519,6 +5684,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching young boys' corduroy shirt, size 4-7.",
   },
   {
@@ -5529,6 +5695,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Corduroy boys' shirt, size 8-12.",
   },
   {
@@ -5539,6 +5706,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys' denim shirt, size 8-12. 60% cotton.",
   },
   {
@@ -5549,6 +5717,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Oversized boys' knit sweater, size 8-12.",
   },
   {
@@ -5559,6 +5728,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys' winter knit sweater, size 8-13/14.",
   },
   {
@@ -5599,6 +5769,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "accessories",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Toddler hair clips, 2-piece set in brown velvet.",
   },
   {
@@ -5610,6 +5781,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Brown matching dress and romper set for sisters, ages 0-6Y.",
   },
   {
@@ -5620,6 +5792,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Beautiful toddler girl dress with big bow detail.",
   },
   {
@@ -5630,6 +5803,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Matching baby knit top with bow decor.",
   },
   {
@@ -5641,6 +5815,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "tops",
     audience: "girls",
+    kidsFor: "girls",
     description: "Pretty white shirt, sizes 3/4-7/8.",
   },
   {
@@ -5651,6 +5826,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Double collar toddler button down blouse. Other options available.",
   },
   {
@@ -5661,6 +5837,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Big collar toddler button down blouse in white.",
   },
   {
@@ -5671,6 +5848,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Toddler blouse option for ages 0-3 years.",
   },
   {
@@ -5681,6 +5859,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Different toddler blouse options. Perfect for layering under a romper. Sizes 6/9M-2/3Y.",
   },
   {
@@ -5691,6 +5870,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Pretty girls jumper and shirt set, sizes 2/3-7.",
   },
   {
@@ -5701,6 +5881,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Matching toddler girls knit 2-piece skirt set, sizes 6/9M-2/3Y.",
   },
   {
@@ -5722,6 +5903,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Lots of options for 2-piece baby/toddler girl sets.",
   },
   {
@@ -5732,6 +5914,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "So cute! Baby/toddler girls 2-piece set, sizes 6/9M-2/3Y.",
   },
   {
@@ -5763,6 +5946,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Mock neck Shabbos sweater, comes in 3 colors. Free returns within 15 days.",
   },
   {
@@ -5774,6 +5958,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Beautiful speckled knit Shabbos sweater in gray and beige, sizes 3M-6T. Free returns within 15 days.",
   },
   {
@@ -5784,6 +5969,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "boys",
+    kidsFor: "boys",
     description: "Beautiful Shabbos chunky sweater, sizes 18M-8Y. Use coupon USBS03 for $3 off $15. Free returns within 15 days.",
   },
   {
@@ -5794,6 +5980,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys chunky knit sweater, sizes 3/6M-6Y. Other colors available too.",
   },
   {
@@ -5915,6 +6102,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "coats-jackets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Kids coat, size 12M-6T. Has great reviews, lots of colors. 15-day free return.",
   },
   {
@@ -5966,6 +6154,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys winter Shabbos coat, 2 colors: blue and beige. 15-day returns.",
   },
   {
@@ -5977,6 +6166,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls winter Shabbos coat. Size 3T-12T, 3 colors: pink, beige, purple. 15-day returns.",
   },
   {
@@ -5987,6 +6177,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "cardigans",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls cardigan, size 4-7.",
   },
   {
@@ -5997,6 +6188,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys half zip sweater, size 4-7.",
   },
   {
@@ -6007,6 +6199,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Matching baby, size 3/6M-2/3Y.",
   },
   {
@@ -6017,6 +6210,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls corduroy dress, size 4-8.",
   },
   {
@@ -6107,6 +6301,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "boys",
+    kidsFor: "boys",
     description: "Brown boys Shabbos coat, size 4-12.",
   },
   {
@@ -6117,6 +6312,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "boys",
+    kidsFor: "boys",
     description: "Fur lined Shabbos coat, size 4-7. Black and gray.",
   },
   {
@@ -6127,6 +6323,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Gray, comes in size 9/12M-2/3Y.",
   },
   {
@@ -6137,6 +6334,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "boys",
+    kidsFor: "boys",
     description: "Hooded Shabbos coat, size 2/3-8.",
   },
   {
@@ -6147,6 +6345,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys plaid Shabbos coat, size 4-8.",
   },
   {
@@ -6157,6 +6356,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "boys",
+    kidsFor: "boys",
     description: "Zippered Shabbos coat, fur lined, size 4-7.",
   },
   {
@@ -6167,6 +6367,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "boys",
+    kidsFor: "boys",
     description: "Double breasted hooded boys Shabbos coat, size 4-7.",
   },
   {
@@ -6177,6 +6378,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "boys",
+    kidsFor: "boys",
     description: "Gorgeous padded warm boys Shabbos coat, size 3-11.",
   },
   {
@@ -6259,6 +6461,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "pajamas",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Adorable family matching pajamas/tunic/nightgown. Has great reviews.",
   },
   {
@@ -6329,6 +6532,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "New in! Girls pink corduroy jumper, sizes 4-7.",
   },
   {
@@ -6339,6 +6543,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "jumpsuits",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Adorable baby girl romper, sizes 6/9M-2/3T.",
   },
   {
@@ -6350,6 +6555,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Easy kids dress, sizes 18M-6T.",
   },
   {
@@ -6360,6 +6566,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Baby bracelet lengths from 9cm-18cm.",
   },
   {
@@ -6410,6 +6617,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls embroidery set with shirt, strap skirt, and pants.",
   },
   {
@@ -6420,6 +6628,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Children's LOU dresses, tops, skirts, and more.",
   },
   {
@@ -6430,6 +6639,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "tops",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching blue corduroy collection.",
   },
   {
@@ -6509,6 +6719,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys corduroy shirts. Other colors available.",
   },
   {
@@ -6519,6 +6730,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Adorable kids reversible puffer vest.",
   },
   {
@@ -6529,6 +6741,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching big girl version, size 8-12.",
   },
   {
@@ -6549,6 +6762,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Brown corduroy jumper, comes with the shirt. Size 4T-9.",
   },
   {
@@ -6559,6 +6773,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls plaid Shabbos dress, size 4-7.",
   },
   {
@@ -6589,6 +6804,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "pajamas",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Adorable AS PJ collection. Use code SB521PVHYAK5 for $1 off.",
   },
   {
@@ -6617,6 +6833,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sandals",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "More kids Uggs.",
   },
   {
@@ -6637,6 +6854,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "boots",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Kids Uggs, size 21-36. Lots of colors and bootie style also.",
   },
   {
@@ -6647,6 +6865,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Shabbos shoes.",
   },
   {
@@ -6657,6 +6876,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shoes",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Leather kids shoes.",
   },
   {
@@ -6667,6 +6887,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "The New Society leopard dress, size 12M-12Y.",
   },
   {
@@ -6677,6 +6898,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls black denim shirtdress, size 8-12.",
   },
   {
@@ -6687,6 +6909,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Pretty boys Shabbos sweater, off white with brown stitching, 6/9M-2/3Y.",
   },
   {
@@ -6707,6 +6930,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys cute top, size 4-7.",
   },
   {
@@ -6735,6 +6959,7 @@ export const products: Product[] = [
     affiliateUrl: "https://s.click.aliexpress.com/e/_c36jjINZ",
     store: "AliExpress",
     category: "toys",
+    kidsFor: "both",
     holidays: ["sukkos"],
     description: "Adorable 3D puzzle Sukkah kit. Entertain your kids between day camp and school.",
   },
@@ -6835,6 +7060,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "bags",
     audience: "toddler-girl",
+    kidsFor: "both",
     description: "Adorable toddler briefcase.",
   },
   {
@@ -6845,6 +7071,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "So cute! 2-piece velour princess set comes in a few colors. Size 6/9M-2/3y.",
   },
   {
@@ -6855,6 +7082,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Pink comes in matching size 4-7.",
   },
   {
@@ -6865,6 +7093,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "pajamas",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "2-piece velour burgundy PJs. 6/9m-2/3y.",
   },
   {
@@ -6875,6 +7104,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Cute velour 2-piece Friday night pj/robe comes in 3 colors. I would hem up the ruffle on the bottom of the pants or just use it with a black legging. Size 9/12m-4y.",
   },
   {
@@ -6885,6 +7115,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "pajamas",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Cute 2-piece Friday night pjs/robe. Size 9/12M-2-3y.",
   },
   {
@@ -6895,6 +7126,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching size 4-7.",
   },
   {
@@ -6905,6 +7137,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Family matching plaid set.",
   },
   {
@@ -7036,6 +7269,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Adorable konges slojd kids briefcase comes in small and large. Free returns within 15 days.",
   },
   {
@@ -7096,6 +7330,7 @@ export const products: Product[] = [
     store: "DKNY",
     category: "shoes",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Beautiful DKNY teen school shoes. Real leather in black or brown suede.",
   },
   {
@@ -7106,6 +7341,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sweaters",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Adorable kids N21 sweatshirt, compare at $129 in local stores. Lots of options: sweaters, polos, dresses, skirts.",
   },
   {
@@ -7136,6 +7372,7 @@ export const products: Product[] = [
     store: "Walmart",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Walmart leggings, sizes 18M-5T.",
   },
   {
@@ -7146,6 +7383,7 @@ export const products: Product[] = [
     store: "Walmart",
     category: "accessories",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Sizes 0-18M.",
   },
   {
@@ -7156,6 +7394,7 @@ export const products: Product[] = [
     store: "Target",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Was asked for a good fit/quality legging. Toddler boys/girls leggings from Target.",
   },
@@ -7188,6 +7427,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching velour Shabbos outfit.",
   },
   {
@@ -7198,6 +7438,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Family matching robe collection.",
   },
   {
@@ -7208,6 +7449,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching robe collection.",
   },
   {
@@ -7218,6 +7460,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching brown plaid Shabbos set.",
   },
   {
@@ -7228,6 +7471,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching Shabbos set.",
   },
   {
@@ -7238,6 +7482,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Cute girls brown jumper, sizes 3-7.",
   },
   {
@@ -7248,6 +7493,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys polo sweatshirt with collar, sizes 2/3T-7/8. Use code AEHT6GPI6K8M to get $2 off.",
   },
   {
@@ -7258,6 +7504,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching gray denim set.",
   },
   {
@@ -7268,6 +7515,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "both",
     description: "Cute boys top, sizes 2/3T-14/16.",
   },
   {
@@ -7278,6 +7526,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Cute boys top, sizes 9M-7.",
   },
   {
@@ -7288,6 +7537,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Cute baby/toddler bear sweatshirt set. Lots of different options in the link.",
   },
   {
@@ -7298,6 +7548,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Baby/toddler boy cute sweatshirt.",
   },
   {
@@ -7308,6 +7559,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Baby/toddler boy plaid shirt.",
   },
   {
@@ -7318,6 +7570,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "3-pack baby boy/girl sweatshirt.",
   },
   {
@@ -7328,6 +7581,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "baby-boy",
+    kidsFor: "boys",
     description: "Baby hooded top 2-pack.",
   },
   {
@@ -7338,6 +7592,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching sizes 4-7.",
   },
   {
@@ -7348,6 +7603,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "baby-boy",
+    kidsFor: "boys",
     description: "Baby waffle hooded top, 3-pack.",
   },
   {
@@ -7358,6 +7614,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Cute baby boy/girl hooded top. Comes in lots of colors.",
   },
   {
@@ -7481,6 +7738,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls denim jumper. Size 4-10.",
   },
   {
@@ -7610,6 +7868,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Tween girls denim jumper. Size 8-12.",
   },
   {
@@ -7620,6 +7879,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "cardigans",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Girls cardigan with collar. Size 2/3-14.",
   },
@@ -7631,6 +7891,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "girls",
+    kidsFor: "girls",
     description: "Adorable pure cotton shirt. Size 2/3-7.",
   },
   {
@@ -7641,6 +7902,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "girls",
+    kidsFor: "girls",
     description: "Brown floral shirt. Size 4-7.",
   },
   {
@@ -7651,6 +7913,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls floral shirt. Layer it under a black robe. Size 2/3-7.",
   },
   {
@@ -7661,6 +7924,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "girls",
+    kidsFor: "girls",
     description: "Adorable young girls shirt. Size 4-7.",
   },
   {
@@ -7671,6 +7935,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Kids knit sweater, size 4-7.",
   },
   {
@@ -7681,6 +7946,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Beautiful knit striped boys sweater, size 4-8. Lots of color options.",
   },
   {
@@ -7701,6 +7967,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sweaters",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Cute boys sweatshirt, 24M-6T.",
   },
   {
@@ -7742,6 +8009,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls denim jumper, size 3/4-7.",
   },
   {
@@ -7752,6 +8020,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching girls size 8-12.",
   },
   {
@@ -7762,6 +8031,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls denim dress, 2 styles, size 3/4-7.",
   },
   {
@@ -7782,6 +8052,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Adorable girls checked jumper and shirt (sold separately), size 2/3-9/10. 15-day free returns.",
   },
   {
@@ -7792,6 +8063,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "coats-jackets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Girls/boys bomber coat, 3 colors, size 6-12M-18y.",
   },
   {
@@ -7812,6 +8084,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Turtlenecks for layering those jumpers, 6-9M up to size 3. Loads of different options on this link.",
   },
   {
@@ -7822,6 +8095,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Plaid 2-piece jumper, comes with the turtleneck, size 2-3y-7y.",
   },
   {
@@ -7832,6 +8106,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Green corduroy toddler jumper.",
   },
   {
@@ -7842,6 +8117,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Pretty toddler girls Shabbos jumper, up to size 3.",
   },
   {
@@ -7852,6 +8128,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Toddler corduroy long sleeve dress.",
   },
   {
@@ -7862,6 +8139,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Cute toddler brown corduroy jumper.",
   },
   {
@@ -7872,6 +8150,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching size 4-7.",
   },
   {
@@ -7882,6 +8161,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Adorable toddler girl corduroy jumper, lots of options.",
   },
   {
@@ -7892,6 +8172,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Similar options to the above toddler girl dress.",
   },
   {
@@ -7902,6 +8183,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Toddler girls dress.",
   },
   {
@@ -7912,6 +8194,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "So cute! Toddler denim cherry print jumper.",
   },
   {
@@ -7922,6 +8205,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Cute toddler denim dress.",
   },
   {
@@ -7932,6 +8216,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Adorable toddler dress, lots of options.",
   },
   {
@@ -7942,6 +8227,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Black and white striped dress.",
   },
   {
@@ -7952,6 +8238,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Brown stripe long sleeve dress, comes in 3 colors.",
   },
   {
@@ -7962,6 +8249,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Winter brown stripe dress.",
   },
   {
@@ -7972,6 +8260,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Adorable polo shirt jumper. Tons of colors.",
   },
   {
@@ -7982,6 +8271,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Perfect to start the year, layer with a shell if you need long sleeve. Lots of styles.",
   },
   {
@@ -8003,6 +8293,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Girls Shabbos tights.",
   },
@@ -8014,6 +8305,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls corduroy jumper, size 4-7.",
   },
   {
@@ -8024,6 +8316,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Corduroy burgundy dress with plaid, size 4-7.",
   },
   {
@@ -8034,6 +8327,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Toddler girl long sleeve corduroy dress, size 4-7. Comes in a few colors.",
   },
   {
@@ -8044,6 +8338,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "toddler-girl",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Toddler girls black and blue denim jumper, 12M-6T. It does run a little wide—I took it in for a narrow kid.",
   },
@@ -8055,6 +8350,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "skirts",
     audience: "girls",
+    kidsFor: "girls",
     description: "Size 3-4y to 7-8y.",
   },
   {
@@ -8095,6 +8391,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls gray Shabbos dress, size 4-7.",
   },
   {
@@ -8105,6 +8402,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Beautiful girls Shabbos dress, size 4-7. 2 colors.",
   },
   {
@@ -8125,6 +8423,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Stunning princess style Shabbos coat, size 4-7. Comes in 4 colors.",
   },
   {
@@ -8135,6 +8434,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Baby girl matching coat, size 3m-3y.",
   },
   {
@@ -8145,6 +8445,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Pretty girls beige Shabbos coat with hat, size 4-7. Comes in 3 colors.",
   },
   {
@@ -8165,6 +8466,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "boys",
+    kidsFor: "boys",
     description: "Gorgeous boys thick coat, size 3-11. 4 colors.",
   },
   {
@@ -8175,6 +8477,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Cute girls sweatshirt, size 3-6.",
   },
   {
@@ -8185,6 +8488,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls matching jacket/coat, size 4-7.",
   },
   {
@@ -8195,6 +8499,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching big girl, size 8-12.",
   },
   {
@@ -8205,6 +8510,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Baby hat, lots of options.",
   },
   {
@@ -8215,6 +8521,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "More kids hat options, also scarves.",
   },
   {
@@ -8225,6 +8532,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching green velour.",
   },
   {
@@ -8235,6 +8543,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Matching family weekday set. Green velour.",
   },
   {
@@ -8245,6 +8554,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls Shabbos dress size 8-12, can be dressed up with a cardigan.",
   },
   {
@@ -8275,6 +8585,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Lots of options in style and color.",
   },
   {
@@ -8285,6 +8596,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "pajamas",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "So cute! Family matching PJ. Night dress covers the knee and matching baby stretchy.",
   },
   {
@@ -8305,6 +8617,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sweaters",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "THE NEW SOCIETY sweatshirt size 2-12.",
   },
   {
@@ -8315,6 +8628,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "THE NEW SOCIETY girls dresses size 2-12.",
   },
   {
@@ -8325,6 +8639,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "girls",
+    kidsFor: "girls",
     description: "Adorable hair accessories.",
   },
   {
@@ -8335,6 +8650,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Family matching Shabbos robe set. Navy velour. Has great reviews! Teen version too!",
   },
   {
@@ -8345,6 +8661,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching velour Shabbos robe set.",
   },
   {
@@ -8355,6 +8672,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Cute boys sweatshirt top size 2-12. Comes in 2 colors; collar is removable. Free returns within 15 days.",
   },
   {
@@ -8365,6 +8683,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching black denim cherry collection.",
   },
   {
@@ -8375,6 +8694,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "shabbos-elegant",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching Shabbos collection.",
   },
   {
@@ -8385,6 +8705,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching navy/denim set.",
   },
   {
@@ -8395,6 +8716,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching black denim pinstripe.",
   },
   {
@@ -8405,6 +8727,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching denim set.",
   },
   {
@@ -8415,6 +8738,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Family matching weekday outfits. Dusty pink and muted blue washed denim.",
   },
   {
@@ -8515,6 +8839,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Young girls denim long sleeve dress size 4-7.",
   },
   {
@@ -8525,6 +8850,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching big girl size 8-12.",
   },
   {
@@ -8535,6 +8861,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Cherry print denim romper, also comes in heart print.",
   },
   {
@@ -8545,6 +8872,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Boys/girls denim romper, 6-9M–2-3y.",
   },
   {
@@ -8555,6 +8883,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Cute denim romper, cotton. 6-9m–2-3y, without tee.",
   },
   {
@@ -8607,6 +8936,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "3 colors, size 2-3y–10y.",
   },
   {
@@ -8617,6 +8947,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Burgundy family matching: baby boy/girl burgundy romper, size 1M–3Y.",
   },
   {
@@ -8627,6 +8958,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Black or burgundy ribbed onesie, turtleneck.",
   },
   {
@@ -8637,6 +8969,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys corduroy shirt, size 4–12.",
   },
   {
@@ -8647,6 +8980,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls burgundy jumper, size 4–7.",
   },
   {
@@ -8657,6 +8991,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls burgundy jumper with ruffle pocket, size 8–12.",
   },
   {
@@ -8667,6 +9002,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "boys",
     description: "Cute custom toddler briefcase, lots of color options.",
   },
   {
@@ -8677,6 +9013,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "skirts",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Jumper with straps, size 4–7.",
   },
@@ -8688,6 +9025,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Cute toddler briefcase.",
   },
   {
@@ -8698,6 +9036,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Cute corduroy briefcase with front pocket.",
   },
   {
@@ -8708,6 +9047,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "boys",
     description: "Custom toddler briefcase.",
   },
   {
@@ -8718,6 +9058,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Cute toddler briefcase with adjustable straps.",
   },
   {
@@ -8728,6 +9069,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Family girl matching: baby girl weekday dress (you can hem up the plaid so it sticks out just a drop like a peplum top).",
   },
   {
@@ -8738,6 +9080,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching young girls, size 4–7.",
   },
   {
@@ -8748,6 +9091,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching young girls, size 4–7.",
   },
   {
@@ -8758,6 +9102,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching girls, size 8–12.",
   },
   {
@@ -8768,6 +9113,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Cute plaid dress, size 4–7.",
   },
   {
@@ -8778,6 +9124,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "girls",
+    kidsFor: "girls",
     description: "Adorable houndstooth jumper with turtleneck (can be even prettier for Shabbos with an ivory turtleneck), size 4–7.",
   },
   {
@@ -8788,6 +9135,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "sweaters",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Cute, easy, practical baby/toddler top.",
   },
   {
@@ -8798,6 +9146,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "sweaters",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Adorable hooded denim patch heart sweat top, baby/toddler girl, 3 colors.",
   },
   {
@@ -8808,6 +9157,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "sweaters",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Cute cherry print sweat top, baby/toddler girl.",
   },
   {
@@ -8818,6 +9168,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "sweaters",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Adorable baby girl/toddler hooded sweat top, comes in black, gray and white.",
   },
   {
@@ -8828,6 +9179,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "sweaters",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Adorable baby/toddler girls sweat top, 3-6m–18-24m.",
   },
   {
@@ -8838,6 +9190,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "3-piece baby/toddler girls top.",
   },
   {
@@ -8848,6 +9201,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Cute hooded baby/toddler girl sweatshirt.",
   },
   {
@@ -8858,6 +9212,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Baby/toddler girl cherry hooded sweatshirt.",
   },
   {
@@ -8868,6 +9223,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Adorable shabbos vintage-looking set. Can put tights underneath in the winter. 3-6m to 18-24m.",
   },
   {
@@ -8878,6 +9234,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Girls 2-piece sweat set, 6-9m to 2-3y. Comes in a few colors.",
   },
   {
@@ -8888,6 +9245,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Baby/toddler girl floral quilted jacket, 6-9m to 2-3y. Comes in 2 colors.",
   },
   {
@@ -8898,6 +9256,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching young girl size 4-7.",
   },
   {
@@ -8908,6 +9267,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Adorable baby/toddler girls hooded heart top, 6-9m to 2-3y.",
   },
   {
@@ -8918,6 +9278,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-girl",
+    kidsFor: "both",
     description: "Cute baby/toddler girls top, 6-9m to 2-3y.",
   },
   {
@@ -8928,6 +9289,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "2-piece green overall with plaid shirt, 6-9m to 2-3y. Comes in more colors too.",
   },
   {
@@ -8938,6 +9300,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "tops",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching plaid shirt. Comes in more colors too. Size 4 to 13-14.",
   },
   {
@@ -8948,6 +9311,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "baby-boy",
+    kidsFor: "boys",
     description: "Kangaroo pocket overalls.",
   },
   {
@@ -8958,6 +9322,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "boys",
+    kidsFor: "boys",
     description: "2-piece sweat set.",
   },
   {
@@ -8968,6 +9333,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Unisex Paris hooded sweatshirts.",
   },
   {
@@ -8978,6 +9344,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Cute corduroy overall, boys and girls, lots of cute colors. 6-9m to 2-3y.",
   },
   {
@@ -8988,6 +9355,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "tops",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Boys brown sweat top, 9-12m to 3-4y.",
   },
   {
@@ -8998,6 +9366,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Adorable boys/girls corduroy jacket. Size 6-9m to 2-3y.",
   },
   {
@@ -9008,6 +9377,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Unisex sweat sets, 6-9m to 2-3y.",
   },
   {
@@ -9018,6 +9388,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "sweaters",
     audience: "baby-boy",
+    kidsFor: "boys",
     description: "Adorable toddler boy sweat top, 3-6m to 18-24m.",
   },
   {
@@ -9028,6 +9399,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Toddler boy plaid buttoned hooded top—can wear as a top or as a jacket. The burgundy can be for girls (perfect for twins).",
   },
   {
@@ -9038,6 +9410,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-boy",
+    kidsFor: "boys",
     recommendationLabel: "personally_tried",
     description: "Toddler boy sweatshirt, 6-9m to 2-3y.",
   },
@@ -9049,6 +9422,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Adorable quilted hooded sweat top, 6-9m to 2-3y.",
   },
   {
@@ -9059,6 +9433,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "6 sweat tops, size 6-9m to 2-3y.",
   },
   {
@@ -9069,6 +9444,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Toddler boy hooded sweatshirt, 6-9m to 2-3y.",
   },
   {
@@ -9079,6 +9455,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching size 4-7.",
   },
   {
@@ -9089,6 +9466,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching size 8-12.",
   },
   {
@@ -9099,6 +9477,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Toddler boy hooded sweat top, size 6-9m to 2-3y.",
   },
   {
@@ -9109,6 +9488,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching size 4-7.",
   },
   {
@@ -9119,6 +9499,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Toddler boys 2-piece sweat set. Pants look a little wide; you can put it on with a black legging if you like a slimmer look. Size 6-9m to 2-3y.",
   },
   {
@@ -9129,6 +9510,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Perfect boys Rosh Chodesh sweater, size 4-7. Comes without the collar.",
   },
   {
@@ -9139,6 +9521,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls black denim long sleeve dress, sizes 4-8.",
   },
   {
@@ -9149,6 +9532,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "pajamas",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Baby boy/toddler set of 2 cotton pajamas with cartoon car and fire truck print, sizes 9 months-3 years.",
   },
   {
@@ -9159,6 +9543,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "pajamas",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Simple cotton unisex pajamas.",
   },
   {
@@ -9169,6 +9554,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "pajamas",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Flower cotton pajamas, 9 months-3 years.",
   },
   {
@@ -9179,6 +9565,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "pajamas",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Bow cotton pajamas, 9 months-3 years.",
   },
   {
@@ -9189,6 +9576,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "pajamas",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Ice cream print cotton pajamas, 9 months-3 years.",
   },
   {
@@ -9199,6 +9587,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "pajamas",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Adorable 2-set cotton pajamas with animal print, 9 months-size 3.",
   },
   {
@@ -9209,6 +9598,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Baby/toddler sweater, up to size 3.",
   },
   {
@@ -9219,6 +9609,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     description: "Girls striped sweater can be matched with the boys striped posted earlier, sizes 4-7. Comes in black, purple, light blue (can be for boys too).",
   },
   {
@@ -9229,6 +9620,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Baby boy 2-piece knit set, up to size 3.",
   },
   {
@@ -9239,6 +9631,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching sizes 4-7 (comes with the pants).",
   },
   {
@@ -9249,6 +9642,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching big boy sizes 8-12.",
   },
   {
@@ -9259,6 +9653,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching young boy sweater, sizes 4-7.",
   },
   {
@@ -9269,6 +9664,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Baby/toddler boy striped knit top. Lots of colors.",
   },
   {
@@ -9279,6 +9675,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Adorable baby/toddler fleece 2-piece easy outfit with hooded top. Green and black.",
   },
   {
@@ -9289,6 +9686,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "jumpsuits",
     audience: "toddler-boy",
+    kidsFor: "boys",
     description: "Baby/toddler boy 2-piece denim set, overall is 90% cotton, up to size 2-3 years. Lots of different color options.",
   },
   {
@@ -9310,6 +9708,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Matching toddler sizes 4-7.",
   },
   {
@@ -9320,6 +9719,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Adorable baby girl 2-piece knit.",
   },
   {
@@ -9330,6 +9730,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Brown plaid jumper comes with the turtleneck, sizes 4-7.",
   },
   {
@@ -9340,6 +9741,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Black denim toddler dress, sizes 4-7 (right now only size 7 is available but keep checking as they usually restock). Comes in 3 colors.",
   },
   {
@@ -9350,6 +9752,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Brown plaid dress, sizes 4-7. Seeing lots of browns in the local stores.",
   },
   {
@@ -9360,6 +9763,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Adorable toddler burgundy corduroy dress, sizes 4-7.",
   },
   {
@@ -9370,6 +9774,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "baby-boy",
+    kidsFor: "boys",
     description: "Adorable 2-piece corduroy romper—collar can be removed.",
   },
   {
@@ -9380,6 +9785,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching young boys sizes 4-7. You can throw out the overalls for the bigger boys—it's still worth the buy.",
   },
   {
@@ -9390,6 +9796,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "boys",
+    kidsFor: "boys",
     description: "Matching young kid bomber jacket, sizes 4-8.",
   },
   {
@@ -9400,6 +9807,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "boys",
+    kidsFor: "boys",
     description: "Big kid sizes 8-12.",
   },
   {
@@ -9410,6 +9818,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "coats-jackets",
     audience: "unisex-kids",
+    kidsFor: "both",
     recommendationLabel: "personally_tried",
     description: "Adorable toddler bomber jacket. Comes in 3 colors.",
   },
@@ -9481,6 +9890,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     description: "Adorable 2-piece toddler jumper. Size 4-7. Yes, it comes with the turtleneck.",
   },
   {
@@ -9491,6 +9901,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Matching younger version (without turtleneck).",
   },
   {
@@ -9586,6 +9997,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "coats-jackets",
     audience: "unisex-kids",
+    kidsFor: "both",
     recommendationLabel: "personally_tried",
     description: "Duck down kids coats. Comes in a few colors and styles.",
   },
@@ -9607,6 +10019,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "bags",
     audience: "girls",
+    kidsFor: "girls",
     description: "Cute elementary briefcase. Lots of cute colors, 2 sizes. Has great reviews! Free 90-day returns.",
   },
   {
@@ -9667,6 +10080,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Cute elementary school briefcase. 3 colors.",
   },
   {
@@ -9677,6 +10091,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Small cute toddler briefcase. Lots of colors.",
   },
   {
@@ -9697,6 +10112,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Cute personalized corduroy kids briefcase.",
   },
   {
@@ -9707,6 +10123,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Adorable toddler corduroy briefcase. Lots of colors.",
   },
   {
@@ -9818,6 +10235,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "boys",
+    kidsFor: "boys",
     description: "Boys Shabbos coat. Comes in 4 colors.",
   },
   {
@@ -9828,6 +10246,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "skirts",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Toddler girl options to go with the top.",
   },
   {
@@ -9838,6 +10257,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "shabbos-elegant",
     audience: "toddler-girl",
+    kidsFor: "girls",
     description: "Adorable baby girl Shabbos knit top. 3-6m to 3-4y.",
   },
   {
@@ -9984,6 +10404,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "sweaters",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Another family sweatshirt. Size 1-10.",
   },
   {
@@ -9994,6 +10415,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "shabbos-elegant",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Baby Shabbos jacket/coat, navy outline. Size 9-12m to 2-3 yrs.",
   },
   {
@@ -10004,6 +10426,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Same thing, another color. Size 8-12.",
   },
   {
@@ -10014,6 +10437,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Size 4-7.",
   },
   {
@@ -10024,6 +10448,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Adorable family matching outfit. Skirt runs short. The top alone is adorable; comes in 2 matching colors. Size 4-7.",
   },
   {
@@ -10034,6 +10459,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sets",
     audience: "girls",
+    kidsFor: "girls",
     description: "Size 8-12.",
   },
   {
@@ -10044,6 +10470,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "baby-girl",
+    kidsFor: "girls",
     description: "Baby burgundy sweater.",
   },
   {
@@ -10054,6 +10481,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "girls",
     description: "Not a perfect match but similar. Boys burgundy sweatshirt.",
   },
   {
@@ -10064,6 +10492,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "boys",
+    kidsFor: "boys",
     description: "Not a perfect match but similar. Boys burgundy sweatshirt.",
   },
   {
@@ -10238,6 +10667,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4vRlssW",
     store: "Amazon",
     category: "baby-gear",
+    kidsFor: "both",
     description: "2-piece.",
   },
   {
@@ -10247,6 +10677,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4vQmfdQ",
     store: "Amazon",
     category: "baby-gear",
+    kidsFor: "girls",
     description: "Cute floral 2-pack.",
   },
   {
@@ -10256,6 +10687,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3TewdYQ",
     store: "Amazon",
     category: "baby-gear",
+    kidsFor: "girls",
     description: "Silicone 4-pack.",
   },
   {
@@ -10265,6 +10697,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/45pPlWk",
     store: "Amazon",
     category: "baby-gear",
+    kidsFor: "girls",
     description: "Baby pacifier clip pack of 3. Lots of color combinations.",
   },
   {
@@ -10516,6 +10949,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Adorable kids bracelet.",
   },
@@ -10527,6 +10961,7 @@ export const products: Product[] = [
     store: "AliExpress",
     category: "accessories",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Adorable kids bracelet.",
   },
@@ -10538,6 +10973,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Personalized kids gold bracelet with custom engraved text.",
   },
   {
@@ -10548,6 +10984,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Personalized kids bracelet.",
   },
   {
@@ -10558,6 +10995,7 @@ export const products: Product[] = [
     store: "Temu",
     category: "accessories",
     audience: "unisex-kids",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Adorable adjustable ring, fits kids. I have it for my 3-year-old.",
   },
@@ -10830,6 +11268,7 @@ export const products: Product[] = [
     store: "Amazon",
     category: "sneakers",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Girls sneakers. Super comfortable and looks adorable. Comes in a few colors.",
   },
@@ -10871,6 +11310,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/459SrOb",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Found on Amazon.",
   },
   {
@@ -10880,6 +11320,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4bQ7ujI",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Puzzles for the adults to help pass the day😉",
   },
   {
@@ -10889,6 +11330,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4gMwps0",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Diamond art.",
   },
   {
@@ -10907,6 +11349,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yr9Xeg",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Colored feathers.",
   },
   {
@@ -10916,6 +11359,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/44DPmpr",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Entertain your kids on Tisha B'Av with these craft ideas. Air dry clay.",
   },
   {
@@ -10934,6 +11378,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4flK1Ii",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Craft sticks.",
   },
   {
@@ -10952,6 +11397,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4w597lQ",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Adhesive gem rhinestone stickers.",
   },
   {
@@ -10961,6 +11407,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yAzRMW",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Chenille stems for crafts.",
   },
   {
@@ -11007,6 +11454,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4fttTEF",
     store: "Amazon",
     category: "toys",
+    kidsFor: "girls",
     description: "Mess-free arts and crafts for kids 4 and up.",
   },
   {
@@ -11016,6 +11464,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4yv7e3A",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Kids diamond art kit with 5D diamonds.",
   },
   {
@@ -11025,6 +11474,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4wuOS1n",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Rainbow scratch art notebooks.",
   },
   {
@@ -11034,6 +11484,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4fpGF70",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Non-toxic 2 oz. cans.",
   },
   {
@@ -11043,6 +11494,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3RM2Psm",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Play doh tool set for kids ages 4-8.",
   },
   {
@@ -11052,6 +11504,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4wOpXW1",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "All-in-one craft kit with pipe cleaners in 3 layered storage.",
   },
   {
@@ -11117,6 +11570,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "sweaters",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Pullover sweatshirt with bow back print and 'Have A Good Day' letter graphic on Shein.",
   },
@@ -11155,6 +11609,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "girls",
     description: "Adorable kids briefcase.",
   },
   {
@@ -11176,6 +11631,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "skirts",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Casual A-line denim skirt.",
   },
@@ -11187,6 +11643,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "dresses",
     audience: "girls",
+    kidsFor: "girls",
     recommendationLabel: "personally_tried",
     description: "Black chambray dress. Runs a little big, washes beautifully and looks adorable on.",
   },
@@ -11208,6 +11665,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Lightweight backpack with 14\" laptop compartment. Perfect for school.",
   },
   {
@@ -11236,6 +11694,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4vunijf",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "This one entertains the kids for hours.",
   },
   {
@@ -11245,6 +11704,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/3SUMt13",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Sand art for the little kids.",
   },
   {
@@ -11254,6 +11714,7 @@ export const products: Product[] = [
     affiliateUrl: "https://amzn.to/4pufGfs",
     store: "Amazon",
     category: "toys",
+    kidsFor: "both",
     description: "Diamond art kit. Perfect to entertain kids on Tisha B'Av.",
   },
   {
@@ -11264,6 +11725,7 @@ export const products: Product[] = [
     store: "SHEIN",
     category: "bags",
     audience: "unisex-kids",
+    kidsFor: "both",
     description: "Adorable briefcase.",
   },
   {
