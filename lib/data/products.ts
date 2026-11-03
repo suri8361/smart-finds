@@ -60,7 +60,7 @@ export const products: Product[] = [
   {
     slug: "acrylic-menorah",
     name: "Acrylic Menorah",
-    image: "/finds/acrylic-menorah-1.jpg",
+    image: "/finds/acrylic-menorah-2.jpg",
     currentPrice: 36.05,
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3NWVTSR",
     store: "AliExpress",
