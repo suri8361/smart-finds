@@ -3323,16 +3323,6 @@ export const products: Product[] = [
     description: "French-style elegant half-turtleneck puff sleeve top. Size S-XL.",
   },
   {
-    slug: "elegant-womens-white-thin-hollow-sweater-soft-and",
-    name: "Women's Hollow Knit Sweater",
-    image: "https://img.kwcdn.com/product/fancy/62df1c86-8115-4487-9a6d-7061c39c80f0.jpg",
-    affiliateUrl: "https://temu.to/k/p7xqo8uy67w",
-    store: "Temu",
-    category: "shabbos-elegant",
-    audience: "women",
-    description: "Elegant hollow sweater. Size S-XXL.",
-  },
-  {
     slug: "heavy-studded-drill-round-neck-soft-and-plush",
     name: "Studded Round Neck Sweater",
     image: "https://img.kwcdn.com/product/fancy/91db2da0-9db1-4894-94b7-e883f931bbe1.jpg",
