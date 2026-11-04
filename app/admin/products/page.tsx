@@ -82,7 +82,7 @@ export default function AdminProductsPage() {
                   <ProductImage product={product} className="h-12 w-12 rounded-lg" iconClassName="h-5 w-5 text-brand-300" />
                 </td>
                 <td className="px-4 py-3">
-                  <Link href={`/products/${product.slug}`} className="font-medium text-foreground hover:text-brand-600">
+                  <Link prefetch={false} href={`/products/${product.slug}`} className="font-medium text-foreground hover:text-brand-600">
                     {product.name}
                   </Link>
                   <p className="text-xs text-foreground/50">{product.slug}</p>

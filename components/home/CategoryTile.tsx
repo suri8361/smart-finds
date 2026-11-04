@@ -6,7 +6,7 @@ import type { HomeCategory } from "@/lib/data/home";
 export function CategoryTile({ entry }: { entry: HomeCategory }) {
   const { category, count, cover } = entry;
   return (
-    <Link
+    <Link prefetch={false}
       href={`/category/${category.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-lg"
     >
@@ -16,6 +16,8 @@ export function CategoryTile({ entry }: { entry: HomeCategory }) {
           <img
             src={cover.image}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
           />
         ) : null}

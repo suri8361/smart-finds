@@ -45,6 +45,7 @@ export default async function CollectionPage({ params }: PageProps<"/collections
       </div>
 
       <ProductGrid
+        split
         products={collectionProducts}
         emptyTitle="This collection is still being curated"
         emptyDescription="Check back soon for picks in this collection."

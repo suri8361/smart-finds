@@ -43,6 +43,7 @@ export default async function RetailerPage({ params }: PageProps<"/retailers/[sl
       </div>
 
       <ProductGrid
+        split
         products={storeProducts}
         emptyTitle={`No ${retailer.name} finds yet`}
         emptyDescription="Check back soon — we're always adding new finds."

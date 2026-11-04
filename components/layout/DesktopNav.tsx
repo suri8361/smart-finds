@@ -24,7 +24,7 @@ function NavDropdown({ label, links }: { label: string; links: MenuLink[] }) {
         <ul className="flex flex-col">
           {links.map((link) => (
             <li key={link.href}>
-              <Link
+              <Link prefetch={false}
                 href={link.href}
                 className={
                   link.sub
@@ -46,7 +46,7 @@ function NavDropdown({ label, links }: { label: string; links: MenuLink[] }) {
 export function DesktopNav() {
   return (
     <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
-      <Link href="/new" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+      <Link prefetch={false} href="/new" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
         New Finds
       </Link>
       <details className="group relative">
@@ -60,7 +60,7 @@ export function DesktopNav() {
               const Icon = category.icon;
               return (
                 <li key={category.slug}>
-                  <Link
+                  <Link prefetch={false}
                     href={`/category/${category.slug}`}
                     className="flex items-start gap-3 rounded-xl p-3 hover:bg-surface-muted"
                   >
@@ -79,16 +79,16 @@ export function DesktopNav() {
 
       <NavDropdown label="Fashion" links={getFashionMenu()} />
       <NavDropdown label="Yom Tov & Holidays" links={getHolidayMenu()} />
-      <Link href="/category/tried-true" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+      <Link prefetch={false} href="/category/tried-true" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
         Tried &amp; True
       </Link>
 
       {getCollectionsWithProducts().length > 0 ? (
-        <Link href="/collections" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
+        <Link prefetch={false} href="/collections" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted">
           Collections
         </Link>
       ) : null}
-      <Link
+      <Link prefetch={false}
         href="/about"
         className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-muted"
       >

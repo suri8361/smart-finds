@@ -20,7 +20,7 @@ export function SectionHeading({ eyebrow, title, description, action }: SectionH
         {description ? <p className="mt-2 text-sm text-foreground/70">{description}</p> : null}
       </div>
       {action ? (
-        <Link
+        <Link prefetch={false}
           href={action.href}
           className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-brand-600 hover:text-brand-700"
         >

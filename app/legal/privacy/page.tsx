@@ -47,7 +47,7 @@ export default function PrivacyPage() {
       <LegalSection title="Cookies">
         <p>
           Smart Finds itself doesn&apos;t set advertising or tracking cookies. See our{" "}
-          <Link href="/legal/cookies">Cookie Policy</Link> for details.
+          <Link prefetch={false} href="/legal/cookies">Cookie Policy</Link> for details.
         </p>
       </LegalSection>
       <LegalSection title="Children">

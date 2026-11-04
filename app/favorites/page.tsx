@@ -19,7 +19,7 @@ export default async function FavoritesPage() {
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-brand-600">Saved for later</p>
         <h1 className="mt-2 font-display text-h1 font-bold tracking-tight text-foreground">Your Favorites</h1>
       </div>
-      <FavoritesList products={getPublicProducts()} />
+      <FavoritesList slugs={getPublicProducts().map((product) => product.slug)} />
     </Container>
   );
 }

@@ -24,7 +24,7 @@ export function Header() {
           <div className="hidden md:block md:w-64 lg:w-80">
             <SearchBar />
           </div>
-          <Link
+          <Link prefetch={false}
             href="/favorites"
             aria-label="Favorites"
             className="inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground hover:bg-surface-muted"

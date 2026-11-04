@@ -47,7 +47,7 @@ function one(value: string | string[] | undefined): string | undefined {
 
 function Chip({ href, active, children }: { href: string; active: boolean; children: ReactNode }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={href}
       scroll={false}
       aria-current={active ? "true" : undefined}
@@ -202,6 +202,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps<"
       </div>
 
       <ProductGrid
+        split
         products={categoryProducts}
         emptyTitle="No picks in this category yet"
         emptyDescription="We're still curating this one — check back soon or browse another category."

@@ -21,7 +21,7 @@ export function ProductCard({ product, compact = false }: { product: Product; co
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-shadow hover:shadow-lg">
       <div className="relative">
-        <Link href={`/products/${product.slug}`} className="block">
+        <Link prefetch={false} href={`/products/${product.slug}`} className="block">
           <ProductImage product={product} className="h-56 w-full" iconClassName="h-14 w-14 text-brand-300" />
         </Link>
         <FavoriteButton slug={product.slug} name={product.name} className="absolute right-3 top-3" />
@@ -35,7 +35,7 @@ export function ProductCard({ product, compact = false }: { product: Product; co
         ) : null}
 
         <div>
-          <Link href={`/products/${product.slug}`}>
+          <Link prefetch={false} href={`/products/${product.slug}`}>
             <h3 className="text-sm font-semibold text-foreground hover:text-brand-700">{product.name}</h3>
           </Link>
           <p className="mt-1 line-clamp-2 text-sm text-foreground/70">{product.description}</p>
@@ -63,7 +63,7 @@ function CompactProductCard({ product, showBadge }: { product: Product; showBadg
   return (
     <div className="group/card flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-shadow hover:shadow-lg">
       <div className="relative">
-        <Link href={`/products/${product.slug}`} className="block">
+        <Link prefetch={false} href={`/products/${product.slug}`} className="block">
           <ProductImage product={product} className="aspect-square w-full" iconClassName="h-12 w-12 text-brand-300" />
         </Link>
         <FavoriteButton slug={product.slug} name={product.name} className="absolute right-2 top-2 sm:right-3 sm:top-3" />
@@ -75,7 +75,7 @@ function CompactProductCard({ product, showBadge }: { product: Product; showBadg
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-3 sm:p-4">
-        <Link href={`/products/${product.slug}`}>
+        <Link prefetch={false} href={`/products/${product.slug}`}>
           <h3 className="line-clamp-2 text-[13px] font-medium leading-snug text-foreground hover:text-brand-700 sm:text-sm">
             {product.name}
           </h3>

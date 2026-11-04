@@ -25,7 +25,7 @@ export function Footer() {
     <footer className="border-t border-border bg-surface-muted">
       <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-5">
         <div className="sm:col-span-2 lg:col-span-2">
-          <Link href="/" className="font-display tracking-tight text-xl font-bold text-foreground">
+          <Link prefetch={false} href="/" className="font-display tracking-tight text-xl font-bold text-foreground">
             Smart Finds
           </Link>
           <p className="mt-3 max-w-sm text-sm text-foreground/70">
@@ -41,7 +41,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2">
             {categories.map((category) => (
               <li key={category.slug}>
-                <Link href={`/category/${category.slug}`} className="text-sm text-foreground/70 hover:text-foreground">
+                <Link prefetch={false} href={`/category/${category.slug}`} className="text-sm text-foreground/70 hover:text-foreground">
                   {category.name}
                 </Link>
               </li>
@@ -54,7 +54,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2">
             {retailers.map((retailer) => (
               <li key={retailer.slug}>
-                <Link href={`/retailers/${retailer.slug}`} className="text-sm text-foreground/70 hover:text-foreground">
+                <Link prefetch={false} href={`/retailers/${retailer.slug}`} className="text-sm text-foreground/70 hover:text-foreground">
                   {retailer.name}
                 </Link>
               </li>
@@ -67,7 +67,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2">
             {trustLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-foreground/70 hover:text-foreground">
+                <Link prefetch={false} href={link.href} className="text-sm text-foreground/70 hover:text-foreground">
                   {link.label}
                 </Link>
               </li>
@@ -84,14 +84,14 @@ export function Footer() {
             retailers. If you buy something through a link on this site, we may earn a commission — at no
             additional cost to you.{AMAZON_ENABLED ? " As an Amazon Associate I earn from qualifying purchases." : ""} Affiliate relationships never influence which products we choose to feature.
             Read more on our{" "}
-            <Link href="/how-we-make-money" className="underline hover:text-foreground">
+            <Link prefetch={false} href="/how-we-make-money" className="underline hover:text-foreground">
               How We Make Money
             </Link>{" "}
             page.
           </p>
           <div className="flex flex-wrap gap-x-4 gap-y-2">
             {legalLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="whitespace-nowrap hover:text-foreground">
+              <Link prefetch={false} key={link.href} href={link.href} className="whitespace-nowrap hover:text-foreground">
                 {link.label}
               </Link>
             ))}

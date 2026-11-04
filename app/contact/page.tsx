@@ -32,7 +32,7 @@ export default function ContactPage() {
       <LegalSection title="About orders">
         <p>
           Smart Finds isn&apos;t a store, so we can&apos;t see or change orders. For shipping, returns or refunds, please
-          contact the store you bought from. More in our <Link href="/legal/terms">Terms of Use</Link>.
+          contact the store you bought from. More in our <Link prefetch={false} href="/legal/terms">Terms of Use</Link>.
         </p>
       </LegalSection>
     </LegalPage>

@@ -34,7 +34,7 @@ export default function HowWeMakeMoneyPage() {
       </LegalSection>
       <LegalSection title="More detail">
         <p>
-          See our full <Link href="/legal/affiliate-disclosure">Affiliate Disclosure</Link>, or write to us: <ContactEmail />
+          See our full <Link prefetch={false} href="/legal/affiliate-disclosure">Affiliate Disclosure</Link>, or write to us: <ContactEmail />
         </p>
       </LegalSection>
     </LegalPage>

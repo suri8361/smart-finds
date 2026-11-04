@@ -6,12 +6,17 @@ import { Search, X } from "lucide-react";
 import type { Product } from "@/types/catalog";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { searchProducts } from "@/lib/search";
+import { useRemoteProducts } from "@/lib/remoteCatalog";
 import { MessageUsCallout } from "@/components/contact/MessageUs";
 
 const SUGGESTIONS = ["Skirts", "Dresses", "Shoes", "Kitchen", "SHEIN", "Temu"];
 
 /** Search box + live results, filtered in the browser as you type. The query is kept in the URL (?q=) so results can be shared. */
-export function SearchResults({ products }: { products: Product[] }) {
+export function SearchResults({ initial, slugs }: { initial: Product[]; slugs: string[] }) {
+  // Full list from the free GitHub copy of the catalog (lib/remoteCatalog.ts); the first cards until it arrives.
+  const remote = useRemoteProducts(slugs);
+  const products = remote && remote.length > 0 ? remote : initial;
+  const loading = remote === null;
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get("q") ?? "";
   const [query, setQuery] = useState(initialQuery);
@@ -33,7 +38,7 @@ export function SearchResults({ products }: { products: Product[] }) {
   const results = useMemo(() => searchProducts(products, query), [products, query]);
   const hasQuery = query.trim().length > 0;
   // No or few matches: put the "Looking for something specific?" card right under the count.
-  const fewResults = hasQuery && results.length < 4;
+  const fewResults = hasQuery && !loading && results.length < 4;
 
   return (
     <div className="flex flex-col gap-8">
@@ -84,8 +89,10 @@ export function SearchResults({ products }: { products: Product[] }) {
 
       <p className="text-sm text-foreground/60" aria-live="polite">
         {hasQuery
-          ? `${results.length} ${results.length === 1 ? "find" : "finds"} for “${query.trim()}”`
-          : `All ${results.length} finds`}
+          ? loading
+            ? `Searching for “${query.trim()}”…`
+            : `${results.length} ${results.length === 1 ? "find" : "finds"} for “${query.trim()}”`
+          : `All ${loading ? slugs.length : results.length} finds`}
       </p>
 
       {fewResults ? <MessageUsCallout compact /> : null}

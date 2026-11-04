@@ -103,7 +103,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
 
             <p className="text-xs leading-relaxed text-foreground/50">
               Some links on Smart Finds are{" "}
-              <Link
+              <Link prefetch={false}
                 href="/legal/affiliate-disclosure"
                 className="underline decoration-foreground/30 underline-offset-2 transition-colors hover:text-foreground/75"
               >
@@ -122,7 +122,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
             <dt className="text-foreground/60">Category</dt>
             <dd className="font-medium text-foreground">
               {categoryGroup ? (
-                <Link href={`/category/${categoryGroup.slug}`} className="hover:text-brand-600">
+                <Link prefetch={false} href={`/category/${categoryGroup.slug}`} className="hover:text-brand-600">
                   {categoryLabel}
                 </Link>
               ) : (

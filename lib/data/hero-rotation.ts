@@ -125,10 +125,10 @@ export const HERO_SEASONS: Record<HeroSeason, HeroSet[]> = {
       top: { slug: "tween-girl-knit-cardigan-with-embroidered-floral-trim", focus: "center" },
       bottom: { slug: "souflis-french-vintage-autumn-winter-new-thickened-long", focus: "top" },
     },
-    // 7. black velvet & satin gown · enamel tea kettle · girls' black patterned tights (T&T)
+    // 7. black velvet & satin gown · reversible cotton duvet & sheet set · girls' black patterned tights (T&T)
     {
       tall: "women-s-round-neck-long-sleeve-paneled-maxi",
-      top: "enamel-tea-kettle-teakettle-porcelain-water-kettle-classic",
+      top: "reversible-cotton-duvet-and-sheet-set",
       bottom: { slug: "1pair-girls-solid-casual-fishnet-tights-for-daily", focus: "center" },
     },
     // 8. lantern sleeve satin dress · knit pullover in the snow · boys' navy sailboat sweatshirt (T&T)

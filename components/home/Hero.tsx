@@ -25,7 +25,7 @@ function HeroPhoto({
   focus?: HeroPhotoFocus;
 }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={`/products/${product.slug}`}
       className={cn(
         "group relative block overflow-hidden rounded-3xl border border-white/70 bg-surface shadow-card ring-1 ring-black/5",
@@ -98,7 +98,7 @@ export function Hero({ now = new Date() }: { now?: Date }) {
 
           <p className="mt-6 max-w-lg text-xs leading-relaxed text-foreground/50">
             Some links on Smart Finds are{" "}
-            <Link
+            <Link prefetch={false}
               href="/legal/affiliate-disclosure"
               className="underline decoration-foreground/30 underline-offset-2 transition-colors hover:text-foreground/75"
             >

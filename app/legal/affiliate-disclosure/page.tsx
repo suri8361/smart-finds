@@ -74,7 +74,7 @@ export default function AffiliateDisclosurePage() {
 
       <LegalSection title="Questions">
         <p>
-          You can read more on our <Link href="/how-we-make-money">How We Make Money</Link> page, or write to us:{" "}
+          You can read more on our <Link prefetch={false} href="/how-we-make-money">How We Make Money</Link> page, or write to us:{" "}
           <ContactEmail />
         </p>
       </LegalSection>

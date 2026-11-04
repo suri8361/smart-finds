@@ -36,7 +36,7 @@ export function MobileTabBar() {
       {tabs.map(({ href, label, icon: Icon, match }) => {
         const active = match(pathname);
         return (
-          <Link
+          <Link prefetch={false}
             key={href}
             href={href}
             aria-current={active ? "page" : undefined}

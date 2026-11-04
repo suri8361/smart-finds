@@ -34,6 +34,8 @@ export function ProductImage({ product, className, iconClassName = "h-10 w-10 te
         <img
           src={product.image}
           alt={product.name}
+          loading="lazy"
+          decoding="async"
           className={cn("h-full w-full", isFashion ? "object-contain" : "object-cover")}
         />
       </div>

@@ -7,7 +7,7 @@ import Link from "next/link";
  */
 export function Logo() {
   return (
-    <Link href="/" className="inline-flex items-center gap-2 font-display tracking-tight text-xl font-bold text-foreground">
+    <Link prefetch={false} href="/" className="inline-flex items-center gap-2 font-display tracking-tight text-xl font-bold text-foreground">
       <span className="inline-block h-2.5 w-2.5 rounded-full bg-brand-600" aria-hidden="true" />
       Smart Finds
     </Link>

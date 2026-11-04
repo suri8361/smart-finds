@@ -15,8 +15,8 @@ import {
   CATALOG_MEMORY_MS,
   CATALOG_TIMEOUT_MS,
   DATA_SOURCES,
-  PHOTO_BASE,
 } from "@/lib/config/data-source";
+import { withRemotePhotos } from "@/lib/photos";
 
 /**
  * ============================================================================
@@ -31,8 +31,8 @@ import {
  * that doesn't look right, the last good list stays in use (on a fresh server
  * that's the bundled copy in lib/data/products.ts).
  *
- * Photos: a product photo written as "/finds/x.jpg" that is not part of this
- * deploy (a find added after it) is loaded from the data branch (PHOTO_BASE).
+ * Photos: every product photo written as "/finds/x.jpg" is loaded from the
+ * data branch on GitHub Pages (lib/photos.ts), never from this site.
  * ============================================================================
  */
 
@@ -59,10 +59,9 @@ interface RawCatalog {
 
 const IS_BUILD = process.env.NEXT_PHASE === "phase-production-build";
 
-/** Photo paths that ship with this deploy (everything the bundled list points at). */
-const BUNDLED_PHOTOS = new Set<string>(
-  bundledProducts.flatMap((product) => [product.image, ...(product.images ?? [])].filter((src): src is string => Boolean(src)))
-);
+// Photos come from GitHub Pages, never from this site (lib/photos.ts) — the
+// bundled copy too, so a fresh server never sends /finds/ photos from Netlify.
+setLiveProducts(bundledProducts.map(withRemotePhotos));
 
 let status: CatalogStatus = {
   source: "bundled",
@@ -80,11 +79,6 @@ if (IS_BUILD) {
   if (problems.length > 0) {
     throw new Error(`lib/data/hero-rotation.ts breaks the hero rules:\n  - ${problems.join("\n  - ")}`);
   }
-}
-
-function photoUrl(src: string | undefined): string | undefined {
-  if (!src || !src.startsWith("/") || src.startsWith("//") || BUNDLED_PHOTOS.has(src)) return src;
-  return PHOTO_BASE + src.split("/").map(encodeURIComponent).join("/");
 }
 
 function getText(url: string, timeoutMs: number): Promise<string> {
@@ -134,11 +128,7 @@ function parseCatalog(text: string): { version: string; products: Product[]; her
   if (list.length < Math.max(50, Math.floor(bundledProducts.length / 2))) {
     throw new Error(`only ${list.length} products (bundled copy has ${bundledProducts.length})`);
   }
-  const products = list.map((product) => ({
-    ...product,
-    image: photoUrl(product.image),
-    images: product.images?.map((src) => photoUrl(src) ?? src),
-  }));
+  const products = list.map(withRemotePhotos);
 
   let hero: Record<HeroSeason, HeroSet[]> | undefined;
   if (raw.hero && typeof raw.hero === "object") {

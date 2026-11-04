@@ -28,7 +28,7 @@ export default async function NewFindsPage() {
         <p className="mt-3 text-base text-foreground/70">The latest finds on the site, newest first.</p>
       </div>
 
-      <ProductGrid products={newest} emptyTitle="No new finds yet" />
+      <ProductGrid products={newest} emptyTitle="No new finds yet" split />
     </Container>
   );
 }

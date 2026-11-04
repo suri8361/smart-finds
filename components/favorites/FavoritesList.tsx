@@ -2,26 +2,27 @@
 
 import { useSyncExternalStore } from "react";
 import { Heart } from "lucide-react";
-import type { Product } from "@/types/catalog";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { useFavorites } from "@/lib/favorites";
+import { useRemoteProducts } from "@/lib/remoteCatalog";
 
 const noopSubscribe = () => () => {};
 
 /** Saved products, read from this browser's local storage. Most recently saved first. */
-export function FavoritesList({ products }: { products: Product[] }) {
+export function FavoritesList({ slugs }: { slugs: string[] }) {
   const { favorites } = useFavorites();
+  // Product details come from the free GitHub copy of the catalog (bandwidth, Nov 4, 2026);
+  // `slugs` (the public finds) keeps hidden finds out, as before.
+  const publicSlugs = new Set(slugs);
+  const saved = useRemoteProducts(favorites.filter((slug) => publicSlugs.has(slug)));
   // false during server render / hydration, true once running in the browser —
   // avoids flashing the "no favorites" state before local storage is read.
   const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false);
 
-  if (!hydrated) {
+  if (!hydrated || saved === null) {
     return <div className="h-40 animate-pulse rounded-2xl bg-surface-muted" aria-hidden="true" />;
   }
-
-  const bySlug = new Map(products.map((product) => [product.slug, product]));
-  const saved = favorites.map((slug) => bySlug.get(slug)).filter((product): product is Product => Boolean(product));
 
   if (saved.length === 0) {
     return (

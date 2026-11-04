@@ -5,7 +5,7 @@ import { collectionAccentClasses } from "@/lib/utils/collectionAccent";
 
 export function CollectionCard({ collection }: { collection: Collection }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={`/collections/${collection.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-shadow hover:shadow-lg"
     >

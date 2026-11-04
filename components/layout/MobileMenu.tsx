@@ -72,7 +72,7 @@ export function MobileMenu({ fashionLinks, holidayLinks, showCollections = false
         <SearchBar id="menu-search" />
 
         <nav aria-label="Mobile" className="flex flex-col gap-1">
-          <Link
+          <Link prefetch={false}
             href="/new"
             onClick={() => setOpen(false)}
             className="rounded-lg px-3 py-2 text-sm font-semibold text-foreground hover:bg-surface-muted"
@@ -92,7 +92,7 @@ export function MobileMenu({ fashionLinks, holidayLinks, showCollections = false
               </summary>
               <div className="ml-3 flex flex-col border-l border-border pl-2">
                 {group.links.map((link) => (
-                  <Link
+                  <Link prefetch={false}
                     key={link.href}
                     href={link.href}
                     onClick={() => setOpen(false)}
@@ -111,7 +111,7 @@ export function MobileMenu({ fashionLinks, holidayLinks, showCollections = false
           {categories
             .filter((category) => category.slug !== "fashion-style" && category.slug !== "yom-tov-holidays")
             .map((category) => (
-            <Link
+            <Link prefetch={false}
               key={category.slug}
               href={`/category/${category.slug}`}
               onClick={() => setOpen(false)}
@@ -122,7 +122,7 @@ export function MobileMenu({ fashionLinks, holidayLinks, showCollections = false
           ))}
           <div className="my-2 h-px bg-border" />
           {supportLinks.map((link) => (
-            <Link
+            <Link prefetch={false}
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}

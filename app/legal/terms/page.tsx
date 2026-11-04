@@ -31,7 +31,7 @@ export default function TermsPage() {
       <LegalSection title="Affiliate links">
         <p>
           Many links on the site are affiliate links, which may earn us a commission. See our{" "}
-          <Link href="/legal/affiliate-disclosure">Affiliate Disclosure</Link>.
+          <Link prefetch={false} href="/legal/affiliate-disclosure">Affiliate Disclosure</Link>.
         </p>
       </LegalSection>
       <LegalSection title="Using the site">
