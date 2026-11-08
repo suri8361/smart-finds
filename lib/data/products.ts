@@ -11692,7 +11692,7 @@ export const products: Product[] = [
     image: "https://m.media-amazon.com/images/I/91tx3QMwLuL._AC_SL1500_.jpg",
     affiliateUrl: "https://amzn.to/459SrOb",
     store: "Amazon",
-    category: "toys",
+    category: "other",
     description: "Found on Amazon.",
   },
   {
