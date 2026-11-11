@@ -58,6 +58,28 @@ import { isProductPublic } from "@/lib/affiliate";
  */
 export const products: Product[] = [
   {
+    slug: "pearl-screwback-earrings",
+    name: "Pearl Screwback Earrings",
+    image: "/finds/pearl-screwback-earrings-1.jpg",
+    affiliateUrl: "https://link.amazon/B0bIttUqH",
+    store: "Amazon",
+    category: "accessories",
+    audience: "women",
+    recommendationLabel: "personally_tried",
+    description: "Hypoallergenic pearl screwback earrings.",
+  },
+  {
+    slug: "chanukah-candle-lighting-card",
+    name: "Chanukah Candle Lighting Card",
+    image: "/finds/chanukah-candle-lighting-card-1.jpg",
+    currentPrice: 14.29,
+    affiliateUrl: "https://s.click.aliexpress.com/e/_c4alCyrV",
+    store: "AliExpress",
+    category: "home",
+    holidays: ["chanukah"],
+    description: "Great Chanukah gift. Lucite card with the Chanukah candle lighting blessings.",
+  },
+  {
     slug: "melissa-and-doug-wooden-pizza-counter",
     name: "Melissa & Doug Wooden Pizza Counter",
     image: "/finds/melissa-and-doug-wooden-pizza-counter-1.jpg",
@@ -7709,15 +7731,6 @@ export const products: Product[] = [
     audience: "boys",
     kidsFor: "boys",
     description: "Boys cute top, size 4-7.",
-  },
-  {
-    slug: "judaica-lucite-havdalah-plate-tray-modern-round-acrylic",
-    name: "Lucite Havdalah Tray",
-    image: "https://ae-pic-a1.aliexpress-media.com/kf/Sb5f481c90f4044b298ceaa1efed805dar.jpg",
-    affiliateUrl: "https://s.click.aliexpress.com/e/_c3VsN4nH",
-    store: "AliExpress",
-    category: "kitchen",
-    description: "Looking for the perfect Shabbos gift? Havdalah tray.",
   },
   {
     slug: "clear-acrylic-washing-cup-judaica-hand-wash-cup",
