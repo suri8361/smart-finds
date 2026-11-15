@@ -37,12 +37,12 @@
 }
 
 @theme inline {
-  /* Body/UI copy stays in Geist Sans for legibility at small sizes; Fraunces
-     (a warm, soft-grade serif) is reserved for headlines/wordmarks via
+  /* Body/UI copy stays in Geist Sans for legibility at small sizes; Inter
+     (bold, upright, clean sans) is reserved for headlines/wordmarks via
      `font-display` — see app/layout.tsx for the font loading. */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-fraunces);
+  --font-display: var(--font-inter);
 
   /* Base surfaces, re-exposed as bg-background / text-foreground / etc. */
   --color-background: var(--background);

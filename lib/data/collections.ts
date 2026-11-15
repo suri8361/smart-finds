@@ -1,5 +1,5 @@
 import type { Collection } from "@/types/catalog";
-import { products } from "@/lib/data/products";
+import { getPublicProducts } from "@/lib/data/products";
 import { getProductCategoriesInGroup } from "@/lib/data/productCategories";
 
 /**
@@ -36,6 +36,12 @@ export const collections: Collection[] = [
   },
 ];
 
+/** Collections that currently have at least one public product — the homepage only shows these. */
+export function getCollectionsWithProducts(): Collection[] {
+  const used = new Set(getPublicProducts().map((product) => product.collection).filter(Boolean));
+  return collections.filter((collection) => used.has(collection.slug));
+}
+
 export function getCollectionBySlug(slug: string): Collection | undefined {
   return collections.find((collection) => collection.slug === slug);
 }
@@ -44,14 +50,14 @@ export function getCollectionBySlug(slug: string): Collection | undefined {
 export function getCollectionsRelatedToCategory(categoryGroupSlug: string): Collection[] {
   const categoriesInGroup = new Set(getProductCategoriesInGroup(categoryGroupSlug));
   const relatedSlugs = new Set(
-    products.filter((product) => categoriesInGroup.has(product.category) && product.collection).map((product) => product.collection)
+    getPublicProducts().filter((product) => categoriesInGroup.has(product.category) && product.collection).map((product) => product.collection)
   );
   return collections.filter((collection) => relatedSlugs.has(collection.slug));
 }
 
 /** The collection a product belongs to (if any) — powers "Related Collections" on the product detail page. */
 export function getCollectionsContainingProduct(productSlug: string): Collection[] {
-  const product = products.find((p) => p.slug === productSlug);
+  const product = getPublicProducts().find((p) => p.slug === productSlug);
   if (!product?.collection) return [];
   const collection = getCollectionBySlug(product.collection);
   return collection ? [collection] : [];

@@ -5,13 +5,13 @@ import { collectionAccentClasses } from "@/lib/utils/collectionAccent";
 
 export function CollectionCard({ collection }: { collection: Collection }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={`/collections/${collection.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-shadow hover:shadow-lg"
     >
       <div className={`h-32 bg-linear-to-br ${collectionAccentClasses[collection.accent]}`} aria-hidden="true" />
       <div className="flex flex-1 flex-col gap-2 p-5">
-        <h3 className="font-display text-lg font-semibold text-foreground">{collection.title}</h3>
+        <h3 className="font-display tracking-tight text-lg font-bold text-foreground">{collection.title}</h3>
         <p className="text-sm text-foreground/70">{collection.description}</p>
         <span className="mt-auto inline-flex items-center gap-1 pt-2 text-sm font-medium text-brand-600 group-hover:text-brand-700">
           View collection

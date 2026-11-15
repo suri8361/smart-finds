@@ -1,4 +1,4 @@
-import { ChefHat, Cpu, Monitor, Shirt, Sparkles, Tent } from "lucide-react";
+import { Baby, BadgeCheck, CalendarHeart, ChefHat, Cpu, Gem, Monitor, PackageOpen, Shirt, Sparkles, Tent, ToyBrick } from "lucide-react";
 import type { Category } from "@/types/catalog";
 
 /**
@@ -35,6 +35,26 @@ export const categories: Category[] = [
     icon: Shirt,
   },
   {
+    slug: "shabbos-elegant",
+    name: "Shabbos & Elegant",
+    description: "Elegant, modest picks for Shabbos, Yom Tov and simchas",
+    icon: Gem,
+  },
+  {
+    // Built from Product.holidays (not Product.category) — see getProductsByCategoryGroup.
+    slug: "yom-tov-holidays",
+    name: "Yom Tov & Holidays",
+    description: "Finds for Rosh Hashanah, Sukkos, Chanukah, Purim and every Yom Tov",
+    icon: CalendarHeart,
+  },
+  {
+    // Built from recommendationLabel "personally_tried" — finds that were personally tried.
+    slug: "tried-true",
+    name: "Tried & True",
+    description: "Finds we've bought and used ourselves",
+    icon: BadgeCheck,
+  },
+  {
     slug: "beauty-personal-care",
     name: "Beauty & Personal Care",
     description: "Skincare tools, routines & self-care picks",
@@ -51,6 +71,25 @@ export const categories: Category[] = [
     name: "Home Office",
     description: "Desk setups, organization & work-from-home gear",
     icon: Monitor,
+  },
+  {
+    slug: "toys",
+    name: "Toys",
+    description: "Fun, gift-worthy toys, games & party favors for kids",
+    icon: ToyBrick,
+  },
+  {
+    slug: "baby-gear",
+    name: "Baby Gear",
+    description: "Clever baby & toddler essentials for everyday life",
+    icon: Baby,
+  },
+  {
+    // Slug stays "other" (it matches the product category value); shown as "More Finds".
+    slug: "other",
+    name: "More Finds",
+    description: "Handy finds that don't fit anywhere else",
+    icon: PackageOpen,
   },
 ];
 

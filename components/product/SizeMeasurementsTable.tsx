@@ -60,7 +60,7 @@ export function SizeMeasurementsTable({ sizeMeasurements, sizeNote }: SizeMeasur
 
   return (
     <section className="flex flex-col gap-4 border-t border-border pt-10">
-      <h2 className="font-display text-h2 font-semibold text-foreground">Size &amp; Measurements</h2>
+      <h2 className="font-display tracking-tight text-h2 font-bold text-foreground">Size &amp; Measurements</h2>
       <div className="overflow-x-auto rounded-2xl border border-border">
         <table className="w-full min-w-[480px] border-collapse text-left text-sm">
           <thead>

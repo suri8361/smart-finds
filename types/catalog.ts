@@ -3,7 +3,9 @@ import type { LucideIcon } from "lucide-react";
 /**
  * Controlled recommendation-label vocabulary (SRS §1.2) — the only reasons a
  * product may be shown as selected for. Every product carries exactly one.
- * "personally_tried" is the only label allowed to imply firsthand use — never
+ * Optional: a product with no label shows no badge (imported finds get none
+ * unless something real backs it). "personally_tried" is shown as
+ * "Tried & True" and is the only label allowed to imply firsthand use — never
  * apply it to a product nobody on the team has actually used (see the
  * warning in lib/data/products.ts above the sample data).
  */
@@ -15,6 +17,9 @@ export type SelectionReasonType =
   | "community_requested"
   | "great_price"
   | "trending_find";
+
+/** Holidays a product can be tagged for (lib/data/holidays.ts has labels). */
+export type HolidayType = "rosh-hashanah" | "sukkos" | "chanukah" | "purim" | "pesach" | "yom-tov";
 
 /**
  * Who a clothing/fashion product is for (lib/data/audiences.ts has the
@@ -34,6 +39,14 @@ export type AudienceType =
   | "baby-boy"
   | "unisex-kids"
   | "unisex-adult";
+
+/**
+ * Kids finds only (kids clothing, toys, baby gear): who it's for in the Kids
+ * section's Girls / Boys split (Sara, Nov 2, 2026). "both" shows under Girls
+ * AND Boys. Optional: when it's missing the site works it out from `audience`
+ * (girl audiences → girls, boy audiences → boys, anything else → both).
+ */
+export type KidsForType = "girls" | "boys" | "both";
 
 /**
  * WHAT a product is (lib/data/productCategories.ts has the friendly display
@@ -59,6 +72,7 @@ export type ProductCategoryType =
   | "sneakers"
   | "bags"
   | "accessories"
+  | "shabbos-elegant"
   | "beauty"
   | "home"
   | "kitchen"
@@ -126,8 +140,8 @@ export interface Product {
   image?: string;
   /** Additional gallery photos, in display order — powers the thumbnail row and lightbox on the product detail page. `image` above is typically also the first entry here; omit entirely for a single-photo product. */
   images?: string[];
-  /** Current price as a plain number, e.g. 19.99. Always required, always in USD. */
-  currentPrice: number;
+  /** Current price as a plain number in USD, e.g. 19.99. Optional: when there is none (and always for Amazon), the site shows no price. */
+  currentPrice?: number;
   /** The pre-discount price, if this is a deal — shown struck through next to currentPrice. Omit if there's no discount. */
   originalPrice?: number;
   /** The real outbound affiliate/product URL. Opens in a new tab from the "View Find" button. Never shown or derived from `sourceUrl` — the two are edited independently in the admin importer. */
@@ -142,10 +156,16 @@ export interface Product {
   collection?: string;
   /** WHO the item is for — clothing/fashion products only, omit otherwise. One of the 10 values above. */
   audience?: AudienceType;
+  /** Kids finds only: "girls", "boys" or "both" (shows under Girls and Boys). Optional — worked out from `audience` when missing. */
+  kidsFor?: KidsForType;
   /** WHEN it's typically worn — clothing/fashion products only, omit otherwise. One of "weekday", "shabbos", "both". */
   occasion?: OccasionType;
-  /** Exactly one label from the controlled vocabulary above. */
-  recommendationLabel: SelectionReasonType;
+  /** Optional — at most one label from the controlled vocabulary above. Leave it out unless it's meaningful (no badge is shown). */
+  recommendationLabel?: SelectionReasonType;
+  /** Jewish holidays this find is for (from Sara's caption, or a title that names the holiday) — powers the "Yom Tov & Holidays" section. The product keeps its normal `category` too. "yom-tov" = general Yom Tov / Chol Hamoed (shown under All). */
+  holidays?: HolidayType[];
+  /** True for maternity clothing (caption/title says maternity/pregnancy/nursing) — shown under Fashion & Style → Maternity. Keeps its normal clothing `category`. */
+  maternity?: boolean;
   /** One or two sentences — shown on the card and the detail page. */
   description: string;
   sizes?: string[];
@@ -156,4 +176,6 @@ export interface Product {
   sizeNote?: string;
   /** Set true to feature this product in the homepage "Top Picks" section. */
   featured?: boolean;
+  /** Set true to keep a product in the data but off every public page (e.g. a Temu find with no photo yet). Delete the line to show it. */
+  hidden?: boolean;
 }

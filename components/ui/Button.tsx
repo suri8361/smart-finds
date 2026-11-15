@@ -46,7 +46,7 @@ export function Button({ className, variant, size, ...props }: ButtonProps) {
 
   if (props.href !== undefined) {
     const { href, ...rest } = props;
-    return <Link href={href} className={classes} {...rest} />;
+    return <Link prefetch={false} href={href} className={classes} {...rest} />;
   }
 
   return <button className={classes} {...props} />;

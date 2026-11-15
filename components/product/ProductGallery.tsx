@@ -60,7 +60,7 @@ export function ProductGallery({ images, alt, className }: ProductGalleryProps) 
               )}
             >
               {/* eslint-disable-next-line @next/next/no-img-element -- product photos can come from any store's arbitrary domain */}
-              <img src={src} alt="" className="h-full w-full object-contain" />
+              <img src={src} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain" />
             </button>
           ))}
         </div>
