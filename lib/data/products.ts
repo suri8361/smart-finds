@@ -60,6 +60,7 @@ export const products: Product[] = [
   {
     slug: "blue-rhinestone-belt-6",
     name: "Blue Rhinestone Belt (Style 6)",
+    image: "https://ae-pic-a1.aliexpress-media.com/kf/S51c48f6cb867487092bb8b77542f7eccQ.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3CNo9Np",
     store: "AliExpress",
     category: "accessories",
@@ -69,6 +70,7 @@ export const products: Product[] = [
   {
     slug: "blue-rhinestone-belt-5",
     name: "Blue Rhinestone Belt (Style 5)",
+    image: "https://ae-pic-a1.aliexpress-media.com/kf/S8308aec54377451b81f3c94c8a5236c4G.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c35axZHv",
     store: "AliExpress",
     category: "accessories",
@@ -78,6 +80,7 @@ export const products: Product[] = [
   {
     slug: "blue-rhinestone-belt-4",
     name: "Blue Rhinestone Belt (Style 4)",
+    image: "https://ae-pic-a1.aliexpress-media.com/kf/S659f6e4ec5bb41b0bbbb35c6065d61d6N.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3MRsOk7",
     store: "AliExpress",
     category: "accessories",
@@ -87,6 +90,7 @@ export const products: Product[] = [
   {
     slug: "blue-rhinestone-belt-3",
     name: "Blue Rhinestone Belt (Style 3)",
+    image: "https://m.media-amazon.com/images/I/71SLYCAOnNL._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B0eTsuhZ0",
     store: "Amazon",
     category: "accessories",
@@ -96,6 +100,7 @@ export const products: Product[] = [
   {
     slug: "blue-rhinestone-belt-2",
     name: "Blue Rhinestone Belt (Style 2)",
+    image: "https://ae-pic-a1.aliexpress-media.com/kf/Sa55309e94bda4da28c8cfbe1066568d7H.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c3bn72wn",
     store: "AliExpress",
     category: "accessories",
@@ -105,6 +110,7 @@ export const products: Product[] = [
   {
     slug: "blue-rhinestone-belt",
     name: "Blue Rhinestone Belt",
+    image: "https://ae-pic-a1.aliexpress-media.com/kf/S142b76efe0e04c598a60e70e5604e357Y.jpg",
     affiliateUrl: "https://s.click.aliexpress.com/e/_c4ONFMmf",
     store: "AliExpress",
     category: "accessories",
@@ -114,6 +120,7 @@ export const products: Product[] = [
   {
     slug: "dining-room-chandelier",
     name: "Dining Room Chandelier",
+    image: "https://img.kwcdn.com/product/fancy/fc3505cc-afef-4df5-bb5c-411567da09e2.jpg",
     currentPrice: 270.43,
     affiliateUrl: "https://temu.to/k/pijn0vm4u5h",
     store: "Temu",
@@ -124,6 +131,7 @@ export const products: Product[] = [
   {
     slug: "cropped-sweat-top",
     name: "Cropped Sweat Top",
+    image: "https://m.media-amazon.com/images/I/71XmAh8Un-L._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B02HZvB8e",
     store: "Amazon",
     category: "sweaters",
@@ -133,6 +141,7 @@ export const products: Product[] = [
   {
     slug: "3-pack-sweatshirts",
     name: "3-Pack Sweatshirts",
+    image: "https://m.media-amazon.com/images/I/81w-reW3C9L._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B0hkc6WFc",
     store: "Amazon",
     category: "sweaters",
@@ -142,6 +151,7 @@ export const products: Product[] = [
   {
     slug: "denim-look-sweat-top",
     name: "Denim-Look Sweat Top",
+    image: "https://img.ltwebstatic.com/v4/j/spmp/2026/10/16/ec/1792147018fa4435d274ab7becbc4e84f4ae0d7840.webp",
     currentPrice: 15.83,
     affiliateUrl: "https://onelink.shein.com/60/681fzb3quluw?ismg_ol=FEIa9FMR4HM_01_KOC-C",
     store: "SHEIN",
@@ -152,6 +162,7 @@ export const products: Product[] = [
   {
     slug: "oversized-denim-look-sweat-top",
     name: "Oversized Denim-Look Sweat Top",
+    image: "https://img.ltwebstatic.com/v4/j/dps/PS2026081712100/c3953a19790428a66fa21473001530eb3ee774a39f506f51e8bf0a576856ef9f.webp",
     currentPrice: 15.59,
     affiliateUrl: "https://onelink.shein.com/60/681fmbhf4776?ismg_ol=BIf6ea82XCM_01_KOC-C",
     store: "SHEIN",
@@ -162,6 +173,7 @@ export const products: Product[] = [
   {
     slug: "cotton-sweat-top",
     name: "Cotton Sweat Top",
+    image: "https://img.ltwebstatic.com/images3_spmp/2024/10/04/d2/1728026320efb768916dd2d90619640a32398bb325.webp",
     currentPrice: 23.98,
     affiliateUrl: "https://onelink.shein.com/60/681f5frwg000?ismg_ol=CoSo2lHM1cW_01_KOC-C",
     store: "SHEIN",
@@ -172,6 +184,7 @@ export const products: Product[] = [
   {
     slug: "personalized-kids-towel",
     name: "Personalized Kids Towel",
+    image: "https://m.media-amazon.com/images/I/61a9ka1V+nL._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B0dzL4vB8",
     store: "Amazon",
     category: "home",
@@ -181,6 +194,7 @@ export const products: Product[] = [
   {
     slug: "personalized-towel-for-older-kids-2",
     name: "Personalized Towel for Older Kids (Option 2)",
+    image: "https://m.media-amazon.com/images/I/71K5oL0fx+L._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B098q9nmS",
     store: "Amazon",
     category: "home",
@@ -190,6 +204,7 @@ export const products: Product[] = [
   {
     slug: "personalized-towel-for-older-kids",
     name: "Personalized Towel for Older Kids",
+    image: "https://m.media-amazon.com/images/I/71-fsaF8uDL._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B04ybjUeP",
     store: "Amazon",
     category: "home",
@@ -199,6 +214,7 @@ export const products: Product[] = [
   {
     slug: "personalized-hooded-towel",
     name: "Personalized Hooded Towel",
+    image: "https://m.media-amazon.com/images/I/71HCe+wx51L._AC_SL1500_.jpg",
     affiliateUrl: "https://link.amazon/B06l9RrQY",
     store: "Amazon",
     category: "home",
@@ -208,6 +224,7 @@ export const products: Product[] = [
   {
     slug: "personalized-solid-color-hooded-beach-towel",
     name: "Personalized Solid Color Hooded Beach Towel",
+    image: "https://img.kwcdn.com/product/fancy/8e541302-6e20-4ea1-bdb7-5531fd92a338.jpg",
     currentPrice: 11.44,
     affiliateUrl: "https://temu.to/k/pywwl7dssau",
     store: "Temu",
@@ -218,6 +235,7 @@ export const products: Product[] = [
   {
     slug: "personalized-embroidered-name-hooded-bath-towel",
     name: "Personalized Embroidered Hooded Bath Towel",
+    image: "https://img.kwcdn.com/product/fancy/ed146c91-3c9f-467e-91ad-2426e87c2313.jpg",
     currentPrice: 8.43,
     affiliateUrl: "https://temu.to/k/pmut6o1tfhd",
     store: "Temu",
@@ -228,6 +246,7 @@ export const products: Product[] = [
   {
     slug: "personalized-custom-made-childrens-bath-towel",
     name: "Personalized Custom-Made Children's Bath Towel",
+    image: "https://img.kwcdn.com/product/fancy/8613a2c5-8491-4cd7-bb68-67a8152610d8.jpg",
     currentPrice: 13.85,
     affiliateUrl: "https://temu.to/k/prsk2r5pi23",
     store: "Temu",
