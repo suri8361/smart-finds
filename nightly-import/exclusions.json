@@ -1,0 +1,29 @@
+{
+  "_about": "Items Sara removed from the site on purpose. dedupe.py marks any post matching one of these (same link, same link without tracking, or same product id) as excluded and skips it in the overrides file. Never re-add them, even if she re-posts.",
+  "items": [
+    {
+      "slug": "official-licensed-google-tv-happrun-native-1080p-bluetooth",
+      "name": "HAPPRUN 1080P Projector with Google TV",
+      "store": "Amazon",
+      "urls": [
+        "https://amzn.to/4iuMOl6"
+      ],
+      "product_keys": [
+        "amazon:B0DJXRGJ66"
+      ],
+      "removed_on": "2026-11-01",
+      "why": "Sara asked to remove this projector (WhatsApp, Nov 1 2026 2:29 AM ET). The other HAPPRUN item (happrun-native-1080p-bluetooth-projector-standard, amazon:B0B28G5Y4R) stays."
+    },
+    {
+      "slug": "elegant-womens-white-thin-hollow-sweater-soft-and",
+      "name": "Women's Hollow Knit Sweater",
+      "store": "Temu",
+      "urls": [
+        "https://temu.to/k/p7xqo8uy67w"
+      ],
+      "product_keys": [],
+      "removed_on": "2026-11-04",
+      "why": "Sara asked to remove it (WhatsApp, Nov 4 2026 2:02 PM ET): someone told her it's not good quality."
+    }
+  ]
+}
